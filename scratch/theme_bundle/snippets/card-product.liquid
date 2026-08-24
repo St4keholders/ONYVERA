@@ -108,22 +108,27 @@
               </div>
             </div>
           {%- else -%}
-            <div class="card__media">
-              <div class="media media--transparent media--hover-effect" style="background: #ffffff; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+            <div class="card__media" style="width: 100%; height: 100%;">
+              <a
+                href="{{ card_product.url }}"
+                class="full-unstyled-link"
+                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 14px 0; background: #ffffff;"
+                aria-label="{{ card_product.title | default: 'Ver ONYVERA Sérum' | escape }}"
+              >
                 <img
                   src="{{ 'onv-producto-frasco.png' | asset_url }}"
                   alt="{{ card_product.title | default: 'ONYVERA Sérum' | escape }}"
                   class="motion-reduce"
                   loading="lazy"
-                  style="max-height: 240px; width: auto; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(19, 46, 35, 0.10));"
-                  width="240"
-                  height="280"
+                  style="max-height: 250px; max-width: 85%; width: auto; object-fit: contain; margin: 0 auto; display: block; filter: drop-shadow(0 8px 22px rgba(19, 46, 35, 0.12));"
+                  width="260"
+                  height="320"
                 >
-              </div>
+              </a>
             </div>
           {%- endif -%}
         </div>
-        <div class="card__content">
+        <div class="card__content" style="padding: 12px 14px 16px;">
           <div class="card__information">
             <span class="product__text caption-with-letter-spacing" style="display: block; margin-bottom: 4px; font-size: 10px; font-weight: 700; color: #2C6E56; letter-spacing: 0.14em; text-transform: uppercase;">
               SÉRUM BOTÁNICO · 16 ML
@@ -131,12 +136,13 @@
             <h3
               class="card__heading h5"
               id="title-{{ section_id }}-{{ card_product.id }}"
-              style="margin-bottom: 6px;"
+              style="margin-bottom: 6px; font-family: var(--onv-display); font-size: 18px; font-weight: 600;"
             >
               <a
                 href="{{ card_product.url }}"
                 id="CardLink-{{ section_id }}-{{ card_product.id }}"
                 class="full-unstyled-link"
+                style="color: var(--onv-green-900); text-decoration: none;"
               >
                 {{ card_product.title | escape }}
               </a>
@@ -186,6 +192,15 @@
               {%- endif -%}
 
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              <div style="margin-top: 10px;">
+                <a
+                  href="{{ card_product.url }}"
+                  class="button button--primary"
+                  style="width: 100%; border-radius: 999px; font-size: 11.5px; padding: 10px 16px; text-align: center; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none;"
+                >
+                  VER OPCIONES · COMPRAR
+                </a>
+              </div>
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid

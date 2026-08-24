@@ -105,10 +105,6 @@
         "icon_4_text": "Suave, no escuece",
         "icon_5_text": "Se envía desde EE. UU."
       }
-    },
-    "onv_testimonios_texto": {
-      "type": "onv-testimonios-texto",
-      "settings": {}
     }
   },
   "order": [
@@ -119,7 +115,6 @@
     "onv_como_usar",
     "onv_specs",
     "onv_linea_tiempo",
-    "onv_testimonios_texto",
     "onv_ingredientes"
   ]
 }
