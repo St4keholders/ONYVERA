@@ -1,0 +1,224 @@
+{%- comment -%}
+  ONYVERA — Sección: Pie de Página (Mobile-First Optimizado)
+  Diseño compacto, moderno y adaptado a celulares con enlaces organizados y disclaimer legal FDA.
+{%- endcomment -%}
+
+<footer id="onv-footer-{{ section.id }}" class="onv-footer" role="contentinfo">
+  <div class="onv-footer__container">
+
+    <!-- Marca y Eslogan -->
+    <div class="onv-footer__brand-block">
+      <span class="onv-footer__logo">{{ section.settings.brand_name | escape }}</span>
+      <p class="onv-footer__tagline">{{ section.settings.brand_tagline | escape }}</p>
+    </div>
+
+    <!-- Enlaces Rápidos (2 Columnas compactas en móvil) -->
+    <div class="onv-footer__links-grid">
+      <!-- Navegación -->
+      <div class="onv-footer__nav-group">
+        <h4 class="onv-footer__nav-title">{{ section.settings.menu_title | escape }}</h4>
+        <ul class="onv-footer__nav-list">
+          <li><a href="/" class="onv-footer__link">Inicio</a></li>
+          <li><a href="#onv-como-usar-{{ section.id }}" class="onv-footer__link">Cómo Aplicar</a></li>
+          <li><a href="#onv-linea-tiempo-{{ section.id }}" class="onv-footer__link">Rutina 4 Semanas</a></li>
+          <li><a href="#onv-ingredientes-{{ section.id }}" class="onv-footer__link">Ingredientes</a></li>
+          <li><a href="#onv-specs-{{ section.id }}" class="onv-footer__link">Formatos & Precios</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal y Envíos -->
+      <div class="onv-footer__nav-group">
+        <h4 class="onv-footer__nav-title">{{ section.settings.legal_title | escape }}</h4>
+        <ul class="onv-footer__nav-list">
+          <li><a href="/policies/privacy-policy" class="onv-footer__link">Privacidad</a></li>
+          <li><a href="/policies/terms-of-service" class="onv-footer__link">Términos de Servicio</a></li>
+          <li><a href="/policies/shipping-policy" class="onv-footer__link">Envíos</a></li>
+          <li><a href="/policies/refund-policy" class="onv-footer__link">Reembolsos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Información de Empresa -->
+    <div class="onv-footer__company-info">
+      <p>{{ section.settings.company_info | escape }}</p>
+    </div>
+
+    <!-- Disclaimer FDA -->
+    <div class="onv-footer__fda">
+      <p>{{ section.settings.fda_disclaimer | escape }}</p>
+    </div>
+
+    <!-- Copyright -->
+    <div class="onv-footer__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. Todos los derechos reservados.</p>
+    </div>
+
+  </div>
+</footer>
+
+{% style %}
+  .onv-footer {
+    background-color: #132E23;
+    color: #ffffff;
+    padding: 24px 16px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .onv-footer__container {
+    max-width: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .onv-footer__brand-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .onv-footer__logo {
+    font-family: var(--onv-display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+  }
+
+  .onv-footer__tagline {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    color: #9eb5aa;
+    margin: 0;
+    max-width: 320px;
+    line-height: 1.3;
+  }
+
+  /* Grid 2 columnas para enlaces en móvil */
+  .onv-footer__links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+  }
+
+  .onv-footer__nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .onv-footer__nav-title {
+    font-family: var(--onv-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--onv-gold);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .onv-footer__nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .onv-footer__link {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    color: #d1ded7;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .onv-footer__link:hover {
+    color: #ffffff;
+  }
+
+  .onv-footer__company-info p {
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    color: #9eb5aa;
+    margin: 0;
+  }
+
+  .onv-footer__fda {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 8px 10px;
+    max-width: 100%;
+  }
+
+  .onv-footer__fda p {
+    font-family: var(--onv-body);
+    font-size: 9.5px;
+    color: #8da499;
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  .onv-footer__bottom p {
+    font-family: var(--onv-body);
+    font-size: 10px;
+    color: #6d867a;
+    margin: 0;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Footer",
+  "tag": "section",
+  "class": "section-onv-footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Nombre de marca",
+      "default": "ONYVERA"
+    },
+    {
+      "type": "text",
+      "id": "brand_tagline",
+      "label": "Eslogan",
+      "default": "Sérum botánico para el cuidado y nutrición de uñas y cutículas."
+    },
+    {
+      "type": "text",
+      "id": "company_info",
+      "label": "Información de empresa",
+      "default": "VITAHERB INTERNATIONAL LLC · Orlando, FL · contact@onyveranails.com"
+    },
+    {
+      "type": "text",
+      "id": "menu_title",
+      "label": "Título menú",
+      "default": "Navegación"
+    },
+    {
+      "type": "text",
+      "id": "legal_title",
+      "label": "Título legal",
+      "default": "Legal & Envíos"
+    },
+    {
+      "type": "textarea",
+      "id": "fda_disclaimer",
+      "label": "Aviso FDA",
+      "default": "Estas afirmaciones no han sido evaluadas por la FDA. Este producto cosmético no está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad."
+    }
+  ]
+}
+{% endschema %}

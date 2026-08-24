@@ -1,0 +1,52 @@
+/* ==========================================================================
+   ONYVERA — Glassmorphism Utility & Patterns
+   ========================================================================== */
+
+/* Vidrio estándar (sobre fondos con contraste/manchas difuminadas) */
+.onv-glass {
+  background: var(--onv-glass-bg);
+  backdrop-filter: blur(var(--onv-glass-blur));
+  -webkit-backdrop-filter: blur(var(--onv-glass-blur));
+  border: 1px solid var(--onv-glass-brd);
+  box-shadow: var(--onv-glass-shadow);
+  color: var(--onv-green-900); /* Garantiza contraste >= 4.5:1 */
+}
+
+/* Vidrio oscuro (sobre fondos verde profundo --onv-green-900) */
+.onv-glass--dark {
+  background: var(--onv-glass-dark-bg);
+  backdrop-filter: blur(var(--onv-glass-blur));
+  -webkit-backdrop-filter: blur(var(--onv-glass-blur));
+  border: 1px solid var(--onv-glass-dark-brd);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.20);
+  color: var(--onv-cream-50); /* Garantiza contraste >= 4.5:1 */
+}
+
+/* Respaldo para navegadores sin soporte de backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .onv-glass {
+    background: rgba(255, 255, 255, 0.92);
+  }
+  .onv-glass--dark {
+    background: rgba(27, 58, 47, 0.92);
+  }
+}
+
+/* Utilidad para fondos con manchas difuminadas mediante radial-gradient (cero impacto en rendimiento móvil) */
+.onv-ambient-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.onv-ambient-glow::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 10%;
+  width: 80%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 40%, rgba(147, 168, 150, 0.25) 0%, transparent 60%),
+              radial-gradient(circle at 75% 65%, rgba(198, 162, 100, 0.20) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}

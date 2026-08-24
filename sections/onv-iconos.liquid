@@ -1,0 +1,216 @@
+{%- comment -%}
+  ONYVERA — Sección: Cinta de Iconos de Confianza (Carrusel Continuo hacia la Derecha)
+  Cinta compacta en bucle infinito que no ocupa espacio vertical y aporta dinamismo.
+{%- endcomment -%}
+
+<section
+  id="onv-iconos-{{ section.id }}"
+  class="onv-ticker"
+>
+  <div class="onv-ticker__track">
+
+    <!-- Grupo 1 (Bucle continuo) -->
+    <div class="onv-ticker__group" aria-hidden="false">
+      <!-- Item 1: Hoja / Botánica -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M8 15c0-4 3-7 7-8-1 3-3 5-5 6 2 0 4 0 5 0-2 2-4 3-7 2z" stroke="#ffffff" stroke-width="1.2" fill="none"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_1_text | escape }}</span>
+      </div>
+
+      <!-- Item 2: Gota / Sin parabenos -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M12 7c-2 3-4 5-4 7.5a4 4 0 0 0 8 0c0-2.5-2-4.5-4-7.5z" stroke="#ffffff" stroke-width="1.2" fill="none"/><path d="M10 13.5l1.5 1.5 2.5-2.5" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_2_text | escape }}</span>
+      </div>
+
+      <!-- Item 3: Corazón / Vegano -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M12 17s-5-2.8-5-6a2.8 2.8 0 0 1 5-1 2.8 2.8 0 0 1 5 1c0 3.2-5 6-5 6z" stroke="#ffffff" stroke-width="1.2" fill="none"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_3_text | escape }}</span>
+      </div>
+
+      <!-- Item 4: Escudo / Suave -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M12 6l-5 2v4c0 3.5 5 6 5 6s5-2.5 5-6V8l-5-2z" stroke="#ffffff" stroke-width="1.2" fill="none"/><path d="M10 12l1.5 1.5 2.5-2.5" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_4_text | escape }}</span>
+      </div>
+
+      <!-- Item 5: Bandera USA -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><rect x="7" y="8" width="10" height="8" rx="1" stroke="#ffffff" stroke-width="1.2" fill="none"/><path d="M7 10.5h10M7 13h10" stroke="#ffffff" stroke-width="0.8" opacity="0.7"/><rect x="7" y="8" width="5" height="4" rx="0.5" fill="#ffffff" opacity="0.3"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_5_text | escape }}</span>
+      </div>
+    </div>
+
+    <!-- Grupo 2 (Duplicado para loop infinito perfecto) -->
+    <div class="onv-ticker__group" aria-hidden="true">
+      <!-- Item 1 -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M8 15c0-4 3-7 7-8-1 3-3 5-5 6 2 0 4 0 5 0-2 2-4 3-7 2z" stroke="#ffffff" stroke-width="1.2" fill="none"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_1_text | escape }}</span>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M12 7c-2 3-4 5-4 7.5a4 4 0 0 0 8 0c0-2.5-2-4.5-4-7.5z" stroke="#ffffff" stroke-width="1.2" fill="none"/><path d="M10 13.5l1.5 1.5 2.5-2.5" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_2_text | escape }}</span>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M12 17s-5-2.8-5-6a2.8 2.8 0 0 1 5-1 2.8 2.8 0 0 1 5 1c0 3.2-5 6-5 6z" stroke="#ffffff" stroke-width="1.2" fill="none"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_3_text | escape }}</span>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><path d="M12 6l-5 2v4c0 3.5 5 6 5 6s5-2.5 5-6V8l-5-2z" stroke="#ffffff" stroke-width="1.2" fill="none"/><path d="M10 12l1.5 1.5 2.5-2.5" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_4_text | escape }}</span>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="onv-ticker__item">
+        <span class="onv-ticker__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#2C6E56" stroke="none"/><rect x="7" y="8" width="10" height="8" rx="1" stroke="#ffffff" stroke-width="1.2" fill="none"/><path d="M7 10.5h10M7 13h10" stroke="#ffffff" stroke-width="0.8" opacity="0.7"/><rect x="7" y="8" width="5" height="4" rx="0.5" fill="#ffffff" opacity="0.3"/></svg>
+        </span>
+        <span class="onv-ticker__text">{{ section.settings.icon_5_text | escape }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% style %}
+  .onv-ticker {
+    background-color: #f7f9f8;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
+    border-bottom: 1px solid rgba(19, 46, 35, 0.06);
+    padding: 8px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .onv-ticker__track {
+    display: flex;
+    width: max-content;
+    /* Movimiento continuo constante hacia la derecha */
+    animation: onv-scroll-right 28s linear infinite;
+  }
+
+  .onv-ticker:hover .onv-ticker__track {
+    animation-play-state: paused;
+  }
+
+  .onv-ticker__group {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding-right: 28px;
+    flex-shrink: 0;
+  }
+
+  .onv-ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .onv-ticker__icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .onv-ticker__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .onv-ticker__text {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--onv-green-900);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  /* Animación continua hacia la derecha */
+  @keyframes onv-scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Cinta Iconos",
+  "tag": "section",
+  "class": "section-onv-ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icon_1_text",
+      "label": "Texto 1",
+      "default": "Fórmula botánica concentrada"
+    },
+    {
+      "type": "text",
+      "id": "icon_2_text",
+      "label": "Texto 2",
+      "default": "Sin parabenos ni sulfatos"
+    },
+    {
+      "type": "text",
+      "id": "icon_3_text",
+      "label": "Texto 3",
+      "default": "Vegano y libre de crueldad"
+    },
+    {
+      "type": "text",
+      "id": "icon_4_text",
+      "label": "Texto 4",
+      "default": "Suave, no escuece"
+    },
+    {
+      "type": "text",
+      "id": "icon_5_text",
+      "label": "Texto 5",
+      "default": "Se envía desde EE. UU."
+    }
+  ],
+  "presets": [
+    {
+      "name": "ONV Cinta Iconos"
+    }
+  ]
+}
+{% endschema %}

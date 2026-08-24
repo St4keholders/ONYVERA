@@ -1,0 +1,308 @@
+{%- comment -%}
+  ONYVERA — Snippet: Toast Notificación de Carrito
+  Panel modal blanco 100% opaco con fondo sólido, upsell integrado y botones claros.
+{%- endcomment -%}
+
+<div
+  id="onv-toast"
+  class="onv-toast"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+  hidden
+>
+  <div class="onv-toast__header">
+    <div class="onv-toast__thumb">
+      <img
+        id="onv-toast-img"
+        src="{{ 'onv-producto-frasco.png' | asset_url }}"
+        alt="ONYVERA Sérum"
+        width="48"
+        height="72"
+        loading="lazy"
+      >
+    </div>
+    <div class="onv-toast__details">
+      <p class="onv-toast__status" id="onv-toast-status">Añadido a tu pedido</p>
+      <h3 class="onv-toast__title" id="onv-toast-title">ONYVERA Sérum (16 ml)</h3>
+      <p class="onv-toast__variant" id="onv-toast-variant">1 Bottle</p>
+    </div>
+    <button
+      type="button"
+      class="onv-toast__close"
+      id="onv-toast-close"
+      aria-label="Cerrar notificación"
+    >
+      &times;
+    </button>
+  </div>
+
+  <div class="onv-toast__error-msg" id="onv-toast-error" hidden></div>
+
+{%- liquid
+  assign store_product = collections.all.products.first
+  if store_product == blank
+    assign store_product = all_products.first
+  endif
+  assign upsell_variant = store_product.variants[1] | default: store_product.selected_or_first_available_variant
+-%}
+
+  <!-- Oportunidad de venta (Upsell inteligente) -->
+  <div class="onv-toast__upsell" id="onv-toast-upsell">
+    <div class="onv-toast__upsell-info">
+      <span class="onv-toast__upsell-badge">OFERTA RECOMENDADA</span>
+      <p class="onv-toast__upsell-text">Añade un segundo frasco y <strong>ahorra $10</strong></p>
+    </div>
+    <button
+      type="button"
+      class="onv-toast__upsell-btn"
+      id="onv-toast-upsell-btn"
+      data-onv-add
+      data-variant-id="{{ upsell_variant.id | default: '' }}"
+    >
+      Añadir pack de 2
+    </button>
+  </div>
+
+  <!-- Botones de acción principales -->
+  <div class="onv-toast__actions">
+    <a href="{{ routes.cart_url }}" class="onv-toast__btn onv-toast__btn--view">
+      Ver carrito
+    </a>
+    <button type="button" class="onv-toast__btn onv-toast__btn--continue" id="onv-toast-continue">
+      Seguir viendo
+    </button>
+  </div>
+
+  <!-- Barra de progreso visual del temporizador -->
+  <div class="onv-toast__timer-bar" id="onv-toast-timer-bar"></div>
+</div>
+
+{% style %}
+  .onv-toast {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    padding: 16px;
+    background-color: #ffffff !important;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -8px 32px rgba(19, 46, 35, 0.22);
+    border: 1px solid rgba(19, 46, 35, 0.12);
+    max-width: 100%;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+  }
+
+  @media (min-width: 760px) {
+    .onv-toast {
+      bottom: 24px;
+      right: 24px;
+      left: auto;
+      width: 380px;
+      border-radius: 16px;
+      box-shadow: 0 12px 36px rgba(19, 46, 35, 0.25);
+      transform: translateY(20px);
+    }
+  }
+
+  .onv-toast.is-visible {
+    pointer-events: auto;
+  }
+
+  .onv-toast__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+  }
+
+  .onv-toast__thumb {
+    width: 46px;
+    height: 60px;
+    background: #f7f9f8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgba(19, 46, 35, 0.08);
+  }
+
+  .onv-toast__thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .onv-toast__details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .onv-toast__status {
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin: 0 0 2px 0;
+  }
+
+  .onv-toast__title {
+    font-family: var(--onv-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--onv-green-900);
+    margin: 0 0 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .onv-toast__variant {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    color: var(--onv-ink-soft);
+    margin: 0;
+  }
+
+  .onv-toast__close {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--onv-ink-soft);
+    cursor: pointer;
+    padding: 4px;
+    align-self: flex-start;
+  }
+
+  .onv-toast__close:hover {
+    color: var(--onv-green-900);
+  }
+
+  .onv-toast__error-msg {
+    margin-top: 10px;
+    padding: 6px 10px;
+    background: #fdeee9;
+    border: 1px solid #f8c9bd;
+    border-radius: 6px;
+    color: #931F14;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Upsell */
+  .onv-toast__upsell {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f4f8f6;
+    border: 1px dashed var(--onv-teal-600);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .onv-toast__upsell-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .onv-toast__upsell-badge {
+    font-family: var(--onv-body);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #A8833B;
+  }
+
+  .onv-toast__upsell-text {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    color: var(--onv-green-900);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .onv-toast__upsell-btn {
+    background-color: var(--onv-teal-600);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+
+  .onv-toast__upsell-btn:hover {
+    background-color: var(--onv-green-900);
+  }
+
+  /* Acciones */
+  .onv-toast__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .onv-toast__btn {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-family: var(--onv-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .onv-toast__btn--view {
+    background: #132E23;
+    color: #ffffff;
+    border: none;
+  }
+
+  .onv-toast__btn--view:hover {
+    background: var(--onv-teal-600);
+  }
+
+  .onv-toast__btn--continue {
+    background: #ffffff;
+    color: var(--onv-green-900);
+    border: 1.5px solid rgba(19, 46, 35, 0.16);
+  }
+
+  .onv-toast__btn--continue:hover {
+    border-color: var(--onv-green-900);
+  }
+
+  /* Timer bar */
+  .onv-toast__timer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--onv-teal-600);
+    width: 100%;
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 5s linear;
+  }
+{% endstyle %}

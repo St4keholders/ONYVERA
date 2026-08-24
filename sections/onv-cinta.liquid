@@ -1,0 +1,145 @@
+{%- comment -%}
+  ONYVERA — Sección: Cinta en Loop (Marquesina)
+  Fondo verde profundo, texto en bucle infinito puro CSS sin JS.
+{%- endcomment -%}
+
+{%- if section.settings.show_cinta -%}
+  <aside id="onv-cinta-{{ section.id }}" class="onv-cinta" role="region" aria-label="{{ 'sections.announcements.announcement' | t | default: 'Anuncio' }}">
+    <div class="onv-cinta__track-wrapper">
+      <div class="onv-cinta__track" style="--onv-cinta-speed: {{ section.settings.speed }}s;">
+        <div class="onv-cinta__item">
+          {%- for i in (1..6) -%}
+            <span class="onv-cinta__text">{{ section.settings.text | escape }}</span>
+            <span class="onv-cinta__sep" aria-hidden="true">✦</span>
+          {%- endfor -%}
+        </div>
+        <div class="onv-cinta__item" aria-hidden="true">
+          {%- for i in (1..6) -%}
+            <span class="onv-cinta__text">{{ section.settings.text | escape }}</span>
+            <span class="onv-cinta__sep" aria-hidden="true">✦</span>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  {% style %}
+    #onv-cinta-{{ section.id }} {
+      background-color: {{ section.settings.bg_color | default: 'var(--onv-green-900)' }};
+      color: {{ section.settings.text_color | default: '#ffffff' }};
+      border-bottom: 1px solid var(--onv-glass-dark-brd);
+      overflow: hidden;
+      user-select: none;
+      position: relative;
+      z-index: 20;
+    }
+
+    .onv-cinta__track-wrapper {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .onv-cinta__track {
+      display: flex;
+      flex-shrink: 0;
+      width: max-content;
+      animation: onvCintaSlide var(--onv-cinta-speed, 20s) linear infinite;
+    }
+
+    .onv-cinta:hover .onv-cinta__track {
+      animation-play-state: paused;
+    }
+
+    .onv-cinta__item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      padding: var(--onv-s2) 0;
+    }
+
+    .onv-cinta__text {
+      font-family: var(--onv-body);
+      font-size: var(--onv-fs-small);
+      font-weight: 600;
+      letter-spacing: var(--onv-track-eyebrow);
+      text-transform: uppercase;
+      padding: 0 var(--onv-s4);
+    }
+
+    .onv-cinta__sep {
+      color: var(--onv-bamboo-500);
+      font-size: 9px;
+      opacity: 0.8;
+    }
+
+    @keyframes onvCintaSlide {
+      from {
+        transform: translate3d(0, 0, 0);
+      }
+      to {
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .onv-cinta__track {
+        animation: none;
+        width: 100%;
+        justify-content: center;
+      }
+      .onv-cinta__item:last-child {
+        display: none;
+      }
+    }
+  {% endstyle %}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ONV Cinta",
+  "tag": "section",
+  "class": "section-onv-cinta",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_cinta",
+      "label": "Mostrar cinta",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto del anuncio",
+      "default": "ENVÍO GRATIS EN EE. UU. EN PEDIDOS DESDE $50"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Velocidad de desplazamiento (segundos)",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "default": 24,
+      "unit": "s"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de fondo",
+      "default": "#1B3A2F"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color del texto",
+      "default": "#F6F2E9"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ONV Cinta"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "onv_cinta": {
+      "type": "onv-cinta",
+      "settings": {
+        "show_cinta": true,
+        "text": "ENVÍO GRATIS EN EE. UU. EN PEDIDOS DESDE $50",
+        "speed": 24,
+        "bg_color": "#1B3A2F",
+        "text_color": "#F6F2E9"
+      }
+    },
+    "onv_hero": {
+      "type": "onv-hero",
+      "settings": {
+        "variant_index": 1,
+        "eyebrow": "SÉRUM BOTÁNICO PARA UÑAS · 16 ML",
+        "title": "Un minuto diario",
+        "subtitle": "Nuestro sérum con brocha de precisión acondiciona la uña y el contorno, justo donde lo necesitas. Reparación total en menos de un mes",
+        "button_text": "COMPRAR ONYVERA",
+        "microcopy": "16 ml · Envío desde Orlando, FL · Envío gratis desde $50",
+        "point_1": "Brocha de precisión integrada",
+        "point_2": "16 ml para manos y pies",
+        "point_3": "Sin parabenos ni sulfatos",
+        "enable_motion": true,
+        "motion_duration": 0.9,
+        "container_height_desktop": 130,
+        "container_height_mobile": 118
+      }
+    },
+    "onv_prueba_social": {
+      "type": "onv-prueba-social",
+      "settings": {
+        "eyebrow": "RESULTADOS REALES",
+        "title": "Resultados de quienes ya lo usan",
+        "subtitle": "Experiencias reales con el hábito diario de cuidado botánico ONYVERA."
+      }
+    },
+    "onv_como_usar": {
+      "type": "onv-como-usar",
+      "settings": {
+        "eyebrow": "APLICACIÓN SENCILLA",
+        "title": "Cómo aplicar ONYVERA",
+        "subtitle": "Cuatro pasos. Menos de un minuto.",
+        "step_1_title": "PASO 1 — LIMA SUAVEMENTE LA SUPERFICIE",
+        "step_1_text": "Un pulido ligero retira las capas ásperas y deja la uña lista para absorber el sérum.",
+        "step_2_title": "PASO 2 — APLICA CON LA BROCHA",
+        "step_2_text": "Una capa fina sobre la uña y bajo la punta. La brocha llega hasta el borde libre sin manchar la piel de alrededor.",
+        "step_3_title": "PASO 3 — DEJA SECAR AL AIRE",
+        "step_3_text": "Sin vendajes ni algodón. La fórmula seca sola y puedes seguir con tu día.",
+        "step_4_title": "PASO 4 — REPITE A DIARIO",
+        "step_4_text": "De 3 a 6 aplicaciones al día. La constancia es lo que marca la diferencia."
+      }
+    },
+    "onv_linea_tiempo": {
+      "type": "onv-linea-tiempo",
+      "settings": {
+        "eyebrow": "PROGRESO ESPERADO",
+        "title": "Tu rutina de 4 semanas",
+        "subtitle": "Qué vas a ir notando si mantienes el hábito.",
+        "week_1_title": "SEMANA 1 — SE VUELVE COSTUMBRE",
+        "week_1_text": "Los primeros días se trata de encajar el gesto en tu rutina. La uña empieza a sentirse menos áspera al tacto.",
+        "week_2_title": "SEMANA 2 — SUPERFICIE MÁS PAREJA",
+        "week_2_text": "La textura irregular se nota más uniforme y el sérum se extiende con más facilidad.",
+        "week_3_title": "SEMANA 3 — MEJOR ASPECTO",
+        "week_3_text": "La uña luce más cuidada y el contorno se ve hidratado en vez de reseco.",
+        "week_4_title": "SEMANA 4 — CRECIMIENTO NUEVO",
+        "week_4_text": "La uña que crece desde la base se ve más limpia y pareja que la que estás dejando atrás."
+      }
+    },
+    "onv_ingredientes": {
+      "type": "onv-ingredientes",
+      "settings": {
+        "eyebrow": "TRANSPARENCIA BOTÁNICA",
+        "title": "Cinco botánicos activos. Diez ingredientes. Nada escondido.",
+        "subtitle": "La lista completa, en el mismo orden que aparece en el frasco.",
+        "ing_1_name": "Aceite de árbol de té (Melaleuca Alternifolia)",
+        "ing_1_desc": "Aceite botánico muy apreciado en el cuidado de uñas y piel por su acabado limpio y purificante.",
+        "ing_2_name": "Aloe vera",
+        "ing_2_desc": "Acondiciona y calma la piel alrededor del lecho ungueal.",
+        "ing_3_name": "Glicerina",
+        "ing_3_desc": "Atrae y retiene la humedad en uñas secas y quebradizas.",
+        "ing_4_name": "Provitamina B5 (Pantenol)",
+        "ing_4_desc": "Aporta suavidad y flexibilidad a la uña.",
+        "ing_5_name": "Vitamina E (Acetato de tocoferilo)",
+        "ing_5_desc": "Protección antioxidante para uñas castigadas.",
+        "inci_title": "Ver lista completa de ingredientes (Nomenclatura INCI)",
+        "inci_text": "Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.",
+        "inci_note": "Fórmula libre de parabenos, sulfatos, ftalatos y fragancias artificiales."
+      }
+    },
+    "onv_specs": {
+      "type": "onv-specs",
+      "blocks": {
+        "spec_1": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Nombre del producto",
+            "value": "ONYVERA Sérum para uñas"
+          }
+        },
+        "spec_2": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Tipo de producto",
+            "value": "Sérum acondicionador para uñas y cutículas"
+          }
+        },
+        "spec_3": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Contenido neto",
+            "value": "16 ml / 0.5 fl oz"
+          }
+        },
+        "spec_4": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Aplicador",
+            "value": "Brocha de precisión"
+          }
+        },
+        "spec_5": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Uso",
+            "value": "Uñas de manos y pies"
+          }
+        },
+        "spec_6": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Fórmula",
+            "value": "5 activos botánicos · 10 ingredientes en total"
+          }
+        },
+        "spec_7": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Tras la apertura",
+            "value": "12 meses (12M)"
+          }
+        },
+        "spec_8": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Conservación",
+            "value": "Uso externo. Lugar fresco y seco, sin sol directo."
+          }
+        },
+        "spec_9": {
+          "type": "spec_row",
+          "settings": {
+            "label": "Fabricante",
+            "value": "VITAHERB INTERNATIONAL LLC · Orlando, FL"
+          }
+        }
+      },
+      "block_order": [
+        "spec_1",
+        "spec_2",
+        "spec_3",
+        "spec_4",
+        "spec_5",
+        "spec_6",
+        "spec_7",
+        "spec_8",
+        "spec_9"
+      ],
+      "settings": {
+        "eyebrow": "FICHA TÉCNICA",
+        "title": "Especificaciones del producto"
+      }
+    },
+    "onv_iconos": {
+      "type": "onv-iconos",
+      "settings": {
+        "icon_1_text": "Fórmula botánica concentrada",
+        "icon_2_text": "Sin parabenos ni sulfatos",
+        "icon_3_text": "Vegano y libre de crueldad",
+        "icon_4_text": "Suave, no escuece",
+        "icon_5_text": "Se envía desde EE. UU."
+      }
+    },
+    "onv_testimonios_texto": {
+      "type": "onv-testimonios-texto",
+      "settings": {
+      }
+    },
+    "onv_footer": {
+      "type": "onv-footer",
+      "settings": {
+        "brand_name": "ONYVERA",
+        "brand_tagline": "Sérum acondicionador botánico para uñas de manos y pies con aplicador de precisión.",
+        "company_info": "VITAHERB INTERNATIONAL LLC · Orlando, FL · contact@onyveranails.com",
+        "menu_title": "Navegación",
+        "legal_title": "Legal y Envíos",
+        "fda_disclaimer": "Estas afirmaciones no han sido evaluadas por la Administración de Alimentos y Medicamentos (FDA). Este producto no está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad."
+      }
+    }
+  },
+  "order": [
+    "onv_cinta",
+    "onv_hero",
+    "onv_iconos",
+    "onv_prueba_social",
+    "onv_como_usar",
+    "onv_specs",
+    "onv_linea_tiempo",
+    "onv_testimonios_texto",
+    "onv_ingredientes",
+    "onv_footer"
+  ]
+}

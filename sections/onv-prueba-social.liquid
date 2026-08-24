@@ -1,0 +1,494 @@
+{%- comment -%}
+  ONYVERA — Sección: Testimoniales Antes/Después (Infinite 3-Card Loop)
+  Carrusel circular donde la tarjeta activa está al centro y SIEMPRE se ven la anterior a la izquierda y la siguiente a la derecha.
+{%- endcomment -%}
+
+{%- liquid
+  assign target_product = section.settings.product
+  if target_product == blank
+    assign target_product = collections.all.products.first
+  endif
+  if target_product == blank
+    assign target_product = all_products.first
+  endif
+-%}
+
+<section
+  id="onv-testimonials-{{ section.id }}"
+  class="onv-testimonials"
+>
+  <div class="onv-testimonials__container">
+
+    <div class="onv-testimonials__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="onv-testimonials__badge">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      <h2 class="onv-testimonials__title">
+        {%- if section.settings.title != blank and section.settings.title != "Lo que dicen quienes ya lo usan" -%}
+          {{ section.settings.title | escape }}
+        {%- else -%}
+          Resultados de quienes ya lo usan
+        {%- endif -%}
+      </h2>
+    </div>
+
+    <!-- Escenario del Carrusel Loop 3D/Flat -->
+    <div class="onv-loop" id="onv-loop-stage">
+      <div class="onv-loop__track" id="onv-loop-track">
+
+        <!-- Slide 0: 1 Frasco -->
+        <div class="onv-loop__item" data-index="0">
+          <div class="onv-loop__card">
+            <div class="onv-loop__media">
+              <img
+                src="{{ 'onv-antes-y-despues-1.png' | asset_url }}"
+                alt="Resultado antes y después usuario ONYVERA"
+                loading="eager"
+                class="onv-loop__img"
+                width="240"
+                height="280"
+              >
+            </div>
+            <div class="onv-loop__bar">
+              <div class="onv-loop__bar-left">
+                <img src="{{ 'onv-producto-frasco.png' | asset_url }}" alt="ONYVERA 1 Frasco" width="28" height="40" class="onv-loop__thumb" loading="lazy">
+                <div class="onv-loop__info">
+                  <span class="onv-loop__name">1 Frasco · 16 ml</span>
+                  <span class="onv-loop__price">{{ target_product.variants[0].price | default: 2900 | money }}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="onv-loop__btn"
+                data-onv-add
+                data-variant-id="{{ target_product.variants[0].id | default: '' }}"
+                aria-label="Añadir 1 frasco"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 1: 2 Frascos -->
+        <div class="onv-loop__item" data-index="1">
+          <div class="onv-loop__card">
+            <div class="onv-loop__media">
+              <img
+                src="{{ 'onv-antes-y-despues-2.png' | asset_url }}"
+                alt="Resultado antes y después usuario ONYVERA"
+                loading="lazy"
+                class="onv-loop__img"
+                width="240"
+                height="280"
+              >
+            </div>
+            <div class="onv-loop__bar">
+              <div class="onv-loop__bar-left">
+                <img src="{{ 'onv-producto-frasco-2.png' | asset_url }}" alt="ONYVERA 2 Frascos" width="28" height="40" class="onv-loop__thumb" loading="lazy">
+                <div class="onv-loop__info">
+                  <span class="onv-loop__name">2 Frascos (Ahorro)</span>
+                  <span class="onv-loop__price">{{ target_product.variants[1].price | default: 4800 | money }}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="onv-loop__btn"
+                data-onv-add
+                data-variant-id="{{ target_product.variants[1].id | default: '' }}"
+                aria-label="Añadir 2 frascos"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: 3 Frascos -->
+        <div class="onv-loop__item" data-index="2">
+          <div class="onv-loop__card">
+            <div class="onv-loop__media">
+              <img
+                src="{{ 'onv-antes-y-despues-3.png' | asset_url }}"
+                alt="Resultado antes y después usuario ONYVERA"
+                loading="lazy"
+                class="onv-loop__img"
+                width="240"
+                height="280"
+              >
+            </div>
+            <div class="onv-loop__bar">
+              <div class="onv-loop__bar-left">
+                <img src="{{ 'onv-producto-frasco-3.png' | asset_url }}" alt="ONYVERA 3 Frascos" width="28" height="40" class="onv-loop__thumb" loading="lazy">
+                <div class="onv-loop__info">
+                  <span class="onv-loop__name">3 Frascos (Pack)</span>
+                  <span class="onv-loop__price">{{ target_product.variants[2].price | default: 6500 | money }}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="onv-loop__btn"
+                data-onv-add
+                data-variant-id="{{ target_product.variants[2].id | default: '' }}"
+                aria-label="Añadir 3 frascos"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Flechas sutiles de navegación táctil -->
+      <button class="onv-loop__nav onv-loop__nav--prev" id="onv-loop-prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="onv-loop__nav onv-loop__nav--next" id="onv-loop-next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initInfiniteLoop() {
+      const stage = document.getElementById('onv-loop-stage');
+      const items = Array.from(document.querySelectorAll('.onv-loop__item'));
+      const prevBtn = document.getElementById('onv-loop-prev');
+      const nextBtn = document.getElementById('onv-loop-next');
+      if (!stage || items.length !== 3) return;
+
+      let current = 0; // 0, 1, 2
+      const total = 3;
+
+      function renderPositions() {
+        items.forEach((item, idx) => {
+          // Calculate relative position: -1 (left), 0 (center), 1 (right)
+          let diff = (idx - current) % total;
+          if (diff === -2) diff = 1;
+          if (diff === 2) diff = -1;
+
+          item.classList.remove('is-center', 'is-left', 'is-right');
+          if (diff === 0) {
+            item.classList.add('is-center');
+            item.style.transform = 'translateX(0) scale(1)';
+            item.style.opacity = '1';
+            item.style.zIndex = '3';
+            item.style.pointerEvents = 'auto';
+          } else if (diff === -1) {
+            item.classList.add('is-left');
+            item.style.transform = 'translateX(-72%) scale(0.85)';
+            item.style.opacity = '0.65';
+            item.style.zIndex = '2';
+            item.style.pointerEvents = 'auto';
+          } else if (diff === 1) {
+            item.classList.add('is-right');
+            item.style.transform = 'translateX(72%) scale(0.85)';
+            item.style.opacity = '0.65';
+            item.style.zIndex = '2';
+            item.style.pointerEvents = 'auto';
+          }
+        });
+      }
+
+      function next() {
+        current = (current + 1) % total;
+        renderPositions();
+      }
+
+      function prev() {
+        current = (current - 1 + total) % total;
+        renderPositions();
+      }
+
+      if (nextBtn) nextBtn.addEventListener('click', next);
+      if (prevBtn) prevBtn.addEventListener('click', prev);
+
+      // Clicking side cards switches to them
+      items.forEach((item, idx) => {
+        item.addEventListener('click', (e) => {
+          if (e.target.closest('[data-onv-add]')) return;
+          if (idx !== current) {
+            current = idx;
+            renderPositions();
+          }
+        });
+      });
+
+      // Touch swipe support
+      let startX = 0;
+      stage.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (diff > 40) next();
+        else if (diff < -40) prev();
+      }, { passive: true });
+
+      renderPositions();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initInfiniteLoop);
+    } else {
+      initInfiniteLoop();
+    }
+  })();
+</script>
+
+{% style %}
+  .onv-testimonials {
+    background-color: #ffffff;
+    padding: 24px 0 20px;
+    color: var(--onv-green-900);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .onv-testimonials__container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .onv-testimonials__header {
+    text-align: center;
+    padding: 0 16px;
+    margin-bottom: 12px;
+  }
+
+  .onv-testimonials__badge {
+    display: inline-block;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .onv-testimonials__title {
+    font-family: var(--onv-display);
+    font-size: clamp(15px, 4.3vw, 24px);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--onv-green-900);
+    white-space: nowrap;
+  }
+
+  /* Escenario del Carrusel Loop */
+  .onv-loop {
+    position: relative;
+    width: 100%;
+    height: 315px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: pan-y;
+  }
+
+  .onv-loop__track {
+    position: relative;
+    width: 210px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 500px) {
+    .onv-loop {
+      height: 345px;
+    }
+    .onv-loop__track {
+      width: 230px;
+    }
+  }
+
+  .onv-loop__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.38s ease;
+    will-change: transform, opacity;
+    cursor: pointer;
+  }
+
+  .onv-loop__card {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(19, 46, 35, 0.10);
+    border: 1px solid rgba(19, 46, 35, 0.08);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .onv-loop__media {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    background: #f0ebe1;
+    overflow: hidden;
+  }
+
+  .onv-loop__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .onv-loop__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 9px;
+    background: #ffffff;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
+    flex-shrink: 0;
+  }
+
+  .onv-loop__bar-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .onv-loop__thumb {
+    width: 24px;
+    height: 34px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .onv-loop__info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .onv-loop__name {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--onv-green-900);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.15;
+  }
+
+  .onv-loop__price {
+    font-family: var(--onv-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--onv-teal-600);
+  }
+
+  .onv-loop__btn {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--onv-teal-600);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+
+  .onv-loop__btn:hover {
+    background: var(--onv-green-900);
+    transform: scale(1.1);
+  }
+
+  .onv-loop__btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Flechas de navegación */
+  .onv-loop__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(19, 46, 35, 0.12);
+    color: var(--onv-green-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .onv-loop__nav--prev {
+    left: 8px;
+  }
+
+  .onv-loop__nav--next {
+    right: 8px;
+  }
+
+  .onv-loop__nav svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (min-width: 600px) {
+    .onv-loop__nav--prev { left: 24px; }
+    .onv-loop__nav--next { right: 24px; }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Testimoniales",
+  "tag": "section",
+  "class": "section-onv-testimonials",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Producto (para resolver variantes)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "RESULTADOS REALES"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título H2",
+      "default": "Resultados de quienes ya lo usan"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ONV Testimoniales"
+    }
+  ]
+}
+{% endschema %}

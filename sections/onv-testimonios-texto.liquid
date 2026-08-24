@@ -1,0 +1,267 @@
+{%- comment -%}
+  ONYVERA — Sección: Testimonios Escritos (Rutina 45 Días)
+  Carrusel horizontal de reseñas verificadas de personas que completaron la rutina de 45 días.
+{%- endcomment -%}
+
+<section
+  id="onv-reviews-{{ section.id }}"
+  class="onv-reviews"
+>
+  <div class="onv-reviews__container">
+
+    <div class="onv-reviews__header">
+      <span class="onv-reviews__badge">EXPERIENCIAS REALES</span>
+      <h2 class="onv-reviews__title">Historias tras 45 días de rutina</h2>
+      <p class="onv-reviews__subtitle">Personas reales que mantuvieron la constancia diaria con ONYVERA.</p>
+    </div>
+
+    <!-- Carrusel de Reseñas -->
+    <div class="onv-reviews__scroll-wrap">
+      <div class="onv-reviews__track">
+
+        <!-- Reseña 1 -->
+        <article class="onv-reviews__card">
+          <div class="onv-reviews__stars" aria-label="5 estrellas de 5">
+            ★★★★★
+          </div>
+          <p class="onv-reviews__quote">
+            “Al principio era escéptica, pero tras la 3ra semana la textura de mi uña del pie cambió por completo. Hoy al día 45 está creciendo limpia y clara. La brocha hace que no dé pereza aplicarlo.”
+          </p>
+          <div class="onv-reviews__author">
+            <div class="onv-reviews__avatar">MF</div>
+            <div class="onv-reviews__meta">
+              <span class="onv-reviews__name">Marta Fernández</span>
+              <span class="onv-reviews__tag">✓ Compra verificada · Rutina 45 días</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reseña 2 -->
+        <article class="onv-reviews__card">
+          <div class="onv-reviews__stars" aria-label="5 estrellas de 5">
+            ★★★★★
+          </div>
+          <p class="onv-reviews__quote">
+            “Llevaba años escondiendo mis uñas en verano. Empecé el pack de 3 frascos y la constancia valió cada segundo. Se absorbe rápido y no mancha los calcetines.”
+          </p>
+          <div class="onv-reviews__author">
+            <div class="onv-reviews__avatar">CR</div>
+            <div class="onv-reviews__meta">
+              <span class="onv-reviews__name">Carlos Ramírez</span>
+              <span class="onv-reviews__tag">✓ Compra verificada · Rutina 45 días</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reseña 3 -->
+        <article class="onv-reviews__card">
+          <div class="onv-reviews__stars" aria-label="5 estrellas de 5">
+            ★★★★★
+          </div>
+          <p class="onv-reviews__quote">
+            “El formato brocha es 10 veces mejor que los goteros. Mis uñas pasaron de estar secas y quebradizas a verse nutridas y suaves desde la base. 100% recomendado.”
+          </p>
+          <div class="onv-reviews__author">
+            <div class="onv-reviews__avatar">DM</div>
+            <div class="onv-reviews__meta">
+              <span class="onv-reviews__name">Diana Morales</span>
+              <span class="onv-reviews__tag">✓ Compra verificada · Rutina 45 días</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reseña 4 -->
+        <article class="onv-reviews__card">
+          <div class="onv-reviews__stars" aria-label="5 estrellas de 5">
+            ★★★★★
+          </div>
+          <p class="onv-reviews__quote">
+            “El olor suave a árbol de té y lo rápido que seca es lo mejor. Cumplí los 45 días aplicándolo mañana y noche, y el cambio en mis manos es indiscutible.”
+          </p>
+          <div class="onv-reviews__author">
+            <div class="onv-reviews__avatar">LG</div>
+            <div class="onv-reviews__meta">
+              <span class="onv-reviews__name">Laura Gómez</span>
+              <span class="onv-reviews__tag">✓ Compra verificada · Rutina 45 días</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% style %}
+  .onv-reviews {
+    background-color: #fafafa;
+    padding: 24px 0 20px;
+    color: var(--onv-green-900);
+    overflow: hidden;
+  }
+
+  .onv-reviews__container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .onv-reviews__header {
+    text-align: center;
+    padding: 0 16px;
+    margin-bottom: 12px;
+  }
+
+  .onv-reviews__badge {
+    display: inline-block;
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .onv-reviews__title {
+    font-family: var(--onv-display);
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--onv-green-900);
+    margin: 0 0 3px;
+  }
+
+  .onv-reviews__subtitle {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    color: var(--onv-ink-soft);
+    margin: 0 auto;
+    max-width: 440px;
+  }
+
+  /* Riel horizontal con scroll suave */
+  .onv-reviews__scroll-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 6px 0 16px;
+  }
+
+  .onv-reviews__scroll-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .onv-reviews__track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    padding: 0 16px;
+  }
+
+  @media (min-width: 750px) {
+    .onv-reviews__track {
+      gap: 16px;
+      padding: 0 24px;
+    }
+  }
+
+  /* Tarjeta de reseña */
+  .onv-reviews__card {
+    flex: 0 0 240px;
+    width: 240px;
+    scroll-snap-align: start;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid rgba(19, 46, 35, 0.08);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(19, 46, 35, 0.04);
+  }
+
+  @media (min-width: 750px) {
+    .onv-reviews__card {
+      flex: 0 0 260px;
+      width: 260px;
+    }
+  }
+
+  .onv-reviews__stars {
+    color: #A8833B;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .onv-reviews__quote {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    line-height: 1.35;
+    color: var(--onv-ink);
+    margin: 0 0 10px 0;
+    font-style: italic;
+  }
+
+  .onv-reviews__author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
+  }
+
+  .onv-reviews__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(44, 110, 86, 0.12);
+    color: var(--onv-teal-600);
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .onv-reviews__meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .onv-reviews__name {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--onv-green-900);
+    line-height: 1.2;
+  }
+
+  .onv-reviews__tag {
+    font-family: var(--onv-body);
+    font-size: 9.5px;
+    color: var(--onv-teal-600);
+    font-weight: 600;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Reseñas Rutina",
+  "tag": "section",
+  "class": "section-onv-reviews",
+  "presets": [
+    {
+      "name": "ONV Reseñas Rutina"
+    }
+  ]
+}
+{% endschema %}

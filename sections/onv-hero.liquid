@@ -1,0 +1,412 @@
+{%- comment -%}
+  ONYVERA — Sección: Hero Principal v2
+  Fondo 100% blanco puro + video loop del producto + copy centrado + CTA
+{%- endcomment -%}
+
+{%- liquid
+  assign target_product = section.settings.product
+  if target_product == blank
+    assign target_product = collections.all.products.first
+  endif
+  if target_product == blank
+    assign target_product = all_products.first
+  endif
+
+  assign target_variant = target_product.selected_or_first_available_variant
+
+  if section.settings.variant_index != blank
+    assign v_idx = section.settings.variant_index | minus: 1
+    if target_product.variants[v_idx] != blank
+      assign target_variant = target_product.variants[v_idx]
+    endif
+  endif
+
+  if target_variant != blank
+    assign price_display = target_variant.price | money
+    assign variant_id_val = target_variant.id
+  else
+    assign price_display = 2900 | money
+    assign variant_id_val = ''
+  endif
+-%}
+
+<section
+  id="onv-hero-{{ section.id }}"
+  class="onv-hero"
+>
+  <div class="onv-hero__container">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="onv-hero__eyebrow">{{ section.settings.eyebrow | default: "SÉRUM BOTÁNICO PARA UÑAS · 16 ML" | escape }}</p>
+    {%- endif -%}
+
+    <h1 class="onv-hero__title">
+      {%- if section.settings.title != blank and section.settings.title != "Ya no las escondas." -%}
+        {{ section.settings.title | escape }}
+      {%- else -%}
+        Un minuto diario
+      {%- endif -%}
+    </h1>
+
+    <p class="onv-hero__subtitle">
+      {%- if section.settings.subtitle != blank and section.settings.subtitle != "Un sérum con brocha de precisión que acondiciona la uña y el contorno, justo donde lo necesitas. 16 ml para manos y pies." -%}
+        {{ section.settings.subtitle | escape }}
+      {%- else -%}
+        Nuestro sérum con brocha de precisión acondiciona la uña y el contorno, justo donde lo necesitas. Reparación total en menos de un mes
+      {%- endif -%}
+    </p>
+
+    <!-- Video del producto sobre fondo blanco -->
+    <div class="onv-hero__video-wrap">
+      <video
+        id="onv-hero-video-el"
+        class="onv-hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        x5-playsinline
+        disablePictureInPicture
+        disableremoteplayback
+        preload="auto"
+        aria-label="ONYVERA sérum botánico para uñas rotando"
+      >
+        <source src="{{ 'onv-hero-frasco-fondo-transparente-loop-rotacion-sobre-su-mismo-eje.mp4' | asset_url }}" type="video/mp4">
+      </video>
+    </div>
+
+    <script>
+      (function() {
+        function forceAutoplay() {
+          const video = document.getElementById('onv-hero-video-el');
+          if (!video) return;
+          video.muted = true;
+          video.defaultMuted = true;
+          video.setAttribute('muted', '');
+          video.setAttribute('playsinline', '');
+          video.setAttribute('webkit-playsinline', '');
+          
+          const promise = video.play();
+          if (promise !== undefined) {
+            promise.catch(function() {
+              const startOnInteraction = function() {
+                video.play();
+                window.removeEventListener('touchstart', startOnInteraction);
+                window.removeEventListener('scroll', startOnInteraction);
+                document.removeEventListener('click', startOnInteraction);
+              };
+              window.addEventListener('touchstart', startOnInteraction, { passive: true, once: true });
+              window.addEventListener('scroll', startOnInteraction, { passive: true, once: true });
+              document.addEventListener('click', startOnInteraction, { once: true });
+            });
+          }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', forceAutoplay);
+        } else {
+          forceAutoplay();
+        }
+      })();
+    </script>
+
+    <!-- Puntos clave -->
+    <div class="onv-hero__points">
+      {%- if section.settings.point_1 != blank -%}
+        <div class="onv-hero__point">
+          <span class="onv-hero__point-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="var(--onv-teal-600)" stroke="none"/><path d="M9 12l2 2 4-4" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="onv-hero__point-text">{{ section.settings.point_1 | escape }}</span>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.point_2 != blank -%}
+        <div class="onv-hero__point">
+          <span class="onv-hero__point-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="var(--onv-teal-600)" stroke="none"/><path d="M9 12l2 2 4-4" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="onv-hero__point-text">{{ section.settings.point_2 | escape }}</span>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.point_3 != blank -%}
+        <div class="onv-hero__point">
+          <span class="onv-hero__point-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" fill="var(--onv-teal-600)" stroke="none"/><path d="M9 12l2 2 4-4" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="onv-hero__point-text">{{ section.settings.point_3 | escape }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- CTA -->
+    <div class="onv-hero__cta-wrapper">
+      <button
+        type="button"
+        class="onv-hero__btn onv-btn-primary"
+        data-onv-add
+        data-variant-id="{{ variant_id_val | default: '' }}"
+        aria-label="{{ section.settings.button_text }} - {{ price_display }}"
+      >
+        <span class="onv-hero__btn-label">{{ section.settings.button_text | escape }}</span>
+        <span class="onv-hero__btn-price">{{ price_display }}</span>
+      </button>
+
+      {%- if section.settings.microcopy != blank -%}
+        <p class="onv-hero__microcopy">{{ section.settings.microcopy | escape }}</p>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% style %}
+  .onv-hero {
+    position: relative;
+    background-color: #ffffff !important;
+    color: var(--onv-green-900);
+    overflow: hidden;
+  }
+
+  .onv-hero__container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--onv-maxw);
+    margin: 0 auto;
+    padding: var(--onv-s6) var(--onv-s4) var(--onv-s6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--onv-s3);
+  }
+
+  @media (min-width: 750px) {
+    .onv-hero__container {
+      padding: var(--onv-s8) var(--onv-s6) var(--onv-s7);
+      gap: var(--onv-s4);
+    }
+  }
+
+  /* Textos */
+  .onv-hero__eyebrow {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-small);
+    font-weight: 700;
+    letter-spacing: var(--onv-track-eyebrow);
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .onv-hero__title {
+    font-family: var(--onv-display);
+    font-size: var(--onv-fs-h1);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--onv-green-900);
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .onv-hero__subtitle {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-body);
+    color: var(--onv-ink-soft);
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0;
+  }
+
+  /* Video */
+  .onv-hero__video-wrap {
+    width: 100%;
+    max-width: 260px;
+    margin: var(--onv-s2) auto;
+    background: transparent;
+  }
+
+  .onv-hero__video {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: transparent;
+  }
+
+  @media (min-width: 750px) {
+    .onv-hero__video-wrap {
+      max-width: 320px;
+    }
+  }
+
+  /* Puntos clave */
+  .onv-hero__points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--onv-s2);
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (min-width: 750px) {
+    .onv-hero__points {
+      flex-direction: row;
+      justify-content: center;
+      gap: var(--onv-s5);
+      max-width: 700px;
+    }
+  }
+
+  .onv-hero__point {
+    display: flex;
+    align-items: center;
+    gap: var(--onv-s2);
+  }
+
+  .onv-hero__point-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .onv-hero__point-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .onv-hero__point-text {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-small);
+    color: var(--onv-ink-soft);
+    white-space: nowrap;
+  }
+
+  /* CTA */
+  .onv-hero__cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--onv-s2);
+    margin-top: var(--onv-s2);
+  }
+
+  .onv-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--onv-s3);
+    padding: 14px 32px;
+    border: none;
+    border-radius: var(--onv-r-pill);
+    background: var(--onv-green-900);
+    color: #ffffff;
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-body);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background var(--onv-dur-fast) var(--onv-ease), transform var(--onv-dur-fast) var(--onv-ease);
+  }
+
+  .onv-hero__btn:hover {
+    background: var(--onv-green-800);
+    transform: translateY(-1px);
+  }
+
+  .onv-hero__btn:active {
+    transform: translateY(0);
+  }
+
+  .onv-hero__btn-price {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: var(--onv-r-pill);
+    font-size: var(--onv-fs-small);
+  }
+
+  .onv-hero__microcopy {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-micro);
+    color: var(--onv-ink-soft);
+    margin: 0;
+    opacity: 0.7;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Hero",
+  "tag": "section",
+  "class": "section-onv-hero",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Producto"
+    },
+    {
+      "type": "range",
+      "id": "variant_index",
+      "label": "Índice de variante (1 = primera)",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SÉRUM BOTÁNICO PARA UÑAS · 16 ML"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titular H1",
+      "default": "Un minuto diario"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Nuestro sérum con brocha de precisión acondiciona la uña y el contorno, justo donde lo necesitas. Reparación total en menos de un mes"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "COMPRAR ONYVERA"
+    },
+    {
+      "type": "text",
+      "id": "microcopy",
+      "label": "Microtexto de confianza",
+      "default": "16 ml · Envío desde Orlando, FL · Envío gratis desde $50"
+    },
+    {
+      "type": "text",
+      "id": "point_1",
+      "label": "Punto 1",
+      "default": "Brocha de precisión integrada"
+    },
+    {
+      "type": "text",
+      "id": "point_2",
+      "label": "Punto 2",
+      "default": "16 ml para manos y pies"
+    },
+    {
+      "type": "text",
+      "id": "point_3",
+      "label": "Punto 3",
+      "default": "Sin parabenos ni sulfatos"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ONV Hero"
+    }
+  ]
+}
+{% endschema %}

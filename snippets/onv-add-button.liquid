@@ -1,0 +1,31 @@
+{%- comment -%}
+  ONYVERA — Snippet: Botón de Compra Directa Ajax
+  Acepta:
+  - variant_id: ID de la variante a añadir
+  - label: Texto del botón
+  - price: Precio formateado con | money
+  - class: Clases CSS opcionales
+{%- endcomment -%}
+
+{%- liquid
+  assign btn_label = label | default: 'COMPRAR ONYVERA'
+  assign btn_price = price | default: ''
+  assign btn_variant = variant_id | default: ''
+-%}
+
+<button
+  type="button"
+  class="onv-add-btn {{ class | default: 'onv-btn-primary' }}"
+  data-onv-add
+  data-variant-id="{{ btn_variant }}"
+  {% if btn_price != blank %}
+    aria-label="{{ btn_label }} - {{ btn_price | strip_html }}"
+  {% else %}
+    aria-label="{{ btn_label }}"
+  {% endif %}
+>
+  <span class="onv-add-btn__label">{{ btn_label | escape }}</span>
+  {%- if btn_price != blank -%}
+    <span class="onv-add-btn__price">{{ btn_price }}</span>
+  {%- endif -%}
+</button>

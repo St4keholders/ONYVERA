@@ -1,0 +1,399 @@
+{%- comment -%}
+  ONYVERA — Sección: Ingredientes Botánicos
+  5 Activos botánicos con iconografía botánica personalizada y diseño ultra compacto.
+{%- endcomment -%}
+
+<section
+  id="onv-ingredientes-{{ section.id }}"
+  class="onv-ingredients"
+>
+  <div class="onv-ingredients__container">
+
+    <div class="onv-ingredients__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="onv-ingredients__badge">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      <h2 class="onv-ingredients__title">{{ section.settings.title | escape }}</h2>
+    </div>
+
+    <!-- Cuadrícula de los 5 Botánicos Activos -->
+    <div class="onv-ingredients__grid">
+
+      <!-- Activo 1: Árbol de Té -->
+      <article class="onv-ingredients__card">
+        <div class="onv-ingredients__top">
+          <div class="onv-ingredients__icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="15" fill="rgba(44, 110, 86, 0.08)"/>
+              <path d="M12 24C12 16 18 10 24 10C22 16 18 20 12 24Z" fill="#2C6E56"/>
+              <path d="M22 18C22 22 19 25 15 26" stroke="#A8833B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="onv-ingredients__num">01 · PURIFICANTE</span>
+        </div>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_1_name | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_1_desc | escape }}</p>
+      </article>
+
+      <!-- Activo 2: Aloe Vera -->
+      <article class="onv-ingredients__card">
+        <div class="onv-ingredients__top">
+          <div class="onv-ingredients__icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="15" fill="rgba(44, 110, 86, 0.08)"/>
+              <path d="M18 7C14 13 11 19 12 27C16 26 21 23 24 17C21 13 19 10 18 7Z" fill="#2C6E56"/>
+              <path d="M18 14V22" stroke="#A8833B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="onv-ingredients__num">02 · CALMANTE</span>
+        </div>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_2_name | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_2_desc | escape }}</p>
+      </article>
+
+      <!-- Activo 3: Glicerina -->
+      <article class="onv-ingredients__card">
+        <div class="onv-ingredients__top">
+          <div class="onv-ingredients__icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="15" fill="rgba(44, 110, 86, 0.08)"/>
+              <path d="M18 10C18 10 13 16 13 19.5C13 22.5 15.2 25 18 25C20.8 25 23 22.5 23 19.5C23 16 18 10 18 10Z" fill="#2C6E56"/>
+              <circle cx="18" cy="20" r="2" fill="#A8833B"/>
+            </svg>
+          </div>
+          <span class="onv-ingredients__num">03 · HIDRATANTE</span>
+        </div>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_3_name | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_3_desc | escape }}</p>
+      </article>
+
+      <!-- Activo 4: Pantenol (Provitamina B5) -->
+      <article class="onv-ingredients__card">
+        <div class="onv-ingredients__top">
+          <div class="onv-ingredients__icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="15" fill="rgba(44, 110, 86, 0.08)"/>
+              <path d="M18 9L26 13V19C26 23.5 22.5 27 18 28C13.5 27 10 23.5 10 19V13L18 9Z" stroke="#2C6E56" stroke-width="1.6" fill="none"/>
+              <path d="M15 18L17 20L21 16" stroke="#A8833B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="onv-ingredients__num">04 · NUTRICIÓN</span>
+        </div>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_4_name | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_4_desc | escape }}</p>
+      </article>
+
+      <!-- Activo 5: Vitamina E -->
+      <article class="onv-ingredients__card onv-ingredients__card--wide">
+        <div class="onv-ingredients__top">
+          <div class="onv-ingredients__icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="15" fill="rgba(44, 110, 86, 0.08)"/>
+              <circle cx="18" cy="18" r="7" stroke="#2C6E56" stroke-width="1.6"/>
+              <path d="M18 7V9M18 27V29M7 18H9M27 18H29" stroke="#A8833B" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="onv-ingredients__num">05 · PROTECCIÓN ANTIOXIDANTE</span>
+        </div>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_5_name | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_5_desc | escape }}</p>
+      </article>
+
+    </div>
+
+    <!-- Desplegable INCI nativo -->
+    <div class="onv-ingredients__inci">
+      <details class="onv-ingredients__details">
+        <summary class="onv-ingredients__summary">
+          <span>{{ section.settings.inci_title | escape }}</span>
+          <span class="onv-ingredients__chevron" aria-hidden="true">▾</span>
+        </summary>
+        <div class="onv-ingredients__inci-body">
+          <p class="onv-ingredients__inci-text">{{ section.settings.inci_text | escape }}</p>
+          <p class="onv-ingredients__inci-note">{{ section.settings.inci_note | escape }}</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+{% style %}
+  .onv-ingredients {
+    background-color: #ffffff;
+    padding: 24px 16px 20px;
+    color: var(--onv-green-900);
+  }
+
+  .onv-ingredients__container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .onv-ingredients__header {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .onv-ingredients__badge {
+    display: inline-block;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .onv-ingredients__title {
+    font-family: var(--onv-display);
+    font-size: clamp(20px, 2.8vw, 30px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--onv-green-900);
+    margin: 0;
+  }
+
+  /* Grid 2 columnas compacto */
+  .onv-ingredients__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .onv-ingredients__card--wide {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 760px) {
+    .onv-ingredients__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .onv-ingredients__card--wide {
+      grid-column: span 2;
+    }
+  }
+
+  .onv-ingredients__card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(19, 46, 35, 0.08);
+    padding: 8px 10px;
+    box-shadow: 0 2px 8px rgba(19, 46, 35, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .onv-ingredients__top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+  }
+
+  .onv-ingredients__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .onv-ingredients__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .onv-ingredients__num {
+    font-family: var(--onv-body);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--onv-gold);
+    text-transform: uppercase;
+  }
+
+  .onv-ingredients__name {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--onv-green-900);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .onv-ingredients__desc {
+    font-family: var(--onv-body);
+    font-size: 10px;
+    color: var(--onv-ink-soft);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  /* Desplegable INCI */
+  .onv-ingredients__inci {
+    max-width: 100%;
+    margin-top: 6px;
+  }
+
+  .onv-ingredients__details {
+    background: #fafafa;
+    border: 1px solid rgba(19, 46, 35, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .onv-ingredients__summary {
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--onv-teal-600);
+    list-style: none;
+  }
+
+  .onv-ingredients__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .onv-ingredients__chevron {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+  }
+
+  .onv-ingredients__details[open] .onv-ingredients__chevron {
+    transform: rotate(180deg);
+  }
+
+  .onv-ingredients__inci-body {
+    padding: 8px 12px 10px;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
+  }
+
+  .onv-ingredients__inci-text {
+    font-family: var(--onv-body);
+    font-size: 10px;
+    color: var(--onv-ink-soft);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+  }
+
+  .onv-ingredients__inci-note {
+    font-family: var(--onv-body);
+    font-size: 9px;
+    color: var(--onv-teal-600);
+    font-weight: 700;
+    margin: 0;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Ingredientes",
+  "tag": "section",
+  "class": "section-onv-ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "TRANSPARENCIA BOTÁNICA"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título H2",
+      "default": "Cinco activos botánicos concentrados"
+    },
+    {
+      "type": "text",
+      "id": "ing_1_name",
+      "label": "Ingrediente 1",
+      "default": "Aceite de árbol de té"
+    },
+    {
+      "type": "text",
+      "id": "ing_1_desc",
+      "label": "Descripción 1",
+      "default": "Purificante botánico para el cuidado y acabado limpio de las uñas."
+    },
+    {
+      "type": "text",
+      "id": "ing_2_name",
+      "label": "Ingrediente 2",
+      "default": "Aloe vera"
+    },
+    {
+      "type": "text",
+      "id": "ing_2_desc",
+      "label": "Descripción 2",
+      "default": "Acondiciona y calma la piel y el contorno del lecho ungueal."
+    },
+    {
+      "type": "text",
+      "id": "ing_3_name",
+      "label": "Ingrediente 3",
+      "default": "Glicerina vegetal"
+    },
+    {
+      "type": "text",
+      "id": "ing_3_desc",
+      "label": "Descripción 3",
+      "default": "Atrae y retiene la humedad en uñas secas y quebradizas."
+    },
+    {
+      "type": "text",
+      "id": "ing_4_name",
+      "label": "Ingrediente 4",
+      "default": "Provitamina B5 (Pantenol)"
+    },
+    {
+      "type": "text",
+      "id": "ing_4_desc",
+      "label": "Descripción 4",
+      "default": "Aporta flexibilidad, suavidad y resistencia a la estructura ungueal."
+    },
+    {
+      "type": "text",
+      "id": "ing_5_name",
+      "label": "Ingrediente 5",
+      "default": "Vitamina E (Tocoferilo)"
+    },
+    {
+      "type": "text",
+      "id": "ing_5_desc",
+      "label": "Descripción 5",
+      "default": "Protección antioxidante para revitalizar uñas castigadas."
+    },
+    {
+      "type": "text",
+      "id": "inci_title",
+      "label": "Título INCI",
+      "default": "Ver lista completa de ingredientes (INCI)"
+    },
+    {
+      "type": "textarea",
+      "id": "inci_text",
+      "label": "Lista INCI",
+      "default": "Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid."
+    },
+    {
+      "type": "text",
+      "id": "inci_note",
+      "label": "Nota de pureza",
+      "default": "Fórmula libre de parabenos, sulfatos, ftalatos y fragancias artificiales."
+    }
+  ],
+  "presets": [
+    {
+      "name": "ONV Ingredientes"
+    }
+  ]
+}
+{% endschema %}

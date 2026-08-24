@@ -1,0 +1,641 @@
+{%- comment -%}
+  ONYVERA — Sección: Rutina de 4 Semanas + Carrusel Auto-desplazable de Reseñas
+  4 tarjetas con fotos circulares de progreso + Carrusel de testimonios que se desplaza solo y se pausa al tocarlo.
+{%- endcomment -%}
+
+<section
+  id="onv-linea-tiempo-{{ section.id }}"
+  class="onv-routine"
+>
+  <div class="onv-routine__container">
+
+    <!-- Encabezado diferenciado -->
+    <div class="onv-routine__header">
+      <p class="onv-routine__eyebrow">EVOLUCIÓN REAL</p>
+      <h2 class="onv-routine__title">Tu rutina de 4 semanas</h2>
+      <p class="onv-routine__subtitle">Resultados progresivos con la constancia diaria.</p>
+    </div>
+
+    <!-- Grilla 2x2 con las 4 fotos circulares de progreso -->
+    <div class="onv-routine__grid">
+
+      <!-- Día 1 -->
+      <article class="onv-routine__card">
+        <span class="onv-routine__day">DÍA 1</span>
+        <div class="onv-routine__thumb-wrap">
+          <img
+            src="{{ 'onv-dia-uno.png' | asset_url }}"
+            alt="Transformación uña Día 1"
+            width="72"
+            height="72"
+            loading="lazy"
+            class="onv-routine__thumb"
+          >
+        </div>
+        <h3 class="onv-routine__card-title">Inicio del hábito</h3>
+        <p class="onv-routine__card-desc">Uña lista y preparada para absorber la fórmula botánica.</p>
+      </article>
+
+      <!-- Día 15 -->
+      <article class="onv-routine__card">
+        <span class="onv-routine__day">DÍA 15</span>
+        <div class="onv-routine__thumb-wrap">
+          <img
+            src="{{ 'onv-dia-15.png' | asset_url }}"
+            alt="Transformación uña Día 15"
+            width="72"
+            height="72"
+            loading="lazy"
+            class="onv-routine__thumb"
+          >
+        </div>
+        <h3 class="onv-routine__card-title">Superficie suave</h3>
+        <p class="onv-routine__card-desc">Textura visiblemente más uniforme y acondicionada.</p>
+      </article>
+
+      <!-- Día 30 -->
+      <article class="onv-routine__card">
+        <span class="onv-routine__day">DÍA 30</span>
+        <div class="onv-routine__thumb-wrap">
+          <img
+            src="{{ 'onv-dia-30.png' | asset_url }}"
+            alt="Transformación uña Día 30"
+            width="72"
+            height="72"
+            loading="lazy"
+            class="onv-routine__thumb"
+          >
+        </div>
+        <h3 class="onv-routine__card-title">Nutrición visible</h3>
+        <p class="onv-routine__card-desc">Cutículas hidratadas y lecho ungueal fortalecido.</p>
+      </article>
+
+      <!-- Día 45 -->
+      <article class="onv-routine__card">
+        <span class="onv-routine__day">DÍA 45</span>
+        <div class="onv-routine__thumb-wrap">
+          <img
+            src="{{ 'onv-dia-45.png' | asset_url }}"
+            alt="Transformación uña Día 45"
+            width="72"
+            height="72"
+            loading="lazy"
+            class="onv-routine__thumb"
+          >
+        </div>
+        <h3 class="onv-routine__card-title">Crecimiento limpio</h3>
+        <p class="onv-routine__card-desc">Uña renovada, clara y protegida desde la raíz.</p>
+      </article>
+    </div>
+
+    {%- liquid
+      assign store_product = collections.all.products.first
+      if store_product == blank
+        assign store_product = all_products.first
+      endif
+      assign routine_variant = store_product.variants[2] | default: store_product.selected_or_first_available_variant
+    -%}
+
+    <!-- Botón CTA Empezar Rutina -->
+    <div class="onv-routine__cta-wrap">
+      <button
+        type="button"
+        class="onv-routine__cta-btn"
+        data-onv-add
+        data-variant-id="{{ routine_variant.id | default: '' }}"
+        aria-label="Empezar rutina"
+      >
+        <span>EMPEZAR RUTINA</span>
+        <span class="onv-routine__cta-price">
+          {%- if routine_variant.price -%}
+            {{ routine_variant.price | money }}
+          {%- else -%}
+            $25.00
+          {%- endif -%}
+        </span>
+      </button>
+      <p class="onv-routine__cta-micro">Despacho inmediato en 24h · Envío seguro</p>
+    </div>
+
+    <!-- Carrusel Auto-desplazable de Testimonios (Sin botones, se pausa al tocar) -->
+    <div class="onv-routine__reviews-block">
+      <div class="onv-routine__reviews-header">
+        <span class="onv-routine__reviews-badge">EXPERIENCIAS REALES</span>
+        <h3 class="onv-routine__reviews-title">Historias tras 45 días de rutina</h3>
+      </div>
+
+      <div class="onv-reviews-marquee" id="onv-reviews-marquee">
+        <div class="onv-reviews-marquee__track" id="onv-reviews-track">
+
+          <!-- GRUPO 1 -->
+          <div class="onv-reviews-marquee__group">
+            <!-- Reseña 1 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “Al principio era escéptica, pero tras la 3ra semana la textura de mi uña del pie cambió por completo. Hoy al día 45 está creciendo limpia y clara. La brocha hace que no dé pereza aplicarlo.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">MF</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Marta Fernández</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Reseña 2 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “Llevaba años escondiendo mis uñas en verano. Empecé el pack de 3 frascos y la constancia valió cada segundo. Se absorbe rápido y no mancha los calcetines.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">CR</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Carlos Ramírez</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Reseña 3 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “El formato brocha es 10 veces mejor que los goteros. Mis uñas pasaron de estar secas y quebradizas a verse nutridas y suaves desde la base. 100% recomendado.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">DM</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Diana Morales</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Reseña 4 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “El olor suave a árbol de té y lo rápido que seca es lo mejor. Cumplí los 45 días aplicándolo mañana y noche, y el cambio en mis manos es indiscutible.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">LG</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Laura Gómez</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- GRUPO 2 (Duplicado para desplazamiento continuo infinito) -->
+          <div class="onv-reviews-marquee__group" aria-hidden="true">
+            <!-- Reseña 1 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “Al principio era escéptica, pero tras la 3ra semana la textura de mi uña del pie cambió por completo. Hoy al día 45 está creciendo limpia y clara. La brocha hace que no dé pereza aplicarlo.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">MF</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Marta Fernández</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Reseña 2 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “Llevaba años escondiendo mis uñas en verano. Empecé el pack de 3 frascos y la constancia valió cada segundo. Se absorbe rápido y no mancha los calcetines.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">CR</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Carlos Ramírez</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Reseña 3 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “El formato brocha es 10 veces mejor que los goteros. Mis uñas pasaron de estar secas y quebradizas a verse nutridas y suaves desde la base. 100% recomendado.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">DM</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Diana Morales</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Reseña 4 -->
+            <article class="onv-routine__review-card">
+              <div class="onv-routine__review-stars">★★★★★</div>
+              <p class="onv-routine__review-quote">
+                “El olor suave a árbol de té y lo rápido que seca es lo mejor. Cumplí los 45 días aplicándolo mañana y noche, y el cambio en mis manos es indiscutible.”
+              </p>
+              <div class="onv-routine__review-author">
+                <div class="onv-routine__review-avatar">LG</div>
+                <div class="onv-routine__review-meta">
+                  <span class="onv-routine__review-name">Laura Gómez</span>
+                  <span class="onv-routine__review-tag">✓ Compra verificada · Rutina 45 días</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    function initMarqueeTouchPause() {
+      const marquee = document.getElementById('onv-reviews-marquee');
+      if (!marquee) return;
+
+      marquee.addEventListener('touchstart', function() {
+        marquee.classList.add('is-paused');
+      }, { passive: true });
+
+      marquee.addEventListener('touchend', function() {
+        marquee.classList.remove('is-paused');
+      }, { passive: true });
+
+      marquee.addEventListener('click', function() {
+        marquee.classList.toggle('is-paused');
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMarqueeTouchPause);
+    } else {
+      initMarqueeTouchPause();
+    }
+  })();
+</script>
+
+{% style %}
+  .onv-routine {
+    background-color: #ffffff;
+    padding: 24px 0 20px;
+    color: var(--onv-green-900);
+    overflow: hidden;
+  }
+
+  .onv-routine__container {
+    max-width: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .onv-routine__header {
+    text-align: center;
+    margin-bottom: 14px;
+    padding: 0 16px;
+  }
+
+  .onv-routine__eyebrow {
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin: 0 0 3px;
+  }
+
+  .onv-routine__title {
+    font-family: var(--onv-display);
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--onv-green-900);
+    margin: 0 0 3px;
+  }
+
+  .onv-routine__subtitle {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    color: var(--onv-ink-soft);
+    margin: 0;
+  }
+
+  /* Grid 2x2 en móvil, 4 columnas en desktop */
+  .onv-routine__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    padding: 0 12px;
+    margin-bottom: 22px;
+  }
+
+  @media (min-width: 650px) {
+    .onv-routine__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 0 16px;
+    }
+  }
+
+  .onv-routine__card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(19, 46, 35, 0.10);
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(19, 46, 35, 0.05);
+  }
+
+  .onv-routine__day {
+    display: inline-block;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    color: var(--onv-green-900);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* Foto circular en bolita más grande y nítida */
+  .onv-routine__thumb-wrap {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 8px;
+    border: 2.5px solid #2C6E56;
+    box-shadow: 0 4px 14px rgba(44, 110, 86, 0.22);
+    flex-shrink: 0;
+    background: #ffffff;
+  }
+
+  @media (min-width: 650px) {
+    .onv-routine__thumb-wrap {
+      width: 98px;
+      height: 98px;
+    }
+  }
+
+  .onv-routine__thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .onv-routine__card-title {
+    font-family: var(--onv-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--onv-green-900);
+    margin: 0 0 3px;
+    line-height: 1.2;
+  }
+
+  .onv-routine__card-desc {
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    color: var(--onv-ink-soft);
+    margin: 0;
+    line-height: 1.3;
+    max-width: 150px;
+  }
+
+  /* Botón CTA Empezar Rutina */
+  .onv-routine__cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 22px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .onv-routine__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #132E23;
+    color: #ffffff;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-family: var(--onv-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(19, 46, 35, 0.22);
+    width: 100%;
+    max-width: 320px;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+
+  .onv-routine__cta-price {
+    background: rgba(255, 255, 255, 0.18);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .onv-routine__cta-btn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+  }
+
+  .onv-routine__cta-btn:active {
+    transform: scale(0.98);
+  }
+
+  .onv-routine__cta-micro {
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    color: var(--onv-ink-soft);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Bloque de Testimonios Escritos */
+  .onv-routine__reviews-block {
+    width: 100%;
+    background: #fafafa;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
+    border-bottom: 1px solid rgba(19, 46, 35, 0.06);
+    padding: 16px 0 18px;
+    overflow: hidden;
+  }
+
+  .onv-routine__reviews-header {
+    text-align: center;
+    padding: 0 16px;
+    margin-bottom: 12px;
+  }
+
+  .onv-routine__reviews-badge {
+    display: inline-block;
+    font-family: var(--onv-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--onv-teal-600);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .onv-routine__reviews-title {
+    font-family: var(--onv-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--onv-green-900);
+    margin: 0;
+  }
+
+  /* Marquee continuo auto-desplazable */
+  .onv-reviews-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+  }
+
+  .onv-reviews-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: onv-reviews-slide 34s linear infinite;
+  }
+
+  /* Pausar al pasar el cursor o al tocar con el dedo */
+  .onv-reviews-marquee:hover .onv-reviews-marquee__track,
+  .onv-reviews-marquee:active .onv-reviews-marquee__track,
+  .onv-reviews-marquee.is-paused .onv-reviews-marquee__track {
+    animation-play-state: paused;
+  }
+
+  .onv-reviews-marquee__group {
+    display: flex;
+    gap: 12px;
+    padding-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .onv-routine__review-card {
+    flex: 0 0 250px;
+    width: 250px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(19, 46, 35, 0.08);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(19, 46, 35, 0.04);
+  }
+
+  .onv-routine__review-stars {
+    color: #A8833B;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .onv-routine__review-quote {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    line-height: 1.35;
+    color: var(--onv-ink);
+    margin: 0 0 8px 0;
+    font-style: italic;
+  }
+
+  .onv-routine__review-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
+  }
+
+  .onv-routine__review-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(44, 110, 86, 0.12);
+    color: var(--onv-teal-600);
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .onv-routine__review-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .onv-routine__review-name {
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--onv-green-900);
+    line-height: 1.2;
+  }
+
+  .onv-routine__review-tag {
+    font-family: var(--onv-body);
+    font-size: 9px;
+    color: var(--onv-teal-600);
+    font-weight: 600;
+  }
+
+  @keyframes onv-reviews-slide {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Rutina Semanas",
+  "tag": "section",
+  "class": "section-onv-routine",
+  "presets": [
+    {
+      "name": "ONV Rutina Semanas"
+    }
+  ]
+}
+{% endschema %}

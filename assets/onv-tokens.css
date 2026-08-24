@@ -1,0 +1,202 @@
+/* ==========================================================================
+   ONYVERA — Design System Tokens v3 (Pure White & Vibrant Botanical Green)
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('cormorant-garamond-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('karla-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('karla-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('karla-700.woff2') format('woff2');
+}
+
+:root {
+  /* ── Fondo 100% Blanco Puro ── */
+  --onv-white: #ffffff;
+  --onv-cream-50: #ffffff;
+  --onv-cream-100: #fafafa;
+  --onv-stone-100: #f4f4f4;
+  --onv-stone-200: #e8e8e8;
+
+  /* ── Verdes Botánicos Vivos y Contrastados ── */
+  --onv-green-900: #132E23;
+  --onv-green-800: #1D4334;
+  --onv-green-700: #275A46;
+  --onv-teal-600: #2C6E56;
+  --onv-olive-600: #4B6334;
+  --onv-sage-400: #4E8068;
+  --onv-bamboo-500: #9A7738;
+  --onv-gold: #A8833B;
+  --onv-ink: #132E23;
+  --onv-ink-soft: #4A5E55;
+
+  /* ── Tarjetas y Sombras Limpias ── */
+  --onv-card-bg: #ffffff;
+  --onv-card-border: rgba(19, 46, 35, 0.08);
+  --onv-card-shadow: 0 4px 16px rgba(19, 46, 35, 0.06);
+
+  /* ── Tipografía Compacta y Legible ── */
+  --onv-display: 'Cormorant Garamond', Georgia, serif;
+  --onv-body: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --onv-fs-h1: clamp(28px, 5.5vw, 56px);
+  --onv-fs-h2: clamp(22px, 3vw, 36px);
+  --onv-fs-h3: clamp(16px, 2vw, 20px);
+  --onv-fs-body: 14px;
+  --onv-fs-small: 12px;
+  --onv-fs-micro: 11px;
+  --onv-track-eyebrow: 0.16em;
+
+  /* ── Espaciado Ultracompacto para Móvil ── */
+  --onv-s1: 4px;
+  --onv-s2: 8px;
+  --onv-s3: 12px;
+  --onv-s4: 16px;
+  --onv-s5: 20px;
+  --onv-s6: 24px;
+  --onv-s7: 32px;
+  --onv-s8: 40px;
+  --onv-s9: 56px;
+  --onv-section-y: clamp(28px, 4.5vw, 52px);
+
+  /* ── Forma ── */
+  --onv-r-sm: 4px;
+  --onv-r-md: 8px;
+  --onv-r-lg: 16px;
+  --onv-r-pill: 999px;
+  --onv-maxw: 1120px;
+
+  /* ── Motion ── */
+  --onv-dur-fast: 180ms;
+  --onv-dur-base: 350ms;
+  --onv-ease: cubic-bezier(0.22, 0.9, 0.30, 1);
+}
+
+/* ── Estilos Globales para Catálogo, Colecciones y Ficha de Producto ONYVERA ── */
+
+/* Título de Colección / Catálogo */
+.collection-hero__title,
+.main-page-title,
+.page-title {
+  font-family: var(--onv-display) !important;
+  font-size: clamp(26px, 4vw, 40px) !important;
+  font-weight: 600 !important;
+  color: var(--onv-green-900) !important;
+  text-align: center;
+}
+
+/* Tarjetas de Producto en Catálogo */
+.card-wrapper.product-card-wrapper {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(19, 46, 35, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(19, 46, 35, 0.05) !important;
+  overflow: hidden;
+  padding: 12px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-wrapper.product-card-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(19, 46, 35, 0.10) !important;
+}
+
+.card__heading,
+.card__heading a {
+  font-family: var(--onv-display) !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: var(--onv-green-900) !important;
+  text-decoration: none !important;
+  line-height: 1.25 !important;
+}
+
+.price__regular .price-item--regular,
+.price__sale .price-item--sale {
+  font-family: var(--onv-body) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--onv-green-900) !important;
+}
+
+/* Página de Producto (Ficha de Producto) */
+.product__title h1 {
+  font-family: var(--onv-display) !important;
+  font-size: clamp(22px, 3.5vw, 34px) !important;
+  font-weight: 600 !important;
+  color: var(--onv-green-900) !important;
+  line-height: 1.15 !important;
+}
+
+.product__text.caption-with-letter-spacing {
+  font-family: var(--onv-body) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  color: var(--onv-teal-600) !important;
+  text-transform: uppercase !important;
+}
+
+/* Botones de Variante en Ficha de Producto */
+.product-form__input input[type='radio'] + label {
+  border-radius: 999px !important;
+  font-family: var(--onv-body) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+  border: 1.5px solid rgba(19, 46, 35, 0.18) !important;
+  color: var(--onv-green-900) !important;
+  transition: all 0.15s ease !important;
+}
+
+.product-form__input input[type='radio']:checked + label {
+  background-color: var(--onv-green-900) !important;
+  color: #ffffff !important;
+  border-color: var(--onv-green-900) !important;
+}
+
+/* Botón Principal de Compra */
+.product-form__submit.button--primary,
+.button--primary {
+  background-color: var(--onv-green-900) !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  font-family: var(--onv-body) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  padding: 12px 24px !important;
+  box-shadow: 0 4px 14px rgba(19, 46, 35, 0.20) !important;
+  transition: filter 0.15s ease, transform 0.15s ease !important;
+}
+
+.product-form__submit.button--primary:hover,
+.button--primary:hover {
+  filter: brightness(1.15) !important;
+}
+
