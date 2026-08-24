@@ -1,0 +1,298 @@
+{%- comment -%}
+  ONYVERA — Sección: Resultados («Volver a no pensar en tus uñas»)
+  Fondo verde profundo, texto crema, tarjeta de vidrio oscuro intercalada.
+{%- endcomment -%}
+
+<section
+  id="onv-resultados-{{ section.id }}"
+  class="onv-results"
+  data-onv-reveal
+>
+  <div class="onv-results__container">
+    <div class="onv-results__header" data-onv-reveal-item>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="onv-results__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2 class="onv-results__title">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="onv-results__subtitle">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="onv-results__content">
+      <!-- Lista de beneficios destacados -->
+      <div class="onv-results__list">
+        <div class="onv-results__item" data-onv-reveal-item>
+          <div class="onv-results__icon" aria-hidden="true">
+            <span>✦</span>
+          </div>
+          <p class="onv-results__text">{{ section.settings.point_1 | escape }}</p>
+        </div>
+
+        <div class="onv-results__item" data-onv-reveal-item>
+          <div class="onv-results__icon" aria-hidden="true">
+            <span>✦</span>
+          </div>
+          <p class="onv-results__text">{{ section.settings.point_2 | escape }}</p>
+        </div>
+
+        <!-- Tercer punto con peso tipográfico prominente -->
+        <div class="onv-results__item onv-results__item--highlight" data-onv-reveal-item>
+          <div class="onv-results__icon onv-results__icon--highlight" aria-hidden="true">
+            <span>★</span>
+          </div>
+          <p class="onv-results__text onv-results__text--highlight">{{ section.settings.point_3 | escape }}</p>
+        </div>
+      </div>
+
+      <!-- Tarjeta de vidrio oscuro intercalada -->
+      <div class="onv-results__card onv-glass--dark" data-onv-reveal-item>
+        <span class="onv-results__card-badge">BENEFICIO CLAVE</span>
+        <blockquote class="onv-results__card-quote">
+          <p>{{ section.settings.card_text | escape }}</p>
+        </blockquote>
+        <div class="onv-results__card-footer">
+          <span class="onv-results__card-tag">{{ section.settings.card_tag | escape }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .onv-results {
+    background-color: var(--onv-green-900);
+    padding: var(--onv-section-y) var(--onv-s4);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Fondo de luz ambiental sutil */
+  .onv-results::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 60%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(47, 122, 107, 0.25) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .onv-results__container {
+    max-width: var(--onv-maxw);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .onv-results__header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 16px auto;
+  }
+
+  .onv-results__eyebrow {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-small);
+    font-weight: 700;
+    letter-spacing: var(--onv-track-eyebrow);
+    color: var(--onv-bamboo-500);
+    text-transform: uppercase;
+    margin: 0 0 var(--onv-s2) 0;
+  }
+
+  .onv-results__title {
+    font-family: var(--onv-display);
+    font-size: var(--onv-fs-h2);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0 0 var(--onv-s3) 0;
+  }
+
+  .onv-results__subtitle {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-body);
+    color: var(--onv-sage-400);
+    margin: 0;
+  }
+
+  .onv-results__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  @media (min-width: 990px) {
+    .onv-results__content {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+  }
+
+  .onv-results__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--onv-s5);
+  }
+
+  .onv-results__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--onv-s4);
+    padding: var(--onv-s4);
+    border-radius: var(--onv-r-md);
+    background: rgba(246, 242, 233, 0.04);
+    border: 1px solid rgba(246, 242, 233, 0.08);
+  }
+
+  .onv-results__item--highlight {
+    background: rgba(198, 162, 100, 0.12);
+    border: 1px solid rgba(198, 162, 100, 0.35);
+    padding: var(--onv-s5);
+  }
+
+  .onv-results__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(47, 122, 107, 0.4);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .onv-results__icon--highlight {
+    background: var(--onv-bamboo-500);
+    color: var(--onv-green-900);
+    font-weight: 700;
+  }
+
+  .onv-results__text {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-body);
+    line-height: 1.5;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .onv-results__text--highlight {
+    font-family: var(--onv-display);
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 600;
+    line-height: 1.25;
+    color: #FFFFFF;
+  }
+
+  /* Tarjeta de vidrio oscuro */
+  .onv-results__card {
+    padding: var(--onv-s7);
+    border-radius: var(--onv-r-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .onv-results__card-badge {
+    font-family: var(--onv-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--onv-bamboo-500);
+    text-transform: uppercase;
+    margin-bottom: var(--onv-s3);
+  }
+
+  .onv-results__card-quote p {
+    font-family: var(--onv-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: #ffffff;
+    margin: 0 0 var(--onv-s4) 0;
+  }
+
+  .onv-results__card-tag {
+    font-family: var(--onv-body);
+    font-size: var(--onv-fs-small);
+    color: var(--onv-sage-400);
+    font-weight: 600;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "ONV Resultados",
+  "tag": "section",
+  "class": "section-onv-results",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "LA TRANSFORMACIÓN"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título H2",
+      "default": "Volver a no pensar en tus uñas"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "La tranquilidad de tener uñas cuidadas y de apariencia impecable cada día."
+    },
+    {
+      "type": "header",
+      "content": "Puntos de resultado"
+    },
+    {
+      "type": "textarea",
+      "id": "point_1",
+      "label": "Punto 1",
+      "default": "Uñas de aspecto limpio y parejo, cuidadas desde la base."
+    },
+    {
+      "type": "textarea",
+      "id": "point_2",
+      "label": "Punto 2",
+      "default": "Superficie suave, sin olor y fácil de cortar."
+    },
+    {
+      "type": "textarea",
+      "id": "point_3",
+      "label": "Punto 3 (Destaque Principal)",
+      "default": "Lúcelas sin dudarlo. En la playa, en sandalias o en público: cero vergüenza."
+    },
+    {
+      "type": "header",
+      "content": "Tarjeta de vidrio oscuro"
+    },
+    {
+      "type": "textarea",
+      "id": "card_text",
+      "label": "Texto de la tarjeta",
+      "default": "El hábito de unos segundos que devuelve la frescura y la naturalidad a tus pies y manos."
+    },
+    {
+      "type": "text",
+      "id": "card_tag",
+      "label": "Etiqueta / Firma de la tarjeta",
+      "default": "Fórmula Botánica · 16 ml"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ONV Resultados"
+    }
+  ]
+}
+{% endschema %}

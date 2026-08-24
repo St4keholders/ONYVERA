@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Vidrio ámbar / botánico oscuro -->
+    <linearGradient id="bottleGlass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#152B23"/>
+      <stop offset="25%" stop-color="#1F4235"/>
+      <stop offset="60%" stop-color="#285646"/>
+      <stop offset="85%" stop-color="#1F4235"/>
+      <stop offset="100%" stop-color="#12241D"/>
+    </linearGradient>
+
+    <!-- Tapón mate verde oscuro -->
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F1E19"/>
+      <stop offset="50%" stop-color="#1C352C"/>
+      <stop offset="100%" stop-color="#0A1511"/>
+    </linearGradient>
+
+    <!-- Pincel / cerdas de precisión -->
+    <linearGradient id="brushGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#93A896"/>
+      <stop offset="50%" stop-color="#E6E0D2"/>
+      <stop offset="100%" stop-color="#93A896"/>
+    </linearGradient>
+
+    <!-- Etiqueta crema -->
+    <linearGradient id="labelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EAE4D6"/>
+      <stop offset="50%" stop-color="#F6F2E9"/>
+      <stop offset="100%" stop-color="#DFD8C8"/>
+    </linearGradient>
+
+    <filter id="prodShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="20" stdDeviation="25" flood-color="#1B3A2F" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- Sombra en la base -->
+  <ellipse cx="200" cy="540" rx="100" ry="18" fill="#1B3A2F" opacity="0.18"/>
+
+  <g filter="url(#prodShadow)">
+    <!-- Tapón con estrías ergonómicas -->
+    <rect x="165" y="80" width="70" height="130" rx="6" fill="url(#capGrad)" stroke="#2F7A6B" stroke-width="1"/>
+    <!-- Detalle anillo dorado / bambú -->
+    <rect x="163" y="200" width="74" height="12" rx="2" fill="#C6A264" stroke="#A88547" stroke-width="0.8"/>
+    <!-- Estrías finas del tapón -->
+    <line x1="175" y1="90" x2="175" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+    <line x1="185" y1="90" x2="185" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+    <line x1="195" y1="90" x2="195" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+    <line x1="205" y1="90" x2="205" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+    <line x1="215" y1="90" x2="215" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+    <line x1="225" y1="90" x2="225" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+    <!-- Frasco de vidrio (16 ml) -->
+    <!-- Cuello de botella -->
+    <path d="M 172 212 L 228 212 L 235 240 L 165 240 Z" fill="url(#bottleGlass)"/>
+    <!-- Cuerpo principal cilíndrico -->
+    <rect x="135" y="240" width="130" height="280" rx="16" fill="url(#bottleGlass)" stroke="#2F7A6B" stroke-width="1"/>
+
+    <!-- Reflejo vertical de vidrio elegante -->
+    <rect x="145" y="250" width="12" height="255" rx="6" fill="rgba(255,255,255,0.18)"/>
+    <rect x="162" y="250" width="4" height="255" rx="2" fill="rgba(255,255,255,0.08)"/>
+
+    <!-- Etiqueta central ONYVERA -->
+    <rect x="140" y="280" width="120" height="190" rx="4" fill="url(#labelGrad)" stroke="#C6A264" stroke-width="0.8"/>
+    <!-- Borde interior fino -->
+    <rect x="145" y="285" width="110" height="180" rx="2" fill="none" stroke="#D6B89E" stroke-width="0.6"/>
+
+    <!-- Tipografía en etiqueta -->
+    <text x="200" y="325" font-family="'Cormorant Garamond', serif" font-weight="600" font-size="22" fill="#1B3A2F" text-anchor="middle" letter-spacing="3">ONYVERA</text>
+    <line x1="165" y1="335" x2="235" y2="335" stroke="#C6A264" stroke-width="1"/>
+    <text x="200" y="355" font-family="'Karla', sans-serif" font-weight="600" font-size="7.5" fill="#2F7A6B" text-anchor="middle" letter-spacing="1.5">SÉRUM BOTÁNICO</text>
+    <text x="200" y="370" font-family="'Karla', sans-serif" font-weight="400" font-size="6.5" fill="#374C43" text-anchor="middle" letter-spacing="0.5">ACONDICIONADOR DE UÑAS</text>
+
+    <!-- Icono botánico estilizado -->
+    <circle cx="200" cy="400" r="14" fill="none" stroke="#93A896" stroke-width="0.8"/>
+    <path d="M 200 390 C 193 397, 195 407, 200 410 C 205 407, 207 397, 200 390 Z" fill="#2F7A6B"/>
+
+    <text x="200" y="435" font-family="'Karla', sans-serif" font-weight="600" font-size="7" fill="#1B3A2F" text-anchor="middle" letter-spacing="1">16 ML / 0.5 FL OZ</text>
+    <text x="200" y="452" font-family="'Karla', sans-serif" font-weight="400" font-size="5.5" fill="#374C43" text-anchor="middle">BROCHA DE PRECISIÓN</text>
+  </g>
+</svg>
