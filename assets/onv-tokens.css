@@ -109,6 +109,16 @@
 }
 
 /* Tarjetas de Producto en Catálogo */
+.product-grid {
+  justify-content: center !important;
+}
+
+.product-grid .grid__item {
+  max-width: 380px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
 .card-wrapper.product-card-wrapper {
   background: #ffffff !important;
   border-radius: 16px !important;
@@ -117,11 +127,19 @@
   overflow: hidden;
   padding: 12px !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 0 auto !important;
 }
 
 .card-wrapper.product-card-wrapper:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(19, 46, 35, 0.10) !important;
+}
+
+.card__media img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  object-position: center !important;
 }
 
 .card__heading,

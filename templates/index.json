@@ -109,17 +109,6 @@
     "onv_testimonios_texto": {
       "type": "onv-testimonios-texto",
       "settings": {}
-    },
-    "onv_footer": {
-      "type": "onv-footer",
-      "settings": {
-        "brand_name": "ONYVERA",
-        "brand_tagline": "Sérum acondicionador botánico para uñas de manos y pies con aplicador de precisión.",
-        "company_info": "VITAHERB INTERNATIONAL LLC · Orlando, FL · contact@onyveranails.com",
-        "menu_title": "Navegación",
-        "legal_title": "Legal y Envíos",
-        "fda_disclaimer": "Estas afirmaciones no han sido evaluadas por la Administración de Alimentos y Medicamentos (FDA). Este producto no está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad."
-      }
     }
   },
   "order": [
@@ -131,7 +120,6 @@
     "onv_specs",
     "onv_linea_tiempo",
     "onv_testimonios_texto",
-    "onv_ingredientes",
-    "onv_footer"
+    "onv_ingredientes"
   ]
 }
