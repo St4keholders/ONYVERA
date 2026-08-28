@@ -77,33 +77,12 @@
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
-    object-position: center;
+    object-fit: contain;
     border: none;
     margin: 0;
     padding: 0;
   }
 
-  /* Reducir altura en Desktop (PC) para que no consuma tanto espacio */
-  @media (min-width: 750px) {
-    .onv-hero-fullbleed {
-      max-height: clamp(350px, 45vh, 460px);
-    }
-
-    .onv-hero-fullbleed__picture {
-      max-height: clamp(350px, 45vh, 460px);
-      overflow: hidden;
-    }
-
-    .onv-hero-fullbleed__img {
-      height: clamp(350px, 45vh, 460px);
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-
-  /* Mobile: Exactamente igual e intacto */
   @media (max-width: 749px) {
     .onv-hero-fullbleed {
       width: 100%;
@@ -111,11 +90,6 @@
       right: 0;
       margin-left: 0;
       margin-right: 0;
-    }
-
-    .onv-hero-fullbleed__img {
-      width: 100%;
-      height: auto;
     }
   }
 {% endstyle %}
