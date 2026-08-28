@@ -13,19 +13,7 @@
     "onv_hero": {
       "type": "onv-hero",
       "settings": {
-        "variant_index": 1,
-        "eyebrow": "SÉRUM BOTÁNICO PARA UÑAS · 16 ML",
-        "title": "Un minuto diario",
-        "subtitle": "Nuestro sérum con brocha de precisión acondiciona la uña y el contorno, justo donde lo necesitas. Reparación total en menos de un mes",
-        "button_text": "COMPRAR ONYVERA",
-        "microcopy": "16 ml · Envío desde Orlando, FL · Envío gratis desde $50",
-        "point_1": "Brocha de precisión integrada",
-        "point_2": "16 ml para manos y pies",
-        "point_3": "Sin parabenos ni sulfatos",
-        "enable_motion": true,
-        "motion_duration": 0.9,
-        "container_height_desktop": 130,
-        "container_height_mobile": 118
+        "alt_text": "ONYVERA Sérum Botánico para Uñas"
       }
     },
     "onv_prueba_social": {
