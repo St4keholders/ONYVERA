@@ -39,20 +39,16 @@
 </section>
 
 {% style %}
+  /* Contenedor del Hero */
   .onv-hero-fullbleed {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    line-height: 0;
+    width: 100%;
+    max-width: 980px;
+    margin: 12px auto 16px;
+    padding: 0 16px;
     display: block;
-    background-color: #ffffff;
+    line-height: 0;
+    box-sizing: border-box;
+    background-color: transparent;
   }
 
   .onv-hero-fullbleed__link {
@@ -81,15 +77,22 @@
     border: none;
     margin: 0;
     padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(19, 46, 35, 0.08);
   }
 
+  /* Versión Celular (Mobile): Full-Bleed de borde a borde 100% intacta */
   @media (max-width: 749px) {
     .onv-hero-fullbleed {
-      width: 100%;
-      left: 0;
-      right: 0;
-      margin-left: 0;
-      margin-right: 0;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .onv-hero-fullbleed__img {
+      border-radius: 0;
+      box-shadow: none;
     }
   }
 {% endstyle %}
