@@ -1,6 +1,7 @@
 {%- comment -%}
-  ONYVERA — Sección: Shoppable UGC Carousel (Estilo Ollie)
-  Autoplay cada 3 segundos, traslación suave al centro, 7 tarjetas continuas y solo antetítulo superior.
+  ONYVERA — Sección: Shoppable UGC Carousel (True Infinite DOM Loop)
+  Loop circular infinito continuo: nunca se acaban las tarjetas, 0 espacios en blanco a los lados,
+  rotación automática cada 3 segundos y la tarjeta del centro siempre es la más grande.
 {%- endcomment -%}
 
 {%- liquid
@@ -16,12 +17,12 @@
 <section id="onv-shoppable-carousel-{{ section.id }}" class="onv-shoppable-ugc">
   <div class="onv-shoppable-ugc__container">
 
-    <!-- Solo Antetítulo Pequeño (Sin título grande) -->
+    <!-- Solo Antetítulo Pequeño -->
     <div class="onv-shoppable-ugc__header">
       <span class="onv-shoppable-ugc__badge">{{ section.settings.eyebrow | default: "RESULTADOS REALES" | escape }}</span>
     </div>
 
-    <!-- Escenario del Carrusel Shoppable con Desplazamiento Continuo -->
+    <!-- Escenario del Carrusel Infinito (Edge-to-Edge) -->
     <div class="onv-shoppable-stage" id="onv-shoppable-stage">
       <!-- Botones de Navegación -->
       <button type="button" class="onv-shoppable-nav onv-shoppable-nav--prev" id="onv-shoppable-prev" aria-label="Anterior resultado">
@@ -33,8 +34,8 @@
 
       <div class="onv-shoppable-track" id="onv-shoppable-track">
 
-        <!-- Slide 0 (Item 1) -->
-        <div class="onv-shoppable-card" data-slide-index="0">
+        <!-- Repetición 1 de los 3 ítems -->
+        <div class="onv-shoppable-card" data-item="1">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -56,8 +57,7 @@
           </div>
         </div>
 
-        <!-- Slide 1 (Item 2) -->
-        <div class="onv-shoppable-card" data-slide-index="1">
+        <div class="onv-shoppable-card" data-item="2">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Resultado 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -79,8 +79,7 @@
           </div>
         </div>
 
-        <!-- Slide 2 (Item 3) -->
-        <div class="onv-shoppable-card" data-slide-index="2">
+        <div class="onv-shoppable-card" data-item="3">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-3.png' | asset_url }}" alt="Resultado 3" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -102,8 +101,8 @@
           </div>
         </div>
 
-        <!-- Slide 3 (Item 1 - Centro Inicial) -->
-        <div class="onv-shoppable-card is-active" data-slide-index="3">
+        <!-- Repetición 2 -->
+        <div class="onv-shoppable-card" data-item="1">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -125,8 +124,7 @@
           </div>
         </div>
 
-        <!-- Slide 4 (Item 2) -->
-        <div class="onv-shoppable-card" data-slide-index="4">
+        <div class="onv-shoppable-card" data-item="2">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Resultado 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -148,8 +146,7 @@
           </div>
         </div>
 
-        <!-- Slide 5 (Item 3) -->
-        <div class="onv-shoppable-card" data-slide-index="5">
+        <div class="onv-shoppable-card is-active" data-item="3">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-3.png' | asset_url }}" alt="Resultado 3" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -171,8 +168,8 @@
           </div>
         </div>
 
-        <!-- Slide 6 (Item 1) -->
-        <div class="onv-shoppable-card" data-slide-index="6">
+        <!-- Repetición 3 -->
+        <div class="onv-shoppable-card" data-item="1">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
@@ -189,6 +186,95 @@
               <span class="onv-shoppable-card__price">{% if target_product.variants[0] != blank %}{{ target_product.variants[0].price | money }}{% else %}$10.00{% endif %}</span>
             </div>
             <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" aria-label="Comprar 1 frasco">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="onv-shoppable-card" data-item="2">
+          <div class="onv-shoppable-card__media">
+            <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Resultado 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <div class="onv-shoppable-card__overlay-icons">
+              <span class="onv-shoppable-card__quote">“</span>
+              <span class="onv-shoppable-card__sound" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="onv-shoppable-card__product-pill">
+            <img src="{{ 'onv-producto-frasco-2.png' | asset_url }}" alt="ONYVERA 2 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <div class="onv-shoppable-card__info">
+              <span class="onv-shoppable-card__name">Pack 2 Frascos (Ahorro)</span>
+              <span class="onv-shoppable-card__price">{% if target_product.variants[1] != blank %}{{ target_product.variants[1].price | money }}{% else %}$18.00{% endif %}</span>
+            </div>
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[1].id | default: '' }}" aria-label="Comprar 2 frascos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="onv-shoppable-card" data-item="3">
+          <div class="onv-shoppable-card__media">
+            <img src="{{ 'onv-antes-y-despues-3.png' | asset_url }}" alt="Resultado 3" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <div class="onv-shoppable-card__overlay-icons">
+              <span class="onv-shoppable-card__quote">“</span>
+              <span class="onv-shoppable-card__sound" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="onv-shoppable-card__product-pill">
+            <img src="{{ 'onv-producto-frasco-3.png' | asset_url }}" alt="ONYVERA 3 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <div class="onv-shoppable-card__info">
+              <span class="onv-shoppable-card__name">Pack 3 Frascos (Tratamiento)</span>
+              <span class="onv-shoppable-card__price">{% if target_product.variants[2] != blank %}{{ target_product.variants[2].price | money }}{% else %}$25.00{% endif %}</span>
+            </div>
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[2].id | default: '' }}" aria-label="Comprar 3 frascos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Repetición 4 (Para garantizar cobertura infinita en pantallas anchas) -->
+        <div class="onv-shoppable-card" data-item="1">
+          <div class="onv-shoppable-card__media">
+            <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <div class="onv-shoppable-card__overlay-icons">
+              <span class="onv-shoppable-card__quote">“</span>
+              <span class="onv-shoppable-card__sound" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="onv-shoppable-card__product-pill">
+            <img src="{{ 'onv-producto-frasco.png' | asset_url }}" alt="ONYVERA 1 Frasco" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <div class="onv-shoppable-card__info">
+              <span class="onv-shoppable-card__name">1 Frasco · 16 ml</span>
+              <span class="onv-shoppable-card__price">{% if target_product.variants[0] != blank %}{{ target_product.variants[0].price | money }}{% else %}$10.00{% endif %}</span>
+            </div>
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" aria-label="Comprar 1 frasco">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="onv-shoppable-card" data-item="2">
+          <div class="onv-shoppable-card__media">
+            <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Resultado 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <div class="onv-shoppable-card__overlay-icons">
+              <span class="onv-shoppable-card__quote">“</span>
+              <span class="onv-shoppable-card__sound" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="onv-shoppable-card__product-pill">
+            <img src="{{ 'onv-producto-frasco-2.png' | asset_url }}" alt="ONYVERA 2 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <div class="onv-shoppable-card__info">
+              <span class="onv-shoppable-card__name">Pack 2 Frascos (Ahorro)</span>
+              <span class="onv-shoppable-card__price">{% if target_product.variants[1] != blank %}{{ target_product.variants[1].price | money }}{% else %}$18.00{% endif %}</span>
+            </div>
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[1].id | default: '' }}" aria-label="Comprar 2 frascos">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -202,55 +288,83 @@
 
 <script>
   (function() {
-    function initShoppableCarousel() {
+    function initInfiniteShoppableCarousel() {
       const stage = document.getElementById('onv-shoppable-stage');
       const track = document.getElementById('onv-shoppable-track');
-      const cards = Array.from(document.querySelectorAll('.onv-shoppable-card'));
       const prevBtn = document.getElementById('onv-shoppable-prev');
       const nextBtn = document.getElementById('onv-shoppable-next');
 
-      if (!stage || !track || cards.length === 0) return;
+      if (!stage || !track) return;
 
-      let activeIndex = 3; // Inicia centrado en la posición 3
-      const totalCards = cards.length;
+      let isAnimating = false;
       let autoInterval = null;
 
+      // El índice visual del centro es el elemento del medio
+      function getCenterIndex() {
+        const cards = track.children;
+        return Math.floor(cards.length / 2);
+      }
+
       function updateActiveClasses() {
+        const cards = Array.from(track.children);
+        const centerIdx = getCenterIndex();
+
         cards.forEach((card, idx) => {
-          card.classList.remove('is-active', 'is-adjacent-left', 'is-adjacent-right', 'is-far');
-          if (idx === activeIndex) {
+          card.classList.remove('is-active', 'is-adjacent', 'is-far');
+          if (idx === centerIdx) {
             card.classList.add('is-active');
-          } else if (idx === (activeIndex - 1 + totalCards) % totalCards) {
-            card.classList.add('is-adjacent-left');
-          } else if (idx === (activeIndex + 1) % totalCards) {
-            card.classList.add('is-adjacent-right');
+          } else if (Math.abs(idx - centerIdx) === 1) {
+            card.classList.add('is-adjacent');
           } else {
             card.classList.add('is-far');
           }
         });
-
-        // Centrar exactamente la tarjeta activa en el medio del escenario
-        const activeCard = cards[activeIndex];
-        if (activeCard && stage && track) {
-          const stageWidth = stage.offsetWidth;
-          const cardCenter = activeCard.offsetLeft + (activeCard.offsetWidth / 2);
-          const targetTranslate = (stageWidth / 2) - cardCenter;
-          
-          track.style.transform = `translate3d(${targetTranslate}px, 0, 0)`;
-        }
       }
 
-      function goToSlide(index) {
-        activeIndex = (index + totalCards) % totalCards;
-        updateActiveClasses();
+      function getStepDistance() {
+        const firstCard = track.children[0];
+        if (!firstCard) return 244;
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.gap) || 24;
+        return firstCard.offsetWidth + gap;
       }
 
       function nextSlide() {
-        goToSlide(activeIndex + 1);
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const step = getStepDistance();
+        track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transform = `translate3d(-${step}px, 0, 0)`;
+
+        setTimeout(() => {
+          track.style.transition = 'none';
+          track.appendChild(track.firstElementChild);
+          track.style.transform = 'translate3d(0, 0, 0)';
+          updateActiveClasses();
+          // Forzar reflow antes de permitir siguiente animación
+          void track.offsetWidth;
+          isAnimating = false;
+        }, 450);
       }
 
       function prevSlide() {
-        goToSlide(activeIndex - 1);
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const step = getStepDistance();
+        track.style.transition = 'none';
+        track.insertBefore(track.lastElementChild, track.firstElementChild);
+        track.style.transform = `translate3d(-${step}px, 0, 0)`;
+        void track.offsetWidth;
+
+        track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transform = 'translate3d(0, 0, 0)';
+
+        setTimeout(() => {
+          updateActiveClasses();
+          isAnimating = false;
+        }, 450);
       }
 
       function startAutoplay() {
@@ -278,12 +392,23 @@
         });
       }
 
-      cards.forEach((card, idx) => {
-        card.addEventListener('click', (e) => {
-          if (e.target.closest('[data-onv-add]')) return;
-          goToSlide(idx);
+      // Al hacer clic en una tarjeta adyacente, avanzar hacia ella
+      track.addEventListener('click', (e) => {
+        if (e.target.closest('[data-onv-add]')) return;
+        const clickedCard = e.target.closest('.onv-shoppable-card');
+        if (!clickedCard) return;
+
+        const cards = Array.from(track.children);
+        const clickedIdx = cards.indexOf(clickedCard);
+        const centerIdx = getCenterIndex();
+
+        if (clickedIdx > centerIdx) {
+          nextSlide();
           startAutoplay();
-        });
+        } else if (clickedIdx < centerIdx) {
+          prevSlide();
+          startAutoplay();
+        }
       });
 
       stage.addEventListener('mouseenter', stopAutoplay);
@@ -303,16 +428,14 @@
         startAutoplay();
       }, { passive: true });
 
-      window.addEventListener('resize', updateActiveClasses);
-
-      setTimeout(updateActiveClasses, 60);
+      updateActiveClasses();
       startAutoplay();
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initShoppableCarousel);
+      document.addEventListener('DOMContentLoaded', initInfiniteShoppableCarousel);
     } else {
-      initShoppableCarousel();
+      initInfiniteShoppableCarousel();
     }
   })();
 </script>
@@ -351,7 +474,7 @@
     margin: 0;
   }
 
-  /* Escenario del Carrusel con Altura y Padding Suficiente para No Recortar la Tarjeta Central */
+  /* Escenario del Carrusel Infinito que Ocupa Toda la Pantalla sin Dejar Espacios en Blanco */
   .onv-shoppable-stage {
     position: relative;
     width: 100vw;
@@ -362,7 +485,7 @@
     overflow: hidden;
     padding: 48px 0 44px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
   }
 
@@ -401,15 +524,15 @@
     height: 18px;
   }
 
+  /* Pista del carrusel infinito */
   .onv-shoppable-track {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 22px;
+    justify-content: center;
+    gap: 24px;
     width: max-content;
     padding: 0;
     margin: 0;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: transform;
   }
 
@@ -420,10 +543,15 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, filter 0.4s ease;
-    opacity: 0.80;
-    transform: scale(0.88);
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease;
+    opacity: 0.75;
+    transform: scale(0.86);
     user-select: none;
+  }
+
+  .onv-shoppable-card.is-adjacent {
+    opacity: 0.90;
+    transform: scale(0.94);
   }
 
   .onv-shoppable-card__media {
@@ -557,16 +685,16 @@
     height: 14px;
   }
 
-  /* ESTADO ACTIVO: LA TARJETA DEL CENTRO ES LA MÁS GRANDE Y DESTACADA SIN RECORTES */
+  /* ESTADO ACTIVO: LA TARJETA DEL CENTRO ES LA MÁS GRANDE Y DESTACADA */
   .onv-shoppable-card.is-active {
-    transform: scale(1.14);
+    transform: scale(1.16);
     opacity: 1;
     z-index: 15;
   }
 
   .onv-shoppable-card.is-active .onv-shoppable-card__media {
-    height: 360px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+    height: 365px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
     border: 2px solid rgba(44, 110, 86, 0.40);
   }
 
@@ -601,13 +729,13 @@
     }
 
     .onv-shoppable-card {
-      flex: 0 0 180px;
-      width: 180px;
-      transform: scale(0.88);
+      flex: 0 0 170px;
+      width: 170px;
+      transform: scale(0.85);
     }
 
     .onv-shoppable-card__media {
-      height: 270px;
+      height: 250px;
     }
 
     .onv-shoppable-card.is-active {
@@ -615,7 +743,7 @@
     }
 
     .onv-shoppable-card.is-active .onv-shoppable-card__media {
-      height: 310px;
+      height: 290px;
     }
 
     .onv-shoppable-nav {
