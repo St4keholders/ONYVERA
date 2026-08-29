@@ -1,0 +1,661 @@
+{%- comment -%}
+  ONYVERA — Sección: Línea de Tiempo de Progreso Real (45 Días)
+  Secuencia ordenada de 4 fotos reales (1080x1080) con riel degradado y puntos de hito.
+  Desktop: Riel horizontal continuo.
+  Móvil: Riel vertical lateral continuo con fotos a ancho completo.
+{%- endcomment -%}
+
+<section id="onv-progress" class="onv-progress-section">
+  <div class="onv-progress__container">
+
+    <!-- Encabezado de Sección -->
+    <header class="prog__header">
+      <span class="prog__eyebrow">{{ section.settings.eyebrow | default: "PROCESO REAL · 45 DÍAS" | escape }}</span>
+      <h2 class="prog__title">{{ section.settings.title | default: "Una persona. Cuarenta y cinco días. Sin retoques." | escape }}</h2>
+    </header>
+
+    <!-- Riel de Pasos Ordenados -->
+    <ol class="prog__track">
+
+      <!-- PASO 1: DÍA 1 -->
+      <li class="prog__step prog__step--1">
+        <figure class="prog__figure">
+          <div class="prog__media">
+            {%- assign img_1 = section.settings.img_1 | default: 'onv-dia-1.png' -%}
+            {%- if section.settings.img_1 != blank -%}
+              <img
+                src="{{ section.settings.img_1 | image_url: width: 1080 }}"
+                alt="{{ section.settings.alt_1 | default: 'Uña del pie en el día 1: engrosada, amarillenta, de borde áspero.' | escape }}"
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- else -%}
+              <img
+                src="{{ 'onv-dia-1.png' | asset_url }}"
+                alt="Uña del pie en el día 1: engrosada, amarillenta, de borde áspero."
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- endif -%}
+          </div>
+          <div class="prog__dot-wrap" aria-hidden="true">
+            <span class="prog__dot prog__dot--1"></span>
+          </div>
+          <figcaption class="prog__caption">
+            <span class="prog__day prog__day--1">{{ section.settings.day_1 | default: 'DÍA 1' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_1 | default: 'Uña engrosada y amarillenta, con el borde áspero e irregular.' | escape }}</p>
+          </figcaption>
+        </figure>
+      </li>
+
+      <!-- PASO 2: DÍA 15 -->
+      <li class="prog__step prog__step--2">
+        <figure class="prog__figure">
+          <div class="prog__media">
+            {%- if section.settings.img_2 != blank -%}
+              <img
+                src="{{ section.settings.img_2 | image_url: width: 1080 }}"
+                alt="{{ section.settings.alt_2 | default: 'Uña del pie en el día 15: la superficie se empareja y el tono cambia.' | escape }}"
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- else -%}
+              <img
+                src="{{ 'onv-dia-15.png' | asset_url }}"
+                alt="Uña del pie en el día 15: la superficie se empareja y el tono cambia."
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- endif -%}
+          </div>
+          <div class="prog__dot-wrap" aria-hidden="true">
+            <span class="prog__dot prog__dot--2"></span>
+          </div>
+          <figcaption class="prog__caption">
+            <span class="prog__day prog__day--2">{{ section.settings.day_2 | default: 'DÍA 15' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_2 | default: 'La superficie empieza a emparejarse. El tono cambia mientras la uña crece.' | escape }}</p>
+          </figcaption>
+        </figure>
+      </li>
+
+      <!-- PASO 3: DÍA 30 -->
+      <li class="prog__step prog__step--3">
+        <figure class="prog__figure">
+          <div class="prog__media">
+            {%- if section.settings.img_3 != blank -%}
+              <img
+                src="{{ section.settings.img_3 | image_url: width: 1080 }}"
+                alt="{{ section.settings.alt_3 | default: 'Uña del pie en el día 30: crecimiento nuevo y limpio desde la base.' | escape }}"
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- else -%}
+              <img
+                src="{{ 'onv-dia-30.png' | asset_url }}"
+                alt="Uña del pie en el día 30: crecimiento nuevo y limpio desde la base."
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- endif -%}
+          </div>
+          <div class="prog__dot-wrap" aria-hidden="true">
+            <span class="prog__dot prog__dot--3"></span>
+          </div>
+          <figcaption class="prog__caption">
+            <span class="prog__day prog__day--3">{{ section.settings.day_3 | default: 'DÍA 30' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_3 | default: 'Crecimiento nuevo y limpio desde la base. Solo queda una marca tenue.' | escape }}</p>
+          </figcaption>
+        </figure>
+      </li>
+
+      <!-- PASO 4: DÍA 45 -->
+      <li class="prog__step prog__step--4">
+        <figure class="prog__figure">
+          <div class="prog__media">
+            {%- if section.settings.img_4 != blank -%}
+              <img
+                src="{{ section.settings.img_4 | image_url: width: 1080 }}"
+                alt="{{ section.settings.alt_4 | default: 'Uña del pie en el día 45: color uniforme y superficie lisa.' | escape }}"
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- else -%}
+              <img
+                src="{{ 'onv-dia-45.png' | asset_url }}"
+                alt="Uña del pie en el día 45: color uniforme y superficie lisa."
+                class="prog__img"
+                width="1080"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              >
+            {%- endif -%}
+          </div>
+          <div class="prog__dot-wrap" aria-hidden="true">
+            <span class="prog__dot prog__dot--4"></span>
+          </div>
+          <figcaption class="prog__caption">
+            <span class="prog__day prog__day--4">{{ section.settings.day_4 | default: 'DÍA 45' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_4 | default: 'Color uniforme y superficie lisa en toda la uña.' | escape }}</p>
+          </figcaption>
+        </figure>
+      </li>
+
+    </ol>
+
+    <!-- Aviso Legal Obligatorio -->
+    <p class="prog__disclaimer">
+      {{ section.settings.disclaimer | default: "Fotografías de una sola persona durante 45 días de uso diario. Sin retoques. Los resultados varían según cada caso." | escape }}
+    </p>
+
+  </div>
+</section>
+
+{% style %}
+  .onv-progress-section {
+    background-color: #ffffff;
+    padding-block: clamp(3rem, 6vw, 5rem);
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .onv-progress__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Encabezado */
+  .prog__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .prog__eyebrow {
+    display: block;
+    font-family: var(--font-ui, 'Karla', sans-serif);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem; /* 12px */
+    color: #2F7A6B;
+    margin-bottom: 8px;
+  }
+
+  .prog__title {
+    font-family: var(--font-display, "Playfair Display", Georgia, serif) !important;
+    font-weight: 600 !important;
+    font-size: clamp(1.75rem, 3.6vw, 2.75rem) !important;
+    line-height: 1.15 !important;
+    color: #1B3A2F !important;
+    margin: 0;
+  }
+
+  /* ── Layout Desktop (>= 900px) — Riel Horizontal ── */
+  @media (min-width: 900px) {
+    .prog__track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* El Riel Horizontal */
+    .prog__track::before {
+      content: '';
+      position: absolute;
+      height: 2px;
+      left: 12%;
+      right: 12%;
+      top: calc(((1200px - 40px - 72px) / 4) + 20px + 10px); /* alinea con el centro de los puntos */
+      background: linear-gradient(to right, #93A896 0%, #2F7A6B 55%, #1B3A2F 100%);
+      z-index: 0;
+    }
+
+    /* Fallback responsive fluid height calculation for container widths below 1200px */
+    @media (max-width: 1240px) {
+      .prog__track::before {
+        top: calc((((100vw - 40px) - 72px) / 4) + 20px + 10px);
+      }
+    }
+
+    .prog__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .prog__figure {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .prog__media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #f5f5f5;
+    }
+
+    .prog__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    /* Punto del riel centrado */
+    .prog__dot-wrap {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      height: 20px;
+    }
+
+    .prog__dot {
+      display: block;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .prog__dot--1,
+    .prog__dot--2 {
+      width: 10px;
+      height: 10px;
+      background-color: #93A896;
+      box-shadow: 0 0 0 6px #ffffff;
+    }
+
+    .prog__dot--3 {
+      width: 12px;
+      height: 12px;
+      background-color: #2F7A6B;
+      box-shadow: 0 0 0 6px #ffffff;
+    }
+
+    .prog__dot--4 {
+      width: 14px;
+      height: 14px;
+      background-color: #1B3A2F;
+      box-shadow: 0 0 0 4px #ffffff, 0 0 0 5px #1B3A2F, 0 0 0 11px #ffffff;
+    }
+
+    .prog__caption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .prog__day {
+      display: block;
+      margin-top: 16px;
+      font-family: var(--font-ui, 'Karla', sans-serif);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8125rem; /* 13px */
+      line-height: 1.2;
+    }
+
+    .prog__day--1,
+    .prog__day--2,
+    .prog__day--3 {
+      color: #2F7A6B;
+    }
+
+    .prog__day--4 {
+      color: #1B3A2F;
+    }
+
+    .prog__desc {
+      margin-top: 8px;
+      margin-bottom: 0;
+      font-family: var(--font-ui, 'Karla', sans-serif);
+      font-weight: 400;
+      font-size: 0.875rem; /* 14px */
+      line-height: 1.55;
+      color: #4A5A52;
+      max-width: 26ch;
+      margin-inline: auto;
+      text-align: center;
+    }
+  }
+
+  /* ── Layout Móvil (< 900px) — Riel Vertical ── */
+  @media (max-width: 899px) {
+    .prog__track {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      position: relative;
+      padding-left: 36px;
+      margin: 0;
+      list-style: none;
+    }
+
+    /* El Riel Vertical */
+    .prog__track::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      left: 11px;
+      top: 10px;
+      bottom: 20px;
+      background: linear-gradient(to bottom, #93A896 0%, #2F7A6B 55%, #1B3A2F 100%);
+      z-index: 0;
+    }
+
+    .prog__step {
+      position: relative;
+      width: 100%;
+    }
+
+    .prog__figure {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .prog__media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #f5f5f5;
+    }
+
+    .prog__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    /* Punto del riel reposicionado a la izquierda */
+    .prog__dot-wrap {
+      position: absolute;
+      left: -36px;
+      top: 10px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      transform: translateX(-50%);
+      left: calc(-36px + 12px);
+    }
+
+    .prog__dot {
+      display: block;
+      border-radius: 50%;
+    }
+
+    .prog__dot--1,
+    .prog__dot--2 {
+      width: 10px;
+      height: 10px;
+      background-color: #93A896;
+      box-shadow: 0 0 0 6px #ffffff;
+    }
+
+    .prog__dot--3 {
+      width: 12px;
+      height: 12px;
+      background-color: #2F7A6B;
+      box-shadow: 0 0 0 6px #ffffff;
+    }
+
+    .prog__dot--4 {
+      width: 14px;
+      height: 14px;
+      background-color: #1B3A2F;
+      box-shadow: 0 0 0 4px #ffffff, 0 0 0 5px #1B3A2F, 0 0 0 10px #ffffff;
+    }
+
+    .prog__caption {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
+    }
+
+    .prog__day {
+      display: block;
+      margin-top: 14px;
+      font-family: var(--font-ui, 'Karla', sans-serif);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8125rem;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .prog__day--1,
+    .prog__day--2,
+    .prog__day--3 {
+      color: #2F7A6B;
+    }
+
+    .prog__day--4 {
+      color: #1B3A2F;
+    }
+
+    .prog__desc {
+      margin-top: 6px;
+      margin-bottom: 0;
+      font-family: var(--font-ui, 'Karla', sans-serif);
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: #4A5A52;
+      max-width: 100%;
+      text-align: left;
+      margin-inline: 0;
+    }
+  }
+
+  /* Disclaimer Legal */
+  .prog__disclaimer {
+    font-family: var(--font-ui, 'Karla', sans-serif);
+    font-weight: 400;
+    font-size: 0.75rem; /* 12px */
+    line-height: 1.5;
+    color: #93A896;
+    max-width: 62ch;
+    margin-top: 40px;
+    margin-bottom: 0;
+    margin-inline: auto;
+    text-align: center;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Línea de tiempo progreso",
+  "tag": "section",
+  "class": "section-onv-progress",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Antetítulo",
+      "default": "PROCESO REAL · 45 DÍAS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Una persona. Cuarenta y cinco días. Sin retoques."
+    },
+    {
+      "type": "header",
+      "content": "Paso 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_1",
+      "label": "Imagen Día 1"
+    },
+    {
+      "type": "text",
+      "id": "day_1",
+      "label": "Etiqueta Día 1",
+      "default": "DÍA 1"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_1",
+      "label": "Descripción Día 1",
+      "default": "Uña engrosada y amarillenta, con el borde áspero e irregular."
+    },
+    {
+      "type": "text",
+      "id": "alt_1",
+      "label": "Alt text Día 1",
+      "default": "Uña del pie en el día 1: engrosada, amarillenta, de borde áspero."
+    },
+    {
+      "type": "header",
+      "content": "Paso 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_2",
+      "label": "Imagen Día 15"
+    },
+    {
+      "type": "text",
+      "id": "day_2",
+      "label": "Etiqueta Día 15",
+      "default": "DÍA 15"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_2",
+      "label": "Descripción Día 15",
+      "default": "La superficie empieza a emparejarse. El tono cambia mientras la uña crece."
+    },
+    {
+      "type": "text",
+      "id": "alt_2",
+      "label": "Alt text Día 15",
+      "default": "Uña del pie en el día 15: la superficie se empareja y el tono cambia."
+    },
+    {
+      "type": "header",
+      "content": "Paso 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_3",
+      "label": "Imagen Día 30"
+    },
+    {
+      "type": "text",
+      "id": "day_3",
+      "label": "Etiqueta Día 30",
+      "default": "DÍA 30"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_3",
+      "label": "Descripción Día 30",
+      "default": "Crecimiento nuevo y limpio desde la base. Solo queda una marca tenue."
+    },
+    {
+      "type": "text",
+      "id": "alt_3",
+      "label": "Alt text Día 30",
+      "default": "Uña del pie en el día 30: crecimiento nuevo y limpio desde la base."
+    },
+    {
+      "type": "header",
+      "content": "Paso 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_4",
+      "label": "Imagen Día 45"
+    },
+    {
+      "type": "text",
+      "id": "day_4",
+      "label": "Etiqueta Día 45",
+      "default": "DÍA 45"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_4",
+      "label": "Descripción Día 45",
+      "default": "Color uniforme y superficie lisa en toda la uña."
+    },
+    {
+      "type": "text",
+      "id": "alt_4",
+      "label": "Alt text Día 45",
+      "default": "Uña del pie en el día 45: color uniforme y superficie lisa."
+    },
+    {
+      "type": "header",
+      "content": "Aviso Legal"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Texto del aviso legal",
+      "default": "Fotografías de una sola persona durante 45 días de uso diario. Sin retoques. Los resultados varían según cada caso."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Línea de tiempo progreso"
+    }
+  ]
+}
+{% endschema %}
