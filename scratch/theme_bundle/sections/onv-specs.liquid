@@ -1,6 +1,7 @@
 {%- comment -%}
-  ONYVERA — Sección: Selector de Formatos y Ficha Técnica
-  Carrusel táctil con flechas de navegación, precios escalonados reales, y ficha técnica perfectamente integrada al diseño botánico.
+  ONYVERA — Sección: Los favoritos del público (Estilo Rhode Skin)
+  Tarjetas minimalistas y prémium con fondo gris suave, tipografía gruesa superior, imagen centrada y ficha inferior con precio.
+  Se ha eliminado por completo el bloque de ficha técnica.
 {%- endcomment -%}
 
 {%- liquid
@@ -13,609 +14,359 @@
   endif
 -%}
 
-<section
-  id="onv-specs-{{ section.id }}"
-  class="onv-shop-specs"
->
-  <div class="onv-shop-specs__container">
+<section id="onv-specs-{{ section.id }}" class="onv-rhode-favorites">
+  <div class="onv-rhode-favorites__container">
 
-    <!-- Encabezado (Solo título) -->
-    <div class="onv-shop-specs__header">
-      <h2 class="onv-shop-specs__title">Los favoritos del público</h2>
+    <!-- Encabezado -->
+    <div class="onv-rhode-favorites__header">
+      <h2 class="onv-rhode-favorites__title">{{ section.settings.title | default: "Los favoritos del público" | escape }}</h2>
     </div>
 
-    <!-- Carrusel de Productos con Controles Táctiles y Flechas -->
-    <div class="onv-shop-specs__slider-container">
-      
-      <button type="button" class="onv-shop-specs__nav-btn onv-shop-specs__nav-btn--prev" id="onv-specs-prev-{{ section.id }}" aria-label="Anterior producto">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
+    <!-- Grid / Slider de Tarjetas Estilo Rhode -->
+    <div class="onv-rhode-favorites__slider-wrap">
+      <div class="onv-rhode-favorites__grid">
 
-      <div class="onv-shop-specs__carousel-wrap" id="onv-specs-wrap-{{ section.id }}">
-        <div class="onv-shop-specs__track" id="onv-specs-track-{{ section.id }}">
+        <!-- Card 1: 1 Frasco -->
+        <article class="onv-rhode-card" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" tabindex="0" role="button" aria-label="Comprar 1 Frasco 16ml">
+          <div class="onv-rhode-card__top">
+            <span class="onv-rhode-card__big-label">1 frasco</span>
+          </div>
+          
+          <div class="onv-rhode-card__img-wrap">
+            <img
+              src="{{ 'onv-producto-frasco.png' | asset_url }}"
+              alt="ONYVERA 1 Frasco 16ml"
+              class="onv-rhode-card__img"
+              width="240"
+              height="280"
+              loading="lazy"
+            >
+          </div>
 
-          <!-- Card 1: 1 Frasco -->
-          <article class="onv-shop-specs__card">
-            <div class="onv-shop-specs__tag">TRATAMIENTO INDIVIDUAL</div>
-            <div class="onv-shop-specs__img-box">
-              <img
-                src="{{ 'onv-producto-frasco.png' | asset_url }}"
-                alt="ONYVERA 1 Frasco"
-                width="140"
-                height="180"
-                loading="lazy"
-                class="onv-shop-specs__img"
-              >
+          <div class="onv-rhode-card__bottom">
+            <div class="onv-rhode-card__bottom-left">
+              <h3 class="onv-rhode-card__name">1 FRASCO · 16 ML</h3>
+              <p class="onv-rhode-card__desc">Tratamiento inicial 2-3 semanas</p>
             </div>
-            <div class="onv-shop-specs__card-info">
-              <h3 class="onv-shop-specs__name">1 Frasco · 16 ml</h3>
-              <p class="onv-shop-specs__duration">Uso para 2 a 3 semanas</p>
-              <div class="onv-shop-specs__price-row">
-                <span class="onv-shop-specs__price">
-                  {%- if target_product.variants[0] != blank -%}
-                    {{ target_product.variants[0].price | money }}
-                  {%- else -%}
-                    $10.00
-                  {%- endif -%}
-                </span>
-              </div>
-              <button
-                type="button"
-                class="onv-shop-specs__btn"
-                data-onv-add
-                data-variant-id="{{ target_product.variants[0].id | default: '' }}"
-                aria-label="Agregar 1 frasco"
-              >
-                <span>AGREGAR</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              </button>
+            <div class="onv-rhode-card__bottom-right">
+              <span class="onv-rhode-card__price">
+                {%- if target_product.variants[0] != blank -%}
+                  {{ target_product.variants[0].price | money }}
+                {%- else -%}
+                  $10.00
+                {%- endif -%}
+              </span>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- Card 2: 2 Frascos (Ahorro) -->
-          <article class="onv-shop-specs__card onv-shop-specs__card--popular">
-            <div class="onv-shop-specs__tag onv-shop-specs__tag--gold">MÁS POPULAR · AHORRO</div>
-            <div class="onv-shop-specs__img-box">
-              <img
-                src="{{ 'onv-producto-frasco-2.png' | asset_url }}"
-                alt="ONYVERA Pack de 2 Frascos"
-                width="140"
-                height="180"
-                loading="lazy"
-                class="onv-shop-specs__img"
-              >
+        <!-- Card 2: 2 Frascos -->
+        <article class="onv-rhode-card" data-onv-add data-variant-id="{{ target_product.variants[1].id | default: '' }}" tabindex="0" role="button" aria-label="Comprar Pack 2 Frascos 32ml">
+          <div class="onv-rhode-card__top">
+            <span class="onv-rhode-card__big-label">2 frascos</span>
+            <span class="onv-rhode-card__badge-pill">ahorro</span>
+          </div>
+          
+          <div class="onv-rhode-card__img-wrap">
+            <img
+              src="{{ 'onv-producto-frasco-2.png' | asset_url }}"
+              alt="ONYVERA Pack 2 Frascos 32ml"
+              class="onv-rhode-card__img"
+              width="240"
+              height="280"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="onv-rhode-card__bottom">
+            <div class="onv-rhode-card__bottom-left">
+              <h3 class="onv-rhode-card__name">PACK 2 FRASCOS</h3>
+              <p class="onv-rhode-card__desc">Uso continuo para 4 a 6 semanas</p>
             </div>
-            <div class="onv-shop-specs__card-info">
-              <h3 class="onv-shop-specs__name">Pack 2 Frascos · 32 ml</h3>
-              <p class="onv-shop-specs__duration">Uso para 4 a 6 semanas</p>
-              <div class="onv-shop-specs__price-row">
-                <span class="onv-shop-specs__price">
-                  {%- if target_product.variants[1] != blank -%}
-                    {{ target_product.variants[1].price | money }}
-                  {%- else -%}
-                    $18.00
-                  {%- endif -%}
-                </span>
-                <span class="onv-shop-specs__compare-price">$20.00</span>
-              </div>
-              <button
-                type="button"
-                class="onv-shop-specs__btn onv-shop-specs__btn--primary"
-                data-onv-add
-                data-variant-id="{{ target_product.variants[1].id | default: '' }}"
-                aria-label="Agregar pack 2 frascos"
-              >
-                <span>AGREGAR</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              </button>
+            <div class="onv-rhode-card__bottom-right">
+              <span class="onv-rhode-card__price">
+                {%- if target_product.variants[1] != blank -%}
+                  {{ target_product.variants[1].price | money }}
+                {%- else -%}
+                  $18.00
+                {%- endif -%}
+              </span>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- Card 3: 3 Frascos (Pack Completo) -->
-          <article class="onv-shop-specs__card onv-shop-specs__card--best">
-            <div class="onv-shop-specs__tag onv-shop-specs__tag--teal">RUTINA COMPLETA 45 DÍAS</div>
-            <div class="onv-shop-specs__img-box">
-              <img
-                src="{{ 'onv-producto-frasco-3.png' | asset_url }}"
-                alt="ONYVERA Pack de 3 Frascos"
-                width="140"
-                height="180"
-                loading="lazy"
-                class="onv-shop-specs__img"
-              >
+        <!-- Card 3: 3 Frascos -->
+        <article class="onv-rhode-card" data-onv-add data-variant-id="{{ target_product.variants[2].id | default: '' }}" tabindex="0" role="button" aria-label="Comprar Pack 3 Frascos 48ml">
+          <div class="onv-rhode-card__top">
+            <span class="onv-rhode-card__big-label">3 frascos</span>
+            <span class="onv-rhode-card__badge-pill">más popular</span>
+          </div>
+          
+          <div class="onv-rhode-card__img-wrap">
+            <img
+              src="{{ 'onv-producto-frasco-3.png' | asset_url }}"
+              alt="ONYVERA Pack 3 Frascos 48ml"
+              class="onv-rhode-card__img"
+              width="240"
+              height="280"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="onv-rhode-card__bottom">
+            <div class="onv-rhode-card__bottom-left">
+              <h3 class="onv-rhode-card__name">PACK 3 FRASCOS</h3>
+              <p class="onv-rhode-card__desc">Rutina intensiva de 45 días</p>
             </div>
-            <div class="onv-shop-specs__card-info">
-              <h3 class="onv-shop-specs__name">Pack 3 Frascos · 48 ml</h3>
-              <p class="onv-shop-specs__duration">Tratamiento intensivo de 45 días</p>
-              <div class="onv-shop-specs__price-row">
-                <span class="onv-shop-specs__price">
-                  {%- if target_product.variants[2] != blank -%}
-                    {{ target_product.variants[2].price | money }}
-                  {%- else -%}
-                    $25.00
-                  {%- endif -%}
-                </span>
-                <span class="onv-shop-specs__compare-price">$30.00</span>
-              </div>
-              <button
-                type="button"
-                class="onv-shop-specs__btn onv-shop-specs__btn--teal"
-                data-onv-add
-                data-variant-id="{{ target_product.variants[2].id | default: '' }}"
-                aria-label="Agregar pack 3 frascos"
-              >
-                <span>AGREGAR</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              </button>
+            <div class="onv-rhode-card__bottom-right">
+              <span class="onv-rhode-card__price">
+                {%- if target_product.variants[2] != blank -%}
+                  {{ target_product.variants[2].price | money }}
+                {%- else -%}
+                  $25.00
+                {%- endif -%}
+              </span>
             </div>
-          </article>
+          </div>
+        </article>
 
-        </div>
-      </div>
-
-      <button type="button" class="onv-shop-specs__nav-btn onv-shop-specs__nav-btn--next" id="onv-specs-next-{{ section.id }}" aria-label="Siguiente producto">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-
-    </div>
-
-    <!-- Ficha Técnica Armonizada y Elegante -->
-    <div class="onv-shop-specs__specs-card">
-      <div class="onv-shop-specs__specs-header">
-        <span class="onv-shop-specs__specs-badge">FICHA TÉCNICA</span>
-        <h3 class="onv-shop-specs__specs-heading">Especificaciones del producto</h3>
-      </div>
-      <div class="onv-shop-specs__specs-grid">
-        <div class="onv-shop-specs__spec-item">
-          <span class="onv-shop-specs__spec-label">Aplicador</span>
-          <span class="onv-shop-specs__spec-val">Brocha de precisión integrada</span>
-        </div>
-        <div class="onv-shop-specs__spec-item">
-          <span class="onv-shop-specs__spec-label">Contenido neto</span>
-          <span class="onv-shop-specs__spec-val">16 ml / 0.5 fl oz por frasco</span>
-        </div>
-        <div class="onv-shop-specs__spec-item">
-          <span class="onv-shop-specs__spec-label">Fórmula</span>
-          <span class="onv-shop-specs__spec-val">5 botánicos activos · 100% vegano</span>
-        </div>
-        <div class="onv-shop-specs__spec-item">
-          <span class="onv-shop-specs__spec-label">Uso indicado</span>
-          <span class="onv-shop-specs__spec-val">Uñas de manos y pies</span>
-        </div>
-        <div class="onv-shop-specs__spec-item">
-          <span class="onv-shop-specs__spec-label">Origen</span>
-          <span class="onv-shop-specs__spec-val">Orlando, FL · Estados Unidos</span>
-        </div>
-        <div class="onv-shop-specs__spec-item">
-          <span class="onv-shop-specs__spec-label">Duración tras apertura</span>
-          <span class="onv-shop-specs__spec-val">12 meses (PAO 12M)</span>
-        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<script>
-  (function() {
-    function initSpecsSlider() {
-      const wrap = document.getElementById('onv-specs-wrap-{{ section.id }}');
-      const prevBtn = document.getElementById('onv-specs-prev-{{ section.id }}');
-      const nextBtn = document.getElementById('onv-specs-next-{{ section.id }}');
-      if (!wrap) return;
-
-      const scrollAmount = 230;
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          wrap.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          wrap.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initSpecsSlider);
-    } else {
-      initSpecsSlider();
-    }
-  })();
-</script>
-
 {% style %}
-  .onv-shop-specs {
+  .onv-rhode-favorites {
     background-color: #ffffff;
-    padding: 24px 0 20px;
+    padding: 36px 0 28px;
     color: var(--onv-green-900);
     overflow: hidden;
   }
 
-  .onv-shop-specs__container {
+  .onv-rhode-favorites__container {
     width: 100%;
-    max-width: 1080px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 20px;
     box-sizing: border-box;
   }
 
-  .onv-shop-specs__header {
+  .onv-rhode-favorites__header {
     text-align: center;
-    padding: 0 16px;
-    margin-bottom: 22px;
+    margin-bottom: 26px;
   }
 
-  .onv-shop-specs__title {
+  .onv-rhode-favorites__title {
     font-family: var(--onv-display);
-    font-size: clamp(24px, 3.2vw, 34px);
+    font-size: clamp(24px, 3.2vw, 36px);
     font-weight: 600;
     line-height: 1.1;
     color: var(--onv-green-900);
     margin: 0;
   }
 
-  /* Slider con Flechas en Móvil / Cuadrícula en Desktop */
-  .onv-shop-specs__slider-container {
-    position: relative;
+  .onv-rhode-favorites__slider-wrap {
     width: 100%;
-    margin-bottom: 24px;
   }
 
-  .onv-shop-specs__nav-btn {
-    position: absolute;
-    top: 45%;
-    transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 1px solid rgba(19, 46, 35, 0.14);
-    color: var(--onv-green-900);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 5;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.10);
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-
-  .onv-shop-specs__nav-btn--prev { left: 4px; }
-  .onv-shop-specs__nav-btn--next { right: 4px; }
-
-  .onv-shop-specs__nav-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .onv-shop-specs__carousel-wrap {
+  .onv-rhode-favorites__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pan-y;
-    scrollbar-width: none;
-    padding: 6px 0 14px;
+    box-sizing: border-box;
   }
 
-  .onv-shop-specs__carousel-wrap::-webkit-scrollbar {
-    display: none;
-  }
-
-  .onv-shop-specs__track {
-    display: flex;
-    gap: 16px;
-    width: max-content;
-    padding: 0 20px;
-  }
-
-  /* Tarjeta de Producto */
-  .onv-shop-specs__card {
-    flex: 0 0 235px;
-    width: 235px;
-    scroll-snap-align: center;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid rgba(19, 46, 35, 0.10);
-    overflow: hidden;
+  /* Tarjeta Estilo Rhode */
+  .onv-rhode-card {
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    padding: 24px 22px 22px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 16px rgba(19, 46, 35, 0.07);
+    justify-content: space-between;
+    min-height: 420px;
+    cursor: pointer;
     position: relative;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
     user-select: none;
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    border: none;
   }
 
-  .onv-shop-specs__card:hover {
+  .onv-rhode-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(19, 46, 35, 0.12);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    background-color: #f0f0f0;
   }
 
-  .onv-shop-specs__card:hover .onv-shop-specs__img {
-    transform: scale(1.05);
+  .onv-rhode-card:active {
+    transform: scale(0.98);
   }
 
-  /* Desktop: Los 3 productos se ven juntos en 1 sola fila con tarjetas más largas y destacadas */
-  @media (min-width: 768px) {
-    .onv-shop-specs__nav-btn {
-      display: none !important;
-    }
-
-    .onv-shop-specs__carousel-wrap {
-      overflow: visible;
-      padding: 8px 0 22px;
-    }
-
-    .onv-shop-specs__track {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      width: 100%;
-      max-width: 1040px;
-      margin: 0 auto;
-      gap: 24px;
-      padding: 0;
-    }
-
-    .onv-shop-specs__card {
-      flex: 1 1 0;
-      width: 100%;
-      max-width: 100%;
-      scroll-snap-align: none;
-    }
-
-    .onv-shop-specs__img-box {
-      height: 235px !important;
-      padding: 16px !important;
-    }
-
-    .onv-shop-specs__img {
-      max-height: 205px !important;
-    }
-
-    .onv-shop-specs__name {
-      font-size: 15px !important;
-    }
-
-    .onv-shop-specs__duration {
-      font-size: 12px !important;
-      margin-bottom: 12px !important;
-    }
-
-    .onv-shop-specs__price {
-      font-size: 18px !important;
-    }
-
-    .onv-shop-specs__btn {
-      padding: 11px 16px !important;
-      font-size: 12px !important;
-    }
+  /* Cabecera de la Tarjeta */
+  .onv-rhode-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
   }
 
-  .onv-shop-specs__card--popular {
-    border: 1.5px solid #A8833B;
+  .onv-rhode-card__big-label {
+    font-family: var(--onv-body);
+    font-size: clamp(28px, 2.8vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #4a4a4a;
+    line-height: 1;
+    text-transform: lowercase;
   }
 
-  .onv-shop-specs__card--best {
-    border: 1.5px solid #2C6E56;
-  }
-
-  .onv-shop-specs__tag {
+  .onv-rhode-card__badge-pill {
     font-family: var(--onv-body);
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-align: center;
-    padding: 6px 8px;
-    background: #f4f4f4;
-    color: var(--onv-ink-soft);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-  }
-
-  .onv-shop-specs__tag--gold {
-    background: #A8833B;
+    background: #1e1e1e;
     color: #ffffff;
+    padding: 4px 9px;
+    border-radius: 999px;
+    line-height: 1;
   }
 
-  .onv-shop-specs__tag--teal {
-    background: #2C6E56;
-    color: #ffffff;
-  }
-
-  .onv-shop-specs__img-box {
-    width: 100%;
-    height: 180px;
+  /* Imagen Centrada */
+  .onv-rhode-card__img-wrap {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
-    background: linear-gradient(180deg, #ffffff 0%, #f6f8f7 100%);
-    box-sizing: border-box;
+    padding: 16px 0 20px;
   }
 
-  .onv-shop-specs__img {
-    max-height: 155px;
+  .onv-rhode-card__img {
+    max-height: 210px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(19, 46, 35, 0.10));
-    transition: transform 0.25s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
+    transition: transform 0.3s ease;
   }
 
-  .onv-shop-specs__card-info {
-    padding: 14px 16px 16px;
+  .onv-rhode-card:hover .onv-rhode-card__img {
+    transform: scale(1.06);
+  }
+
+  /* Pie de Tarjeta */
+  .onv-rhode-card__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .onv-rhode-card__bottom-left {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    box-sizing: border-box;
+    gap: 3px;
   }
 
-  .onv-shop-specs__name {
+  .onv-rhode-card__name {
     font-family: var(--onv-body);
     font-size: 13px;
-    font-weight: 700;
-    color: var(--onv-green-900);
-    margin: 0 0 3px;
-    line-height: 1.25;
-  }
-
-  .onv-shop-specs__duration {
-    font-family: var(--onv-body);
-    font-size: 11px;
-    color: var(--onv-ink-soft);
-    margin: 0 0 10px;
-  }
-
-  .onv-shop-specs__price-row {
-    margin-top: auto;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-  }
-
-  .onv-shop-specs__price {
-    font-family: var(--onv-body);
-    font-size: 16px;
     font-weight: 800;
-    color: var(--onv-green-900);
+    letter-spacing: 0.04em;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
-  .onv-shop-specs__compare-price {
+  .onv-rhode-card__desc {
     font-family: var(--onv-body);
     font-size: 12px;
-    color: #8c9b93;
-    text-decoration: line-through;
+    color: #737373;
+    margin: 0;
+    line-height: 1.2;
   }
 
-  .onv-shop-specs__btn {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: #132E23;
-    color: #ffffff;
+  .onv-rhode-card__bottom-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .onv-rhode-card__price {
     font-family: var(--onv-body);
-    font-size: 11.5px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    border: none;
-    cursor: pointer;
-    transition: background 0.15s ease, transform 0.15s ease;
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
   }
 
-  .onv-shop-specs__btn svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .onv-shop-specs__btn--primary {
-    background: #A8833B;
-  }
-
-  .onv-shop-specs__btn--teal {
-    background: #2C6E56;
-  }
-
-  .onv-shop-specs__btn:hover {
-    filter: brightness(1.1);
-  }
-
-  .onv-shop-specs__btn:active {
-    transform: scale(0.97);
-  }
-
-  /* Ficha Técnica Armonizada */
-  .onv-shop-specs__specs-card {
-    max-width: 580px;
-    margin: 4px 16px 0;
-    background: #ffffff;
-    border: 1px solid rgba(44, 110, 86, 0.14);
-    border-radius: 14px;
-    padding: 12px 14px;
-    box-shadow: 0 2px 8px rgba(19, 46, 35, 0.04);
-  }
-
-  @media (min-width: 612px) {
-    .onv-shop-specs__specs-card {
-      margin: 4px auto 0;
+  /* Responsive Móvil / Tablets */
+  @media (max-width: 767px) {
+    .onv-rhode-favorites__slider-wrap {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 16px 12px;
+      margin: 0 -20px;
     }
-  }
 
-  .onv-shop-specs__specs-header {
-    margin-bottom: 8px;
-    text-align: center;
-  }
+    .onv-rhode-favorites__slider-wrap::-webkit-scrollbar {
+      display: none;
+    }
 
-  .onv-shop-specs__specs-badge {
-    font-family: var(--onv-body);
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    color: var(--onv-teal-600);
-    text-transform: uppercase;
-  }
+    .onv-rhode-favorites__grid {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+    }
 
-  .onv-shop-specs__specs-heading {
-    font-family: var(--onv-display);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--onv-green-900);
-    margin: 2px 0 0;
-  }
+    .onv-rhode-card {
+      flex: 0 0 250px;
+      width: 250px;
+      min-height: 380px;
+      padding: 20px 18px 18px;
+      scroll-snap-align: start;
+    }
 
-  .onv-shop-specs__specs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 12px;
-    padding-top: 6px;
-    border-top: 1px solid rgba(19, 46, 35, 0.06);
-  }
+    .onv-rhode-card__big-label {
+      font-size: 26px;
+    }
 
-  .onv-shop-specs__spec-item {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-
-  .onv-shop-specs__spec-label {
-    font-family: var(--onv-body);
-    font-size: 9.5px;
-    font-weight: 700;
-    color: #5c7368;
-    text-transform: uppercase;
-  }
-
-  .onv-shop-specs__spec-val {
-    font-family: var(--onv-body);
-    font-size: 11px;
-    color: var(--onv-green-900);
-    font-weight: 600;
-    line-height: 1.25;
+    .onv-rhode-card__img {
+      max-height: 170px;
+    }
   }
 {% endstyle %}
 
 {% schema %}
 {
-  "name": "ONV Selector y Specs",
+  "name": "ONV Favoritos Rhode",
   "tag": "section",
-  "class": "section-onv-shop-specs",
+  "class": "section-onv-rhode-favorites",
   "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Los favoritos del público"
+    },
     {
       "type": "product",
       "id": "product",
-      "label": "Producto (para resolver variantes)"
+      "label": "Producto para vincular variantes y precios"
     }
   ],
   "presets": [
     {
-      "name": "ONV Selector y Specs"
+      "name": "ONV Favoritos Rhode"
     }
   ]
 }
