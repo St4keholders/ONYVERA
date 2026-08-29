@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "onv_cinta": {
@@ -25,10 +16,118 @@
         "alt_text": "ONYVERA Sérum Botánico para Uñas"
       }
     },
+    "onv_iconos": {
+      "type": "onv-iconos",
+      "settings": {
+        "icon_1_text": "Fórmula botánica concentrada",
+        "icon_2_text": "Sin parabenos ni sulfatos",
+        "icon_3_text": "Vegano y libre de crueldad",
+        "icon_4_text": "Suave, no escuece",
+        "icon_5_text": "Se envía desde EE. UU."
+      }
+    },
+    "onv_specs": {
+      "type": "onv-specs",
+      "settings": {
+        "title": "Los favoritos de nuestros clientes"
+      }
+    },
+    "onv_banner_body_1": {
+      "type": "onv-banner-intermedio",
+      "settings": {
+        "alt_text": "ONYVERA Banner Promocional"
+      }
+    },
     "onv_prueba_social": {
       "type": "onv-prueba-social",
       "settings": {
-        "eyebrow": "RESULTADOS REALES"
+        "eyebrow": "RESULTADOS DE NUESTRA RUTINA"
+      }
+    },
+    "onv_reviews": {
+      "type": "onv-reviews",
+      "blocks": {
+        "resena_1": {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "A los 45 días la diferencia es evidente. El amarillo de la punta desapareció y lo que creció después salió limpio.",
+            "nombre": "Marcos R.",
+            "ubicacion": "Tampa, FL",
+            "duracion": "45 días de uso"
+          }
+        },
+        "resena_2": {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "Había probado otros tres productos antes. La brocha fue lo que me convenció: no se riega, no se desperdicia y llega debajo del borde.",
+            "nombre": "Diana G.",
+            "ubicacion": "Columbus, OH",
+            "duracion": "45 días de uso"
+          }
+        },
+        "resena_3": {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "Pasaron como tres semanas antes de notar algo, así que hay que tener paciencia. Para la sexta semana la uña se veía normal.",
+            "nombre": "Carlos T.",
+            "ubicacion": "Phoenix, AZ",
+            "duracion": "45 días de uso"
+          }
+        },
+        "resena_4": {
+          "type": "resena",
+          "settings": {
+            "estrellas": 4,
+            "cita": "No arde y no tiene olor, que es lo que importa cuando lo aplicas todos los días durante mes y medio.",
+            "nombre": "Paola N.",
+            "ubicacion": "Newark, NJ",
+            "duracion": "45 días de uso"
+          }
+        },
+        "resena_5": {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "Usé sandalias en la boda de mi hija. Primera vez en cuatro años que no lo pensé dos veces.",
+            "nombre": "Roberto M.",
+            "ubicacion": "Savannah, GA",
+            "duracion": "45 días de uso"
+          }
+        },
+        "resena_6": {
+          "type": "resena",
+          "settings": {
+            "estrellas": 4,
+            "cita": "Primero se emparejó la textura, después el color. Lento pero constante durante los 45 días.",
+            "nombre": "Ángela V.",
+            "ubicacion": "Boise, ID",
+            "duracion": "45 días de uso"
+          }
+        }
+      },
+      "block_order": [
+        "resena_1",
+        "resena_2",
+        "resena_3",
+        "resena_4",
+        "resena_5",
+        "resena_6"
+      ],
+      "settings": {
+        "usar_resenas_prueba": false,
+        "velocidad": 75
+      }
+    },
+    "onv_ingredient_banner": {
+      "type": "onv-ingredient-banner",
+      "settings": {
+        "eyebrow": "BOTANICAL TRANSPARENCY",
+        "heading": "Five actives. Ten ingredients. Nothing hidden.",
+        "text_position": "left",
+        "desktop_ratio": "3:1"
       }
     },
     "onv_ingredientes": {
@@ -48,37 +147,6 @@
         "inci_text": "Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.",
         "inci_note": "Fórmula libre de parabenos, sulfatos, ftalatos y fragancias artificiales."
       }
-    },
-    "onv_specs": {
-      "type": "onv-specs",
-      "settings": {
-        "title": "Los favoritos de nuestros clientes"
-      }
-    },
-    "onv_iconos": {
-      "type": "onv-iconos",
-      "settings": {
-        "icon_1_text": "Fórmula botánica concentrada",
-        "icon_2_text": "Sin parabenos ni sulfatos",
-        "icon_3_text": "Vegano y libre de crueldad",
-        "icon_4_text": "Suave, no escuece",
-        "icon_5_text": "Se envía desde EE. UU."
-      }
-    },
-    "onv_banner_body_1": {
-      "type": "onv-banner-intermedio",
-      "settings": {
-        "alt_text": "ONYVERA Banner Promocional"
-      }
-    },
-    "onv_ingredient_banner": {
-      "type": "onv-ingredient-banner",
-      "settings": {
-        "eyebrow": "BOTANICAL TRANSPARENCY",
-        "heading": "Five actives. Ten ingredients. Nothing hidden.",
-        "text_position": "left",
-        "desktop_ratio": "3:1"
-      }
     }
   },
   "order": [
@@ -88,6 +156,7 @@
     "onv_specs",
     "onv_banner_body_1",
     "onv_prueba_social",
+    "onv_reviews",
     "onv_ingredient_banner",
     "onv_ingredientes"
   ]
