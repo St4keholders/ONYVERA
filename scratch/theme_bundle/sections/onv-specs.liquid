@@ -1,7 +1,7 @@
 {%- comment -%}
-  ONYVERA — Sección: Los favoritos del público (Estilo Rhode Skin)
-  Tarjetas minimalistas y prémium con fondo gris suave, tipografía gruesa superior, imagen centrada y ficha inferior con precio.
-  Se ha eliminado por completo el bloque de ficha técnica.
+  ONYVERA — Sección: Los favoritos de nuestros clientes
+  Tarjetas alargadas y estilizadas (estilo editorial) donde la imagen del producto es la gran protagonista,
+  adaptadas a la identidad de marca ONYVERA con tipografía de marca y ficha técnica removida.
 {%- endcomment -%}
 
 {%- liquid
@@ -14,42 +14,49 @@
   endif
 -%}
 
-<section id="onv-specs-{{ section.id }}" class="onv-rhode-favorites">
-  <div class="onv-rhode-favorites__container">
+<section id="onv-specs-{{ section.id }}" class="onv-favorites-section">
+  <div class="onv-favorites-section__container">
 
-    <!-- Encabezado -->
-    <div class="onv-rhode-favorites__header">
-      <h2 class="onv-rhode-favorites__title">{{ section.settings.title | default: "Los favoritos del público" | escape }}</h2>
+    <!-- Encabezado con Tipografía de Marca -->
+    <div class="onv-favorites-section__header">
+      <h2 class="onv-favorites-section__title">{{ section.settings.title | default: "Los favoritos de nuestros clientes" | escape }}</h2>
     </div>
 
-    <!-- Grid / Slider de Tarjetas Estilo Rhode -->
-    <div class="onv-rhode-favorites__slider-wrap">
-      <div class="onv-rhode-favorites__grid">
+    <!-- Contenedor de Tarjetas Alargadas -->
+    <div class="onv-favorites-section__wrap">
+      <div class="onv-favorites-section__grid">
 
         <!-- Card 1: 1 Frasco -->
-        <article class="onv-rhode-card" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" tabindex="0" role="button" aria-label="Comprar 1 Frasco 16ml">
-          <div class="onv-rhode-card__top">
-            <span class="onv-rhode-card__big-label">1 frasco</span>
+        <article
+          class="onv-fav-card"
+          data-onv-add
+          data-variant-id="{{ target_product.variants[0].id | default: '' }}"
+          tabindex="0"
+          role="button"
+          aria-label="Comprar 1 Frasco · 16 ml"
+        >
+          <div class="onv-fav-card__top">
+            <span class="onv-fav-card__label">1 frasco</span>
           </div>
-          
-          <div class="onv-rhode-card__img-wrap">
+
+          <div class="onv-fav-card__image-box">
             <img
               src="{{ 'onv-producto-frasco.png' | asset_url }}"
-              alt="ONYVERA 1 Frasco 16ml"
-              class="onv-rhode-card__img"
-              width="240"
-              height="280"
+              alt="ONYVERA Sérum Botánico 1 Frasco 16 ml"
+              class="onv-fav-card__img"
+              width="260"
+              height="340"
               loading="lazy"
             >
           </div>
 
-          <div class="onv-rhode-card__bottom">
-            <div class="onv-rhode-card__bottom-left">
-              <h3 class="onv-rhode-card__name">1 FRASCO · 16 ML</h3>
-              <p class="onv-rhode-card__desc">Tratamiento inicial 2-3 semanas</p>
+          <div class="onv-fav-card__bottom">
+            <div class="onv-fav-card__details">
+              <h3 class="onv-fav-card__name">1 FRASCO · 16 ML</h3>
+              <p class="onv-fav-card__sub">Tratamiento inicial 2 a 3 semanas</p>
             </div>
-            <div class="onv-rhode-card__bottom-right">
-              <span class="onv-rhode-card__price">
+            <div class="onv-fav-card__price-box">
+              <span class="onv-fav-card__price">
                 {%- if target_product.variants[0] != blank -%}
                   {{ target_product.variants[0].price | money }}
                 {%- else -%}
@@ -61,71 +68,87 @@
         </article>
 
         <!-- Card 2: 2 Frascos -->
-        <article class="onv-rhode-card" data-onv-add data-variant-id="{{ target_product.variants[1].id | default: '' }}" tabindex="0" role="button" aria-label="Comprar Pack 2 Frascos 32ml">
-          <div class="onv-rhode-card__top">
-            <span class="onv-rhode-card__big-label">2 frascos</span>
-            <span class="onv-rhode-card__badge-pill">ahorro</span>
+        <article
+          class="onv-fav-card"
+          data-onv-add
+          data-variant-id="{{ target_product.variants[1].id | default: '' }}"
+          tabindex="0"
+          role="button"
+          aria-label="Comprar Pack 2 Frascos · 32 ml"
+        >
+          <div class="onv-fav-card__top">
+            <span class="onv-fav-card__label">2 frascos</span>
+            <span class="onv-fav-card__badge onv-fav-card__badge--gold">ahorro</span>
           </div>
-          
-          <div class="onv-rhode-card__img-wrap">
+
+          <div class="onv-fav-card__image-box">
             <img
               src="{{ 'onv-producto-frasco-2.png' | asset_url }}"
-              alt="ONYVERA Pack 2 Frascos 32ml"
-              class="onv-rhode-card__img"
-              width="240"
-              height="280"
+              alt="ONYVERA Sérum Botánico Pack 2 Frascos 32 ml"
+              class="onv-fav-card__img"
+              width="260"
+              height="340"
               loading="lazy"
             >
           </div>
 
-          <div class="onv-rhode-card__bottom">
-            <div class="onv-rhode-card__bottom-left">
-              <h3 class="onv-rhode-card__name">PACK 2 FRASCOS</h3>
-              <p class="onv-rhode-card__desc">Uso continuo para 4 a 6 semanas</p>
+          <div class="onv-fav-card__bottom">
+            <div class="onv-fav-card__details">
+              <h3 class="onv-fav-card__name">PACK 2 FRASCOS</h3>
+              <p class="onv-fav-card__sub">Uso continuo para 4 a 6 semanas</p>
             </div>
-            <div class="onv-rhode-card__bottom-right">
-              <span class="onv-rhode-card__price">
+            <div class="onv-fav-card__price-box">
+              <span class="onv-fav-card__price">
                 {%- if target_product.variants[1] != blank -%}
                   {{ target_product.variants[1].price | money }}
                 {%- else -%}
                   $18.00
                 {%- endif -%}
               </span>
+              <span class="onv-fav-card__compare">$20.00</span>
             </div>
           </div>
         </article>
 
         <!-- Card 3: 3 Frascos -->
-        <article class="onv-rhode-card" data-onv-add data-variant-id="{{ target_product.variants[2].id | default: '' }}" tabindex="0" role="button" aria-label="Comprar Pack 3 Frascos 48ml">
-          <div class="onv-rhode-card__top">
-            <span class="onv-rhode-card__big-label">3 frascos</span>
-            <span class="onv-rhode-card__badge-pill">más popular</span>
+        <article
+          class="onv-fav-card"
+          data-onv-add
+          data-variant-id="{{ target_product.variants[2].id | default: '' }}"
+          tabindex="0"
+          role="button"
+          aria-label="Comprar Pack 3 Frascos · 48 ml"
+        >
+          <div class="onv-fav-card__top">
+            <span class="onv-fav-card__label">3 frascos</span>
+            <span class="onv-fav-card__badge onv-fav-card__badge--green">más popular</span>
           </div>
-          
-          <div class="onv-rhode-card__img-wrap">
+
+          <div class="onv-fav-card__image-box">
             <img
               src="{{ 'onv-producto-frasco-3.png' | asset_url }}"
-              alt="ONYVERA Pack 3 Frascos 48ml"
-              class="onv-rhode-card__img"
-              width="240"
-              height="280"
+              alt="ONYVERA Sérum Botánico Pack 3 Frascos 48 ml"
+              class="onv-fav-card__img"
+              width="260"
+              height="340"
               loading="lazy"
             >
           </div>
 
-          <div class="onv-rhode-card__bottom">
-            <div class="onv-rhode-card__bottom-left">
-              <h3 class="onv-rhode-card__name">PACK 3 FRASCOS</h3>
-              <p class="onv-rhode-card__desc">Rutina intensiva de 45 días</p>
+          <div class="onv-fav-card__bottom">
+            <div class="onv-fav-card__details">
+              <h3 class="onv-fav-card__name">PACK 3 FRASCOS</h3>
+              <p class="onv-fav-card__sub">Rutina intensiva de 45 días</p>
             </div>
-            <div class="onv-rhode-card__bottom-right">
-              <span class="onv-rhode-card__price">
+            <div class="onv-fav-card__price-box">
+              <span class="onv-fav-card__price">
                 {%- if target_product.variants[2] != blank -%}
                   {{ target_product.variants[2].price | money }}
                 {%- else -%}
                   $25.00
                 {%- endif -%}
               </span>
+              <span class="onv-fav-card__compare">$30.00</span>
             </div>
           </div>
         </article>
@@ -137,226 +160,251 @@
 </section>
 
 {% style %}
-  .onv-rhode-favorites {
+  .onv-favorites-section {
     background-color: #ffffff;
-    padding: 36px 0 28px;
+    padding: 40px 0 32px;
     color: var(--onv-green-900);
     overflow: hidden;
   }
 
-  .onv-rhode-favorites__container {
+  .onv-favorites-section__container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
   }
 
-  .onv-rhode-favorites__header {
+  .onv-favorites-section__header {
     text-align: center;
-    margin-bottom: 26px;
+    margin-bottom: 30px;
   }
 
-  .onv-rhode-favorites__title {
+  .onv-favorites-section__title {
     font-family: var(--onv-display);
     font-size: clamp(24px, 3.2vw, 36px);
     font-weight: 600;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--onv-green-900);
     margin: 0;
   }
 
-  .onv-rhode-favorites__slider-wrap {
+  .onv-favorites-section__wrap {
     width: 100%;
   }
 
-  .onv-rhode-favorites__grid {
+  /* Cuadrícula de 3 columnas esbeltas y alargadas */
+  .onv-favorites-section__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 22px;
     width: 100%;
     box-sizing: border-box;
   }
 
-  /* Tarjeta Estilo Rhode */
-  .onv-rhode-card {
-    background-color: #f5f5f5;
-    border-radius: 20px;
+  /* Tarjeta Alargada (Aspect Ratio Vertical Esbelto) */
+  .onv-fav-card {
+    background: #F7F8F7;
+    border-radius: 24px;
+    border: 1px solid rgba(19, 46, 35, 0.08);
     padding: 24px 22px 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 420px;
+    height: 520px;
+    min-height: 520px;
     cursor: pointer;
     position: relative;
     box-sizing: border-box;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
     user-select: none;
-    border: none;
   }
 
-  .onv-rhode-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-    background-color: #f0f0f0;
+  .onv-fav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(19, 46, 35, 0.10);
+    border-color: rgba(44, 110, 86, 0.22);
+    background: #F4F6F4;
   }
 
-  .onv-rhode-card:active {
+  .onv-fav-card:active {
     transform: scale(0.98);
   }
 
   /* Cabecera de la Tarjeta */
-  .onv-rhode-card__top {
+  .onv-fav-card__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 12px;
+    min-height: 32px;
   }
 
-  .onv-rhode-card__big-label {
+  .onv-fav-card__label {
     font-family: var(--onv-body);
-    font-size: clamp(28px, 2.8vw, 36px);
+    font-size: clamp(24px, 2.2vw, 30px);
     font-weight: 800;
-    letter-spacing: -0.04em;
-    color: #4a4a4a;
+    letter-spacing: -0.03em;
+    color: var(--onv-green-900);
     line-height: 1;
     text-transform: lowercase;
   }
 
-  .onv-rhode-card__badge-pill {
+  .onv-fav-card__badge {
     font-family: var(--onv-body);
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    background: #1e1e1e;
-    color: #ffffff;
-    padding: 4px 9px;
+    padding: 5px 10px;
     border-radius: 999px;
     line-height: 1;
   }
 
-  /* Imagen Centrada */
-  .onv-rhode-card__img-wrap {
+  .onv-fav-card__badge--gold {
+    background: #A8833B;
+    color: #ffffff;
+  }
+
+  .onv-fav-card__badge--green {
+    background: #132E23;
+    color: #ffffff;
+  }
+
+  /* Contenedor de la Imagen: Ocupa toda la tarjeta */
+  .onv-fav-card__image-box {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px 0 20px;
+    padding: 10px 0;
+    width: 100%;
+    overflow: hidden;
   }
 
-  .onv-rhode-card__img {
-    max-height: 210px;
-    width: auto;
+  .onv-fav-card__img {
+    max-height: 290px;
+    width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 12px 22px rgba(19, 46, 35, 0.13));
+    transition: transform 0.35s ease;
   }
 
-  .onv-rhode-card:hover .onv-rhode-card__img {
+  .onv-fav-card:hover .onv-fav-card__img {
     transform: scale(1.06);
   }
 
-  /* Pie de Tarjeta */
-  .onv-rhode-card__bottom {
+  /* Pie de la Tarjeta */
+  .onv-fav-card__bottom {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 12px;
     width: 100%;
-    padding-top: 12px;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    padding-top: 14px;
+    border-top: 1px solid rgba(19, 46, 35, 0.08);
   }
 
-  .onv-rhode-card__bottom-left {
+  .onv-fav-card__details {
     display: flex;
     flex-direction: column;
     gap: 3px;
   }
 
-  .onv-rhode-card__name {
+  .onv-fav-card__name {
     font-family: var(--onv-body);
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.04em;
-    color: #1a1a1a;
+    color: var(--onv-green-900);
     margin: 0;
     line-height: 1.2;
     text-transform: uppercase;
   }
 
-  .onv-rhode-card__desc {
+  .onv-fav-card__sub {
     font-family: var(--onv-body);
     font-size: 12px;
-    color: #737373;
+    color: var(--onv-ink-soft);
     margin: 0;
     line-height: 1.2;
   }
 
-  .onv-rhode-card__bottom-right {
+  .onv-fav-card__price-box {
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1px;
     flex-shrink: 0;
   }
 
-  .onv-rhode-card__price {
+  .onv-fav-card__price {
     font-family: var(--onv-body);
-    font-size: 14.5px;
+    font-size: 15.5px;
     font-weight: 800;
-    color: #1a1a1a;
+    color: var(--onv-green-900);
     letter-spacing: -0.01em;
+  }
+
+  .onv-fav-card__compare {
+    font-family: var(--onv-body);
+    font-size: 11.5px;
+    color: #8c9b93;
+    text-decoration: line-through;
   }
 
   /* Responsive Móvil / Tablets */
   @media (max-width: 767px) {
-    .onv-rhode-favorites__slider-wrap {
+    .onv-favorites-section__wrap {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 0 16px 12px;
+      padding: 0 16px 14px;
       margin: 0 -20px;
     }
 
-    .onv-rhode-favorites__slider-wrap::-webkit-scrollbar {
+    .onv-favorites-section__wrap::-webkit-scrollbar {
       display: none;
     }
 
-    .onv-rhode-favorites__grid {
+    .onv-favorites-section__grid {
       display: flex;
       gap: 14px;
       width: max-content;
     }
 
-    .onv-rhode-card {
-      flex: 0 0 250px;
-      width: 250px;
-      min-height: 380px;
+    .onv-fav-card {
+      flex: 0 0 240px;
+      width: 240px;
+      height: 440px;
+      min-height: 440px;
       padding: 20px 18px 18px;
       scroll-snap-align: start;
     }
 
-    .onv-rhode-card__big-label {
-      font-size: 26px;
+    .onv-fav-card__label {
+      font-size: 24px;
     }
 
-    .onv-rhode-card__img {
-      max-height: 170px;
+    .onv-fav-card__img {
+      max-height: 230px;
     }
   }
 {% endstyle %}
 
 {% schema %}
 {
-  "name": "ONV Favoritos Rhode",
+  "name": "ONV Favoritos Clientes",
   "tag": "section",
-  "class": "section-onv-rhode-favorites",
+  "class": "section-onv-favorites-section",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Los favoritos del público"
+      "default": "Los favoritos de nuestros clientes"
     },
     {
       "type": "product",
@@ -366,7 +414,7 @@
   ],
   "presets": [
     {
-      "name": "ONV Favoritos Rhode"
+      "name": "ONV Favoritos Clientes"
     }
   ]
 }
