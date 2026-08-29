@@ -1,545 +1,366 @@
-{% comment %}theme-check-disable UndefinedObject{% endcomment %}
-{{ 'section-footer.css' | asset_url | stylesheet_tag }}
-{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+  ONYVERA — Footer Global
+  Capa de fondo optimizada (desktop / móvil), velo verde oscuro regulable,
+  wordmark, tagline, columnas de navegación y políticas legales, aviso regulatorio obligatorio y copyright.
+{%- endcomment -%}
 
-{%- style -%}
-  .footer {
-    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
-  }
+{%- liquid
+  assign bg_desktop = section.settings.imagen_desktop
+  assign bg_mobile = section.settings.imagen_mobile
+  assign velo_opacity = section.settings.opacidad_velo | default: 88
+  assign velo_alpha = velo_opacity | divided_by: 100.0
+-%}
 
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+<footer class="site-footer" id="site-footer">
+  <!-- Fondo decorativo con picture (Desktop / Móvil diferido) -->
+  <picture class="site-footer__bg" aria-hidden="true">
+    {%- if bg_desktop != blank -%}
+      <source media="(min-width: 750px)" srcset="{{ bg_desktop | image_url: width: 1920 }}">
+    {%- else -%}
+      <source media="(min-width: 750px)" srcset="{{ 'onv-footer.jpg' | asset_url }}">
+    {%- endif -%}
 
-  @media screen and (min-width: 750px) {
-    .footer {
-      margin-top: {{ section.settings.margin_top }}px;
-    }
+    {%- if bg_mobile != blank -%}
+      <img
+        src="{{ bg_mobile | image_url: width: 1080 }}"
+        alt=""
+        width="1080"
+        height="1350"
+        loading="lazy"
+        decoding="async"
+      >
+    {%- else -%}
+      <img
+        src="{{ 'onv-footerphone.jpg' | asset_url }}"
+        alt=""
+        width="1080"
+        height="1350"
+        loading="lazy"
+        decoding="async"
+      >
+    {%- endif -%}
+  </picture>
 
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
+  <!-- Contenido Principal del Footer -->
+  <div class="site-footer__inner">
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  {%- liquid
-    assign has_social_icons = true
-    if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
-      assign has_social_icons = false
-    endif
+    <!-- 1. Wordmark -->
+    <a href="/" class="site-footer__brand" aria-label="ONYVERA Inicio">
+      {{ section.settings.wordmark | default: "ONYVERA" }}
+    </a>
 
-    if settings.brand_image == blank and settings.brand_headline == blank and settings.brand_description == blank
-      assign brand_empty = true
-    endif
+    <!-- 2. Tagline -->
+    <p class="site-footer__tagline">
+      {{ section.settings.tagline | default: "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas." | escape }}
+    </p>
 
-    if section.blocks.size == 1 and section.blocks[0].type == 'brand_information' and brand_empty and has_social_icons == false and section.settings.newsletter_enable == false and section.settings.enable_follow_on_shop == false
-      assign only_empty_brand = true
-    endif
-  -%}
-  {%- if section.blocks.size > 0
-    or section.settings.newsletter_enable
-    or section.settings.show_social
-    and has_social_icons == true
-    or section.settings.enable_follow_on_shop
-  -%}
-    {%- unless only_empty_brand -%}
-      <div class="footer__content-top page-width">
-        {%- if section.blocks.size > 0 -%}
-          {%- liquid
-            if section.blocks.size == 9
-              assign footer_grid_class = 'grid--3-col-tablet'
-            elsif section.blocks.size > 6
-              assign footer_grid_class = 'grid--4-col-desktop'
-            elsif section.blocks.size > 4
-              assign footer_grid_class = 'grid--3-col-tablet'
-            endif
-          -%}
-          <div
-            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-            {% if settings.animations_reveal_on_scroll %}
-              data-cascade
-            {% endif %}
-          >
-            {%- for block in section.blocks -%}
-              <div
-                class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index }};"
-                {% endif %}
-              >
-                {%- if block.settings.heading != blank -%}
-                  <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
-                {%- endif -%}
+    <!-- 3. Columnas de Enlaces -->
+    <div class="site-footer__nav-grid">
 
-                {%- case block.type -%}
-                  {%- when '@app' -%}
-                    {% render block %}
-                  {%- when 'text' -%}
-                    <div class="footer-block__details-content rte">
-                      {{ block.settings.subtext }}
-                    </div>
-                  {%- when 'link_list' -%}
-                    {%- if block.settings.menu != blank -%}
-                      <ul class="footer-block__details-content list-unstyled">
-                        {%- for link in block.settings.menu.links -%}
-                          <li>
-                            <a
-                              href="{{ link.url }}"
-                              class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
-                            >
-                              {{ link.title | escape }}
-                            </a>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    {%- endif -%}
-                  {%- when 'brand_information' -%}
-                    <div class="footer-block__brand-info">
-                      {%- if settings.brand_image != blank -%}
-                        {%- assign brand_image_height = settings.brand_image_width
-                          | divided_by: settings.brand_image.aspect_ratio
-                        -%}
-                        <div
-                          class="footer-block__image-wrapper"
-                          style="max-width: min(100%, {{ settings.brand_image_width }}px);"
-                        >
-                          {{
-                            settings.brand_image
-                            | image_url: width: 1100
-                            | image_tag:
-                              loading: 'lazy',
-                              widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
-                              height: brand_image_height,
-                              width: settings.brand_image_width
-                          }}
-                        </div>
-                      {%- endif -%}
-                      {%- if settings.brand_headline != blank -%}
-                        <h2 class="footer-block__heading rte">{{ settings.brand_headline }}</h2>
-                      {%- endif -%}
-                      {%- if settings.brand_description != blank -%}
-                        <div class="rte">{{ settings.brand_description }}</div>
-                      {%- endif -%}
-                      {%- if block.settings.show_social and has_social_icons -%}
-                        {%- render 'social-icons', class: 'footer__list-social' -%}
-                      {%- endif -%}
-                    </div>
-                  {%- when 'image' -%}
-                    <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
-                      {%- if block.settings.image != blank -%}
-                        {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
-                        <div
-                          class="footer-block__image-wrapper"
-                          style="max-width: min(100%, {{ block.settings.image_width }}px);"
-                        >
-                          <img
-                            srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
-                            src="{{ block.settings.image | image_url: width: 760 }}"
-                            alt="{{ block.settings.image.alt | escape }}"
-                            loading="lazy"
-                            width="{{ block.settings.image.width }}"
-                            height="{{ block.settings.image.height }}"
-                          >
-                        </div>
-                      {%- else -%}
-                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
-                      {%- endif -%}
-                    </div>
-                {%- endcase -%}
-              </div>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
+      <!-- Columna A: Navegación -->
+      <div class="site-footer__nav-col">
+        <h3 class="site-footer__col-heading">NAVEGACIÓN</h3>
+        <ul class="site-footer__link-list">
+          <li><a href="/" class="site-footer__link">Inicio</a></li>
+          <li><a href="/#onv-routine" class="site-footer__link">Cómo Aplicar</a></li>
+          <li><a href="/#onv-progress" class="site-footer__link">Rutina 4 Semanas</a></li>
+          <li><a href="/#onv-specs" class="site-footer__link">Ingredientes</a></li>
+          <li><a href="/#onv-bundles" class="site-footer__link">Formatos & Precios</a></li>
+        </ul>
+      </div>
 
-        <div
-          class="footer-block--newsletter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-          {% endif %}
-        >
-          {%- if section.settings.newsletter_enable -%}
-            <div class="footer-block__newsletter">
-              {%- if section.settings.newsletter_heading != blank -%}
-                <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
-              {%- endif -%}
-              {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
-                <input type="hidden" name="contact[tags]" value="newsletter">
-                <div class="newsletter-form__field-wrapper">
-                  <div class="field">
-                    <input
-                      id="NewsletterForm--{{ section.id }}"
-                      type="email"
-                      name="contact[email]"
-                      class="field__input"
-                      value="{{ form.email }}"
-                      aria-required="true"
-                      autocorrect="off"
-                      autocapitalize="off"
-                      autocomplete="email"
-                      {% if form.errors %}
-                        autofocus
-                        aria-invalid="true"
-                        aria-describedby="ContactFooter-error"
-                      {% elsif form.posted_successfully? %}
-                        aria-describedby="ContactFooter-success"
-                      {% endif %}
-                      placeholder="{{ 'newsletter.label' | t }}"
-                      required
-                    >
-                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                      {{ 'newsletter.label' | t }}
-                    </label>
-                    <button
-                      type="submit"
-                      class="newsletter-form__button field__button"
-                      name="commit"
-                      id="Subscribe"
-                      aria-label="{{ 'newsletter.button_label' | t }}"
-                    >
-                      <span class="svg-wrapper">
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                      </span>
-                    </button>
-                  </div>
-                  {%- if form.errors -%}
-                    <small class="newsletter-form__message form__message" id="ContactFooter-error">
-                      <span class="svg-wrapper">
-                        {{- 'icon-error.svg' | inline_asset_content -}}
-                      </span>
-                      {{- form.errors.translated_fields.email | capitalize }}
-                      {{ form.errors.messages.email -}}
-                    </small>
-                  {%- endif -%}
-                </div>
-                {%- if form.posted_successfully? -%}
-                  <h3
-                    class="newsletter-form__message newsletter-form__message--success form__message"
-                    id="ContactFooter-success"
-                    tabindex="-1"
-                    autofocus
-                  >
-                    <span class="svg-wrapper">
-                      {{- 'icon-success.svg' | inline_asset_content -}}
-                    </span>
-                    {{- 'newsletter.success' | t }}
-                  </h3>
-                {%- endif -%}
-              {%- endform -%}
-            </div>
+      <!-- Columna B: Información Legal -->
+      <div class="site-footer__nav-col">
+        <h3 class="site-footer__col-heading">INFORMACIÓN LEGAL</h3>
+        <ul class="site-footer__link-list">
+          {%- if shop.privacy_policy != blank -%}
+            <li><a href="{{ shop.privacy_policy.url }}" class="site-footer__link">Privacidad</a></li>
+          {%- else -%}
+            <li><a href="/policies/privacy-policy" class="site-footer__link">Privacidad</a></li>
           {%- endif -%}
 
-          {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
-            <div class="footer__follow-on-shop">
-              {{ shop | login_button: action: 'follow' }}
-            </div>
+          {%- if shop.terms_of_service != blank -%}
+            <li><a href="{{ shop.terms_of_service.url }}" class="site-footer__link">Términos de Servicio</a></li>
+          {%- else -%}
+            <li><a href="/policies/terms-of-service" class="site-footer__link">Términos de Servicio</a></li>
           {%- endif -%}
 
-          {%- if section.settings.show_social and has_social_icons -%}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+          {%- if shop.shipping_policy != blank -%}
+            <li><a href="{{ shop.shipping_policy.url }}" class="site-footer__link">Envíos</a></li>
+          {%- else -%}
+            <li><a href="/policies/shipping-policy" class="site-footer__link">Envíos</a></li>
           {%- endif -%}
-        </div>
-      </div>
-    {%- endunless -%}
-  {%- endif -%}
 
-  <div
-    class="footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    {% if settings.animations_reveal_on_scroll %}
-      data-cascade
-    {% endif %}
-  >
-    <div class="footer__content-bottom-wrapper page-width">
-      <div class="footer__column footer__localization isolate">
-        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-          <localization-form>
-            {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="caption-large text-body" id="FooterCountryLabel">{{ 'localization.country_label' | t }}</h2>
-                {%- render 'country-localization', localPosition: 'FooterCountry' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%}
+          {%- if shop.refund_policy != blank -%}
+            <li><a href="{{ shop.refund_policy.url }}" class="site-footer__link">Reembolsos</a></li>
+          {%- else -%}
+            <li><a href="/policies/refund-policy" class="site-footer__link">Reembolsos</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
 
-        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-          <localization-form>
-            {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
-              <div>
-                <h2 class="caption-large text-body" id="FooterLanguageLabel">
-                  {{ 'localization.language_label' | t }}
-                </h2>
-                {%- render 'language-localization', localPosition: 'FooterLanguage' -%}
-              </div>
-            {%- endform -%}
-          </localization-form>
-        {%- endif -%}
-      </div>
-      <div class="footer__column footer__column--info">
-        {%- if section.settings.payment_enable -%}
-          <div class="footer__payment">
-            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        {%- endif -%}
-      </div>
     </div>
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-      <div class="footer__copyright caption">
-        <small class="copyright__content"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
-        {%- if section.settings.show_policy -%}
-          <ul class="policies list-unstyled">
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
-                <li>
-                  <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                  >
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-      </div>
+
+    <!-- 4. Línea Divisoria -->
+    <hr class="site-footer__divider" aria-hidden="true">
+
+    <!-- 5. Línea Corporativa -->
+    <p class="site-footer__corp">
+      {{ section.settings.linea_corporativa | default: "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU." | escape }}
+    </p>
+
+    <!-- 6. Descargo Regulatorio Obligatorio -->
+    <div class="site-footer__disclaimer-box">
+      <p class="site-footer__disclaimer-text">
+        *Este producto es un cosmético botánico para el cuidado y embellecimiento de uñas y cutículas. No está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad.
+      </p>
     </div>
+
+    <!-- 7. Copyright -->
+    <p class="site-footer__copy">
+      © {{ 'now' | date: '%Y' }} ONYVERA. Todos los derechos reservados.
+    </p>
+
   </div>
 </footer>
 
+{% style %}
+  .site-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .site-footer__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .site-footer__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+  }
+
+  /* Velo verde oscuro con opacidad regulable */
+  .site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: rgba(27, 58, 47, {{ velo_alpha }});
+    pointer-events: none;
+  }
+
+  .site-footer__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin-inline: auto;
+    padding: clamp(48px, 7vw, 80px) 24px clamp(32px, 4vw, 44px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* 1. Wordmark */
+  .site-footer__brand {
+    font-family: var(--font-display, "Playfair Display", Georgia, serif) !important;
+    font-weight: 600 !important;
+    font-size: clamp(1.5rem, 3vw, 2rem) !important;
+    letter-spacing: 0.06em;
+    color: #F6F2E9 !important;
+    text-decoration: none;
+    margin-bottom: 12px;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer__brand:hover {
+    opacity: 0.88;
+  }
+
+  /* 2. Tagline */
+  .site-footer__tagline {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.6 !important;
+    color: #E6E0D2 !important;
+    max-width: 46ch;
+    margin: 0 auto clamp(36px, 5vw, 52px) auto;
+  }
+
+  /* 3. Columnas de Enlaces */
+  .site-footer__nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .site-footer__col-heading {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 0.8125rem !important; /* 13px */
+    text-transform: uppercase !important;
+    letter-spacing: 0.14em !important;
+    color: #D9BC85 !important; /* Contraste verificado 4.9:1 AA */
+    margin: 0 0 16px 0 !important;
+  }
+
+  .site-footer__link-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .site-footer__link-list li {
+    margin-bottom: 12px;
+  }
+
+  .site-footer__link-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .site-footer__link {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important; /* 14px */
+    color: #F6F2E9 !important;
+    text-decoration: none;
+    display: inline-block;
+    transition: text-decoration 0.2s ease, opacity 0.2s ease;
+  }
+
+  .site-footer__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .site-footer__link:focus-visible {
+    outline: 2px solid #D9BC85;
+    outline-offset: 3px;
+  }
+
+  /* 4. Línea Divisoria */
+  .site-footer__divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(246, 242, 233, 0.18);
+    border: none;
+    margin: clamp(36px, 5vw, 48px) 0;
+  }
+
+  /* 5. Línea Corporativa */
+  .site-footer__corp {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 500 !important;
+    font-size: 0.75rem !important; /* 12px */
+    letter-spacing: 0.04em !important;
+    color: #E6E0D2 !important;
+    margin: 0 0 18px 0;
+  }
+
+  /* 6. Descargo Regulatorio */
+  .site-footer__disclaimer-box {
+    background: rgba(246, 242, 233, 0.07);
+    border: 1px solid rgba(246, 242, 233, 0.14);
+    border-radius: 8px;
+    padding: 16px 20px;
+    max-width: 62ch;
+    margin: 0 auto 24px auto;
+    box-sizing: border-box;
+  }
+
+  .site-footer__disclaimer-text {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 0.75rem !important; /* 12px */
+    line-height: 1.6 !important;
+    color: #E6E0D2 !important;
+    margin: 0;
+  }
+
+  /* 7. Copyright */
+  .site-footer__copy {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 0.75rem !important; /* 12px */
+    color: rgba(246, 242, 233, 0.65) !important;
+    margin: 0;
+  }
+
+  /* Layout Móvil (< 600px) */
+  @media (max-width: 599px) {
+    .site-footer__nav-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+
+    .site-footer__link {
+      padding-block: 8px;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+{% endstyle %}
+
 {% schema %}
 {
-  "name": "t:sections.footer.name",
-  "blocks": [
+  "name": "Footer global ONYVERA",
+  "settings": [
     {
-      "type": "@app"
+      "type": "text",
+      "id": "wordmark",
+      "label": "Wordmark / Marca",
+      "default": "ONYVERA"
     },
     {
-      "type": "link_list",
-      "name": "t:sections.footer.blocks.link_list.name",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.footer.blocks.link_list.settings.heading.default",
-          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "default": "footer",
-          "label": "t:sections.footer.blocks.link_list.settings.menu.label"
-        }
-      ]
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas."
     },
     {
-      "type": "brand_information",
-      "name": "t:sections.footer.blocks.brand_information.name",
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_social",
-          "default": true,
-          "label": "t:sections.footer.blocks.brand_information.settings.show_social.label",
-          "info": "t:sections.footer.blocks.brand_information.settings.show_social.info"
-        }
-      ]
+      "type": "image_picker",
+      "id": "imagen_desktop",
+      "label": "Imagen de fondo Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "imagen_mobile",
+      "label": "Imagen de fondo Móvil"
+    },
+    {
+      "type": "range",
+      "id": "opacidad_velo",
+      "min": 70,
+      "max": 95,
+      "step": 1,
+      "unit": "%",
+      "label": "Opacidad del velo verde",
+      "default": 88
     },
     {
       "type": "text",
-      "name": "t:sections.footer.blocks.text.name",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "t:sections.footer.blocks.text.settings.heading.default",
-          "label": "t:sections.footer.blocks.text.settings.heading.label"
-        },
-        {
-          "type": "richtext",
-          "id": "subtext",
-          "default": "t:sections.footer.blocks.text.settings.subtext.default",
-          "label": "t:sections.footer.blocks.text.settings.subtext.label"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 550,
-          "step": 5,
-          "unit": "px",
-          "label": "Width",
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        }
-      ]
+      "id": "linea_corporativa",
+      "label": "Línea Corporativa",
+      "default": "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU."
     }
-  ],
-  "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "newsletter_heading",
-      "default": "t:sections.footer.settings.newsletter_heading.default",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__9.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_follow_on_shop",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_follow_on_shop.label",
-      "info": "t:sections.footer.settings.enable_follow_on_shop.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": true,
-      "label": "t:sections.footer.settings.show_social.label",
-      "info": "t:sections.footer.settings.show_social.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_country_selector.label",
-      "info": "t:sections.footer.settings.enable_country_selector.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_language_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_language_selector.label",
-      "info": "t:sections.footer.settings.enable_language_selector.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "payment_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.payment_enable.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_policy",
-      "default": true,
-      "label": "t:sections.footer.settings.show_policy.label",
-      "info": "t:sections.footer.settings.show_policy.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.footer.settings.margin_top.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ],
-  "default": {
-    "blocks": [
-      {
-        "type": "link_list"
-      },
-      {
-        "type": "text"
-      }
-    ]
-  }
+  ]
 }
 {% endschema %}
