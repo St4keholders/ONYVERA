@@ -113,7 +113,7 @@ button, .button, [class*="__btn"], .product-form__submit {
 nav a, .list-menu__item, .header__menu-item, .menu-drawer__menu-item {
   font-family: var(--font-ui) !important;
   font-weight: 500 !important;
-  font-size: 0.9375rem !important;
+  font-size: 1.0625rem !important;
   letter-spacing: 0.01em !important;
 }
 

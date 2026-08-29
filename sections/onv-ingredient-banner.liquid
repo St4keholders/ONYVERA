@@ -119,24 +119,24 @@
     );
   }
 
-  /* Cápsula de Texto en Glassmorphism */
+  /* Cápsula de Texto en Glassmorphism Líquido/Transparente */
   .onv-ing-banner__content {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 4.5%;
-    max-width: 36ch;
+    max-width: 42ch;
     z-index: 2;
     line-height: normal;
     text-align: left;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 24px 28px;
-    box-shadow: 0 10px 30px rgba(19, 46, 35, 0.09);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 24px;
+    padding: 32px 36px;
+    box-shadow: 0 12px 40px rgba(19, 46, 35, 0.08);
   }
 
   .onv-ing-banner__container--center .onv-ing-banner__content {
@@ -145,11 +145,17 @@
     text-align: center;
   }
 
+  @media (min-width: 1000px) {
+    .onv-ing-banner__content {
+      padding: 36px 42px;
+    }
+  }
+
   @media (max-width: 999px) and (min-width: 600px) {
     .onv-ing-banner__content {
-      padding: 18px 22px;
-      max-width: 32ch;
-      border-radius: 16px;
+      padding: 24px 28px;
+      max-width: 36ch;
+      border-radius: 20px;
     }
   }
 
@@ -160,27 +166,27 @@
       right: 16px;
       transform: translateY(-50%);
       max-width: calc(100% - 32px);
-      padding: 16px 18px;
-      border-radius: 14px;
+      padding: 20px 22px;
+      border-radius: 16px;
     }
   }
 
   .onv-ing-banner__eyebrow {
     display: block;
-    font-family: var(--onv-body, 'Karla', sans-serif);
+    font-family: var(--font-ui, 'Karla', sans-serif);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    font-size: clamp(0.70rem, 0.85vw, 0.82rem);
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
     color: #1A5E4E;
-    margin: 0 0 0.55rem 0;
+    margin: 0 0 0.65rem 0;
   }
 
   .onv-ing-banner__heading {
-    font-family: var(--onv-display, 'Cormorant Garamond', serif);
+    font-family: var(--font-display, 'Playfair Display', serif);
     font-weight: 600;
-    line-height: 1.15;
-    font-size: clamp(1.35rem, 2.4vw, 2.2rem);
+    line-height: 1.12;
+    font-size: clamp(1.75rem, 3.2vw, 3rem);
     color: #132E23;
     margin: 0;
   }

@@ -212,12 +212,13 @@
   }
 
   .onv-favorites-section__title {
-    font-family: var(--onv-display);
-    font-size: clamp(24px, 3.2vw, 36px);
-    font-weight: 600;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 700;
     line-height: 1.15;
-    color: var(--onv-green-900);
+    color: var(--ink, #1B3A2F);
     margin: 0;
+    white-space: nowrap;
   }
 
   .onv-favorites-section__wrap {
@@ -343,11 +344,11 @@
   }
 
   .onv-img-card__name {
-    font-family: var(--onv-body);
-    font-size: 12.5px;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.04em;
-    color: var(--onv-green-900);
+    color: var(--ink, #1B3A2F);
     margin: 0;
     line-height: 1.2;
     text-transform: uppercase;
@@ -434,13 +435,32 @@
 
   /* Responsive Móvil / Tablets */
   @media (max-width: 767px) {
+    .onv-favorites-section {
+      padding: 28px 0 24px;
+    }
+
+    .onv-favorites-section__container {
+      padding: 0;
+    }
+
+    .onv-favorites-section__header {
+      padding: 0 16px;
+    }
+
+    .onv-favorites-section__title {
+      font-size: 22px !important;
+      white-space: nowrap;
+    }
+
     .onv-favorites-section__wrap {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       padding: 0 16px 14px;
-      margin: 0 -20px;
+      margin: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .onv-favorites-section__wrap::-webkit-scrollbar {
@@ -451,19 +471,37 @@
       display: flex;
       gap: 14px;
       width: max-content;
+      padding-right: 16px;
     }
 
     .onv-img-card {
-      flex: 0 0 250px;
-      width: 250px;
-      height: 440px;
-      padding: 12px;
+      flex: 0 0 calc(50vw - 24px);
+      width: calc(50vw - 24px);
+      height: 420px;
+      padding: 10px;
       scroll-snap-align: start;
     }
 
     .onv-img-card__glass-ribbon {
-      font-size: 9.5px;
-      padding: 5px 10px;
+      font-size: 8.5px;
+      padding: 4px 8px;
+    }
+
+    .onv-img-card__name {
+      font-size: 11px !important;
+    }
+
+    .onv-img-card__desc {
+      font-size: 10px;
+    }
+
+    .onv-img-card__price {
+      font-size: 13px;
+    }
+
+    .onv-img-card__btn {
+      padding: 6px 10px;
+      font-size: 10px;
     }
   }
 {% endstyle %}
