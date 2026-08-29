@@ -275,22 +275,6 @@
     </ul>
   </div>
 
-  <!-- Desplegable INCI nativo (Centrado en contenedor de página) -->
-  <div class="onv-ingredients__inci-container">
-    <div class="onv-ingredients__inci">
-      <details class="onv-ingredients__details">
-        <summary class="onv-ingredients__summary">
-          <span>{{ section.settings.inci_title | default: 'Ver lista completa de ingredientes (Nomenclatura INCI)' | escape }}</span>
-          <span class="onv-ingredients__chevron" aria-hidden="true">▾</span>
-        </summary>
-        <div class="onv-ingredients__inci-body">
-          <p class="onv-ingredients__inci-text">{{ section.settings.inci_text | escape }}</p>
-          <p class="onv-ingredients__inci-note">{{ section.settings.inci_note | escape }}</p>
-        </div>
-      </details>
-    </div>
-  </div>
-
 </section>
 
 {% style %}
