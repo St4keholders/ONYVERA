@@ -147,6 +147,26 @@
         "inci_text": "Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.",
         "inci_note": "Fórmula libre de parabenos, sulfatos, ftalatos y fragancias artificiales."
       }
+    },
+    "onv_progress": {
+      "type": "onv-progress",
+      "settings": {
+        "eyebrow": "PROCESO REAL · 45 DÍAS",
+        "title": "Una persona. Cuarenta y cinco días. Sin retoques.",
+        "day_1": "DÍA 1",
+        "desc_1": "Uña engrosada y amarillenta, con el borde áspero e irregular.",
+        "alt_1": "Uña del pie en el día 1: engrosada, amarillenta, de borde áspero.",
+        "day_2": "DÍA 15",
+        "desc_2": "La superficie empieza a emparejarse. El tono cambia mientras la uña crece.",
+        "alt_2": "Uña del pie en el día 15: la superficie se empareja y el tono cambia.",
+        "day_3": "DÍA 30",
+        "desc_3": "Crecimiento nuevo y limpio desde la base. Solo queda una marca tenue.",
+        "alt_3": "Uña del pie en el día 30: crecimiento nuevo y limpio desde la base.",
+        "day_4": "DÍA 45",
+        "desc_4": "Color uniforme y superficie lisa en toda la uña.",
+        "alt_4": "Uña del pie en el día 45: color uniforme y superficie lisa.",
+        "disclaimer": "Fotografías de una sola persona durante 45 días de uso diario. Sin retoques. Los resultados varían según cada caso."
+      }
     }
   },
   "order": [
@@ -158,6 +178,7 @@
     "onv_prueba_social",
     "onv_reviews",
     "onv_ingredient_banner",
-    "onv_ingredientes"
+    "onv_ingredientes",
+    "onv_progress"
   ]
 }
