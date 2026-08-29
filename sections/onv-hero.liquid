@@ -16,7 +16,12 @@
 
   assign hero_link = section.settings.link
   if hero_link == blank
-    assign hero_link = '#onv-specs'
+    assign target_prod = collections.all.products.first
+    if target_prod != blank
+      assign hero_link = target_prod.url
+    else
+      assign hero_link = '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml'
+    endif
   endif
 -%}
 

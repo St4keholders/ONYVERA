@@ -14,7 +14,14 @@
         {{ section.settings.titulo | default: "Recupera tus uñas. Recupera tu confianza." | escape }}
       </h2>
 
-      {%- assign btn_url = section.settings.enlace_boton | default: '/collections/all' -%}
+      {%- assign target_prod = collections.all.products.first -%}
+      {%- if section.settings.enlace_boton != blank -%}
+        {%- assign btn_url = section.settings.enlace_boton -%}
+      {%- elsif target_prod != blank -%}
+        {%- assign btn_url = target_prod.url -%}
+      {%- else -%}
+        {%- assign btn_url = '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml' -%}
+      {%- endif -%}
       <a href="{{ btn_url }}" class="onv-cta__button">
         {{ section.settings.texto_boton | default: "PIDE ONYVERA AHORA" | escape }}
       </a>

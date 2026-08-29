@@ -18,10 +18,19 @@
   endif
 
   assign text_pos = section.settings.text_position | default: 'left'
+
+  assign target_prod = collections.all.products.first
+  if section.settings.link != blank
+    assign banner_link = section.settings.link
+  elsif target_prod != blank
+    assign banner_link = target_prod.url
+  else
+    assign banner_link = '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml'
+  endif
 -%}
 
 <section id="onv-ingredient-banner-{{ section.id }}" class="onv-ing-banner">
-  <div class="onv-ing-banner__container onv-ing-banner__container--{{ text_pos }}">
+  <a href="{{ banner_link }}" class="onv-ing-banner__container onv-ing-banner__container--{{ text_pos }}" aria-label="Ver producto ONYVERA">
     
     <picture class="onv-ing-banner__picture">
       <img
@@ -48,7 +57,7 @@
       {%- endif -%}
     </div>
 
-  </div>
+  </a>
 </section>
 
 {% style %}
@@ -72,6 +81,9 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   @media (min-width: 600px) and (max-width: 999px) {
@@ -245,6 +257,11 @@
         }
       ],
       "default": "3:1"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Enlace del banner"
     }
   ],
   "presets": [

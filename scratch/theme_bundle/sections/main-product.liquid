@@ -466,7 +466,7 @@
     flex-wrap: wrap;
     font-family: var(--font-ui, 'Karla', sans-serif);
     font-weight: 400;
-    font-size: 0.8125rem; /* 13px */
+    font-size: 13.5px !important;
     color: #93A896;
   }
 
@@ -641,12 +641,12 @@
 
   /* 4.1 Marca */
   .pdp-brand {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 600;
-    font-size: 0.75rem; /* 12px */
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #2F7A6B;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.18em !important;
+    color: #2F7A6B !important;
     margin-bottom: 10px;
     display: block;
   }
@@ -655,7 +655,7 @@
   .pdp-title {
     font-family: var(--font-display, "Playfair Display", Georgia, serif) !important;
     font-weight: 600 !important;
-    font-size: clamp(1.5rem, 2.6vw, 2.125rem) !important;
+    font-size: clamp(24px, 2.8vw, 34px) !important;
     line-height: 1.15 !important;
     color: #1B3A2F !important;
     margin: 0 0 12px 0 !important;
@@ -671,20 +671,26 @@
 
   .pdp-stars {
     display: inline-flex;
-    gap: 2px;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .pdp-star {
+    width: 16px;
+    height: 16px;
   }
 
   .pdp-reviews-count {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.8125rem; /* 13px */
-    color: #4A5A52;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    color: #4A5A52 !important;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .pdp-reviews-count:hover {
-    color: #1B3A2F;
+    color: #1B3A2F !important;
     text-decoration: underline;
   }
 
@@ -696,31 +702,31 @@
   .pdp-price-row {
     display: flex;
     align-items: baseline;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
   .pdp-price {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 700 !important;
-    font-size: 1.625rem !important; /* 26px */
+    font-size: 28px !important;
     color: #1B3A2F !important;
   }
 
   .pdp-price-compare {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 400 !important;
-    font-size: 1rem !important; /* 16px */
+    font-size: 17px !important;
     color: #93A896 !important;
     text-decoration: line-through;
   }
 
   .pdp-discount-badge {
     background-color: #C0392B;
-    color: #FFFFFF;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.6875rem; /* 11px */
+    color: #FFFFFF !important;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
     padding: 4px 8px;
     border-radius: 4px;
     line-height: 1;
@@ -730,20 +736,20 @@
 
   .pdp-tax-note {
     display: block;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.75rem; /* 12px */
-    color: #93A896;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    color: #93A896 !important;
     margin-top: 4px;
   }
 
   /* Etiquetas de Bloque */
   .pdp-block-label {
     display: block;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 600;
-    font-size: 0.8125rem; /* 13px */
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 14.5px !important;
+    color: #1B3A2F !important;
     margin-bottom: 10px;
   }
 
@@ -762,20 +768,22 @@
     background-color: #FFFFFF;
     border: 1px solid #E6E0D2;
     border-radius: 999px;
-    padding: 7px 14px;
+    padding: 8px 14px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 600;
-    font-size: 0.6875rem; /* 11px */
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #1B3A2F;
+    gap: 7px;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #1B3A2F !important;
   }
 
   .pdp-chip__icon {
     flex-shrink: 0;
+    width: 15px;
+    height: 15px;
   }
 
   /* 4.6 Selector de Paquete (Radio Cards) */
@@ -832,33 +840,33 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     width: 100%;
     box-sizing: border-box;
     text-align: left;
   }
 
   .pdp-bundle__name {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.875rem; /* 14px */
-    color: #1B3A2F;
-    line-height: 1.2;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    color: #1B3A2F !important;
+    line-height: 1.2 !important;
   }
 
   .pdp-bundle__duration {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.75rem; /* 12px */
-    color: #4A5A52;
-    line-height: 1.2;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    color: #4A5A52 !important;
+    line-height: 1.2 !important;
   }
 
   .pdp-bundle__price {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.9375rem; /* 15px */
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    color: #1B3A2F !important;
     margin-top: 4px;
   }
 
@@ -868,11 +876,11 @@
     left: 50%;
     transform: translateX(-50%);
     background-color: #C6A264;
-    color: #1B3A2F;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.625rem; /* 10px */
-    padding: 3px 10px;
+    color: #1B3A2F !important;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    padding: 4px 10px;
     border-radius: 4px;
     white-space: nowrap;
     z-index: 2;
@@ -893,21 +901,21 @@
   .pdp-qty-stepper {
     border: 1px solid #E6E0D2;
     border-radius: 8px;
-    height: 46px;
+    height: 48px;
     display: inline-flex;
     align-items: center;
-    width: 130px;
+    width: 140px;
     box-sizing: border-box;
     background-color: #FFFFFF;
   }
 
   .pdp-qty-btn {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     background: transparent;
     border: none;
     color: #1B3A2F;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -920,14 +928,14 @@
   }
 
   .pdp-qty-input {
-    width: 42px;
+    width: 48px;
     border: none;
     background: transparent;
     text-align: center;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 600;
-    font-size: 1rem;
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    color: #1B3A2F !important;
     padding: 0;
     -moz-appearance: textfield;
   }
@@ -939,10 +947,10 @@
   }
 
   .pdp-cart-count-note {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.75rem; /* 12px */
-    color: #93A896;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 13.5px !important;
+    color: #93A896 !important;
   }
 
   /* 4.8 Botones */
@@ -958,9 +966,9 @@
     width: 100%;
     height: 52px;
     border-radius: 999px;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.9375rem; /* 15px */
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -973,7 +981,7 @@
 
   .pdp-btn--primary {
     background-color: #2F7A6B;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
   }
 
   .pdp-btn--primary:hover {
@@ -998,9 +1006,9 @@
     width: 100%;
     height: 52px;
     border-radius: 999px;
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.9375rem;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
     background-color: #1B3A2F !important;
     color: #F6F2E9 !important;
     border: none;
@@ -1021,8 +1029,8 @@
 
   .pdp-trust-row {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    align-items: center;
+    gap: 14px;
     padding-block: 14px;
     border-top: 1px solid #E6E0D2;
   }
@@ -1034,11 +1042,11 @@
   }
 
   .pdp-trust-row__text {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.5;
-    color: #4A5A52;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+    color: #4A5A52 !important;
   }
 
   /* 4.10 Caja de Garantía */
@@ -1060,11 +1068,11 @@
   }
 
   .pdp-guarantee-box__content {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.8125rem; /* 13px */
-    line-height: 1.55;
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: #1B3A2F !important;
   }
 
   /* 4.11 Acordeones */
@@ -1083,10 +1091,10 @@
   }
 
   .pdp-accordion__summary {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 600;
-    font-size: 0.9375rem; /* 15px */
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: #1B3A2F !important;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -1102,6 +1110,8 @@
   .pdp-accordion__chevron {
     transition: transform 0.25s ease;
     flex-shrink: 0;
+    width: 18px;
+    height: 18px;
   }
 
   .pdp-accordion[open] .pdp-accordion__chevron {
@@ -1109,13 +1119,20 @@
   }
 
   .pdp-accordion__content {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.65;
-    color: #4A5A52;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    color: #4A5A52 !important;
     padding-top: 10px;
     padding-bottom: 6px;
+  }
+
+  .pdp-accordion__content p {
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    margin: 0 0 8px 0;
+    color: #4A5A52 !important;
   }
 
   /* 5. Fila de Productos Relacionados */
@@ -1127,7 +1144,7 @@
   .onv-pdp__related-title {
     font-family: var(--font-display, "Playfair Display", Georgia, serif) !important;
     font-weight: 600 !important;
-    font-size: 1.375rem !important; /* 22px */
+    font-size: 22px !important;
     color: #1B3A2F !important;
     margin: 0 0 20px 0;
   }
@@ -1165,10 +1182,10 @@
   }
 
   .onv-pdp__related-name {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 500;
-    font-size: 0.875rem;
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    color: #1B3A2F !important;
     margin: 0;
     line-height: 1.3;
     display: -webkit-box;
@@ -1178,10 +1195,10 @@
   }
 
   .onv-pdp__related-price {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 700;
-    font-size: 0.9375rem;
-    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    color: #1B3A2F !important;
   }
 
   /* Lightbox Modal */
