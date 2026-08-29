@@ -152,38 +152,6 @@
             </div>
           </article>
 
-          <!-- Card 4: Sérum + Estuche Caja -->
-          <article class="onv-shop-specs__card">
-            <div class="onv-shop-specs__tag">EDICIÓN ESTUCHE</div>
-            <div class="onv-shop-specs__img-box">
-              <img
-                src="{{ 'onv-producto-caja.png' | asset_url }}"
-                alt="ONYVERA Sérum con Caja"
-                width="140"
-                height="180"
-                loading="lazy"
-                class="onv-shop-specs__img"
-              >
-            </div>
-            <div class="onv-shop-specs__card-info">
-              <h3 class="onv-shop-specs__name">Sérum + Caja Botánica</h3>
-              <p class="onv-shop-specs__duration">Presentación con caja rígida</p>
-              <div class="onv-shop-specs__price-row">
-                <span class="onv-shop-specs__price">$12.00</span>
-              </div>
-              <button
-                type="button"
-                class="onv-shop-specs__btn"
-                data-onv-add
-                data-variant-id="{{ target_product.variants[0].id | default: '' }}"
-                aria-label="Agregar sérum y estuche"
-              >
-                <span>AGREGAR</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              </button>
-            </div>
-          </article>
-
         </div>
       </div>
 
@@ -271,14 +239,16 @@
 
   .onv-shop-specs__container {
     width: 100%;
-    max-width: 600px;
+    max-width: 1040px;
     margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
   .onv-shop-specs__header {
     text-align: center;
     padding: 0 16px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   .onv-shop-specs__badge {
@@ -294,34 +264,34 @@
 
   .onv-shop-specs__title {
     font-family: var(--onv-display);
-    font-size: clamp(20px, 2.8vw, 28px);
+    font-size: clamp(22px, 3vw, 32px);
     font-weight: 600;
     line-height: 1.1;
     color: var(--onv-green-900);
-    margin: 0 0 3px;
+    margin: 0 0 4px;
   }
 
   .onv-shop-specs__subtitle {
     font-family: var(--onv-body);
-    font-size: 11px;
+    font-size: 12px;
     color: var(--onv-ink-soft);
     margin: 0 auto;
-    max-width: 440px;
+    max-width: 500px;
   }
 
-  /* Slider con Flechas */
+  /* Slider con Flechas en Móvil / Cuadrícula en Desktop */
   .onv-shop-specs__slider-container {
     position: relative;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .onv-shop-specs__nav-btn {
     position: absolute;
     top: 45%;
     transform: translateY(-50%);
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: #ffffff;
     border: 1px solid rgba(19, 46, 35, 0.14);
@@ -360,25 +330,18 @@
 
   .onv-shop-specs__track {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     width: max-content;
     padding: 0 20px;
   }
 
-  @media (min-width: 750px) {
-    .onv-shop-specs__track {
-      gap: 16px;
-      padding: 0 24px;
-    }
-  }
-
   /* Tarjeta de Producto */
   .onv-shop-specs__card {
-    flex: 0 0 215px;
-    width: 215px;
+    flex: 0 0 220px;
+    width: 220px;
     scroll-snap-align: center;
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: 16px;
     border: 1px solid rgba(19, 46, 35, 0.10);
     overflow: hidden;
     display: flex;
@@ -386,6 +349,41 @@
     box-shadow: 0 4px 14px rgba(19, 46, 35, 0.06);
     position: relative;
     user-select: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .onv-shop-specs__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(19, 46, 35, 0.10);
+  }
+
+  /* Desktop: Los 3 productos se ven juntos en 1 sola fila sin scroll horizontal */
+  @media (min-width: 768px) {
+    .onv-shop-specs__nav-btn {
+      display: none !important;
+    }
+
+    .onv-shop-specs__carousel-wrap {
+      overflow: visible;
+      padding: 8px 0 18px;
+    }
+
+    .onv-shop-specs__track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .onv-shop-specs__card {
+      flex: 1 1 0;
+      width: 100%;
+      max-width: 100%;
+      scroll-snap-align: none;
+    }
   }
 
   .onv-shop-specs__card--popular {
