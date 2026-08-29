@@ -167,6 +167,41 @@
         "alt_4": "Uña del pie en el día 45: color uniforme y superficie lisa.",
         "disclaimer": "Fotografías de una sola persona durante 45 días de uso diario. Sin retoques. Los resultados varían según cada caso."
       }
+    },
+    "onv_cta": {
+      "type": "onv-cta",
+      "blocks": {
+        "beneficio_1": {
+          "type": "beneficio",
+          "settings": {
+            "texto": "Envío gratis en EE. UU. en pedidos desde $50"
+          }
+        },
+        "beneficio_2": {
+          "type": "beneficio",
+          "settings": {
+            "texto": "Se envía desde Orlando, Florida"
+          }
+        },
+        "beneficio_3": {
+          "type": "beneficio",
+          "settings": {
+            "texto": "Vegano, libre de crueldad, sin parabenos ni sulfatos"
+          }
+        }
+      },
+      "block_order": [
+        "beneficio_1",
+        "beneficio_2",
+        "beneficio_3"
+      ],
+      "settings": {
+        "titulo": "Recupera tus uñas. Recupera tu confianza.",
+        "texto_boton": "PIDE ONYVERA AHORA",
+        "enlace_boton": "/collections/all",
+        "alt_text": "El frasco de sérum ONYVERA sostenido entre dos dedos.",
+        "posicion_imagen": "derecha"
+      }
     }
   },
   "order": [
@@ -179,6 +214,7 @@
     "onv_reviews",
     "onv_ingredient_banner",
     "onv_ingredientes",
-    "onv_progress"
+    "onv_progress",
+    "onv_cta"
   ]
 }
