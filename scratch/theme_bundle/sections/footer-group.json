@@ -2,19 +2,17 @@
   "name": "Pie de página ONYVERA",
   "type": "footer",
   "sections": {
-    "onv_footer": {
-      "type": "onv-footer",
+    "footer": {
+      "type": "footer",
       "settings": {
-        "brand_name": "ONYVERA",
-        "brand_tagline": "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas.",
-        "menu_title": "Navegación",
-        "legal_title": "Información Legal",
-        "company_info": "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU.",
-        "fda_disclaimer": "*Este producto es un cosmético botánico para el cuidado y embellecimiento de uñas y cutículas. No está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad."
+        "wordmark": "ONYVERA",
+        "tagline": "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas.",
+        "opacidad_velo": 88,
+        "linea_corporativa": "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU."
       }
     }
   },
   "order": [
-    "onv_footer"
+    "footer"
   ]
 }

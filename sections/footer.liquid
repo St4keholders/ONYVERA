@@ -1,7 +1,7 @@
 {%- comment -%}
-  ONYVERA — Footer Global
-  Capa de fondo optimizada (desktop / móvil), velo verde oscuro regulable,
-  wordmark, tagline, columnas de navegación y políticas legales, aviso regulatorio obligatorio y copyright.
+  ONYVERA — Footer Global (Diseño Profesional & Balanceado)
+  Capa de fondo responsiva, velo verde oscuro regulable, distribución balanceada
+  en 2 columnas tanto en desktop como en móvil, y eliminación del marco del descargo.
 {%- endcomment -%}
 
 {%- liquid
@@ -44,82 +44,86 @@
   <!-- Contenido Principal del Footer -->
   <div class="site-footer__inner">
 
-    <!-- 1. Wordmark -->
-    <a href="/" class="site-footer__brand" aria-label="ONYVERA Inicio">
-      {{ section.settings.wordmark | default: "ONYVERA" }}
-    </a>
+    <!-- BLOQUE SUPERIOR (Marca + Columnas) -->
+    <div class="site-footer__top">
 
-    <!-- 2. Tagline -->
-    <p class="site-footer__tagline">
-      {{ section.settings.tagline | default: "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas." | escape }}
-    </p>
-
-    <!-- 3. Columnas de Enlaces -->
-    <div class="site-footer__nav-grid">
-
-      <!-- Columna A: Navegación -->
-      <div class="site-footer__nav-col">
-        <h3 class="site-footer__col-heading">NAVEGACIÓN</h3>
-        <ul class="site-footer__link-list">
-          <li><a href="/" class="site-footer__link">Inicio</a></li>
-          <li><a href="/#onv-routine" class="site-footer__link">Cómo Aplicar</a></li>
-          <li><a href="/#onv-progress" class="site-footer__link">Rutina 4 Semanas</a></li>
-          <li><a href="/#onv-specs" class="site-footer__link">Ingredientes</a></li>
-          <li><a href="/#onv-bundles" class="site-footer__link">Formatos & Precios</a></li>
-        </ul>
+      <!-- Marca y Tagline -->
+      <div class="site-footer__brand-block">
+        <a href="/" class="site-footer__brand" aria-label="ONYVERA Inicio">
+          {{ section.settings.wordmark | default: "ONYVERA" }}
+        </a>
+        <p class="site-footer__tagline">
+          {{ section.settings.tagline | default: "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas." | escape }}
+        </p>
       </div>
 
-      <!-- Columna B: Información Legal -->
-      <div class="site-footer__nav-col">
-        <h3 class="site-footer__col-heading">INFORMACIÓN LEGAL</h3>
-        <ul class="site-footer__link-list">
-          {%- if shop.privacy_policy != blank -%}
-            <li><a href="{{ shop.privacy_policy.url }}" class="site-footer__link">Privacidad</a></li>
-          {%- else -%}
-            <li><a href="/policies/privacy-policy" class="site-footer__link">Privacidad</a></li>
-          {%- endif -%}
+      <!-- Columnas de Enlaces (2 columnas organizadas) -->
+      <div class="site-footer__nav-grid">
+        
+        <!-- Columna A: Navegación -->
+        <div class="site-footer__nav-col">
+          <h3 class="site-footer__col-heading">NAVEGACIÓN</h3>
+          <ul class="site-footer__link-list">
+            <li><a href="/" class="site-footer__link">Inicio</a></li>
+            <li><a href="/#onv-routine" class="site-footer__link">Cómo Aplicar</a></li>
+            <li><a href="/#onv-progress" class="site-footer__link">Rutina 4 Semanas</a></li>
+            <li><a href="/#onv-specs" class="site-footer__link">Ingredientes</a></li>
+            <li><a href="/#onv-bundles" class="site-footer__link">Formatos & Precios</a></li>
+          </ul>
+        </div>
 
-          {%- if shop.terms_of_service != blank -%}
-            <li><a href="{{ shop.terms_of_service.url }}" class="site-footer__link">Términos de Servicio</a></li>
-          {%- else -%}
-            <li><a href="/policies/terms-of-service" class="site-footer__link">Términos de Servicio</a></li>
-          {%- endif -%}
+        <!-- Columna B: Información Legal -->
+        <div class="site-footer__nav-col">
+          <h3 class="site-footer__col-heading">INFORMACIÓN LEGAL</h3>
+          <ul class="site-footer__link-list">
+            {%- if shop.privacy_policy != blank -%}
+              <li><a href="{{ shop.privacy_policy.url }}" class="site-footer__link">Privacidad</a></li>
+            {%- else -%}
+              <li><a href="/policies/privacy-policy" class="site-footer__link">Privacidad</a></li>
+            {%- endif -%}
 
-          {%- if shop.shipping_policy != blank -%}
-            <li><a href="{{ shop.shipping_policy.url }}" class="site-footer__link">Envíos</a></li>
-          {%- else -%}
-            <li><a href="/policies/shipping-policy" class="site-footer__link">Envíos</a></li>
-          {%- endif -%}
+            {%- if shop.terms_of_service != blank -%}
+              <li><a href="{{ shop.terms_of_service.url }}" class="site-footer__link">Términos de Servicio</a></li>
+            {%- else -%}
+              <li><a href="/policies/terms-of-service" class="site-footer__link">Términos de Servicio</a></li>
+            {%- endif -%}
 
-          {%- if shop.refund_policy != blank -%}
-            <li><a href="{{ shop.refund_policy.url }}" class="site-footer__link">Reembolsos</a></li>
-          {%- else -%}
-            <li><a href="/policies/refund-policy" class="site-footer__link">Reembolsos</a></li>
-          {%- endif -%}
-        </ul>
+            {%- if shop.shipping_policy != blank -%}
+              <li><a href="{{ shop.shipping_policy.url }}" class="site-footer__link">Envíos</a></li>
+            {%- else -%}
+              <li><a href="/policies/shipping-policy" class="site-footer__link">Envíos</a></li>
+            {%- endif -%}
+
+            {%- if shop.refund_policy != blank -%}
+              <li><a href="{{ shop.refund_policy.url }}" class="site-footer__link">Reembolsos</a></li>
+            {%- else -%}
+              <li><a href="/policies/refund-policy" class="site-footer__link">Reembolsos</a></li>
+            {%- endif -%}
+          </ul>
+        </div>
+
       </div>
 
     </div>
 
-    <!-- 4. Línea Divisoria -->
+    <!-- Línea Divisoria -->
     <hr class="site-footer__divider" aria-hidden="true">
 
-    <!-- 5. Línea Corporativa -->
-    <p class="site-footer__corp">
-      {{ section.settings.linea_corporativa | default: "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU." | escape }}
-    </p>
+    <!-- BLOQUE INFERIOR (Corporativo, Descargo sin marco, Copyright) -->
+    <div class="site-footer__bottom">
+      <p class="site-footer__corp">
+        {{ section.settings.linea_corporativa | default: "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU." | escape }}
+      </p>
 
-    <!-- 6. Descargo Regulatorio Obligatorio -->
-    <div class="site-footer__disclaimer-box">
+      <!-- Descargo Regulatorio sin marco/caja -->
       <p class="site-footer__disclaimer-text">
         *Este producto es un cosmético botánico para el cuidado y embellecimiento de uñas y cutículas. No está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad.
       </p>
-    </div>
 
-    <!-- 7. Copyright -->
-    <p class="site-footer__copy">
-      © {{ 'now' | date: '%Y' }} ONYVERA. Todos los derechos reservados.
-    </p>
+      <p class="site-footer__copy">
+        © {{ 'now' | date: '%Y' }} ONYVERA. Todos los derechos reservados.
+      </p>
+    </div>
 
   </div>
 </footer>
@@ -162,23 +166,38 @@
     z-index: 2;
     max-width: 1100px;
     margin-inline: auto;
-    padding: clamp(48px, 7vw, 80px) 24px clamp(32px, 4vw, 44px);
+    padding: 52px 24px 36px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
   }
 
-  /* 1. Wordmark */
+  /* Bloque Superior (Grid Desktop) */
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 56px;
+    align-items: start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 1. Wordmark & Tagline */
+  .site-footer__brand-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .site-footer__brand {
     font-family: var(--font-display, "Playfair Display", Georgia, serif) !important;
     font-weight: 600 !important;
-    font-size: clamp(24px, 3vw, 32px) !important;
+    font-size: 28px !important;
     letter-spacing: 0.06em;
     color: #F6F2E9 !important;
     text-decoration: none;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: inline-block;
     transition: opacity 0.2s ease;
   }
@@ -187,25 +206,22 @@
     opacity: 0.88;
   }
 
-  /* 2. Tagline */
   .site-footer__tagline {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 400 !important;
-    font-size: 14.5px !important;
-    line-height: 1.6 !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
     color: #E6E0D2 !important;
-    max-width: 46ch;
-    margin: 0 auto clamp(36px, 5vw, 52px) auto;
+    max-width: 38ch;
+    margin: 0;
   }
 
-  /* 3. Columnas de Enlaces */
+  /* 2. Columnas de Enlaces */
   .site-footer__nav-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     width: 100%;
-    max-width: 620px;
-    margin-inline: auto;
     text-align: left;
     box-sizing: border-box;
   }
@@ -213,11 +229,11 @@
   .site-footer__col-heading {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 700 !important;
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.14em !important;
-    color: #D9BC85 !important; /* Contraste verificado 4.9:1 AA */
-    margin: 0 0 16px 0 !important;
+    letter-spacing: 0.12em !important;
+    color: #D9BC85 !important; /* Contraste verificado AA */
+    margin: 0 0 14px 0 !important;
   }
 
   .site-footer__link-list {
@@ -227,7 +243,7 @@
   }
 
   .site-footer__link-list li {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .site-footer__link-list li:last-child {
@@ -237,7 +253,7 @@
   .site-footer__link {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 400 !important;
-    font-size: 14.5px !important;
+    font-size: 14px !important;
     color: #F6F2E9 !important;
     text-decoration: none;
     display: inline-block;
@@ -254,68 +270,126 @@
     outline-offset: 3px;
   }
 
-  /* 4. Línea Divisoria */
+  /* 3. Línea Divisoria */
   .site-footer__divider {
     width: 100%;
     height: 1px;
-    background-color: rgba(246, 242, 233, 0.18);
+    background-color: rgba(246, 242, 233, 0.14);
     border: none;
-    margin: clamp(36px, 5vw, 48px) 0;
+    margin: 36px 0 24px 0;
   }
 
-  /* 5. Línea Corporativa */
+  /* 4. Bloque Inferior */
+  .site-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+  }
+
   .site-footer__corp {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 500 !important;
-    font-size: 13px !important;
-    letter-spacing: 0.04em !important;
+    font-size: 12.5px !important;
+    letter-spacing: 0.03em !important;
     color: #E6E0D2 !important;
-    margin: 0 0 18px 0;
+    margin: 0;
   }
 
-  /* 6. Descargo Regulatorio */
-  .site-footer__disclaimer-box {
-    background: rgba(246, 242, 233, 0.07);
-    border: 1px solid rgba(246, 242, 233, 0.14);
-    border-radius: 8px;
-    padding: 16px 20px;
-    max-width: 62ch;
-    margin: 0 auto 24px auto;
-    box-sizing: border-box;
-  }
-
+  /* Descargo limpio sin recuadro ni marco */
   .site-footer__disclaimer-text {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 400 !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    color: #E6E0D2 !important;
-    margin: 0;
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+    color: rgba(246, 242, 233, 0.72) !important;
+    max-width: 68ch;
+    margin: 0 auto;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
   }
 
-  /* 7. Copyright */
+  /* Copyright */
   .site-footer__copy {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 400 !important;
-    font-size: 13px !important;
-    color: rgba(246, 242, 233, 0.65) !important;
-    margin: 0;
+    font-size: 12px !important;
+    color: rgba(246, 242, 233, 0.55) !important;
+    margin: 4px 0 0 0;
   }
 
-  /* Layout Móvil (< 600px) */
-  @media (max-width: 599px) {
-    .site-footer__nav-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
+  /* Layout Móvil (< 750px) */
+  @media (max-width: 749px) {
+    .site-footer__inner {
+      padding: 38px 20px 24px;
+    }
+
+    .site-footer__top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 28px;
+    }
+
+    .site-footer__brand-block {
+      align-items: center;
       text-align: center;
     }
 
+    .site-footer__brand {
+      font-size: 24px !important;
+      margin-bottom: 6px;
+    }
+
+    .site-footer__tagline {
+      font-size: 13px !important;
+      max-width: 32ch;
+      margin: 0 auto;
+    }
+
+    /* En móvil: 2 columnas lado a lado en vez de listado vertical interminable */
+    .site-footer__nav-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 20px;
+      max-width: 340px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .site-footer__col-heading {
+      font-size: 11.5px !important;
+      margin: 0 0 10px 0 !important;
+    }
+
+    .site-footer__link-list li {
+      margin-bottom: 6px;
+    }
+
     .site-footer__link {
-      padding-block: 11px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      box-sizing: border-box;
+      font-size: 13px !important;
+      padding-block: 4px;
+    }
+
+    .site-footer__divider {
+      margin: 24px 0 18px 0;
+    }
+
+    .site-footer__corp {
+      font-size: 11.5px !important;
+    }
+
+    .site-footer__disclaimer-text {
+      font-size: 10.5px !important;
+      line-height: 1.45 !important;
+      max-width: 100%;
+    }
+
+    .site-footer__copy {
+      font-size: 11px !important;
     }
   }
 {% endstyle %}
