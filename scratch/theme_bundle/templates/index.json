@@ -117,7 +117,7 @@
         "resena_6"
       ],
       "settings": {
-        "usar_resenas_prueba": false,
+        "usar_resenas_prueba": true,
         "velocidad": 75
       }
     },
