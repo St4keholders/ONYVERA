@@ -1,7 +1,6 @@
 {%- comment -%}
   ONYVERA — Sección: Shoppable UGC Carousel (True Infinite DOM Loop)
-  Loop circular infinito continuo: nunca se acaban las tarjetas, 0 espacios en blanco a los lados,
-  rotación automática cada 3 segundos y la tarjeta del centro siempre es la más grande.
+  Cero saltos en la página (altura fija), sin bordes negros, transición fluida y loop infinito continuo.
 {%- endcomment -%}
 
 {%- liquid
@@ -22,7 +21,7 @@
       <span class="onv-shoppable-ugc__badge">{{ section.settings.eyebrow | default: "RESULTADOS REALES" | escape }}</span>
     </div>
 
-    <!-- Escenario del Carrusel Infinito (Edge-to-Edge) -->
+    <!-- Escenario del Carrusel con Altura Fija y Sin Layout Shifts -->
     <div class="onv-shoppable-stage" id="onv-shoppable-stage">
       <!-- Botones de Navegación -->
       <button type="button" class="onv-shoppable-nav onv-shoppable-nav--prev" id="onv-shoppable-prev" aria-label="Anterior resultado">
@@ -34,7 +33,7 @@
 
       <div class="onv-shoppable-track" id="onv-shoppable-track">
 
-        <!-- Repetición 1 de los 3 ítems -->
+        <!-- Set 1 -->
         <div class="onv-shoppable-card" data-item="1">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
@@ -101,7 +100,7 @@
           </div>
         </div>
 
-        <!-- Repetición 2 -->
+        <!-- Set 2 -->
         <div class="onv-shoppable-card" data-item="1">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
@@ -168,7 +167,7 @@
           </div>
         </div>
 
-        <!-- Repetición 3 -->
+        <!-- Set 3 -->
         <div class="onv-shoppable-card" data-item="1">
           <div class="onv-shoppable-card__media">
             <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
@@ -235,51 +234,6 @@
           </div>
         </div>
 
-        <!-- Repetición 4 (Para garantizar cobertura infinita en pantallas anchas) -->
-        <div class="onv-shoppable-card" data-item="1">
-          <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
-            <div class="onv-shoppable-card__overlay-icons">
-              <span class="onv-shoppable-card__quote">“</span>
-              <span class="onv-shoppable-card__sound" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-              </span>
-            </div>
-          </div>
-          <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-producto-frasco.png' | asset_url }}" alt="ONYVERA 1 Frasco" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
-            <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">1 Frasco · 16 ml</span>
-              <span class="onv-shoppable-card__price">{% if target_product.variants[0] != blank %}{{ target_product.variants[0].price | money }}{% else %}$10.00{% endif %}</span>
-            </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" aria-label="Comprar 1 frasco">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="onv-shoppable-card" data-item="2">
-          <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Resultado 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
-            <div class="onv-shoppable-card__overlay-icons">
-              <span class="onv-shoppable-card__quote">“</span>
-              <span class="onv-shoppable-card__sound" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-              </span>
-            </div>
-          </div>
-          <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-producto-frasco-2.png' | asset_url }}" alt="ONYVERA 2 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
-            <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 2 Frascos (Ahorro)</span>
-              <span class="onv-shoppable-card__price">{% if target_product.variants[1] != blank %}{{ target_product.variants[1].price | money }}{% else %}$18.00{% endif %}</span>
-            </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[1].id | default: '' }}" aria-label="Comprar 2 frascos">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -299,10 +253,8 @@
       let isAnimating = false;
       let autoInterval = null;
 
-      // El índice visual del centro es el elemento del medio
       function getCenterIndex() {
-        const cards = track.children;
-        return Math.floor(cards.length / 2);
+        return Math.floor(track.children.length / 2);
       }
 
       function updateActiveClasses() {
@@ -334,7 +286,7 @@
         isAnimating = true;
 
         const step = getStepDistance();
-        track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)';
         track.style.transform = `translate3d(-${step}px, 0, 0)`;
 
         setTimeout(() => {
@@ -342,10 +294,9 @@
           track.appendChild(track.firstElementChild);
           track.style.transform = 'translate3d(0, 0, 0)';
           updateActiveClasses();
-          // Forzar reflow antes de permitir siguiente animación
           void track.offsetWidth;
           isAnimating = false;
-        }, 450);
+        }, 380);
       }
 
       function prevSlide() {
@@ -358,13 +309,13 @@
         track.style.transform = `translate3d(-${step}px, 0, 0)`;
         void track.offsetWidth;
 
-        track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)';
         track.style.transform = 'translate3d(0, 0, 0)';
 
         setTimeout(() => {
           updateActiveClasses();
           isAnimating = false;
-        }, 450);
+        }, 380);
       }
 
       function startAutoplay() {
@@ -392,7 +343,6 @@
         });
       }
 
-      // Al hacer clic en una tarjeta adyacente, avanzar hacia ella
       track.addEventListener('click', (e) => {
         if (e.target.closest('[data-onv-add]')) return;
         const clickedCard = e.target.closest('.onv-shoppable-card');
@@ -414,7 +364,6 @@
       stage.addEventListener('mouseenter', stopAutoplay);
       stage.addEventListener('mouseleave', startAutoplay);
 
-      // Gestos táctiles en móvil
       let touchStartX = 0;
       stage.addEventListener('touchstart', (e) => {
         stopAutoplay();
@@ -443,7 +392,7 @@
 {% style %}
   .onv-shoppable-ugc {
     background-color: #ffffff;
-    padding: 24px 0 20px;
+    padding: 28px 0 24px;
     color: var(--onv-green-900);
     overflow: hidden;
     position: relative;
@@ -460,7 +409,7 @@
   .onv-shoppable-ugc__header {
     text-align: center;
     padding: 0 16px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .onv-shoppable-ugc__badge {
@@ -474,19 +423,22 @@
     margin: 0;
   }
 
-  /* Escenario del Carrusel Infinito que Ocupa Toda la Pantalla sin Dejar Espacios en Blanco */
+  /* Escenario con altura fija para evitar saltos o layout shifts en la página */
   .onv-shoppable-stage {
     position: relative;
     width: 100vw;
+    height: 480px;
+    min-height: 480px;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
     overflow: hidden;
-    padding: 48px 0 44px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   /* Flechas de navegación */
@@ -536,33 +488,34 @@
     will-change: transform;
   }
 
-  /* Tarjeta Shoppable UGC */
+  /* Tarjeta Shoppable UGC con altura fija y sin bordes negros */
   .onv-shoppable-card {
     flex: 0 0 220px;
     width: 220px;
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     opacity: 0.75;
-    transform: scale(0.86);
+    transform: scale(0.88);
     user-select: none;
+    background: transparent;
   }
 
   .onv-shoppable-card.is-adjacent {
-    opacity: 0.90;
-    transform: scale(0.94);
+    opacity: 0.92;
+    transform: scale(0.96);
   }
 
   .onv-shoppable-card__media {
     position: relative;
     width: 100%;
-    height: 310px;
+    height: 330px;
     border-radius: 18px;
     overflow: hidden;
-    background: #111111;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-    transition: height 0.45s ease, box-shadow 0.45s ease;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    border: none;
   }
 
   .onv-shoppable-card__img {
@@ -570,6 +523,8 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border: none;
+    background: #ffffff;
   }
 
   .onv-shoppable-card__overlay-icons {
@@ -586,11 +541,12 @@
     position: absolute;
     bottom: 10px;
     left: 12px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 20px;
+    color: rgba(255, 255, 255, 0.90);
+    font-size: 22px;
     font-family: serif;
     font-weight: 700;
     line-height: 1;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
   }
 
   .onv-shoppable-card__sound {
@@ -600,7 +556,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(4px);
     color: #ffffff;
     display: flex;
@@ -625,7 +581,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .onv-shoppable-card__thumb {
@@ -685,65 +641,42 @@
     height: 14px;
   }
 
-  /* ESTADO ACTIVO: LA TARJETA DEL CENTRO ES LA MÁS GRANDE Y DESTACADA */
+  /* ESTADO ACTIVO: ESCALADO LIMPIO SIN BORDES OSCUROS NI CAMBIOS DE ALTURA EN EL DOM */
   .onv-shoppable-card.is-active {
-    transform: scale(1.16);
+    transform: scale(1.15);
     opacity: 1;
     z-index: 15;
   }
 
   .onv-shoppable-card.is-active .onv-shoppable-card__media {
-    height: 365px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-    border: 2px solid rgba(44, 110, 86, 0.40);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+    border: none;
   }
 
   .onv-shoppable-card.is-active .onv-shoppable-card__product-pill {
-    padding: 10px 14px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-    border-color: rgba(44, 110, 86, 0.30);
-  }
-
-  .onv-shoppable-card.is-active .onv-shoppable-card__thumb {
-    width: 32px;
-    height: 44px;
-  }
-
-  .onv-shoppable-card.is-active .onv-shoppable-card__name {
-    font-size: 12px;
-  }
-
-  .onv-shoppable-card.is-active .onv-shoppable-card__price {
-    font-size: 13.5px;
-  }
-
-  .onv-shoppable-card.is-active .onv-shoppable-card__btn {
-    width: 32px;
-    height: 32px;
+    padding: 9px 13px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   }
 
   /* Responsive Móvil / Tablets */
   @media (max-width: 767px) {
     .onv-shoppable-stage {
-      padding: 36px 0 32px;
+      height: 390px;
+      min-height: 390px;
     }
 
     .onv-shoppable-card {
-      flex: 0 0 170px;
-      width: 170px;
-      transform: scale(0.85);
+      flex: 0 0 175px;
+      width: 175px;
+      transform: scale(0.86);
     }
 
     .onv-shoppable-card__media {
-      height: 250px;
+      height: 260px;
     }
 
     .onv-shoppable-card.is-active {
       transform: scale(1.08);
-    }
-
-    .onv-shoppable-card.is-active .onv-shoppable-card__media {
-      height: 290px;
     }
 
     .onv-shoppable-nav {
