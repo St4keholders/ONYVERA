@@ -1,0 +1,461 @@
+{%- comment -%}
+  ONYVERA — Sección: Reseñas de Clientes (Marquee Continuo)
+  Cinta ticker continua de reseñas hacia la derecha con máscara de desvanecimiento lateral,
+  pausa al hover/focus, 3 copias para bucle infinito perfecto y salvaguarda de reseñas de prueba.
+{%- endcomment -%}
+
+{%- if section.settings.usar_resenas_prueba or request.design_mode -%}
+  <section id="onv-reviews" class="onv-reviews-section">
+    <h2 class="visually-hidden">Reseñas de clientes</h2>
+
+    {%- if request.design_mode -%}
+      <div class="onv-reviews-warning" role="alert">
+        <span class="onv-reviews-warning__icon" aria-hidden="true">⚠</span>
+        <span class="onv-reviews-warning__text">RESEÑAS DE PRUEBA — no son clientes reales. Reemplazar antes de publicar.</span>
+      </div>
+    {%- endif -%}
+
+    <div class="rev-marquee" role="region" aria-label="Reseñas de clientes">
+      <ul class="rev-marquee__track" style="--rev-speed: {{ section.settings.velocidad | default: 75 }}s;">
+
+        {%- comment -%} COPIA 1: Bloques reales {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <li class="rev-marquee__item" {{ block.shopify_attributes }}>
+            <article class="rev-card">
+              <!-- 1. Fila de estrellas -->
+              <div class="rev-card__stars" aria-hidden="true">
+                {%- assign rating = block.settings.estrellas | default: 5 -%}
+                {%- for i in (1..5) -%}
+                  {%- if i <= rating -%}
+                    <svg class="rev-star rev-star--filled" viewBox="0 0 20 20" width="16" height="16" fill="#C6A264" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  {%- else -%}
+                    <svg class="rev-star rev-star--empty" viewBox="0 0 20 20" width="16" height="16" fill="#E6E0D2" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <span class="visually-hidden">Calificado {{ rating }} de 5 estrellas</span>
+
+              <!-- 2. Cita -->
+              <blockquote class="rev-card__quote">
+                <p>{{ block.settings.cita | escape }}</p>
+              </blockquote>
+
+              <!-- 3. Espaciador y 4. Divisor -->
+              <div class="rev-card__divider" aria-hidden="true"></div>
+
+              <!-- 5. Nombre y 6. Meta -->
+              <footer class="rev-card__author">
+                <span class="rev-card__name">{{ block.settings.nombre | escape }}</span>
+                <span class="rev-card__meta">{{ block.settings.ubicacion | escape }}{% if block.settings.duracion != blank %} · {{ block.settings.duracion | escape }}{% endif %}</span>
+              </footer>
+            </article>
+          </li>
+        {%- endfor -%}
+
+        {%- comment -%} COPIA 2: aria-hidden="true" {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <li class="rev-marquee__item" aria-hidden="true">
+            <article class="rev-card">
+              <div class="rev-card__stars" aria-hidden="true">
+                {%- assign rating = block.settings.estrellas | default: 5 -%}
+                {%- for i in (1..5) -%}
+                  {%- if i <= rating -%}
+                    <svg class="rev-star rev-star--filled" viewBox="0 0 20 20" width="16" height="16" fill="#C6A264" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  {%- else -%}
+                    <svg class="rev-star rev-star--empty" viewBox="0 0 20 20" width="16" height="16" fill="#E6E0D2" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+              <blockquote class="rev-card__quote">
+                <p>{{ block.settings.cita | escape }}</p>
+              </blockquote>
+
+              <div class="rev-card__divider" aria-hidden="true"></div>
+
+              <footer class="rev-card__author">
+                <span class="rev-card__name">{{ block.settings.nombre | escape }}</span>
+                <span class="rev-card__meta">{{ block.settings.ubicacion | escape }}{% if block.settings.duracion != blank %} · {{ block.settings.duracion | escape }}{% endif %}</span>
+              </footer>
+            </article>
+          </li>
+        {%- endfor -%}
+
+        {%- comment -%} COPIA 3: aria-hidden="true" {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <li class="rev-marquee__item" aria-hidden="true">
+            <article class="rev-card">
+              <div class="rev-card__stars" aria-hidden="true">
+                {%- assign rating = block.settings.estrellas | default: 5 -%}
+                {%- for i in (1..5) -%}
+                  {%- if i <= rating -%}
+                    <svg class="rev-star rev-star--filled" viewBox="0 0 20 20" width="16" height="16" fill="#C6A264" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  {%- else -%}
+                    <svg class="rev-star rev-star--empty" viewBox="0 0 20 20" width="16" height="16" fill="#E6E0D2" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+              <blockquote class="rev-card__quote">
+                <p>{{ block.settings.cita | escape }}</p>
+              </blockquote>
+
+              <div class="rev-card__divider" aria-hidden="true"></div>
+
+              <footer class="rev-card__author">
+                <span class="rev-card__name">{{ block.settings.nombre | escape }}</span>
+                <span class="rev-card__meta">{{ block.settings.ubicacion | escape }}{% if block.settings.duracion != blank %} · {{ block.settings.duracion | escape }}{% endif %}</span>
+              </footer>
+            </article>
+          </li>
+        {%- endfor -%}
+
+      </ul>
+    </div>
+  </section>
+
+  {% style %}
+    .onv-reviews-section {
+      background-color: #ffffff;
+      padding: 24px 0 36px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Aviso ámbar dentro del editor de temas */
+    .onv-reviews-warning {
+      background-color: #FFFBEB;
+      border: 1px solid #FCD34D;
+      color: #92400E;
+      font-family: var(--font-ui, 'Karla', sans-serif);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 0 auto 20px;
+      max-width: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+
+    .onv-reviews-warning__icon {
+      font-size: 16px;
+    }
+
+    /* Marquee Strip Full-Bleed */
+    .rev-marquee {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+              mask-image: linear-gradient(to right, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
+      padding: 10px 0;
+    }
+
+    .rev-marquee__track {
+      display: flex;
+      width: max-content;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      animation: rev-scroll var(--rev-speed, 75s) linear infinite;
+      animation-direction: reverse; /* Avanza hacia la DERECHA */
+    }
+
+    /* Pausa en hover y focus-within */
+    .rev-marquee:hover .rev-marquee__track,
+    .rev-marquee:focus-within .rev-marquee__track {
+      animation-play-state: paused;
+    }
+
+    .rev-marquee__item {
+      flex: 0 0 340px;
+      width: 340px;
+      margin-right: 16px; /* margin-right en vez de flex gap */
+      display: flex;
+      box-sizing: border-box;
+    }
+
+    /* Keyframes para bucle perfecto con 3 copias */
+    @keyframes rev-scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-33.3333%);
+      }
+    }
+
+    /* Diseño de la Tarjeta */
+    .rev-card {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid #E6E0D2;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      box-shadow: none;
+      user-select: none;
+    }
+
+    /* 1. Fila de estrellas */
+    .rev-card__stars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+
+    .rev-star {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* 2. Cita */
+    .rev-card__quote {
+      margin: 0;
+      padding: 0;
+    }
+
+    .rev-card__quote p {
+      font-family: var(--font-ui, 'Karla', sans-serif) !important;
+      font-weight: 400 !important;
+      font-size: 0.9375rem !important; /* 15px */
+      line-height: 1.6 !important;
+      color: #4A5A52 !important;
+      margin: 0 !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 3. Espaciador & 4. Divisor */
+    .rev-card__divider {
+      margin-top: auto;
+      width: 100%;
+      height: 1px;
+      background-color: #E6E0D2;
+      margin-block: 16px;
+      border: none;
+    }
+
+    /* 5. Nombre & 6. Meta */
+    .rev-card__author {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .rev-card__name {
+      font-family: var(--font-ui, 'Karla', sans-serif) !important;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important; /* 14px */
+      color: #1B3A2F !important;
+      line-height: 1.3 !important;
+    }
+
+    .rev-card__meta {
+      font-family: var(--font-ui, 'Karla', sans-serif) !important;
+      font-weight: 400 !important;
+      font-size: 0.75rem !important; /* 12px */
+      color: #93A896 !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Responsive Mobile (< 700px) */
+    @media (max-width: 700px) {
+      .rev-marquee__track {
+        animation-duration: 55s;
+      }
+
+      .rev-marquee__item {
+        flex: 0 0 280px;
+        width: 280px;
+      }
+
+      .rev-card {
+        padding: 18px 20px;
+      }
+
+      .rev-card__quote p {
+        font-size: 0.875rem !important;
+      }
+    }
+
+    /* Accesibilidad: Reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      .rev-marquee {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+
+      .rev-marquee__track {
+        animation: none;
+      }
+
+      .rev-marquee__item[aria-hidden="true"] {
+        display: none;
+      }
+    }
+  {% endstyle %}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Reseñas (cinta)",
+  "tag": "section",
+  "class": "section-onv-reviews",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "usar_resenas_prueba",
+      "label": "Usar reseñas de prueba",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "velocidad",
+      "label": "Velocidad de desplazamiento",
+      "min": 40,
+      "max": 120,
+      "step": 5,
+      "default": 75,
+      "unit": "s"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "resena",
+      "name": "Reseña",
+      "settings": [
+        {
+          "type": "range",
+          "id": "estrellas",
+          "label": "Estrellas",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "cita",
+          "label": "Cita / Testimonio",
+          "default": "A los 45 días la diferencia es evidente. El amarillo de la punta desapareció y lo que creció después salió limpio."
+        },
+        {
+          "type": "text",
+          "id": "nombre",
+          "label": "Nombre",
+          "default": "Marcos R."
+        },
+        {
+          "type": "text",
+          "id": "ubicacion",
+          "label": "Ubicación",
+          "default": "Tampa, FL"
+        },
+        {
+          "type": "text",
+          "id": "duracion",
+          "label": "Duración de uso",
+          "default": "45 días de uso"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Reseñas (cinta)",
+      "blocks": [
+        {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "A los 45 días la diferencia es evidente. El amarillo de la punta desapareció y lo que creció después salió limpio.",
+            "nombre": "Marcos R.",
+            "ubicacion": "Tampa, FL",
+            "duracion": "45 días de uso"
+          }
+        },
+        {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "Había probado otros tres productos antes. La brocha fue lo que me convenció: no se riega, no se desperdicia y llega debajo del borde.",
+            "nombre": "Diana G.",
+            "ubicacion": "Columbus, OH",
+            "duracion": "45 días de uso"
+          }
+        },
+        {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "Pasaron como tres semanas antes de notar algo, así que hay que tener paciencia. Para la sexta semana la uña se veía normal.",
+            "nombre": "Carlos T.",
+            "ubicacion": "Phoenix, AZ",
+            "duracion": "45 días de uso"
+          }
+        },
+        {
+          "type": "resena",
+          "settings": {
+            "estrellas": 4,
+            "cita": "No arde y no tiene olor, que es lo que importa cuando lo aplicas todos los días durante mes y medio.",
+            "nombre": "Paola N.",
+            "ubicacion": "Newark, NJ",
+            "duracion": "45 días de uso"
+          }
+        },
+        {
+          "type": "resena",
+          "settings": {
+            "estrellas": 5,
+            "cita": "Usé sandalias en la boda de mi hija. Primera vez en cuatro años que no lo pensé dos veces.",
+            "nombre": "Roberto M.",
+            "ubicacion": "Savannah, GA",
+            "duracion": "45 días de uso"
+          }
+        },
+        {
+          "type": "resena",
+          "settings": {
+            "estrellas": 4,
+            "cita": "Primero se emparejó la textura, después el color. Lento pero constante durante los 45 días.",
+            "nombre": "Ángela V.",
+            "ubicacion": "Boise, ID",
+            "duracion": "45 días de uso"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

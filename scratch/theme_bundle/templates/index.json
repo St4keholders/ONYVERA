@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "onv_cinta": {
@@ -19,17 +28,12 @@
     "onv_prueba_social": {
       "type": "onv-prueba-social",
       "settings": {
-        "eyebrow": "RESULTADOS REALES",
-        "title": "Resultados de quienes ya lo usan",
-        "subtitle": "Experiencias reales con el hábito diario de cuidado botánico ONYVERA."
+        "eyebrow": "RESULTADOS REALES"
       }
     },
     "onv_ingredientes": {
       "type": "onv-ingredientes",
       "settings": {
-        "eyebrow": "TRANSPARENCIA BOTÁNICA",
-        "title": "Cinco botánicos activos. Diez ingredientes. Nada escondido.",
-        "subtitle": "La lista completa, en el mismo orden que aparece en el frasco.",
         "ing_1_name": "Aceite de árbol de té (Melaleuca Alternifolia)",
         "ing_1_desc": "Aceite botánico muy apreciado en el cuidado de uñas y piel por su acabado limpio y purificante.",
         "ing_2_name": "Aloe vera",
@@ -73,7 +77,6 @@
         "eyebrow": "BOTANICAL TRANSPARENCY",
         "heading": "Five actives. Ten ingredients. Nothing hidden.",
         "text_position": "left",
-        "scrim_opacity": 94,
         "desktop_ratio": "3:1"
       }
     }
