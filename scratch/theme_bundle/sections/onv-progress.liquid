@@ -1,8 +1,8 @@
 {%- comment -%}
   ONYVERA — Sección: Línea de Tiempo de Progreso Real (45 Días)
   Secuencia ordenada de 4 fotos reales (1080x1080) con riel degradado y puntos de hito.
-  Desktop: Riel horizontal continuo.
-  Móvil: Riel vertical lateral continuo con fotos a ancho completo.
+  Desktop (>= 900px): Riel horizontal continuo con 4 columnas.
+  Móvil (< 900px): Carrusel horizontal deslizable por swipe (scroll-snap) para evitar scroll vertical excesivo.
 {%- endcomment -%}
 
 <section id="onv-progress" class="onv-progress-section">
@@ -14,14 +14,13 @@
       <h2 class="prog__title">{{ section.settings.title | default: "Una persona. Cuarenta y cinco días. Sin retoques." | escape }}</h2>
     </header>
 
-    <!-- Riel de Pasos Ordenados -->
+    <!-- Riel / Carrusel de Pasos Ordenados -->
     <ol class="prog__track">
 
       <!-- PASO 1: DÍA 1 -->
       <li class="prog__step prog__step--1">
         <figure class="prog__figure">
           <div class="prog__media">
-            {%- assign img_1 = section.settings.img_1 | default: 'onv-dia-1.png' -%}
             {%- if section.settings.img_1 != blank -%}
               <img
                 src="{{ section.settings.img_1 | image_url: width: 1080 }}"
@@ -164,11 +163,6 @@
 
     </ol>
 
-    <!-- Aviso Legal Obligatorio -->
-    <p class="prog__disclaimer">
-      {{ section.settings.disclaimer | default: "Fotografías de una sola persona durante 45 días de uso diario. Sin retoques. Los resultados varían según cada caso." | escape }}
-    </p>
-
   </div>
 </section>
 
@@ -192,7 +186,7 @@
   /* Encabezado */
   .prog__header {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 44px;
   }
 
   .prog__eyebrow {
@@ -201,7 +195,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    font-size: 0.75rem; /* 12px */
+    font-size: 0.8125rem; /* 13px */
     color: #2F7A6B;
     margin-bottom: 8px;
   }
@@ -209,7 +203,7 @@
   .prog__title {
     font-family: var(--font-display, "Playfair Display", Georgia, serif) !important;
     font-weight: 600 !important;
-    font-size: clamp(1.75rem, 3.6vw, 2.75rem) !important;
+    font-size: clamp(1.85rem, 3.6vw, 2.75rem) !important;
     line-height: 1.15 !important;
     color: #1B3A2F !important;
     margin: 0;
@@ -234,12 +228,11 @@
       height: 2px;
       left: 12%;
       right: 12%;
-      top: calc(((1200px - 40px - 72px) / 4) + 20px + 10px); /* alinea con el centro de los puntos */
+      top: calc(((1200px - 40px - 72px) / 4) + 20px + 10px);
       background: linear-gradient(to right, #93A896 0%, #2F7A6B 55%, #1B3A2F 100%);
       z-index: 0;
     }
 
-    /* Fallback responsive fluid height calculation for container widths below 1200px */
     @media (max-width: 1240px) {
       .prog__track::before {
         top: calc((((100vw - 40px) - 72px) / 4) + 20px + 10px);
@@ -331,8 +324,8 @@
       font-family: var(--font-ui, 'Karla', sans-serif);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.8125rem; /* 13px */
+      letter-spacing: 0.10em;
+      font-size: 16px !important;
       line-height: 1.2;
     }
 
@@ -351,42 +344,62 @@
       margin-bottom: 0;
       font-family: var(--font-ui, 'Karla', sans-serif);
       font-weight: 400;
-      font-size: 0.875rem; /* 14px */
+      font-size: 14.5px !important;
       line-height: 1.55;
       color: #4A5A52;
-      max-width: 26ch;
+      max-width: 28ch;
       margin-inline: auto;
       text-align: center;
     }
   }
 
-  /* ── Layout Móvil (< 900px) — Riel Vertical ── */
+  /* ── Layout Móvil (< 900px) — Carrusel Deslizable ── */
   @media (max-width: 899px) {
-    .prog__track {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-      position: relative;
-      padding-left: 36px;
-      margin: 0;
-      list-style: none;
+    .onv-progress-section {
+      padding-block: 2.5rem 3rem;
     }
 
-    /* El Riel Vertical */
+    .onv-progress__container {
+      padding-inline: 0;
+    }
+
+    .prog__header {
+      padding-inline: 20px;
+      margin-bottom: 28px;
+    }
+
+    .prog__track {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 16px;
+      padding: 0 20px 20px;
+      margin: 0;
+      list-style: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .prog__track::-webkit-scrollbar {
+      display: none;
+    }
+
     .prog__track::before {
-      content: '';
-      position: absolute;
-      width: 2px;
-      left: 11px;
-      top: 10px;
-      bottom: 20px;
-      background: linear-gradient(to bottom, #93A896 0%, #2F7A6B 55%, #1B3A2F 100%);
-      z-index: 0;
+      display: none;
     }
 
     .prog__step {
-      position: relative;
-      width: 100%;
+      flex: 0 0 250px;
+      width: 250px;
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
     }
 
     .prog__figure {
@@ -395,7 +408,7 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .prog__media {
@@ -414,19 +427,12 @@
       border-radius: 12px;
     }
 
-    /* Punto del riel reposicionado a la izquierda */
     .prog__dot-wrap {
-      position: absolute;
-      left: -36px;
-      top: 10px;
-      width: 24px;
-      height: 24px;
+      margin-top: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1;
-      transform: translateX(-50%);
-      left: calc(-36px + 12px);
+      height: 20px;
     }
 
     .prog__dot {
@@ -439,41 +445,40 @@
       width: 10px;
       height: 10px;
       background-color: #93A896;
-      box-shadow: 0 0 0 6px #ffffff;
+      box-shadow: 0 0 0 5px #f5f5f5;
     }
 
     .prog__dot--3 {
       width: 12px;
       height: 12px;
       background-color: #2F7A6B;
-      box-shadow: 0 0 0 6px #ffffff;
+      box-shadow: 0 0 0 5px #f5f5f5;
     }
 
     .prog__dot--4 {
       width: 14px;
       height: 14px;
       background-color: #1B3A2F;
-      box-shadow: 0 0 0 4px #ffffff, 0 0 0 5px #1B3A2F, 0 0 0 10px #ffffff;
+      box-shadow: 0 0 0 3px #ffffff, 0 0 0 4.5px #1B3A2F;
     }
 
     .prog__caption {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
+      align-items: center;
+      text-align: center;
       width: 100%;
     }
 
     .prog__day {
       display: block;
-      margin-top: 14px;
+      margin-top: 10px;
       font-family: var(--font-ui, 'Karla', sans-serif);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.8125rem;
+      letter-spacing: 0.10em;
+      font-size: 15px !important;
       line-height: 1.2;
-      text-align: left;
     }
 
     .prog__day--1,
@@ -491,27 +496,13 @@
       margin-bottom: 0;
       font-family: var(--font-ui, 'Karla', sans-serif);
       font-weight: 400;
-      font-size: 0.875rem;
-      line-height: 1.55;
+      font-size: 13.5px !important;
+      line-height: 1.5;
       color: #4A5A52;
-      max-width: 100%;
-      text-align: left;
-      margin-inline: 0;
+      max-width: 24ch;
+      margin-inline: auto;
+      text-align: center;
     }
-  }
-
-  /* Disclaimer Legal */
-  .prog__disclaimer {
-    font-family: var(--font-ui, 'Karla', sans-serif);
-    font-weight: 400;
-    font-size: 0.75rem; /* 12px */
-    line-height: 1.5;
-    color: #93A896;
-    max-width: 62ch;
-    margin-top: 40px;
-    margin-bottom: 0;
-    margin-inline: auto;
-    text-align: center;
   }
 {% endstyle %}
 
@@ -640,16 +631,6 @@
       "id": "alt_4",
       "label": "Alt text Día 45",
       "default": "Uña del pie en el día 45: color uniforme y superficie lisa."
-    },
-    {
-      "type": "header",
-      "content": "Aviso Legal"
-    },
-    {
-      "type": "textarea",
-      "id": "disclaimer",
-      "label": "Texto del aviso legal",
-      "default": "Fotografías de una sola persona durante 45 días de uso diario. Sin retoques. Los resultados varían según cada caso."
     }
   ],
   "presets": [
