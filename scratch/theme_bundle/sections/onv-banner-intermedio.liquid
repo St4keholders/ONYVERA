@@ -1,12 +1,12 @@
 {%- comment -%}
   ONYVERA — Sección: Banner Intermedio Full-Bleed (Desktop & Mobile)
-  Muestra imagen edge-to-edge con onv-herobody1-desktop.png en PC y onv-herobody1-phone.jpg en Celular (16:9)
+  Muestra imagen edge-to-edge con onv-herobody1-desktop.jpg en PC y onv-herobody1-phone.jpg en Celular (16:9)
 {%- endcomment -%}
 
 {%- liquid
-  assign desktop_img_url = 'onv-herobody1-desktop.png' | asset_url
+  assign desktop_img_url = 'onv-herobody1-desktop.jpg' | asset_url
   if section.settings.desktop_image != blank
-    assign desktop_img_url = section.settings.desktop_image | image_url: width: 2400
+    assign desktop_img_url = section.settings.desktop_image | image_url: width: 4500
   endif
 
   assign mobile_img_url = 'onv-herobody1-phone.jpg' | asset_url
@@ -29,8 +29,8 @@
         src="{{ desktop_img_url }}"
         alt="{{ section.settings.alt_text | default: 'ONYVERA Banner Promocional' | escape }}"
         class="onv-banner-body__img"
-        width="1024"
-        height="209"
+        width="4544"
+        height="928"
         loading="lazy"
       >
     </picture>
