@@ -13,7 +13,8 @@
     "onv_hero": {
       "type": "onv-hero",
       "settings": {
-        "alt_text": "ONYVERA Sérum Botánico para Uñas"
+        "alt_text": "ONYVERA Sérum Botánico para Uñas",
+        "link": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml"
       }
     },
     "onv_iconos": {
@@ -127,7 +128,8 @@
         "eyebrow": "BOTANICAL TRANSPARENCY",
         "heading": "Five actives. Ten ingredients. Nothing hidden.",
         "text_position": "left",
-        "desktop_ratio": "3:1"
+        "desktop_ratio": "3:1",
+        "link": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml"
       }
     },
     "onv_ingredientes": {
@@ -197,7 +199,7 @@
       "settings": {
         "titulo": "Recupera tus uñas. Recupera tu confianza.",
         "texto_boton": "PIDE ONYVERA AHORA",
-        "enlace_boton": "/collections/all",
+        "enlace_boton": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml",
         "alt_text": "El frasco de sérum ONYVERA sostenido entre dos dedos.",
         "posicion_imagen": "derecha"
       }

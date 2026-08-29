@@ -27,13 +27,10 @@
       <div class="onv-favorites-section__grid">
 
         <!-- Card 1: 1 Frasco -->
-        <article
+        <a
+          href="{{ target_product.url | default: '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml' }}"
           class="onv-img-card"
-          data-onv-add
-          data-variant-id="{{ target_product.variants[0].id | default: '' }}"
-          tabindex="0"
-          role="button"
-          aria-label="Comprar 1 Frasco · 16 ml"
+          aria-label="Ver 1 Frasco · 16 ml"
         >
           <!-- La imagen completa es el cuerpo de la tarjeta -->
           <img
@@ -71,6 +68,8 @@
               <button
                 type="button"
                 class="onv-img-card__btn"
+                data-onv-add
+                data-variant-id="{{ target_product.variants[0].id | default: '' }}"
                 aria-label="Agregar al carrito"
               >
                 <span>AGREGAR</span>
@@ -78,16 +77,13 @@
               </button>
             </div>
           </div>
-        </article>
+        </a>
 
         <!-- Card 2: 2 Frascos -->
-        <article
+        <a
+          href="{{ target_product.url | default: '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml' }}"
           class="onv-img-card"
-          data-onv-add
-          data-variant-id="{{ target_product.variants[1].id | default: '' }}"
-          tabindex="0"
-          role="button"
-          aria-label="Comprar Pack 2 Frascos · 32 ml"
+          aria-label="Ver Pack 2 Frascos · 32 ml"
         >
           <img
             src="{{ 'onv-producto-frasco-2.png' | asset_url }}"
@@ -123,6 +119,8 @@
               <button
                 type="button"
                 class="onv-img-card__btn onv-img-card__btn--gold"
+                data-onv-add
+                data-variant-id="{{ target_product.variants[1].id | default: '' }}"
                 aria-label="Agregar pack 2 frascos al carrito"
               >
                 <span>AGREGAR</span>
@@ -130,16 +128,13 @@
               </button>
             </div>
           </div>
-        </article>
+        </a>
 
         <!-- Card 3: 3 Frascos -->
-        <article
+        <a
+          href="{{ target_product.url | default: '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml' }}"
           class="onv-img-card"
-          data-onv-add
-          data-variant-id="{{ target_product.variants[2].id | default: '' }}"
-          tabindex="0"
-          role="button"
-          aria-label="Comprar Pack 3 Frascos · 48 ml"
+          aria-label="Ver Pack 3 Frascos · 48 ml"
         >
           <img
             src="{{ 'onv-producto-frasco-3.png' | asset_url }}"
@@ -175,20 +170,30 @@
               <button
                 type="button"
                 class="onv-img-card__btn onv-img-card__btn--green"
+                data-onv-add
+                data-variant-id="{{ target_product.variants[2].id | default: '' }}"
                 aria-label="Agregar pack 3 frascos al carrito"
               >
                 <span>AGREGAR</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
               </button>
-            </div>
-          </div>
-        </article>
+        </a>
 
       </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  (function() {
+    document.querySelectorAll('.onv-img-card__btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    });
+  })();
+</script>
 
 {% style %}
   .onv-favorites-section {
@@ -251,6 +256,8 @@
     box-sizing: border-box;
     cursor: pointer;
     user-select: none;
+    text-decoration: none;
+    color: inherit;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
