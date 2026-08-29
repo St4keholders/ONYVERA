@@ -66,6 +66,16 @@
       "settings": {
         "alt_text": "ONYVERA Banner Promocional"
       }
+    },
+    "onv_ingredient_banner": {
+      "type": "onv-ingredient-banner",
+      "settings": {
+        "eyebrow": "BOTANICAL TRANSPARENCY",
+        "heading": "Five actives. Ten ingredients. Nothing hidden.",
+        "text_position": "left",
+        "scrim_opacity": 94,
+        "desktop_ratio": "3:1"
+      }
     }
   },
   "order": [
@@ -75,6 +85,7 @@
     "onv_specs",
     "onv_banner_body_1",
     "onv_prueba_social",
+    "onv_ingredient_banner",
     "onv_ingredientes"
   ]
 }

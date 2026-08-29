@@ -1,7 +1,7 @@
 {%- comment -%}
   ONYVERA — Sección: Los favoritos de nuestros clientes
-  Tarjetas alargadas y estilizadas (estilo editorial) donde la imagen del producto es la gran protagonista,
-  adaptadas a la identidad de marca ONYVERA con tipografía de marca y ficha técnica removida.
+  La imagen completa (1080x1350) ES la tarjeta del producto en formato vertical alargado,
+  con cintas y fichas flotantes en glassmorphism sobre la imagen sin alterar el tamaño de la foto.
 {%- endcomment -%}
 
 {%- liquid
@@ -17,138 +17,169 @@
 <section id="onv-specs-{{ section.id }}" class="onv-favorites-section">
   <div class="onv-favorites-section__container">
 
-    <!-- Encabezado con Tipografía de Marca -->
+    <!-- Encabezado Principal -->
     <div class="onv-favorites-section__header">
-      <h2 class="onv-favorites-section__title">{{ section.settings.title | default: "Los favoritos de nuestros clientes" | escape }}</h2>
+      <h2 class="onv-favorites-section__title">Los favoritos de nuestros clientes</h2>
     </div>
 
-    <!-- Contenedor de Tarjetas Alargadas -->
+    <!-- Carrusel / Grid de Tarjetas Full-Image -->
     <div class="onv-favorites-section__wrap">
       <div class="onv-favorites-section__grid">
 
         <!-- Card 1: 1 Frasco -->
         <article
-          class="onv-fav-card"
+          class="onv-img-card"
           data-onv-add
           data-variant-id="{{ target_product.variants[0].id | default: '' }}"
           tabindex="0"
           role="button"
           aria-label="Comprar 1 Frasco · 16 ml"
         >
-          <div class="onv-fav-card__top">
-            <span class="onv-fav-card__label">1 frasco</span>
+          <!-- La imagen completa es el cuerpo de la tarjeta -->
+          <img
+            src="{{ 'onv-producto-frasco.png' | asset_url }}"
+            alt="ONYVERA Sérum Botánico 1 Frasco 16 ml"
+            class="onv-img-card__bg"
+            width="1080"
+            height="1350"
+            loading="lazy"
+          >
+
+          <!-- Cinta Superior en Glassmorphism -->
+          <div class="onv-img-card__top">
+            <span class="onv-img-card__glass-ribbon">
+              Para 1 a 2 uñas · Tratamiento puntual
+            </span>
           </div>
 
-          <div class="onv-fav-card__image-box">
-            <img
-              src="{{ 'onv-producto-frasco.png' | asset_url }}"
-              alt="ONYVERA Sérum Botánico 1 Frasco 16 ml"
-              class="onv-fav-card__img"
-              width="260"
-              height="340"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="onv-fav-card__bottom">
-            <div class="onv-fav-card__details">
-              <h3 class="onv-fav-card__name">1 FRASCO · 16 ML</h3>
-              <p class="onv-fav-card__sub">Tratamiento inicial 2 a 3 semanas</p>
+          <!-- Píldora Inferior en Glassmorphism -->
+          <div class="onv-img-card__bottom">
+            <div class="onv-img-card__info">
+              <h3 class="onv-img-card__name">1 FRASCO · 16 ML</h3>
+              <p class="onv-img-card__desc">Tratamiento inicial 2 a 3 semanas</p>
             </div>
-            <div class="onv-fav-card__price-box">
-              <span class="onv-fav-card__price">
-                {%- if target_product.variants[0] != blank -%}
-                  {{ target_product.variants[0].price | money }}
-                {%- else -%}
-                  $10.00
-                {%- endif -%}
-              </span>
+            <div class="onv-img-card__action">
+              <div class="onv-img-card__price-wrap">
+                <span class="onv-img-card__price">
+                  {%- if target_product.variants[0] != blank -%}
+                    {{ target_product.variants[0].price | money }}
+                  {%- else -%}
+                    $10.00
+                  {%- endif -%}
+                </span>
+              </div>
+              <button
+                type="button"
+                class="onv-img-card__btn"
+                aria-label="Agregar al carrito"
+              >
+                <span>AGREGAR</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
             </div>
           </div>
         </article>
 
         <!-- Card 2: 2 Frascos -->
         <article
-          class="onv-fav-card"
+          class="onv-img-card"
           data-onv-add
           data-variant-id="{{ target_product.variants[1].id | default: '' }}"
           tabindex="0"
           role="button"
           aria-label="Comprar Pack 2 Frascos · 32 ml"
         >
-          <div class="onv-fav-card__top">
-            <span class="onv-fav-card__label">2 frascos</span>
-            <span class="onv-fav-card__badge onv-fav-card__badge--gold">ahorro</span>
+          <img
+            src="{{ 'onv-producto-frasco-2.png' | asset_url }}"
+            alt="ONYVERA Sérum Botánico Pack 2 Frascos 32 ml"
+            class="onv-img-card__bg"
+            width="1080"
+            height="1350"
+            loading="lazy"
+          >
+
+          <div class="onv-img-card__top">
+            <span class="onv-img-card__glass-ribbon onv-img-card__glass-ribbon--gold">
+              Para varias uñas · Más popular
+            </span>
           </div>
 
-          <div class="onv-fav-card__image-box">
-            <img
-              src="{{ 'onv-producto-frasco-2.png' | asset_url }}"
-              alt="ONYVERA Sérum Botánico Pack 2 Frascos 32 ml"
-              class="onv-fav-card__img"
-              width="260"
-              height="340"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="onv-fav-card__bottom">
-            <div class="onv-fav-card__details">
-              <h3 class="onv-fav-card__name">PACK 2 FRASCOS</h3>
-              <p class="onv-fav-card__sub">Uso continuo para 4 a 6 semanas</p>
+          <div class="onv-img-card__bottom">
+            <div class="onv-img-card__info">
+              <h3 class="onv-img-card__name">PACK 2 FRASCOS · 32 ML</h3>
+              <p class="onv-img-card__desc">Uso continuo para 4 a 6 semanas</p>
             </div>
-            <div class="onv-fav-card__price-box">
-              <span class="onv-fav-card__price">
-                {%- if target_product.variants[1] != blank -%}
-                  {{ target_product.variants[1].price | money }}
-                {%- else -%}
-                  $18.00
-                {%- endif -%}
-              </span>
-              <span class="onv-fav-card__compare">$20.00</span>
+            <div class="onv-img-card__action">
+              <div class="onv-img-card__price-wrap">
+                <span class="onv-img-card__price">
+                  {%- if target_product.variants[1] != blank -%}
+                    {{ target_product.variants[1].price | money }}
+                  {%- else -%}
+                    $18.00
+                  {%- endif -%}
+                </span>
+                <span class="onv-img-card__compare">$20.00</span>
+              </div>
+              <button
+                type="button"
+                class="onv-img-card__btn onv-img-card__btn--gold"
+                aria-label="Agregar pack 2 frascos al carrito"
+              >
+                <span>AGREGAR</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
             </div>
           </div>
         </article>
 
         <!-- Card 3: 3 Frascos -->
         <article
-          class="onv-fav-card"
+          class="onv-img-card"
           data-onv-add
           data-variant-id="{{ target_product.variants[2].id | default: '' }}"
           tabindex="0"
           role="button"
           aria-label="Comprar Pack 3 Frascos · 48 ml"
         >
-          <div class="onv-fav-card__top">
-            <span class="onv-fav-card__label">3 frascos</span>
-            <span class="onv-fav-card__badge onv-fav-card__badge--green">más popular</span>
+          <img
+            src="{{ 'onv-producto-frasco-3.png' | asset_url }}"
+            alt="ONYVERA Sérum Botánico Pack 3 Frascos 48 ml"
+            class="onv-img-card__bg"
+            width="1080"
+            height="1350"
+            loading="lazy"
+          >
+
+          <div class="onv-img-card__top">
+            <span class="onv-img-card__glass-ribbon onv-img-card__glass-ribbon--green">
+              Rutina intensiva 45 días · Máximo ahorro
+            </span>
           </div>
 
-          <div class="onv-fav-card__image-box">
-            <img
-              src="{{ 'onv-producto-frasco-3.png' | asset_url }}"
-              alt="ONYVERA Sérum Botánico Pack 3 Frascos 48 ml"
-              class="onv-fav-card__img"
-              width="260"
-              height="340"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="onv-fav-card__bottom">
-            <div class="onv-fav-card__details">
-              <h3 class="onv-fav-card__name">PACK 3 FRASCOS</h3>
-              <p class="onv-fav-card__sub">Rutina intensiva de 45 días</p>
+          <div class="onv-img-card__bottom">
+            <div class="onv-img-card__info">
+              <h3 class="onv-img-card__name">PACK 3 FRASCOS · 48 ML</h3>
+              <p class="onv-img-card__desc">Tratamiento intensivo completo</p>
             </div>
-            <div class="onv-fav-card__price-box">
-              <span class="onv-fav-card__price">
-                {%- if target_product.variants[2] != blank -%}
-                  {{ target_product.variants[2].price | money }}
-                {%- else -%}
-                  $25.00
-                {%- endif -%}
-              </span>
-              <span class="onv-fav-card__compare">$30.00</span>
+            <div class="onv-img-card__action">
+              <div class="onv-img-card__price-wrap">
+                <span class="onv-img-card__price">
+                  {%- if target_product.variants[2] != blank -%}
+                    {{ target_product.variants[2].price | money }}
+                  {%- else -%}
+                    $25.00
+                  {%- endif -%}
+                </span>
+                <span class="onv-img-card__compare">$30.00</span>
+              </div>
+              <button
+                type="button"
+                class="onv-img-card__btn onv-img-card__btn--green"
+                aria-label="Agregar pack 3 frascos al carrito"
+              >
+                <span>AGREGAR</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
             </div>
           </div>
         </article>
@@ -162,7 +193,7 @@
 {% style %}
   .onv-favorites-section {
     background-color: #ffffff;
-    padding: 40px 0 32px;
+    padding: 36px 0 32px;
     color: var(--onv-green-900);
     overflow: hidden;
   }
@@ -177,7 +208,7 @@
 
   .onv-favorites-section__header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
   }
 
   .onv-favorites-section__title {
@@ -193,7 +224,7 @@
     width: 100%;
   }
 
-  /* Cuadrícula de 3 columnas esbeltas y alargadas */
+  /* Grid de 3 columnas alargadas en Desktop */
   .onv-favorites-section__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -202,118 +233,118 @@
     box-sizing: border-box;
   }
 
-  /* Tarjeta Alargada (Aspect Ratio Vertical Esbelto) */
-  .onv-fav-card {
-    background: #F7F8F7;
-    border-radius: 24px;
+  /* Tarjeta donde TODA la imagen es la tarjeta */
+  .onv-img-card {
+    position: relative;
+    width: 100%;
+    height: 510px;
+    border-radius: 22px;
+    overflow: hidden;
+    background-color: #f8f9f8;
+    box-shadow: 0 8px 24px rgba(19, 46, 35, 0.08);
     border: 1px solid rgba(19, 46, 35, 0.08);
-    padding: 24px 22px 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 520px;
-    min-height: 520px;
-    cursor: pointer;
-    position: relative;
+    padding: 16px;
     box-sizing: border-box;
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    cursor: pointer;
     user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .onv-fav-card:hover {
+  .onv-img-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 14px 32px rgba(19, 46, 35, 0.10);
-    border-color: rgba(44, 110, 86, 0.22);
-    background: #F4F6F4;
+    box-shadow: 0 16px 36px rgba(19, 46, 35, 0.14);
   }
 
-  .onv-fav-card:active {
+  .onv-img-card:active {
     transform: scale(0.98);
   }
 
-  /* Cabecera de la Tarjeta */
-  .onv-fav-card__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  /* La imagen cubre toda la tarjeta como fondo real en alta resolución */
+  .onv-img-card__bg {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    min-height: 32px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    transition: transform 0.45s ease;
   }
 
-  .onv-fav-card__label {
-    font-family: var(--onv-body);
-    font-size: clamp(24px, 2.2vw, 30px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--onv-green-900);
-    line-height: 1;
-    text-transform: lowercase;
+  .onv-img-card:hover .onv-img-card__bg {
+    transform: scale(1.04);
   }
 
-  .onv-fav-card__badge {
-    font-family: var(--onv-body);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 10px;
+  /* Cinta Superior en Glassmorphism */
+  .onv-img-card__top {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .onv-img-card__glass-ribbon {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
     border-radius: 999px;
-    line-height: 1;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    font-family: var(--onv-body);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--onv-green-900);
+    text-transform: uppercase;
+    line-height: 1.2;
   }
 
-  .onv-fav-card__badge--gold {
-    background: #A8833B;
-    color: #ffffff;
+  .onv-img-card__glass-ribbon--gold {
+    background: rgba(246, 240, 227, 0.90);
+    color: #7A5813;
+    border-color: rgba(168, 131, 59, 0.35);
   }
 
-  .onv-fav-card__badge--green {
-    background: #132E23;
-    color: #ffffff;
+  .onv-img-card__glass-ribbon--green {
+    background: rgba(235, 244, 240, 0.90);
+    color: #1B4E3C;
+    border-color: rgba(44, 110, 86, 0.35);
   }
 
-  /* Contenedor de la Imagen: Ocupa toda la tarjeta */
-  .onv-fav-card__image-box {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
+  /* Píldora Inferior en Glassmorphism Sobre la Foto */
+  .onv-img-card__bottom {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    overflow: hidden;
-  }
-
-  .onv-fav-card__img {
-    max-height: 290px;
-    width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 22px rgba(19, 46, 35, 0.13));
-    transition: transform 0.35s ease;
-  }
-
-  .onv-fav-card:hover .onv-fav-card__img {
-    transform: scale(1.06);
-  }
-
-  /* Pie de la Tarjeta */
-  .onv-fav-card__bottom {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 12px;
-    width: 100%;
-    padding-top: 14px;
-    border-top: 1px solid rgba(19, 46, 35, 0.08);
-  }
-
-  .onv-fav-card__details {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgba(19, 46, 35, 0.10);
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 8px;
   }
 
-  .onv-fav-card__name {
+  .onv-img-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .onv-img-card__name {
     font-family: var(--onv-body);
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 800;
     letter-spacing: 0.04em;
     color: var(--onv-green-900);
@@ -322,36 +353,83 @@
     text-transform: uppercase;
   }
 
-  .onv-fav-card__sub {
+  .onv-img-card__desc {
     font-family: var(--onv-body);
-    font-size: 12px;
+    font-size: 11px;
     color: var(--onv-ink-soft);
     margin: 0;
     line-height: 1.2;
   }
 
-  .onv-fav-card__price-box {
-    text-align: right;
+  .onv-img-card__action {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1px;
-    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(19, 46, 35, 0.06);
   }
 
-  .onv-fav-card__price {
+  .onv-img-card__price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .onv-img-card__price {
     font-family: var(--onv-body);
-    font-size: 15.5px;
+    font-size: 15px;
     font-weight: 800;
     color: var(--onv-green-900);
-    letter-spacing: -0.01em;
   }
 
-  .onv-fav-card__compare {
+  .onv-img-card__compare {
     font-family: var(--onv-body);
     font-size: 11.5px;
     color: #8c9b93;
     text-decoration: line-through;
+  }
+
+  .onv-img-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #132E23;
+    color: #ffffff;
+    font-family: var(--onv-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .onv-img-card__btn:hover {
+    background: #2C6E56;
+    transform: scale(1.04);
+  }
+
+  .onv-img-card__btn svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .onv-img-card__btn--gold {
+    background: #A8833B;
+  }
+  .onv-img-card__btn--gold:hover {
+    background: #8F6D2C;
+  }
+
+  .onv-img-card__btn--green {
+    background: #2C6E56;
+  }
+  .onv-img-card__btn--green:hover {
+    background: #1B4E3C;
   }
 
   /* Responsive Móvil / Tablets */
@@ -375,21 +453,17 @@
       width: max-content;
     }
 
-    .onv-fav-card {
-      flex: 0 0 240px;
-      width: 240px;
+    .onv-img-card {
+      flex: 0 0 250px;
+      width: 250px;
       height: 440px;
-      min-height: 440px;
-      padding: 20px 18px 18px;
+      padding: 12px;
       scroll-snap-align: start;
     }
 
-    .onv-fav-card__label {
-      font-size: 24px;
-    }
-
-    .onv-fav-card__img {
-      max-height: 230px;
+    .onv-img-card__glass-ribbon {
+      font-size: 9.5px;
+      padding: 5px 10px;
     }
   }
 {% endstyle %}
