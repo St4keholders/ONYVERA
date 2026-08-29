@@ -93,6 +93,12 @@
         "icon_4_text": "Suave, no escuece",
         "icon_5_text": "Se envía desde EE. UU."
       }
+    },
+    "onv_banner_body_1": {
+      "type": "onv-banner-intermedio",
+      "settings": {
+        "alt_text": "ONYVERA Banner Promocional"
+      }
     }
   },
   "order": [
@@ -100,6 +106,7 @@
     "onv_hero",
     "onv_iconos",
     "onv_specs",
+    "onv_banner_body_1",
     "onv_prueba_social",
     "onv_como_usar",
     "onv_linea_tiempo",
