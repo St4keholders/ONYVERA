@@ -1,220 +1,286 @@
 /* ==========================================================================
-   ONYVERA — Design System Tokens v3 (Pure White & Vibrant Botanical Green)
+   ONYVERA — Master Typography System & Global Design Tokens
    ========================================================================== */
 
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('cormorant-garamond-600.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Karla';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('karla-400.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Karla';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('karla-600.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Karla';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('karla-700.woff2') format('woff2');
-}
-
 :root {
-  /* ── Fondo 100% Blanco Puro ── */
-  --onv-white: #ffffff;
-  --onv-cream-50: #ffffff;
-  --onv-cream-100: #fafafa;
-  --onv-stone-100: #f4f4f4;
-  --onv-stone-200: #e8e8e8;
+  /* ── Typography Families ── */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-ui: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* ── Verdes Botánicos Vivos y Contrastados ── */
-  --onv-green-900: #132E23;
+  --font-heading-family: var(--font-display);
+  --font-body-family: var(--font-ui);
+
+  --onv-display: var(--font-display);
+  --onv-body: var(--font-ui);
+
+  /* ── Palette Tokens ── */
+  --ink:        #1B3A2F;   /* headings, primary text */
+  --ink-soft:   #4A5A52;   /* body copy, descriptions */
+  --accent:     #2F7A6B;   /* eyebrows, links, small labels */
+  --cream:      #F6F2E9;
+  --stone:      #E6E0D2;
+
+  /* ── Legacy Mapped Tokens ── */
+  --onv-white: #ffffff;
+  --onv-green-900: #1B3A2F;
   --onv-green-800: #1D4334;
   --onv-green-700: #275A46;
-  --onv-teal-600: #2C6E56;
+  --onv-teal-600: #2F7A6B;
   --onv-olive-600: #4B6334;
   --onv-sage-400: #4E8068;
-  --onv-bamboo-500: #9A7738;
-  --onv-gold: #A8833B;
-  --onv-ink: #132E23;
-  --onv-ink-soft: #4A5E55;
+  --onv-bamboo-500: #A8833B;
+  --onv-gold: #C6A264;
+  --onv-ink: #1B3A2F;
+  --onv-ink-soft: #4A5A52;
 
-  /* ── Tarjetas y Sombras Limpias ── */
-  --onv-card-bg: #ffffff;
-  --onv-card-border: rgba(19, 46, 35, 0.08);
-  --onv-card-shadow: 0 4px 16px rgba(19, 46, 35, 0.06);
-
-  /* ── Tipografía Compacta y Legible ── */
-  --onv-display: 'Cormorant Garamond', Georgia, serif;
-  --onv-body: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --onv-fs-h1: clamp(28px, 5.5vw, 56px);
-  --onv-fs-h2: clamp(22px, 3vw, 36px);
-  --onv-fs-h3: clamp(16px, 2vw, 20px);
-  --onv-fs-body: 14px;
-  --onv-fs-small: 12px;
-  --onv-fs-micro: 11px;
-  --onv-track-eyebrow: 0.16em;
-
-  /* ── Espaciado Ultracompacto para Móvil ── */
-  --onv-s1: 4px;
-  --onv-s2: 8px;
-  --onv-s3: 12px;
-  --onv-s4: 16px;
-  --onv-s5: 20px;
-  --onv-s6: 24px;
-  --onv-s7: 32px;
-  --onv-s8: 40px;
-  --onv-s9: 56px;
-  --onv-section-y: clamp(28px, 4.5vw, 52px);
-
-  /* ── Forma ── */
-  --onv-r-sm: 4px;
-  --onv-r-md: 8px;
-  --onv-r-lg: 16px;
-  --onv-r-pill: 999px;
-  --onv-maxw: 1120px;
-
-  /* ── Motion ── */
+  /* ── Motion & Surfaces ── */
   --onv-dur-fast: 180ms;
   --onv-dur-base: 350ms;
   --onv-ease: cubic-bezier(0.22, 0.9, 0.30, 1);
 }
 
-/* ── Estilos Globales para Catálogo, Colecciones y Ficha de Producto ONYVERA ── */
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY SCALE
+   ========================================================================== */
 
-/* Título de Colección / Catálogo */
-.collection-hero__title,
-.main-page-title,
-.page-title {
-  font-family: var(--onv-display) !important;
-  font-size: clamp(26px, 4vw, 40px) !important;
+h1, .h1, .main-page-title, .collection-hero__title {
+  font-family: var(--font-display) !important;
   font-weight: 600 !important;
-  color: var(--onv-green-900) !important;
-  text-align: center;
+  font-size: clamp(2.25rem, 5vw, 4rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ink);
 }
 
-/* Tarjetas de Producto en Catálogo */
-.product-grid {
-  justify-content: center !important;
-}
-
-.product-grid .grid__item {
-  max-width: 380px !important;
-  margin: 0 auto !important;
-  width: 100% !important;
-}
-
-.card-wrapper.product-card-wrapper {
-  background: #ffffff !important;
-  border-radius: 16px !important;
-  border: 1px solid rgba(19, 46, 35, 0.08) !important;
-  box-shadow: 0 4px 16px rgba(19, 46, 35, 0.05) !important;
-  overflow: hidden;
-  padding: 12px !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin: 0 auto !important;
-}
-
-.card-wrapper.product-card-wrapper:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(19, 46, 35, 0.10) !important;
-}
-
-.card__media img {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
-  object-position: center !important;
-}
-
-.card__heading,
-.card__heading a {
-  font-family: var(--onv-display) !important;
-  font-size: 17px !important;
+h2, .h2 {
+  font-family: var(--font-display) !important;
   font-weight: 600 !important;
-  color: var(--onv-green-900) !important;
-  text-decoration: none !important;
-  line-height: 1.25 !important;
-}
-
-.price__regular .price-item--regular,
-.price__sale .price-item--sale {
-  font-family: var(--onv-body) !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  color: var(--onv-green-900) !important;
-}
-
-/* Página de Producto (Ficha de Producto) */
-.product__title h1 {
-  font-family: var(--onv-display) !important;
-  font-size: clamp(22px, 3.5vw, 34px) !important;
-  font-weight: 600 !important;
-  color: var(--onv-green-900) !important;
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem) !important;
   line-height: 1.15 !important;
+  letter-spacing: normal;
+  color: var(--ink);
 }
 
-.product__text.caption-with-letter-spacing {
-  font-family: var(--onv-body) !important;
-  font-size: 11px !important;
+h3, .h3, .card__heading, .product__title h1 {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem) !important;
+  line-height: 1.25 !important;
+  letter-spacing: normal;
+  color: var(--ink);
+}
+
+h4, .h4 {
+  font-family: var(--font-ui) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
-  color: var(--onv-teal-600) !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.35 !important;
+  color: var(--ink);
+}
+
+body, p, li, .rte, .text-body {
+  font-family: var(--font-ui) !important;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+small, caption, .caption, .caption-large, .small-text {
+  font-family: var(--font-ui) !important;
+  font-weight: 400;
+  font-size: 0.875rem !important;
+  line-height: 1.55 !important;
+}
+
+.eyebrow, .kicker, .badge, [class*="eyebrow"], [class*="__badge"], .caption-with-letter-spacing {
+  font-family: var(--font-ui) !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
   text-transform: uppercase !important;
+  letter-spacing: 0.18em !important;
+  color: var(--accent) !important;
 }
 
-/* Botones de Variante en Ficha de Producto */
-.product-form__input input[type='radio'] + label {
-  border-radius: 999px !important;
-  font-family: var(--onv-body) !important;
-  font-size: 12px !important;
+button, .button, [class*="__btn"], .product-form__submit {
+  font-family: var(--font-ui) !important;
   font-weight: 700 !important;
-  padding: 8px 16px !important;
-  border: 1.5px solid rgba(19, 46, 35, 0.18) !important;
-  color: var(--onv-green-900) !important;
-  transition: all 0.15s ease !important;
-}
-
-.product-form__input input[type='radio']:checked + label {
-  background-color: var(--onv-green-900) !important;
-  color: #ffffff !important;
-  border-color: var(--onv-green-900) !important;
-}
-
-/* Botón Principal de Compra */
-.product-form__submit.button--primary,
-.button--primary {
-  background-color: var(--onv-green-900) !important;
-  color: #ffffff !important;
-  border-radius: 999px !important;
-  font-family: var(--onv-body) !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
+  font-size: 0.875rem !important;
   text-transform: uppercase !important;
-  border: none !important;
-  padding: 12px 24px !important;
-  box-shadow: 0 4px 14px rgba(19, 46, 35, 0.20) !important;
-  transition: filter 0.15s ease, transform 0.15s ease !important;
+  letter-spacing: 0.06em !important;
 }
 
-.product-form__submit.button--primary:hover,
-.button--primary:hover {
-  filter: brightness(1.15) !important;
+nav a, .list-menu__item, .header__menu-item, .menu-drawer__menu-item {
+  font-family: var(--font-ui) !important;
+  font-weight: 500 !important;
+  font-size: 0.9375rem !important;
+  letter-spacing: 0.01em !important;
 }
 
+.price, .price-item, [class*="__price"] {
+  font-family: var(--font-ui) !important;
+  font-weight: 600 !important;
+  font-size: 1.125rem !important;
+  color: var(--ink);
+}
+
+input, select, textarea, .field__input, .select__select {
+  font-family: var(--font-ui) !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important; /* Min 16px to prevent iOS zoom */
+}
+
+/* Utility italic accent class */
+.u-accent-italic {
+  font-style: italic !important;
+}
+
+/* Cascade to accordions, tables, forms, breadcrumbs, pagination, footer */
+.accordion__title,
+.summary__title,
+summary {
+  font-family: var(--font-ui) !important;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+table, th, td {
+  font-family: var(--font-ui) !important;
+}
+
+th {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.pagination__item,
+.breadcrumbs__link,
+.breadcrumb a {
+  font-family: var(--font-ui) !important;
+  font-size: 0.875rem;
+}
+
+.footer,
+.footer__heading,
+.footer-block__heading {
+  font-family: var(--font-ui) !important;
+}
+
+/* ==========================================================================
+   PART 2 — HEADER: DEEP GREEN BACKGROUND & WHITE TEXT
+   ========================================================================== */
+
+.section-header,
+.header-wrapper,
+sticky-header,
+.header {
+  background-color: #1B3A2F !important;
+  background: #1B3A2F !important;
+  color: #FFFFFF !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.header-wrapper--border-bottom {
+  border-bottom: none !important;
+}
+
+/* Header Text, Logo & Links */
+.header__heading-link,
+.header__heading-link span,
+.header__heading-link .h2,
+.header__menu-item,
+.list-menu__item--link,
+.header__icon,
+.header__icon span,
+.header__active-menu-item {
+  color: #FFFFFF !important;
+}
+
+/* Header SVG Icons */
+.header__icon svg,
+.header__heading-link svg,
+.header__menu-item svg {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  color: #FFFFFF !important;
+}
+
+/* Nav Links States */
+.header__menu-item {
+  text-decoration: none !important;
+  transition: text-decoration-color 0.2s ease, opacity 0.2s ease;
+}
+
+.header__menu-item:hover {
+  text-decoration: underline !important;
+  text-decoration-color: rgba(255, 255, 255, 0.4) !important;
+  text-underline-offset: 4px !important;
+  text-decoration-thickness: 1px !important;
+  color: #FFFFFF !important;
+}
+
+.header__menu-item.list-menu__item--active,
+.header__active-menu-item {
+  text-decoration: underline !important;
+  text-decoration-color: #FFFFFF !important;
+  text-underline-offset: 4px !important;
+  text-decoration-thickness: 1px !important;
+  color: #FFFFFF !important;
+}
+
+/* Accessibility Focus Visible */
+.header *:focus-visible,
+.menu-drawer *:focus-visible,
+.header__icon:focus-visible,
+.header__menu-item:focus-visible,
+.focus-inset:focus-visible {
+  outline: 2px solid #F6F2E9 !important;
+  outline-offset: 2px !important;
+}
+
+/* Cart Count Badge */
+.cart-count-bubble {
+  background-color: #C6A264 !important;
+  color: #1B3A2F !important;
+  font-family: var(--font-ui) !important;
+  font-weight: 700 !important;
+}
+
+.cart-count-bubble span {
+  color: #1B3A2F !important;
+}
+
+/* Mobile Drawer */
+.menu-drawer,
+.menu-drawer__inner-container,
+.menu-drawer__navigation-container,
+.menu-drawer__utility-links {
+  background-color: #1B3A2F !important;
+  background: #1B3A2F !important;
+  color: #FFFFFF !important;
+}
+
+.menu-drawer__menu-item,
+.menu-drawer__close-button,
+.menu-drawer__utility-links a {
+  color: #FFFFFF !important;
+}
+
+.menu-drawer__close-button svg,
+.menu-drawer__menu-item svg {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  color: #FFFFFF !important;
+}
+
+/* Sticky Header solid without transparency/blur */
+.shopify-section-header-sticky,
+.scrolled-past-header {
+  background-color: #1B3A2F !important;
+  background: #1B3A2F !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
