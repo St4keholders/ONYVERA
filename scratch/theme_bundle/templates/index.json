@@ -24,22 +24,6 @@
         "subtitle": "Experiencias reales con el hábito diario de cuidado botánico ONYVERA."
       }
     },
-    "onv_como_usar": {
-      "type": "onv-como-usar",
-      "settings": {
-        "eyebrow": "APLICACIÓN SENCILLA",
-        "title": "Cómo aplicar ONYVERA",
-        "subtitle": "Cuatro pasos. Menos de un minuto.",
-        "step_1_title": "PASO 1 — LIMA SUAVEMENTE LA SUPERFICIE",
-        "step_1_text": "Un pulido ligero retira las capas ásperas y deja la uña lista para absorber el sérum.",
-        "step_2_title": "PASO 2 — APLICA CON LA BROCHA",
-        "step_2_text": "Una capa fina sobre la uña y bajo la punta. La brocha llega hasta el borde libre sin manchar la piel de alrededor.",
-        "step_3_title": "PASO 3 — DEJA SECAR AL AIRE",
-        "step_3_text": "Sin vendajes ni algodón. La fórmula seca sola y puedes seguir con tu día.",
-        "step_4_title": "PASO 4 — REPITE A DIARIO",
-        "step_4_text": "De 3 a 6 aplicaciones al día. La constancia es lo que marca la diferencia."
-      }
-    },
     "onv_linea_tiempo": {
       "type": "onv-linea-tiempo",
       "settings": {
@@ -108,7 +92,6 @@
     "onv_specs",
     "onv_banner_body_1",
     "onv_prueba_social",
-    "onv_como_usar",
     "onv_linea_tiempo",
     "onv_ingredientes"
   ]
