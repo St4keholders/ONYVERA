@@ -46,7 +46,7 @@
 h1, .h1, .main-page-title, .collection-hero__title {
   font-family: var(--font-display) !important;
   font-weight: 600 !important;
-  font-size: clamp(2.25rem, 5vw, 4rem) !important;
+  font-size: clamp(36px, 5vw, 64px) !important;
   line-height: 1.08 !important;
   letter-spacing: -0.01em !important;
   color: var(--ink);
@@ -55,7 +55,7 @@ h1, .h1, .main-page-title, .collection-hero__title {
 h2, .h2 {
   font-family: var(--font-display) !important;
   font-weight: 600 !important;
-  font-size: clamp(1.75rem, 3.6vw, 2.75rem) !important;
+  font-size: clamp(28px, 3.6vw, 44px) !important;
   line-height: 1.15 !important;
   letter-spacing: normal;
   color: var(--ink);
@@ -64,7 +64,7 @@ h2, .h2 {
 h3, .h3, .card__heading, .product__title h1 {
   font-family: var(--font-display) !important;
   font-weight: 600 !important;
-  font-size: clamp(1.25rem, 2.2vw, 1.75rem) !important;
+  font-size: clamp(20px, 2.2vw, 28px) !important;
   line-height: 1.25 !important;
   letter-spacing: normal;
   color: var(--ink);
@@ -73,7 +73,7 @@ h3, .h3, .card__heading, .product__title h1 {
 h4, .h4 {
   font-family: var(--font-ui) !important;
   font-weight: 700 !important;
-  font-size: 1.0625rem !important;
+  font-size: 17px !important;
   line-height: 1.35 !important;
   color: var(--ink);
 }
@@ -81,7 +81,7 @@ h4, .h4 {
 body, p, li, .rte, .text-body {
   font-family: var(--font-ui) !important;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.65;
   color: var(--ink-soft);
 }
@@ -89,14 +89,14 @@ body, p, li, .rte, .text-body {
 small, caption, .caption, .caption-large, .small-text {
   font-family: var(--font-ui) !important;
   font-weight: 400;
-  font-size: 0.875rem !important;
+  font-size: 14px !important;
   line-height: 1.55 !important;
 }
 
 .eyebrow, .kicker, .badge, [class*="eyebrow"], [class*="__badge"], .caption-with-letter-spacing {
   font-family: var(--font-ui) !important;
   font-weight: 600 !important;
-  font-size: 0.75rem !important;
+  font-size: 12px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.18em !important;
   color: var(--accent) !important;
@@ -105,29 +105,30 @@ small, caption, .caption, .caption-large, .small-text {
 button, .button, [class*="__btn"], .product-form__submit {
   font-family: var(--font-ui) !important;
   font-weight: 700 !important;
-  font-size: 0.875rem !important;
+  font-size: 14px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
 }
 
-nav a, .list-menu__item, .header__menu-item, .menu-drawer__menu-item {
+nav a, .list-menu__item, .header__menu-item, .menu-drawer__menu-item,
+.header__menu-item span, .list-menu__item--link, .list-menu__item--link span {
   font-family: var(--font-ui) !important;
   font-weight: 500 !important;
-  font-size: 1.0625rem !important;
+  font-size: 17px !important;
   letter-spacing: 0.01em !important;
 }
 
 .price, .price-item, [class*="__price"] {
   font-family: var(--font-ui) !important;
   font-weight: 600 !important;
-  font-size: 1.125rem !important;
+  font-size: 18px !important;
   color: var(--ink);
 }
 
 input, select, textarea, .field__input, .select__select {
   font-family: var(--font-ui) !important;
   font-weight: 400 !important;
-  font-size: 1rem !important; /* Min 16px to prevent iOS zoom */
+  font-size: 16px !important; /* Min 16px to prevent iOS zoom */
 }
 
 /* Utility italic accent class */

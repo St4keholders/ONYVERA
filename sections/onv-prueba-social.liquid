@@ -18,8 +18,7 @@
 
     <!-- Encabezado de la Sección -->
     <div class="onv-shoppable-ugc__header">
-      <span class="onv-shoppable-ugc__badge">{{ section.settings.eyebrow | default: "RESULTADOS DE NUESTRA RUTINA" | escape }}</span>
-      <h2 class="onv-shoppable-ugc__title">Resultados de nuestra rutina</h2>
+      <h2 class="onv-shoppable-ugc__title">RESULTADOS DE NUESTRA RUTINA</h2>
     </div>
 
     <!-- Escenario del Carrusel con Altura Fija y Sin Layout Shifts -->
@@ -413,24 +412,14 @@
     margin-bottom: 20px;
   }
 
-  .onv-shoppable-ugc__badge {
-    display: inline-block;
-    font-family: var(--font-ui, 'Karla', sans-serif) !important;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    color: var(--accent, #2F7A6B);
-    text-transform: uppercase;
-    margin: 0 0 8px 0;
-  }
-
   .onv-shoppable-ugc__title {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
-    font-size: clamp(24px, 3.2vw, 36px) !important;
+    font-size: clamp(28px, 3.6vw, 40px) !important;
     font-weight: 700 !important;
     line-height: 1.15;
     color: var(--ink, #1B3A2F);
     margin: 0;
+    text-transform: uppercase;
   }
 
   /* Escenario con altura fija para evitar saltos o layout shifts en la página */

@@ -124,18 +124,18 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 4.5%;
-    max-width: 42ch;
+    left: 4%;
+    width: clamp(320px, 36vw, 520px);
     z-index: 2;
     line-height: normal;
     text-align: left;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.50);
     backdrop-filter: blur(20px) saturate(1.5);
     -webkit-backdrop-filter: blur(20px) saturate(1.5);
-    border: 1px solid rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.40);
     border-radius: 24px;
-    padding: 32px 36px;
+    padding: 40px 44px;
     box-shadow: 0 12px 40px rgba(19, 46, 35, 0.08);
   }
 
@@ -145,16 +145,10 @@
     text-align: center;
   }
 
-  @media (min-width: 1000px) {
-    .onv-ing-banner__content {
-      padding: 36px 42px;
-    }
-  }
-
   @media (max-width: 999px) and (min-width: 600px) {
     .onv-ing-banner__content {
-      padding: 24px 28px;
-      max-width: 36ch;
+      padding: 28px 32px;
+      width: clamp(280px, 40vw, 400px);
       border-radius: 20px;
     }
   }
@@ -163,10 +157,11 @@
     .onv-ing-banner__content {
       top: 50%;
       left: 16px;
-      right: 16px;
+      right: auto;
       transform: translateY(-50%);
-      max-width: calc(100% - 32px);
-      padding: 20px 22px;
+      width: calc(100% - 32px);
+      max-width: 340px;
+      padding: 24px 26px;
       border-radius: 16px;
     }
   }
@@ -177,16 +172,16 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    font-size: 13px;
     color: #1A5E4E;
-    margin: 0 0 0.65rem 0;
+    margin: 0 0 12px 0;
   }
 
   .onv-ing-banner__heading {
     font-family: var(--font-display, 'Playfair Display', serif);
     font-weight: 600;
-    line-height: 1.12;
-    font-size: clamp(1.75rem, 3.2vw, 3rem);
+    line-height: 1.10;
+    font-size: clamp(32px, 3.5vw, 48px);
     color: #132E23;
     margin: 0;
   }
