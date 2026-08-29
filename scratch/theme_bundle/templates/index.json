@@ -24,22 +24,6 @@
         "subtitle": "Experiencias reales con el hábito diario de cuidado botánico ONYVERA."
       }
     },
-    "onv_linea_tiempo": {
-      "type": "onv-linea-tiempo",
-      "settings": {
-        "eyebrow": "PROGRESO ESPERADO",
-        "title": "Tu rutina de 4 semanas",
-        "subtitle": "Qué vas a ir notando si mantienes el hábito.",
-        "week_1_title": "SEMANA 1 — SE VUELVE COSTUMBRE",
-        "week_1_text": "Los primeros días se trata de encajar el gesto en tu rutina. La uña empieza a sentirse menos áspera al tacto.",
-        "week_2_title": "SEMANA 2 — SUPERFICIE MÁS PAREJA",
-        "week_2_text": "La textura irregular se nota más uniforme y el sérum se extiende con más facilidad.",
-        "week_3_title": "SEMANA 3 — MEJOR ASPECTO",
-        "week_3_text": "La uña luce más cuidada y el contorno se ve hidratado en vez de reseco.",
-        "week_4_title": "SEMANA 4 — CRECIMIENTO NUEVO",
-        "week_4_text": "La uña que crece desde la base se ve más limpia y pareja que la que estás dejando atrás."
-      }
-    },
     "onv_ingredientes": {
       "type": "onv-ingredientes",
       "settings": {
@@ -92,7 +76,6 @@
     "onv_specs",
     "onv_banner_body_1",
     "onv_prueba_social",
-    "onv_linea_tiempo",
     "onv_ingredientes"
   ]
 }
