@@ -117,6 +117,8 @@
   .onv-hero-slider {
     position: relative;
     width: 100%;
+    /* Limitar altura a 72vh para que siempre queden secciones visibles debajo */
+    max-height: 72vh;
     aspect-ratio: 16 / 7;
     overflow: hidden;
     line-height: 0;
@@ -217,11 +219,15 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
   }
 
-  /* Versión Celular (Mobile): Solo slide 1, sin carrusel */
+  /* Versión Celular (Mobile): Solo slide 1, sin carruàsel */
   @media (max-width: 749px) {
-    /* Solo slide 1 en mobile: aspect ratio 4:5 para foto de producto */
+    /* Solo slide 1 en mobile: altura fija compacta */
     .onv-hero-slider {
-      aspect-ratio: 4 / 5;
+      aspect-ratio: unset;
+      max-height: unset;
+      height: 58vw;
+      min-height: 260px;
+      max-height: 420px;
     }
 
     .onv-hero-fullbleed {
@@ -238,7 +244,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
     }
 
     /* Ocultar slides 2 y 3 en mobile */

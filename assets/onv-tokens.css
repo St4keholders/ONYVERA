@@ -313,14 +313,32 @@ sticky-header {
 
 /* ==========================================================================
    CATÁLOGO — Corrección botón "VER OPCIONES · COMPRAR"
-   Elimina el borde negro del tema Dawn en estado normal y hover.
+   El borde negro de Dawn viene de ::after con box-shadow simulado.
+   Se eliminan los pseudo-elementos que crean ese borde.
    ========================================================================== */
 
-.card-wrapper .button--primary,
-.card-wrapper .button--primary:hover,
-.card-wrapper .button--primary:focus,
-.card-wrapper .button--primary:active {
+/* Eliminar borde negro en estado normal */
+.card-wrapper .button--primary::after,
+.card-wrapper .button--primary::before,
+.card-wrapper a.button--primary::after,
+.card-wrapper a.button--primary::before {
+  box-shadow: none !important;
   border: none !important;
+  display: none !important;
+}
+
+/* Eliminar borde negro en hover */
+.card-wrapper .button--primary:not([disabled]):hover::after,
+.card-wrapper a.button--primary:hover::after {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Eliminar cualquier outline/ring en focus */
+.card-wrapper .button--primary:focus,
+.card-wrapper .button--primary:focus-visible,
+.card-wrapper a.button--primary:focus,
+.card-wrapper a.button--primary:focus-visible {
   outline: none !important;
   box-shadow: none !important;
 }
