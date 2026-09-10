@@ -285,3 +285,29 @@ sticky-header,
   box-shadow: none !important;
   border-bottom: none !important;
 }
+
+/* ==========================================================================
+   VIEWPORT OVERFLOW & STICKY HEADER PRIORITY
+   ========================================================================== */
+
+/* Prevent horizontal window scrollbars across the entire store */
+html,
+body {
+  overflow-x: clip !important;
+  max-width: 100% !important;
+}
+
+#MainContent {
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Ensure sticky header always stays strictly above any scrolling page section */
+.shopify-section-group-header-group,
+.section-header,
+.shopify-section-header-sticky,
+sticky-header {
+  z-index: 999 !important;
+}
+

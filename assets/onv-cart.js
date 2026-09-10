@@ -162,7 +162,8 @@ class OnvCartManager {
     this.toastError.textContent = '';
     this.toastStatus.textContent = 'Añadido a tu pedido';
     this.toastTitle.textContent = item.product_title || item.title || 'ONYVERA Sérum';
-    this.toastVariant.textContent = item.variant_title || '16 ml';
+    var rawTitle = item.variant_title || '';
+    this.toastVariant.textContent = rawTitle.replace(/Bottles/gi, 'Frascos').replace(/Bottle/gi, 'Frasco') || '16 ml';
 
     if (item.image && this.toastImg) {
       this.toastImg.src = item.image;
