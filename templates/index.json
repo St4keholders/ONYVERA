@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "onv_cinta": {
@@ -5,8 +14,8 @@
       "settings": {
         "show_cinta": true,
         "text": "ENVÍO GRATIS EN EE. UU. EN PEDIDOS DESDE $50",
-        "speed": 24,
-        "bg_color": "#2F7A6B",
+        "speed": 45,
+        "bg_color": "#1B3A2F",
         "text_color": "#F6F2E9"
       }
     },
@@ -128,7 +137,7 @@
         "eyebrow": "BOTANICAL TRANSPARENCY",
         "heading": "Five actives. Ten ingredients. Nothing hidden.",
         "text_position": "left",
-        "desktop_ratio": "3:1",
+        "desktop_ratio": "16:9",
         "link": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml"
       }
     },

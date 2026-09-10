@@ -1,10 +1,14 @@
 {%- comment -%}
   ONYVERA — Sección: Hero Full-Bleed (Desktop & Mobile)
-  Muestra imagen edge-to-edge optimizada y responsiva con onv-hero-newdesktop.jpg y onv-hero-mobile.jpeg
+  Carrusel automático continuo de 3 imágenes:
+  1. onv-hero-newdesktop.jpg / onv-hero-mobile.jpeg (onv-hero-fullbleed__img)
+  2. onv-hero2.jpeg
+  3. onv-hero3.jpeg
+  Transición suave cross-fade (0.75s), rotación cada 5s, responsive y accesible.
 {%- endcomment -%}
 
 {%- liquid
-  assign desktop_image_url = 'onv-hero-newdesktop.jpg' | asset_url
+  assign desktop_image_url = 'onv-hero-desktop.jpeg' | asset_url
   if section.settings.desktop_image != blank
     assign desktop_image_url = section.settings.desktop_image | image_url: width: 3800
   endif
@@ -12,6 +16,16 @@
   assign mobile_image_url = 'onv-hero-mobile.jpeg' | asset_url
   if section.settings.mobile_image != blank
     assign mobile_image_url = section.settings.mobile_image | image_url: width: 1080
+  endif
+
+  assign hero2_url = 'onv-hero2.jpeg' | asset_url
+  if section.settings.image_2 != blank
+    assign hero2_url = section.settings.image_2 | image_url: width: 3800
+  endif
+
+  assign hero3_url = 'onv-hero3.jpeg' | asset_url
+  if section.settings.image_3 != blank
+    assign hero3_url = section.settings.image_3 | image_url: width: 3800
   endif
 
   assign hero_link = section.settings.link
@@ -25,33 +39,72 @@
   endif
 -%}
 
-<section id="onv-hero-{{ section.id }}" class="onv-hero-fullbleed">
-  <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA">
-    <picture class="onv-hero-fullbleed__picture">
-      <source media="(max-width: 749px)" srcset="{{ mobile_image_url }}">
-      <source media="(min-width: 750px)" srcset="{{ desktop_image_url }}">
-      <img
-        src="{{ desktop_image_url }}"
-        alt="{{ section.settings.alt_text | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
-        class="onv-hero-fullbleed__img"
-        width="3712"
-        height="1152"
-        loading="eager"
-        fetchpriority="high"
-      >
-    </picture>
-  </a>
+<section id="onv-hero-{{ section.id }}" class="onv-hero-fullbleed" data-autoplay-interval="5000">
+  <div class="onv-hero-slider" id="onv-hero-slider-{{ section.id }}">
+
+    <!-- Slide 1 -->
+    <div class="onv-hero-slide is-first is-active" data-index="0">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA">
+        <picture class="onv-hero-fullbleed__picture">
+          <source media="(max-width: 749px)" srcset="{{ mobile_image_url }}">
+          <source media="(min-width: 750px)" srcset="{{ desktop_image_url }}">
+          <img
+            src="{{ desktop_image_url }}"
+            alt="{{ section.settings.alt_text | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
+            class="onv-hero-fullbleed__img"
+            width="2752"
+            height="1536"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </picture>
+      </a>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="onv-hero-slide" data-index="1">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 2">
+        <img
+          src="{{ hero2_url }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Cuidado Avanzado' | escape }}"
+          class="onv-hero-fullbleed__img"
+          width="2752"
+          height="1536"
+          loading="lazy"
+        >
+      </a>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="onv-hero-slide" data-index="2">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 3">
+        <img
+          src="{{ hero3_url }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Resultados Reales' | escape }}"
+          class="onv-hero-fullbleed__img"
+          width="2752"
+          height="1536"
+          loading="lazy"
+        >
+      </a>
+    </div>
+
+    <!-- Indicadores / Dots -->
+    <div class="onv-hero-dots" aria-label="Diapositivas del hero">
+      <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a diapositiva 1"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a diapositiva 2"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Ir a diapositiva 3"></button>
+    </div>
+
+  </div>
 </section>
 
 {% style %}
   /* Contenedor del Hero Full-Bleed (Edge-to-Edge) */
   .onv-hero-fullbleed {
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
     padding: 0;
     margin-top: 0;
     margin-bottom: 0;
@@ -61,9 +114,44 @@
     background-color: #ffffff;
   }
 
+  .onv-hero-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2752 / 1536;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .onv-hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.75s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.75s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Slide 1 activo por defecto */
+  .onv-hero-slide.is-first {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .onv-hero-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
   .onv-hero-fullbleed__link {
     display: block;
     width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     line-height: 0;
@@ -74,6 +162,7 @@
   .onv-hero-fullbleed__picture {
     display: block;
     width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     line-height: 0;
@@ -81,7 +170,7 @@
 
   .onv-hero-fullbleed__img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
     object-position: center;
@@ -92,8 +181,48 @@
     box-shadow: none;
   }
 
+  /* Dots sutiles y elegantes */
+  .onv-hero-dots {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    background: rgba(27, 58, 47, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .onv-hero-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+
+  .onv-hero-dot.is-active {
+    width: 24px;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  }
+
   /* Versión Celular (Mobile): Full-Bleed 100% intacta */
   @media (max-width: 749px) {
+    .onv-hero-slider {
+      aspect-ratio: 2400 / 1792;
+    }
+
     .onv-hero-fullbleed {
       width: 100%;
       height: auto;
@@ -106,11 +235,111 @@
 
     .onv-hero-fullbleed__img {
       width: 100%;
-      height: auto;
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .onv-hero-dots {
+      bottom: 12px;
+      padding: 4px 8px;
+      gap: 6px;
+    }
+
+    .onv-hero-dot {
+      width: 6px;
+      height: 6px;
+    }
+
+    .onv-hero-dot.is-active {
+      width: 18px;
     }
   }
 {% endstyle %}
+
+<script>
+  (function() {
+    function initHeroCarousel() {
+      const section = document.getElementById('onv-hero-{{ section.id }}');
+      if (!section) return;
+
+      const slides = section.querySelectorAll('.onv-hero-slide');
+      const dots = section.querySelectorAll('.onv-hero-dot');
+      if (slides.length <= 1) return;
+
+      let currentIndex = 0;
+      let timer = null;
+      const intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 5000;
+
+      function goToSlide(index) {
+        slides[currentIndex].classList.remove('is-active');
+        if (dots[currentIndex]) dots[currentIndex].classList.remove('is-active');
+
+        currentIndex = (index + slides.length) % slides.length;
+
+        slides[currentIndex].classList.add('is-active');
+        if (dots[currentIndex]) dots[currentIndex].classList.add('is-active');
+      }
+
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      function startTimer() {
+        stopTimer();
+        timer = setInterval(nextSlide, intervalMs);
+      }
+
+      function stopTimer() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      // Eventos en dots
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetIndex = parseInt(dot.dataset.slideTo, 10);
+          if (!isNaN(targetIndex)) {
+            goToSlide(targetIndex);
+            startTimer();
+          }
+        });
+      });
+
+      // Pausar con hover
+      section.addEventListener('mouseenter', stopTimer);
+      section.addEventListener('mouseleave', startTimer);
+
+      // Gestos touch en móviles
+      let touchStartX = 0;
+      section.addEventListener('touchstart', (e) => {
+        stopTimer();
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      section.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (diff > 40) {
+          nextSlide();
+        } else if (diff < -40) {
+          goToSlide(currentIndex - 1);
+        }
+        startTimer();
+      }, { passive: true });
+
+      startTimer();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroCarousel);
+    } else {
+      initHeroCarousel();
+    }
+  })();
+</script>
 
 {% schema %}
 {
@@ -121,12 +350,22 @@
     {
       "type": "image_picker",
       "id": "desktop_image",
-      "label": "Imagen para Computador (Desktop)"
+      "label": "Slide 1: Computador (Desktop)"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Imagen para Celular (Mobile)"
+      "label": "Slide 1: Celular (Mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Slide 2: Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Slide 3: Imagen"
     },
     {
       "type": "url",

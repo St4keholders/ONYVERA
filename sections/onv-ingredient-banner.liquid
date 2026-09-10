@@ -9,9 +9,11 @@
     assign banner_img_url = section.settings.image | image_url: width: 2800
   endif
 
-  assign desktop_ratio = section.settings.desktop_ratio | default: '3:1'
-  assign ratio_val = '3 / 1'
-  if desktop_ratio == '5:2'
+  assign desktop_ratio = section.settings.desktop_ratio | default: '16:9'
+  assign ratio_val = '16 / 9'
+  if desktop_ratio == '3:1'
+    assign ratio_val = '3 / 1'
+  elsif desktop_ratio == '5:2'
     assign ratio_val = '5 / 2'
   elsif desktop_ratio == '2:1'
     assign ratio_val = '2 / 1'
@@ -62,13 +64,11 @@
 
 {% style %}
   .onv-ing-banner {
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
     padding: 0;
+    margin: 0;
     overflow: hidden;
     display: block;
     line-height: 0;
@@ -110,7 +110,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 48%;
+    object-position: center;
     display: block;
     border: none;
     margin: 0;
@@ -244,6 +244,10 @@
       "label": "Desktop ratio",
       "options": [
         {
+          "value": "16:9",
+          "label": "16:9 (Completo / Original)"
+        },
+        {
           "value": "3:1",
           "label": "3:1"
         },
@@ -256,7 +260,7 @@
           "label": "2:1"
         }
       ],
-      "default": "3:1"
+      "default": "16:9"
     },
     {
       "type": "url",

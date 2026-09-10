@@ -80,26 +80,31 @@
     <!-- GRID PRINCIPAL (GALERÍA + BUY BOX) -->
     <div class="onv-pdp__grid">
 
-      <!-- 3. COLUMNA IZQUIERDA — GALERÍA -->
+      <!-- 3. COLUMNA IZQUIERDA — GALERÍA (ESTILO MARKETPLACE) -->
       <div class="onv-pdp__gallery{% if section.settings.galeria_sticky %} onv-pdp__gallery--sticky{% endif %}">
         <div class="onv-gallery">
 
-          <!-- Riel de Miniaturas -->
-          {%- if product.media.size > 1 -%}
-            <ul class="pdp-thumbs" aria-label="Miniaturas del producto">
-              {%- for media in product.media -%}
-                <li class="pdp-thumbs__item">
+          {%- liquid
+            assign gallery_images = 'onv-producto1.jpeg,onv-producto2.jpeg,onv-producto3.jpeg,onv-producto4.jpeg,onv-producto5.jpeg,onv-producto6.jpeg,onv-producto7.jpeg,onv-producto8.jpeg' | split: ','
+          -%}
+
+          <!-- Riel Vertical de Miniaturas (Estilo Mercado Libre) -->
+          <div class="pdp-thumbs-wrapper">
+            <ul class="pdp-thumbs" id="PdpThumbsList" aria-label="Miniaturas del producto">
+              {%- for img_file in gallery_images -%}
+                {%- assign img_src = img_file | asset_url -%}
+                <li class="pdp-thumbs__item{% if forloop.index > 6 %} pdp-thumbs__item--extra is-hidden-desktop{% endif %}" data-index="{{ forloop.index0 }}">
                   <button
                     type="button"
                     class="pdp-thumbs__btn{% if forloop.first %} is-active{% endif %}"
-                    data-media-id="{{ media.id }}"
-                    data-full-src="{{ media | image_url: width: 1400 }}"
-                    data-alt="{{ media.alt | default: product.title | escape }}"
-                    aria-label="Ver imagen {{ forloop.index }} de {{ product.media.size }}"
+                    data-index="{{ forloop.index0 }}"
+                    data-full-src="{{ img_src }}"
+                    data-alt="ONYVERA Sérum Botánico - Vista {{ forloop.index }}"
+                    aria-label="Ver imagen {{ forloop.index }} de {{ gallery_images.size }}"
                   >
                     <img
-                      src="{{ media | image_url: width: 152, height: 152, crop: 'center' }}"
-                      alt="{{ media.alt | default: product.title | escape }}"
+                      src="{{ img_src }}"
+                      alt="ONYVERA Sérum Botánico - Vista {{ forloop.index }}"
                       class="pdp-thumbs__img"
                       width="76"
                       height="76"
@@ -109,36 +114,38 @@
                 </li>
               {%- endfor -%}
             </ul>
-          {%- endif -%}
 
-          <!-- Imagen Principal -->
-          <div class="pdp-main">
-            {%- assign first_media = product.featured_media | default: product.media.first -%}
-            {%- if first_media -%}
-              <img
-                id="PdpMainImage-{{ section.id }}"
-                src="{{ first_media | image_url: width: 1080 }}"
-                alt="{{ first_media.alt | default: product.title | escape }}"
-                class="pdp-main__img"
-                width="1080"
-                height="1080"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              >
-            {%- else -%}
-              <img
-                id="PdpMainImage-{{ section.id }}"
-                src="{{ 'onv-producto-frasco.png' | asset_url }}"
-                alt="{{ product.title | escape }}"
-                class="pdp-main__img"
-                width="1080"
-                height="1080"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              >
+            {%- if gallery_images.size > 6 -%}
+              <button type="button" class="pdp-thumbs__more-btn" id="PdpMoreImagesBtn" aria-label="Ver más imágenes">
+                <span id="PdpMoreBtnText">Más imágenes</span>
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
             {%- endif -%}
+          </div>
+
+          <!-- Imagen Principal Grande con Flechas de Navegación -->
+          <div class="pdp-main" id="PdpMainContainer">
+            <!-- Flecha Anterior -->
+            <button type="button" class="pdp-main__nav pdp-main__nav--prev" id="PdpNavPrev" aria-label="Imagen anterior">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+
+            <!-- Flecha Siguiente -->
+            <button type="button" class="pdp-main__nav pdp-main__nav--next" id="PdpNavNext" aria-label="Siguiente imagen">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <img
+              id="PdpMainImage-{{ section.id }}"
+              src="{{ gallery_images.first | asset_url }}"
+              alt="{{ product.title | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
+              class="pdp-main__img"
+              width="1080"
+              height="1080"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            >
 
             <!-- Botón de Zoom (Abre Lightbox) -->
             <button
@@ -182,20 +189,14 @@
           </div>
         {%- endif -%}
 
-        <!-- 4.4 Precio y Descuento -->
+        <!-- 4.4 Precio y Descuento Dinámicos -->
         <div class="pdp-price-wrap" id="PdpPriceWrap-{{ section.id }}">
           <div class="pdp-price-row">
-            <span class="pdp-price" id="PdpCurrentPrice-{{ section.id }}">{{ current_variant.price | money }}</span>
-
-            {%- if is_discounted -%}
-              <s class="pdp-price-compare" id="PdpComparePrice-{{ section.id }}">{{ compare_at_price | money }}</s>
-              <span class="pdp-discount-badge" id="PdpDiscountBadge-{{ section.id }}">-{{ discount_percent }}%</span>
-            {%- else -%}
-              <s class="pdp-price-compare" id="PdpComparePrice-{{ section.id }}" style="display: none;"></s>
-              <span class="pdp-discount-badge" id="PdpDiscountBadge-{{ section.id }}" style="display: none;"></span>
-            {%- endif -%}
+            <span class="pdp-price" id="PdpCurrentPrice-{{ section.id }}">$25.00</span>
+            <s class="pdp-price-compare" id="PdpComparePrice-{{ section.id }}" style="display: none;"></s>
+            <span class="pdp-discount-badge" id="PdpDiscountBadge-{{ section.id }}" style="display: none;"></span>
           </div>
-          <span class="pdp-tax-note">Impuestos incluidos.</span>
+          <span class="pdp-tax-note">Impuestos incluidos. Envío calculado en el checkout.</span>
         </div>
 
         <!-- Formulario Principal de Producto -->
@@ -236,15 +237,21 @@
                 {%- for variant in product.variants -%}
                   {%- liquid
                     assign is_selected = false
-                    if variant.id == current_variant.id
+                    if forloop.first
                       assign is_selected = true
                     endif
 
                     assign duration_label = "2 a 3 semanas"
+                    assign bundle_target_qty = 1
+                    assign bundle_display_price = "$25.00"
                     if forloop.index == 2
                       assign duration_label = "4 a 6 semanas"
+                      assign bundle_target_qty = 2
+                      assign bundle_display_price = "$50.00"
                     elsif forloop.index == 3
                       assign duration_label = "Tratamiento intensivo"
+                      assign bundle_target_qty = 3
+                      assign bundle_display_price = "$60.00"
                     endif
                   -%}
 
@@ -259,19 +266,19 @@
                       name="bundle_radio"
                       value="{{ variant.id }}"
                       class="pdp-bundle__input"
-                      data-price="{{ variant.price | money }}"
-                      data-compare="{{ variant.compare_at_price | money }}"
-                      data-discount="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | round }}{% else %}0{% endif %}"
+                      data-qty="{{ bundle_target_qty }}"
+                      data-price="{{ bundle_display_price }}"
                       data-available="{{ variant.available }}"
                       {% if is_selected %}checked{% endif %}
                       {% unless variant.available %}disabled{% endunless %}
                     >
                     <label for="Variant-{{ variant.id }}" class="pdp-bundle__label">
-                      <span class="pdp-bundle__name">{{ variant.title | escape }}</span>
+                      {%- assign bundle_name_clean = variant.title | replace: 'Bottles', 'Frascos' | replace: 'Bottle', 'Frasco' | escape -%}
+                      <span class="pdp-bundle__name">{{ bundle_name_clean }}</span>
                       <span class="pdp-bundle__duration">{{ duration_label }}</span>
                       <span class="pdp-bundle__price">
                         {%- if variant.available -%}
-                          {{ variant.price | money }}
+                          {{ bundle_display_price }}
                         {%- else -%}
                           Agotado
                         {%- endif -%}
@@ -283,7 +290,7 @@
             </div>
           {%- endif -%}
 
-          <!-- 4.7 Cantidad -->
+          <!-- 4.7 Cantidad + Indicador de Compra al por Mayor -->
           <div class="pdp-qty-block">
             <span class="pdp-block-label">Cantidad</span>
             <div class="pdp-qty-row">
@@ -302,14 +309,20 @@
                 <button type="button" class="pdp-qty-btn" id="PdpQtyPlus" aria-label="Aumentar cantidad">+</button>
               </div>
 
+              <!-- Indicador de Compra al por Mayor (Siempre Visible) -->
+              <div class="pdp-wholesale-indicator" id="PdpWholesaleIndicator">
+                <span class="pdp-wholesale-badge">10 unidades — producto al por mayor</span>
+              </div>
+
               {%- if cart_item_count > 0 -%}
                 <span class="pdp-cart-count-note">({{ cart_item_count }} en el carrito)</span>
               {%- endif -%}
             </div>
           </div>
 
-          <!-- 4.8 Botones de Acción (Apilados, Ancho Completo) -->
-          <div class="pdp-actions">
+          <!-- 4.8 Botones de Acción (Checkout y Redirección a WhatsApp) -->
+          <div class="pdp-actions" id="PdpActionsContainer">
+            <!-- Botón normal Agregar al Carrito -->
             <button
               type="submit"
               name="add"
@@ -326,11 +339,27 @@
               </span>
             </button>
 
+            <!-- Checkout Dinámico -->
             {%- if current_variant.available -%}
-              <div class="pdp-dynamic-checkout">
+              <div class="pdp-dynamic-checkout" id="PdpDynamicCheckoutWrap">
                 {{ form | payment_button }}
               </div>
             {%- endif -%}
+
+            <!-- Botón de Contacto por WhatsApp (Visible a partir de 10 unidades) -->
+            <a
+              href="#"
+              id="PdpWhatsAppBtn"
+              class="pdp-btn pdp-btn--whatsapp is-hidden"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hablar con un asesor por WhatsApp para pedido al por mayor"
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span>Hablar con un asesor por WhatsApp</span>
+            </a>
           </div>
 
         {%- endform -%}
@@ -513,12 +542,21 @@
     }
   }
 
-  /* 3. Galería (Desktop) */
+  /* 3. Galería (Estilo Marketplace / Mercado Libre) */
   .onv-gallery {
     display: flex;
     flex-direction: column;
     gap: 16px;
     width: 100%;
+  }
+
+  @media (max-width: 999px) {
+    .pdp-main {
+      order: 1;
+    }
+    .pdp-thumbs-wrapper {
+      order: 2;
+    }
   }
 
   @media (min-width: 1000px) {
@@ -527,6 +565,47 @@
       align-items: flex-start;
       gap: 16px;
     }
+
+    .pdp-thumbs-wrapper {
+      order: 1;
+      width: 64px;
+    }
+
+    .pdp-main {
+      order: 2;
+    }
+
+    .pdp-thumbs {
+      flex-direction: column;
+      gap: 8px;
+      max-height: 440px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(27, 58, 47, 0.2) transparent;
+      padding-right: 2px;
+    }
+
+    .pdp-thumbs::-webkit-scrollbar {
+      display: block;
+      width: 4px;
+    }
+
+    .pdp-thumbs::-webkit-scrollbar-thumb {
+      background: rgba(27, 58, 47, 0.2);
+      border-radius: 4px;
+    }
+
+    .pdp-thumbs__item--extra.is-hidden-desktop {
+      display: none !important;
+    }
+  }
+
+  .pdp-thumbs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
   }
 
   .pdp-thumbs {
@@ -544,35 +623,28 @@
     display: none;
   }
 
-  @media (min-width: 1000px) {
-    .pdp-thumbs {
-      flex: 0 0 76px;
-      flex-direction: column;
-      gap: 12px;
-      overflow-x: visible;
-    }
-  }
-
   .pdp-thumbs__btn {
-    width: 76px;
-    height: 76px;
+    width: 64px;
+    height: 64px;
     aspect-ratio: 1 / 1;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #E6E0D2;
     background-color: #FFFFFF;
     cursor: pointer;
     padding: 0;
     display: block;
     overflow: hidden;
-    transition: border-color 0.2s ease, transform 0.15s ease;
+    transition: border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   }
 
   .pdp-thumbs__btn:hover {
-    border-color: #1B3A2F;
+    border-color: #2F7A6B;
+    transform: scale(1.03);
   }
 
   .pdp-thumbs__btn.is-active {
-    border: 2px solid #1B3A2F !important;
+    border: 2px solid #2F7A6B !important;
+    box-shadow: 0 2px 10px rgba(47, 122, 107, 0.25);
   }
 
   .pdp-thumbs__btn:focus-visible {
@@ -587,48 +659,121 @@
     display: block;
   }
 
+  /* Botón 'Más imágenes' */
+  .pdp-thumbs__more-btn {
+    width: 100%;
+    padding: 6px 4px;
+    background: #F6F2E9;
+    border: 1px dashed #C6A264;
+    border-radius: 8px;
+    font-family: var(--font-ui, 'Karla', sans-serif);
+    font-size: 11px;
+    font-weight: 700;
+    color: #1B3A2F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .pdp-thumbs__more-btn:hover {
+    background: #EAE3D5;
+    border-color: #1B3A2F;
+  }
+
+  /* Imagen Principal */
   .pdp-main {
     flex: 1 1 auto;
     position: relative;
     aspect-ratio: 1 / 1;
     width: 100%;
-    background-color: #F6F2E9;
-    border-radius: 12px;
-    padding: 24px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(27, 58, 47, 0.08);
+    border-radius: 14px;
+    padding: 0;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(19, 46, 35, 0.04);
   }
 
   .pdp-main__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
+    transition: opacity 0.25s ease;
+  }
+
+  /* Flechas de Navegación sobre la Imagen Principal */
+  .pdp-main__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(27, 58, 47, 0.12);
+    color: #1B3A2F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 6;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  }
+
+  .pdp-main__nav:hover {
+    background: #FFFFFF;
+    color: #2F7A6B;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  .pdp-main__nav:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .pdp-main__nav--prev {
+    left: 14px;
+  }
+
+  .pdp-main__nav--next {
+    right: 14px;
   }
 
   .pdp-main__zoom-btn {
     position: absolute;
     top: 12px;
     right: 12px;
-    width: 36px;
-    height: 36px;
-    background-color: #FFFFFF;
-    border: 1px solid #E6E0D2;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(27, 58, 47, 0.12);
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 5;
-    transition: background-color 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   }
 
   .pdp-main__zoom-btn:hover {
-    background-color: #F6F2E9;
-    transform: scale(1.05);
+    background-color: #FFFFFF;
+    transform: scale(1.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
   }
 
   /* 4. Buy Box */
@@ -1019,6 +1164,129 @@
     background-color: #142C23 !important;
   }
 
+  /* Indicador de Compra al por Mayor */
+  .pdp-wholesale-indicator {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .pdp-wholesale-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    background-color: #F0F7F4;
+    border: 1px solid #B8D8CD;
+    color: #1B3A2F;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  /* Botón de WhatsApp para Mayoreo */
+  .pdp-btn--whatsapp {
+    background-color: #25D366;
+    color: #FFFFFF !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  }
+
+  .pdp-btn--whatsapp:hover {
+    background-color: #1EBE5D;
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+  }
+
+  .pdp-btn--whatsapp svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Estados deshabilitados por venta al por mayor */
+  .is-wholesale-disabled {
+    opacity: 0.35 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+    filter: grayscale(0.8) !important;
+  }
+
+  .is-hidden {
+    display: none !important;
+  }
+
+  /* Adaptación Responsive para Móvil (Galería usable en fila con scroll) */
+  @media (max-width: 999px) {
+    .onv-gallery {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pdp-thumbs-wrapper {
+      order: 2;
+      width: 100%;
+    }
+
+    .pdp-thumbs {
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 8px;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .pdp-thumbs__item {
+      scroll-snap-align: start;
+      flex: 0 0 68px;
+    }
+
+    .pdp-thumbs__item--extra.is-hidden-desktop {
+      display: list-item !important;
+    }
+
+    .pdp-thumbs__btn {
+      width: 68px;
+      height: 68px;
+    }
+
+    .pdp-thumbs__more-btn {
+      display: none;
+    }
+
+    .pdp-main {
+      order: 1;
+      aspect-ratio: 1 / 1;
+      padding: 16px;
+    }
+
+    .pdp-main__nav {
+      width: 36px;
+      height: 36px;
+    }
+
+    .pdp-main__nav--prev {
+      left: 8px;
+    }
+
+    .pdp-main__nav--next {
+      right: 8px;
+    }
+
+    .pdp-qty-row {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
   /* 4.9 Filas de Confianza */
   .pdp-trust-rows {
     list-style: none;
@@ -1260,29 +1528,110 @@
 <script>
   (function() {
     function initPdp() {
-      // 1. Galería de miniaturas e intercambio de imagen principal
-      var thumbs = document.querySelectorAll('.pdp-thumbs__btn');
+      // ==========================================
+      // 1. GALERÍA DE PRODUCTO (ESTILO MARKETPLACE)
+      // ==========================================
+      var thumbs = Array.from(document.querySelectorAll('.pdp-thumbs__btn'));
       var mainImg = document.getElementById('PdpMainImage-{{ section.id }}');
+      var navPrev = document.getElementById('PdpNavPrev');
+      var navNext = document.getElementById('PdpNavNext');
+      var moreImagesBtn = document.getElementById('PdpMoreImagesBtn');
+      var moreBtnText = document.getElementById('PdpMoreBtnText');
+      var extraThumbs = document.querySelectorAll('.pdp-thumbs__item--extra');
+
       var zoomBtn = document.getElementById('PdpZoomBtn-{{ section.id }}');
       var lightbox = document.getElementById('PdpLightboxModal');
       var lightboxImg = document.getElementById('PdpLightboxImg');
       var lightboxClose = document.getElementById('PdpLightboxClose');
       var lightboxBackdrop = document.getElementById('PdpLightboxBackdrop');
 
-      thumbs.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          thumbs.forEach(function(b) { b.classList.remove('is-active'); });
-          this.classList.add('is-active');
-          var fullSrc = this.getAttribute('data-full-src');
-          var altText = this.getAttribute('data-alt');
-          if (mainImg && fullSrc) {
-            mainImg.src = fullSrc;
-            if (altText) mainImg.alt = altText;
+      var currentImgIndex = 0;
+
+      function goToImage(index) {
+        if (!thumbs.length) return;
+        currentImgIndex = (index + thumbs.length) % thumbs.length;
+        var activeBtn = thumbs[currentImgIndex];
+        if (!activeBtn) return;
+
+        thumbs.forEach(function(b) { b.classList.remove('is-active'); });
+        activeBtn.classList.add('is-active');
+
+        var fullSrc = activeBtn.getAttribute('data-full-src');
+        var altText = activeBtn.getAttribute('data-alt');
+
+        if (mainImg && fullSrc) {
+          mainImg.style.opacity = '0.4';
+          mainImg.src = fullSrc;
+          if (altText) mainImg.alt = altText;
+          setTimeout(function() {
+            mainImg.style.opacity = '1';
+          }, 120);
+        }
+
+        if (lightboxImg && lightbox && lightbox.classList.contains('is-open')) {
+          lightboxImg.src = fullSrc;
+          if (altText) lightboxImg.alt = altText;
+        }
+
+        // Asegurar que la miniatura activa sea visible
+        var parentItem = activeBtn.closest('.pdp-thumbs__item');
+        if (parentItem) {
+          if (parentItem.classList.contains('is-hidden-desktop')) {
+            parentItem.classList.remove('is-hidden-desktop');
           }
+          if (parentItem.scrollIntoView) {
+            parentItem.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+          }
+        }
+      }
+
+      // Clic en miniaturas
+      thumbs.forEach(function(btn, idx) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          goToImage(idx);
         });
       });
 
-      // 2. Lightbox Zoom
+      // Flechas Anterior y Siguiente
+      if (navPrev) {
+        navPrev.addEventListener('click', function(e) {
+          e.preventDefault();
+          goToImage(currentImgIndex - 1);
+        });
+      }
+
+      if (navNext) {
+        navNext.addEventListener('click', function(e) {
+          e.preventDefault();
+          goToImage(currentImgIndex + 1);
+        });
+      }
+
+      // Botón "Más imágenes"
+      if (moreImagesBtn && extraThumbs.length > 0) {
+        var isExpanded = false;
+        moreImagesBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          isExpanded = !isExpanded;
+          extraThumbs.forEach(function(item) {
+            if (isExpanded) {
+              item.classList.remove('is-hidden-desktop');
+            } else {
+              item.classList.add('is-hidden-desktop');
+            }
+          });
+          if (moreBtnText) {
+            moreBtnText.textContent = isExpanded ? 'Menos imágenes' : 'Más imágenes';
+          }
+          var svg = moreImagesBtn.querySelector('svg');
+          if (svg) {
+            svg.style.transform = isExpanded ? 'rotate(180deg)' : 'none';
+          }
+        });
+      }
+
+      // Lightbox Zoom
       if (zoomBtn && lightbox && lightboxImg) {
         zoomBtn.addEventListener('click', function() {
           if (mainImg) {
@@ -1304,85 +1653,185 @@
         if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
 
         document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
-            closeLightbox();
+          if (lightbox.classList.contains('is-open')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') goToImage(currentImgIndex - 1);
+            if (e.key === 'ArrowRight') goToImage(currentImgIndex + 1);
           }
         });
       }
 
-      // 3. Selector de Paquete (Radio Cards) y Actualización Dinámica
-      var bundleRadios = document.querySelectorAll('input[name="bundle_radio"]');
-      var hiddenVariantInput = document.getElementById('PdpSelectedVariantId');
+      // ==========================================
+      // 2. LÓGICA DE PRECIOS, MAYOREO Y WHATSAPP
+      // ==========================================
+      // TODO: reemplazar con número real de WhatsApp
+      var WHATSAPP_PHONE_NUMBER = '1234567890'; // Reemplazar con el número de teléfono con código de país (ej. 13050000000)
+
       var currentPriceEl = document.getElementById('PdpCurrentPrice-{{ section.id }}');
       var comparePriceEl = document.getElementById('PdpComparePrice-{{ section.id }}');
       var discountBadgeEl = document.getElementById('PdpDiscountBadge-{{ section.id }}');
+      var qtyInput = document.getElementById('PdpQuantityInput');
+      var qtyMinus = document.getElementById('PdpQtyMinus');
+      var qtyPlus = document.getElementById('PdpQtyPlus');
       var addBtn = document.getElementById('PdpAddToCartBtn');
-      var addBtnText = document.getElementById('PdpAddToCartText');
+      var dynamicCheckout = document.getElementById('PdpDynamicCheckoutWrap');
+      var whatsappBtn = document.getElementById('PdpWhatsAppBtn');
+      var bundleRadios = document.querySelectorAll('input[name="bundle_radio"]');
+      var hiddenVariantInput = document.getElementById('PdpSelectedVariantId');
 
-      bundleRadios.forEach(function(radio) {
-        radio.addEventListener('change', function() {
-          document.querySelectorAll('.pdp-bundle-card').forEach(function(c) {
-            c.classList.remove('is-selected');
+      // Cálculo de precio según la tabla oficial:
+      // 1 unidad = $25
+      // 2 unidades = $50
+      // 3 unidades = $60
+      // A partir de 3 unidades: +$20 por cada unidad adicional
+      function calculatePrice(qty) {
+        if (qty <= 0) return 0;
+        if (qty === 1) return 25;
+        if (qty === 2) return 50;
+        if (qty === 3) return 60;
+        return 60 + (qty - 3) * 20;
+      }
+
+      function getWhatsAppUrl(qty) {
+        var message = 'Hola, quiero comprar ' + qty + ' unidades de ONYVERA. Me gustaría hablar con un asesor para consultar el precio al por mayor y realizar el pedido.';
+        return 'https://wa.me/' + WHATSAPP_PHONE_NUMBER + '?text=' + encodeURIComponent(message);
+      }
+
+      function updatePdpState(qty) {
+        var cleanQty = parseInt(qty, 10);
+        if (isNaN(cleanQty) || cleanQty < 1) cleanQty = 1;
+        if (qtyInput && parseInt(qtyInput.value, 10) !== cleanQty) {
+          qtyInput.value = cleanQty;
+        }
+
+        // Sincronizar radio cards de paquetes
+        if (bundleRadios.length > 0) {
+          document.querySelectorAll('.pdp-bundle-card').forEach(function(card) {
+            card.classList.remove('is-selected');
           });
-          var parentCard = this.closest('.pdp-bundle-card');
-          if (parentCard) parentCard.classList.add('is-selected');
+          var matchingRadio = Array.from(bundleRadios).find(function(r) {
+            return parseInt(r.getAttribute('data-qty'), 10) === cleanQty;
+          });
+          if (matchingRadio) {
+            matchingRadio.checked = true;
+            var parent = matchingRadio.closest('.pdp-bundle-card');
+            if (parent) parent.classList.add('is-selected');
+            if (hiddenVariantInput) hiddenVariantInput.value = matchingRadio.value;
+          }
+        }
 
-          var variantId = this.value;
-          if (hiddenVariantInput) hiddenVariantInput.value = variantId;
-
-          var price = this.getAttribute('data-price');
-          var compare = this.getAttribute('data-compare');
-          var discount = parseInt(this.getAttribute('data-discount'), 10);
-          var available = this.getAttribute('data-available') === 'true';
-
-          if (currentPriceEl && price) currentPriceEl.textContent = price;
-
+        // A partir de 10 unidades: venta al por mayor (no hay precio automático, se habla con el asesor)
+        var isWholesale = cleanQty >= 10;
+        if (isWholesale) {
+          // Deshabilitar botones de pago normales
+          if (addBtn) {
+            addBtn.disabled = true;
+            addBtn.classList.add('is-wholesale-disabled');
+          }
+          if (dynamicCheckout) {
+            dynamicCheckout.classList.add('is-wholesale-disabled');
+          }
+          // Mostrar botón de WhatsApp para hablar con el asesor
+          if (whatsappBtn) {
+            whatsappBtn.href = getWhatsAppUrl(cleanQty);
+            whatsappBtn.classList.remove('is-hidden');
+          }
+          // Estado de precio a consultar con asesor
+          if (currentPriceEl) {
+            currentPriceEl.textContent = 'Consultar con asesor';
+          }
           if (comparePriceEl) {
-            if (discount > 0 && compare) {
-              comparePriceEl.textContent = compare;
-              comparePriceEl.style.display = '';
-            } else {
-              comparePriceEl.style.display = 'none';
-            }
+            comparePriceEl.style.display = 'none';
+          }
+          if (discountBadgeEl) {
+            discountBadgeEl.style.display = 'none';
+          }
+        } else {
+          // Menos de 10 unidades: precio calculado normal
+          var total = calculatePrice(cleanQty);
+
+          // Actualizar precio mostrado en la pantalla
+          if (currentPriceEl) {
+            currentPriceEl.textContent = '$' + total + '.00';
           }
 
-          if (discountBadgeEl) {
-            if (discount > 0) {
-              discountBadgeEl.textContent = '-' + discount + '%';
+          // Precio de comparación referencial ($25 por unidad estándar)
+          if (cleanQty >= 3 && comparePriceEl && discountBadgeEl) {
+            var standardPrice = cleanQty * 25;
+            if (standardPrice > total) {
+              var diff = standardPrice - total;
+              var pct = Math.round((diff / standardPrice) * 100);
+              comparePriceEl.textContent = '$' + standardPrice + '.00';
+              comparePriceEl.style.display = '';
+              discountBadgeEl.textContent = 'Ahorras $' + diff + ' (-' + pct + '%)';
               discountBadgeEl.style.display = '';
             } else {
+              comparePriceEl.style.display = 'none';
               discountBadgeEl.style.display = 'none';
             }
+          } else if (comparePriceEl && discountBadgeEl) {
+            comparePriceEl.style.display = 'none';
+            discountBadgeEl.style.display = 'none';
           }
 
-          if (addBtn && addBtnText) {
-            if (available) {
-              addBtn.disabled = false;
-              addBtnText.textContent = 'Agregar al carrito';
-            } else {
-              addBtn.disabled = true;
-              addBtnText.textContent = 'Agotado';
-            }
+          // Reactivar botones de pago normales
+          if (addBtn) {
+            addBtn.disabled = false;
+            addBtn.classList.remove('is-wholesale-disabled');
           }
+          if (dynamicCheckout) {
+            dynamicCheckout.classList.remove('is-wholesale-disabled');
+          }
+          // Ocultar botón de WhatsApp
+          if (whatsappBtn) {
+            whatsappBtn.classList.add('is-hidden');
+          }
+        }
+      }
+
+      // Controles Stepper de Cantidad
+      if (qtyMinus && qtyInput) {
+        qtyMinus.addEventListener('click', function(e) {
+          e.preventDefault();
+          var currentVal = parseInt(qtyInput.value, 10) || 1;
+          if (currentVal > 1) {
+            updatePdpState(currentVal - 1);
+          }
+        });
+      }
+
+      if (qtyPlus && qtyInput) {
+        qtyPlus.addEventListener('click', function(e) {
+          e.preventDefault();
+          var currentVal = parseInt(qtyInput.value, 10) || 1;
+          updatePdpState(currentVal + 1);
+        });
+      }
+
+      if (qtyInput) {
+        qtyInput.addEventListener('change', function() {
+          var val = parseInt(this.value, 10) || 1;
+          updatePdpState(val);
+        });
+        qtyInput.addEventListener('input', function() {
+          var val = parseInt(this.value, 10);
+          if (!isNaN(val) && val >= 1) {
+            updatePdpState(val);
+          }
+        });
+      }
+
+      // Evento al cambiar selección de paquete por Radio Card
+      bundleRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          var targetQty = parseInt(this.getAttribute('data-qty'), 10) || 1;
+          updatePdpState(targetQty);
         });
       });
 
-      // 4. Control de Cantidad (Stepper)
-      var qtyMinus = document.getElementById('PdpQtyMinus');
-      var qtyPlus = document.getElementById('PdpQtyPlus');
-      var qtyInput = document.getElementById('PdpQuantityInput');
-
-      if (qtyMinus && qtyPlus && qtyInput) {
-        qtyMinus.addEventListener('click', function() {
-          var val = parseInt(qtyInput.value, 10) || 1;
-          if (val > 1) qtyInput.value = val - 1;
-        });
-
-        qtyPlus.addEventListener('click', function() {
-          var val = parseInt(qtyInput.value, 10) || 1;
-          qtyInput.value = val + 1;
-        });
-      }
+      // Inicializar con la cantidad actual
+      var initialQty = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
+      updatePdpState(initialQty);
     }
 
     if (document.readyState === 'loading') {

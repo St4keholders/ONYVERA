@@ -128,11 +128,9 @@
     display: flex;
     flex-shrink: 0;
     width: max-content;
-    animation: onvTickerSlide var(--onv-ticker-speed, 32s) linear infinite;
-  }
-
-  .onv-ticker:hover .onv-ticker__track {
-    animation-play-state: paused;
+    animation: onvTickerSlide var(--onv-ticker-speed, 55s) linear infinite;
+    animation-play-state: running;
+    will-change: transform;
   }
 
   .onv-ticker__group {
@@ -199,17 +197,6 @@
       font-size: 11.5px;
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .onv-ticker__track {
-      animation: none;
-      width: 100%;
-      justify-content: center;
-    }
-    .onv-ticker__group:last-child {
-      display: none;
-    }
-  }
 {% endstyle %}
 
 {% schema %}
@@ -221,12 +208,12 @@
     {
       "type": "range",
       "id": "speed",
-      "min": 15,
-      "max": 60,
+      "min": 20,
+      "max": 90,
       "step": 1,
       "unit": "s",
       "label": "Velocidad de desplazamiento",
-      "default": 32
+      "default": 55
     },
     {
       "type": "text",

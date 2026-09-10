@@ -6,15 +6,15 @@
 {%- if section.settings.show_cinta -%}
   <aside id="onv-cinta-{{ section.id }}" class="onv-cinta" role="region" aria-label="{{ 'sections.announcements.announcement' | t | default: 'Anuncio' }}">
     <div class="onv-cinta__track-wrapper">
-      <div class="onv-cinta__track" style="--onv-cinta-speed: {{ section.settings.speed }}s;">
+      <div class="onv-cinta__track" style="--onv-cinta-speed: {{ section.settings.speed | default: 45 }}s;">
         <div class="onv-cinta__item">
-          {%- for i in (1..6) -%}
+          {%- for i in (1..10) -%}
             <span class="onv-cinta__text">{{ section.settings.text | escape }}</span>
             <span class="onv-cinta__sep" aria-hidden="true">✦</span>
           {%- endfor -%}
         </div>
         <div class="onv-cinta__item" aria-hidden="true">
-          {%- for i in (1..6) -%}
+          {%- for i in (1..10) -%}
             <span class="onv-cinta__text">{{ section.settings.text | escape }}</span>
             <span class="onv-cinta__sep" aria-hidden="true">✦</span>
           {%- endfor -%}
@@ -31,7 +31,9 @@
       overflow: hidden;
       user-select: none;
       position: relative;
-      z-index: 20;
+      z-index: 2;
+      width: 100%;
+      max-width: 100%;
     }
 
     .onv-cinta__track-wrapper {
@@ -44,11 +46,9 @@
       display: flex;
       flex-shrink: 0;
       width: max-content;
-      animation: onvCintaSlide var(--onv-cinta-speed, 20s) linear infinite;
-    }
-
-    .onv-cinta:hover .onv-cinta__track {
-      animation-play-state: paused;
+      animation: onvCintaSlide var(--onv-cinta-speed, 45s) linear infinite;
+      animation-play-state: running;
+      will-change: transform;
     }
 
     .onv-cinta__item {
@@ -56,6 +56,7 @@
       align-items: center;
       white-space: nowrap;
       padding: 10px 0;
+      flex-shrink: 0;
     }
 
     .onv-cinta__text {
@@ -74,22 +75,11 @@
     }
 
     @keyframes onvCintaSlide {
-      from {
+      0% {
         transform: translate3d(0, 0, 0);
       }
-      to {
+      100% {
         transform: translate3d(-50%, 0, 0);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .onv-cinta__track {
-        animation: none;
-        width: 100%;
-        justify-content: center;
-      }
-      .onv-cinta__item:last-child {
-        display: none;
       }
     }
   {% endstyle %}
@@ -117,10 +107,10 @@
       "type": "range",
       "id": "speed",
       "label": "Velocidad de desplazamiento (segundos)",
-      "min": 10,
-      "max": 60,
-      "step": 2,
-      "default": 24,
+      "min": 20,
+      "max": 90,
+      "step": 1,
+      "default": 45,
       "unit": "s"
     },
     {

@@ -185,16 +185,14 @@
 
     /* Marquee Strip Full-Bleed */
     .rev-marquee {
-      width: 100vw;
+      width: 100%;
+      max-width: 100%;
       position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
       overflow: hidden;
       -webkit-mask-image: linear-gradient(to right, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
               mask-image: linear-gradient(to right, transparent 0, #000 48px, #000 calc(100% - 48px), transparent 100%);
       padding: 10px 0;
+      margin: 0;
     }
 
     .rev-marquee__track {
