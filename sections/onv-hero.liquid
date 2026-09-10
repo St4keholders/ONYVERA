@@ -39,7 +39,7 @@
   endif
 -%}
 
-<section id="onv-hero-{{ section.id }}" class="onv-hero-fullbleed" data-autoplay-interval="5000">
+<section id="onv-hero-{{ section.id }}" class="onv-hero-fullbleed" data-autoplay-interval="4000">
   <div class="onv-hero-slider" id="onv-hero-slider-{{ section.id }}">
 
     <!-- Slide 1 -->
@@ -117,7 +117,7 @@
   .onv-hero-slider {
     position: relative;
     width: 100%;
-    aspect-ratio: 2752 / 1536;
+    aspect-ratio: 16 / 7;
     overflow: hidden;
     line-height: 0;
   }
@@ -217,10 +217,11 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
   }
 
-  /* Versión Celular (Mobile): Full-Bleed 100% intacta */
+  /* Versión Celular (Mobile): Solo slide 1, sin carrusel */
   @media (max-width: 749px) {
+    /* Solo slide 1 en mobile: aspect ratio 4:5 para foto de producto */
     .onv-hero-slider {
-      aspect-ratio: 2400 / 1792;
+      aspect-ratio: 4 / 5;
     }
 
     .onv-hero-fullbleed {
@@ -240,19 +241,14 @@
       object-position: center;
     }
 
+    /* Ocultar slides 2 y 3 en mobile */
+    .onv-hero-slide:not(.is-first) {
+      display: none !important;
+    }
+
+    /* Ocultar dots en mobile (solo 1 imagen) */
     .onv-hero-dots {
-      bottom: 12px;
-      padding: 4px 8px;
-      gap: 6px;
-    }
-
-    .onv-hero-dot {
-      width: 6px;
-      height: 6px;
-    }
-
-    .onv-hero-dot.is-active {
-      width: 18px;
+      display: none !important;
     }
   }
 {% endstyle %}
@@ -260,6 +256,9 @@
 <script>
   (function() {
     function initHeroCarousel() {
+      // No iniciar carrusel en mobile (solo 1 imagen)
+      if (window.innerWidth <= 749) return;
+
       const section = document.getElementById('onv-hero-{{ section.id }}');
       if (!section) return;
 
@@ -269,7 +268,7 @@
 
       let currentIndex = 0;
       let timer = null;
-      const intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 5000;
+      const intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 4000;
 
       function goToSlide(index) {
         slides[currentIndex].classList.remove('is-active');
@@ -313,23 +312,7 @@
       section.addEventListener('mouseenter', stopTimer);
       section.addEventListener('mouseleave', startTimer);
 
-      // Gestos touch en móviles
-      let touchStartX = 0;
-      section.addEventListener('touchstart', (e) => {
-        stopTimer();
-        touchStartX = e.touches[0].clientX;
-      }, { passive: true });
-
-      section.addEventListener('touchend', (e) => {
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (diff > 40) {
-          nextSlide();
-        } else if (diff < -40) {
-          goToSlide(currentIndex - 1);
-        }
-        startTimer();
-      }, { passive: true });
-
+      // Arrancar automáticamente
       startTimer();
     }
 

@@ -311,3 +311,32 @@ sticky-header {
   z-index: 999 !important;
 }
 
+/* ==========================================================================
+   CATÁLOGO — Corrección botón "VER OPCIONES · COMPRAR"
+   Elimina el borde negro del tema Dawn en estado normal y hover.
+   ========================================================================== */
+
+.card-wrapper .button--primary,
+.card-wrapper .button--primary:hover,
+.card-wrapper .button--primary:focus,
+.card-wrapper .button--primary:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   GALERÍA PRODUCTO — Botón "Más imágenes"
+   ========================================================================== */
+
+.pdp-thumbs__more-btn {
+  font-size: 10px !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #1B3A2F !important;
+  padding: 7px 6px !important;
+}
+
+.pdp-thumbs__more-btn span {
+  font-weight: 700 !important;
+}
