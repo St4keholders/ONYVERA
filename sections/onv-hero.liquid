@@ -1,10 +1,7 @@
 {%- comment -%}
   ONYVERA — Sección: Hero Full-Bleed (Desktop & Mobile)
-  Carrusel automático continuo de 3 imágenes:
-  1. onv-hero-newdesktop.jpg / onv-hero-mobile.jpeg (onv-hero-fullbleed__img)
-  2. onv-hero2.jpeg
-  3. onv-hero3.jpeg
-  Transición suave cross-fade (0.75s), rotación cada 5s, responsive y accesible.
+  Carrusel automático de 3 imágenes en desktop (cada 4s), 1 imagen en mobile.
+  Todos los slides son position:absolute para garantizar el crossfade.
 {%- endcomment -%}
 
 {%- liquid
@@ -43,7 +40,7 @@
   <div class="onv-hero-slider" id="onv-hero-slider-{{ section.id }}">
 
     <!-- Slide 1 -->
-    <div class="onv-hero-slide is-first is-active" data-index="0">
+    <div class="onv-hero-slide is-active" data-index="0">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA">
         <picture class="onv-hero-fullbleed__picture">
           <source media="(max-width: 749px)" srcset="{{ mobile_image_url }}">
@@ -61,8 +58,8 @@
       </a>
     </div>
 
-    <!-- Slide 2 -->
-    <div class="onv-hero-slide" data-index="1">
+    <!-- Slide 2 (solo desktop) -->
+    <div class="onv-hero-slide onv-hero-slide--desktop-only" data-index="1">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 2">
         <img
           src="{{ hero2_url }}"
@@ -75,8 +72,8 @@
       </a>
     </div>
 
-    <!-- Slide 3 -->
-    <div class="onv-hero-slide" data-index="2">
+    <!-- Slide 3 (solo desktop) -->
+    <div class="onv-hero-slide onv-hero-slide--desktop-only" data-index="2">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 3">
         <img
           src="{{ hero3_url }}"
@@ -89,8 +86,8 @@
       </a>
     </div>
 
-    <!-- Indicadores / Dots -->
-    <div class="onv-hero-dots" aria-label="Diapositivas del hero">
+    <!-- Indicadores / Dots (solo desktop) -->
+    <div class="onv-hero-dots onv-hero-dots--desktop-only" aria-label="Diapositivas del hero">
       <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a diapositiva 1"></button>
       <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a diapositiva 2"></button>
       <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Ir a diapositiva 3"></button>
@@ -100,7 +97,7 @@
 </section>
 
 {% style %}
-  /* Contenedor del Hero Full-Bleed (Edge-to-Edge) */
+  /* ── Hero contenedor ── */
   .onv-hero-fullbleed {
     width: 100%;
     max-width: 100%;
@@ -111,19 +108,20 @@
     overflow: hidden;
     line-height: 0;
     display: block;
-    background-color: #ffffff;
+    background-color: #1B3A2F;
   }
 
+  /* ── Slider: altura explícita para que los slides absolutos funcionen ── */
   .onv-hero-slider {
     position: relative;
     width: 100%;
-    /* Limitar altura a 72vh para que siempre queden secciones visibles debajo */
-    max-height: 72vh;
-    aspect-ratio: 16 / 7;
+    /* Desktop: 56.8vw = ratio original 1536/2752. max-height 70vh lo recorta en pantallas altas */
+    height: clamp(320px, 56vw, 70vh);
     overflow: hidden;
     line-height: 0;
   }
 
+  /* ── Todos los slides: position:absolute sobre el mismo espacio ── */
   .onv-hero-slide {
     position: absolute;
     inset: 0;
@@ -131,18 +129,12 @@
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.75s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.75s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
     pointer-events: none;
     z-index: 1;
   }
 
-  /* Slide 1 activo por defecto */
-  .onv-hero-slide.is-first {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
+  /* Slide activo */
   .onv-hero-slide.is-active {
     opacity: 1;
     visibility: visible;
@@ -175,7 +167,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     border: none;
     margin: 0;
     padding: 0;
@@ -183,7 +175,7 @@
     box-shadow: none;
   }
 
-  /* Dots sutiles y elegantes */
+  /* ── Dots ── */
   .onv-hero-dots {
     position: absolute;
     bottom: 18px;
@@ -219,41 +211,24 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
   }
 
-  /* Versión Celular (Mobile): Solo slide 1, sin carruàsel */
+  /* ── Mobile: solo slide 1, sin carrusel ── */
   @media (max-width: 749px) {
-    /* Solo slide 1 en mobile: altura fija compacta */
     .onv-hero-slider {
-      aspect-ratio: unset;
-      max-height: unset;
-      height: 58vw;
-      min-height: 260px;
-      max-height: 420px;
-    }
-
-    .onv-hero-fullbleed {
-      width: 100%;
-      height: auto;
-      left: 0;
-      right: 0;
-      margin-left: 0;
-      margin-right: 0;
-      padding: 0;
+      /* Mobile: altura proporcional a la imagen de celular */
+      height: clamp(240px, 75vw, 420px);
     }
 
     .onv-hero-fullbleed__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       object-position: center top;
     }
 
     /* Ocultar slides 2 y 3 en mobile */
-    .onv-hero-slide:not(.is-first) {
+    .onv-hero-slide--desktop-only {
       display: none !important;
     }
 
-    /* Ocultar dots en mobile (solo 1 imagen) */
-    .onv-hero-dots {
+    /* Ocultar dots en mobile */
+    .onv-hero-dots--desktop-only {
       display: none !important;
     }
   }
@@ -262,59 +237,54 @@
 <script>
   (function() {
     function initHeroCarousel() {
-      // No iniciar carrusel en mobile (solo 1 imagen)
-      if (window.innerWidth <= 749) return;
-
-      const section = document.getElementById('onv-hero-{{ section.id }}');
+      var section = document.getElementById('onv-hero-{{ section.id }}');
       if (!section) return;
 
-      const slides = section.querySelectorAll('.onv-hero-slide');
-      const dots = section.querySelectorAll('.onv-hero-dot');
-      if (slides.length <= 1) return;
+      // Solo activar en desktop (>749px)
+      if (window.matchMedia('(max-width: 749px)').matches) return;
 
-      let currentIndex = 0;
-      let timer = null;
-      const intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 4000;
+      var slides = section.querySelectorAll('.onv-hero-slide');
+      var dots   = section.querySelectorAll('.onv-hero-dot');
+
+      // Necesitamos al menos 2 slides para el carrusel
+      if (slides.length < 2) return;
+
+      var currentIndex = 0;
+      var timer = null;
+      var intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 4000;
 
       function goToSlide(index) {
+        // Quitar clase activa del slide y dot actuales
         slides[currentIndex].classList.remove('is-active');
         if (dots[currentIndex]) dots[currentIndex].classList.remove('is-active');
 
-        currentIndex = (index + slides.length) % slides.length;
+        // Calcular índice nuevo (circular)
+        currentIndex = ((index % slides.length) + slides.length) % slides.length;
 
+        // Activar nuevo slide y dot
         slides[currentIndex].classList.add('is-active');
         if (dots[currentIndex]) dots[currentIndex].classList.add('is-active');
       }
 
-      function nextSlide() {
-        goToSlide(currentIndex + 1);
-      }
+      function nextSlide() { goToSlide(currentIndex + 1); }
 
       function startTimer() {
-        stopTimer();
+        clearInterval(timer);
         timer = setInterval(nextSlide, intervalMs);
       }
 
-      function stopTimer() {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-      }
+      function stopTimer() { clearInterval(timer); }
 
       // Eventos en dots
-      dots.forEach(dot => {
-        dot.addEventListener('click', (e) => {
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function(e) {
           e.preventDefault();
-          const targetIndex = parseInt(dot.dataset.slideTo, 10);
-          if (!isNaN(targetIndex)) {
-            goToSlide(targetIndex);
-            startTimer();
-          }
+          var idx = parseInt(dot.dataset.slideTo, 10);
+          if (!isNaN(idx)) { goToSlide(idx); startTimer(); }
         });
       });
 
-      // Pausar con hover
+      // Pausar en hover, reanudar al salir
       section.addEventListener('mouseenter', stopTimer);
       section.addEventListener('mouseleave', startTimer);
 
@@ -322,6 +292,7 @@
       startTimer();
     }
 
+    // Asegurarse de que el DOM esté listo
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initHeroCarousel);
     } else {
