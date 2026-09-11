@@ -22,9 +22,30 @@
   endif
 
   assign compare_at_price = target.compare_at_price
-  assign price = target.price | default: 1999
+  assign price = target.price | default: 2500
+
+  # Precios oficiales ONYVERA: 1 unidad = $25.00, 2 unidades = $50.00, 3 unidades = $60.00
+  if price == 1000 or price < 2500
+    if target.title contains '3'
+      assign price = 6000
+      assign compare_at_price = 7500
+    elsif target.title contains '2'
+      assign price = 5000
+    else
+      assign price = 2500
+    endif
+  endif
+
   assign price_min = product.price_min
+  if price_min == 1000 or price_min < 2500
+    assign price_min = 2500
+  endif
+
   assign price_max = product.price_max
+  if price_max == 1000 or price_max < 2500
+    assign price_max = 6000
+  endif
+
   assign available = target.available | default: false
   assign money_price = price | money
   assign money_price_min = price_min | money
