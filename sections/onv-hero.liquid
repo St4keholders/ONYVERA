@@ -49,8 +49,8 @@
             src="{{ desktop_image_url }}"
             alt="{{ section.settings.alt_text | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
             class="onv-hero-fullbleed__img"
-            width="2752"
-            height="1536"
+            width="3456"
+            height="1216"
             loading="eager"
             fetchpriority="high"
           >
@@ -65,8 +65,8 @@
           src="{{ hero2_url }}"
           alt="{{ section.settings.alt_text | default: 'ONYVERA Cuidado Avanzado' | escape }}"
           class="onv-hero-fullbleed__img"
-          width="2752"
-          height="1536"
+          width="3456"
+          height="1216"
           loading="lazy"
         >
       </a>
@@ -79,8 +79,8 @@
           src="{{ hero3_url }}"
           alt="{{ section.settings.alt_text | default: 'ONYVERA Resultados Reales' | escape }}"
           class="onv-hero-fullbleed__img"
-          width="2752"
-          height="1536"
+          width="3456"
+          height="1216"
           loading="lazy"
         >
       </a>
@@ -111,12 +111,12 @@
     background-color: #1B3A2F;
   }
 
-  /* ── Slider: altura explícita para que los slides absolutos funcionen ── */
+  /* ── Slider: proporción exacta 3456x1216 para que la imagen se vea 100% completa sin recortes ── */
   .onv-hero-slider {
     position: relative;
     width: 100%;
-    /* Desktop: 56.8vw = ratio original 1536/2752. max-height 70vh lo recorta en pantallas altas */
-    height: clamp(320px, 56vw, 70vh);
+    aspect-ratio: 3456 / 1216;
+    height: auto;
     overflow: hidden;
     line-height: 0;
   }
@@ -214,6 +214,7 @@
   /* ── Mobile: solo slide 1, sin carrusel ── */
   @media (max-width: 749px) {
     .onv-hero-slider {
+      aspect-ratio: auto;
       /* Mobile: altura proporcional a la imagen de celular */
       height: clamp(240px, 75vw, 420px);
     }
