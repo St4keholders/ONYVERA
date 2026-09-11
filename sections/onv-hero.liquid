@@ -5,7 +5,7 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign desktop_image_url = 'onv-hero-desktop.jpeg' | asset_url
+  assign desktop_image_url = 'onv-heronew1.jpg' | asset_url
   if section.settings.desktop_image != blank
     assign desktop_image_url = section.settings.desktop_image | image_url: width: 3800
   endif
@@ -15,12 +15,12 @@
     assign mobile_image_url = section.settings.mobile_image | image_url: width: 1080
   endif
 
-  assign hero2_url = 'onv-hero2.jpeg' | asset_url
+  assign hero2_url = 'onv-heronew2.jpg' | asset_url
   if section.settings.image_2 != blank
     assign hero2_url = section.settings.image_2 | image_url: width: 3800
   endif
 
-  assign hero3_url = 'onv-hero3.jpeg' | asset_url
+  assign hero3_url = 'onv-heronew3.jpg' | asset_url
   if section.settings.image_3 != blank
     assign hero3_url = section.settings.image_3 | image_url: width: 3800
   endif
@@ -240,28 +240,26 @@
       var section = document.getElementById('onv-hero-{{ section.id }}');
       if (!section) return;
 
-      // Solo activar en desktop (>749px)
-      if (window.matchMedia('(max-width: 749px)').matches) return;
-
       var slides = section.querySelectorAll('.onv-hero-slide');
       var dots   = section.querySelectorAll('.onv-hero-dot');
 
       // Necesitamos al menos 2 slides para el carrusel
       if (slides.length < 2) return;
 
+      // Evitar doble inicialización si ya existe
+      if (section.__heroTimer) {
+        clearInterval(section.__heroTimer);
+      }
+
       var currentIndex = 0;
-      var timer = null;
       var intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 4000;
 
       function goToSlide(index) {
-        // Quitar clase activa del slide y dot actuales
         slides[currentIndex].classList.remove('is-active');
         if (dots[currentIndex]) dots[currentIndex].classList.remove('is-active');
 
-        // Calcular índice nuevo (circular)
         currentIndex = ((index % slides.length) + slides.length) % slides.length;
 
-        // Activar nuevo slide y dot
         slides[currentIndex].classList.add('is-active');
         if (dots[currentIndex]) dots[currentIndex].classList.add('is-active');
       }
@@ -269,11 +267,14 @@
       function nextSlide() { goToSlide(currentIndex + 1); }
 
       function startTimer() {
-        clearInterval(timer);
-        timer = setInterval(nextSlide, intervalMs);
+        if (window.matchMedia('(max-width: 749px)').matches) return;
+        clearInterval(section.__heroTimer);
+        section.__heroTimer = setInterval(nextSlide, intervalMs);
       }
 
-      function stopTimer() { clearInterval(timer); }
+      function stopTimer() {
+        clearInterval(section.__heroTimer);
+      }
 
       // Eventos en dots
       dots.forEach(function(dot) {
@@ -288,16 +289,34 @@
       section.addEventListener('mouseenter', stopTimer);
       section.addEventListener('mouseleave', startTimer);
 
-      // Arrancar automáticamente
-      startTimer();
+      // Manejo de cambio de pantalla responsive
+      var mql = window.matchMedia('(max-width: 749px)');
+      function handleMediaChange(e) {
+        if (e.matches) {
+          stopTimer();
+          goToSlide(0);
+        } else {
+          startTimer();
+        }
+      }
+      if (mql.addEventListener) {
+        mql.addEventListener('change', handleMediaChange);
+      } else if (mql.addListener) {
+        mql.addListener(handleMediaChange);
+      }
+
+      // Iniciar autoplay en desktop
+      if (!mql.matches) {
+        startTimer();
+      }
     }
 
-    // Asegurarse de que el DOM esté listo
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initHeroCarousel);
     } else {
       initHeroCarousel();
     }
+    document.addEventListener('shopify:section:load', initHeroCarousel);
   })();
 </script>
 
