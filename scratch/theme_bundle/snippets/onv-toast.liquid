@@ -15,17 +15,18 @@
     <div class="onv-toast__thumb">
       <img
         id="onv-toast-img"
-        src="{{ 'onv-producto-frasco.png' | asset_url }}"
+        src="{{ 'onv-newunit1.jpeg' | asset_url }}"
         alt="ONYVERA Sérum"
         width="48"
         height="72"
         loading="lazy"
+        style="object-fit: cover; border-radius: 6px;"
       >
     </div>
     <div class="onv-toast__details">
       <p class="onv-toast__status" id="onv-toast-status">Añadido a tu pedido</p>
       <h3 class="onv-toast__title" id="onv-toast-title">ONYVERA Sérum (16 ml)</h3>
-      <p class="onv-toast__variant" id="onv-toast-variant">1 Bottle</p>
+      <p class="onv-toast__variant" id="onv-toast-variant">1 Frasco</p>
     </div>
     <button
       type="button"
@@ -44,14 +45,14 @@
   if store_product == blank
     assign store_product = all_products.first
   endif
-  assign upsell_variant = store_product.variants[1] | default: store_product.selected_or_first_available_variant
+  assign upsell_variant = store_product.variants[2] | default: store_product.selected_or_first_available_variant
 -%}
 
   <!-- Oportunidad de venta (Upsell inteligente) -->
   <div class="onv-toast__upsell" id="onv-toast-upsell">
     <div class="onv-toast__upsell-info">
       <span class="onv-toast__upsell-badge">OFERTA RECOMENDADA</span>
-      <p class="onv-toast__upsell-text">Añade un segundo frasco y <strong>ahorra $10</strong></p>
+      <p class="onv-toast__upsell-text">Pasa al Pack de 3 frascos y <strong>ahorra $15</strong></p>
     </div>
     <button
       type="button"
@@ -60,7 +61,7 @@
       data-onv-add
       data-variant-id="{{ upsell_variant.id | default: '' }}"
     >
-      Añadir pack de 2
+      Añadir Pack de 3
     </button>
   </div>
 

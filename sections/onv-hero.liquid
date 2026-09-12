@@ -1,18 +1,13 @@
 {%- comment -%}
   ONYVERA — Sección: Hero Full-Bleed (Desktop & Mobile)
-  Carrusel automático de 3 imágenes en desktop (cada 4s), 1 imagen en mobile.
-  Todos los slides son position:absolute para garantizar el crossfade.
+  Desktop: Carrusel automático de 3 imágenes panorámicas (cada 4s).
+  Mobile: Carrusel automático en loop de 3 imágenes (la imagen original onv-hero-mobile.jpeg + las dos nuevas onv-cellnewhero.jpeg y onv-cellnewhero2.jpeg, cada 4s).
 {%- endcomment -%}
 
 {%- liquid
   assign desktop_image_url = 'onv-heronew1.jpg' | asset_url
   if section.settings.desktop_image != blank
     assign desktop_image_url = section.settings.desktop_image | image_url: width: 3800
-  endif
-
-  assign mobile_image_url = 'onv-hero-mobile.jpeg' | asset_url
-  if section.settings.mobile_image != blank
-    assign mobile_image_url = section.settings.mobile_image | image_url: width: 1080
   endif
 
   assign hero2_url = 'onv-heronew2.jpg' | asset_url
@@ -23,6 +18,21 @@
   assign hero3_url = 'onv-heronew3.jpg' | asset_url
   if section.settings.image_3 != blank
     assign hero3_url = section.settings.image_3 | image_url: width: 3800
+  endif
+
+  assign mobile_image_1_url = 'onv-hero-mobile.jpeg' | asset_url
+  if section.settings.mobile_image != blank
+    assign mobile_image_1_url = section.settings.mobile_image | image_url: width: 2400
+  endif
+
+  assign mobile_image_2_url = 'onv-cellnewhero.jpeg' | asset_url
+  if section.settings.mobile_image_2 != blank
+    assign mobile_image_2_url = section.settings.mobile_image_2 | image_url: width: 1792
+  endif
+
+  assign mobile_image_3_url = 'onv-cellnewhero2.jpeg' | asset_url
+  if section.settings.mobile_image_3 != blank
+    assign mobile_image_3_url = section.settings.mobile_image_3 | image_url: width: 1792
   endif
 
   assign hero_link = section.settings.link
@@ -37,29 +47,26 @@
 -%}
 
 <section id="onv-hero-{{ section.id }}" class="onv-hero-fullbleed" data-autoplay-interval="4000">
-  <div class="onv-hero-slider" id="onv-hero-slider-{{ section.id }}">
 
-    <!-- Slide 1 -->
-    <div class="onv-hero-slide is-active" data-index="0">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA">
-        <picture class="onv-hero-fullbleed__picture">
-          <source media="(max-width: 749px)" srcset="{{ mobile_image_url }}">
-          <source media="(min-width: 750px)" srcset="{{ desktop_image_url }}">
-          <img
-            src="{{ desktop_image_url }}"
-            alt="{{ section.settings.alt_text | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
-            class="onv-hero-fullbleed__img"
-            width="3456"
-            height="1216"
-            loading="eager"
-            fetchpriority="high"
-          >
-        </picture>
+  <!-- ================= DESKTOP SLIDER (>= 750px) ================= -->
+  <div class="onv-hero-slider onv-hero-slider--desktop" id="onv-hero-slider-desktop-{{ section.id }}">
+    <!-- Desktop Slide 1 -->
+    <div class="onv-hero-slide onv-hero-slide--desktop is-active" data-index="0">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 1">
+        <img
+          src="{{ desktop_image_url }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
+          class="onv-hero-fullbleed__img"
+          width="3456"
+          height="1216"
+          loading="eager"
+          fetchpriority="high"
+        >
       </a>
     </div>
 
-    <!-- Slide 2 (solo desktop) -->
-    <div class="onv-hero-slide onv-hero-slide--desktop-only" data-index="1">
+    <!-- Desktop Slide 2 -->
+    <div class="onv-hero-slide onv-hero-slide--desktop" data-index="1">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 2">
         <img
           src="{{ hero2_url }}"
@@ -72,8 +79,8 @@
       </a>
     </div>
 
-    <!-- Slide 3 (solo desktop) -->
-    <div class="onv-hero-slide onv-hero-slide--desktop-only" data-index="2">
+    <!-- Desktop Slide 3 -->
+    <div class="onv-hero-slide onv-hero-slide--desktop" data-index="2">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 3">
         <img
           src="{{ hero3_url }}"
@@ -86,14 +93,67 @@
       </a>
     </div>
 
-    <!-- Indicadores / Dots (solo desktop) -->
-    <div class="onv-hero-dots onv-hero-dots--desktop-only" aria-label="Diapositivas del hero">
+    <!-- Desktop Dots -->
+    <div class="onv-hero-dots onv-hero-dots--desktop" aria-label="Diapositivas del hero en computador">
       <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a diapositiva 1"></button>
       <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a diapositiva 2"></button>
       <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Ir a diapositiva 3"></button>
     </div>
-
   </div>
+
+  <!-- ================= MOBILE SLIDER (< 750px) ================= -->
+  <div class="onv-hero-slider onv-hero-slider--mobile" id="onv-hero-slider-mobile-{{ section.id }}">
+    <!-- Mobile Slide 1: Imagen original -->
+    <div class="onv-hero-slide onv-hero-slide--mobile is-active" data-index="0">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 1">
+        <img
+          src="{{ mobile_image_1_url }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Resultados Comprobados' | escape }}"
+          class="onv-hero-fullbleed__img"
+          width="2400"
+          height="1792"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </a>
+    </div>
+
+    <!-- Mobile Slide 2: Primera nueva -->
+    <div class="onv-hero-slide onv-hero-slide--mobile" data-index="1">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 2">
+        <img
+          src="{{ mobile_image_2_url }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Máximo Poder Sérum' | escape }}"
+          class="onv-hero-fullbleed__img"
+          width="1792"
+          height="2400"
+          loading="lazy"
+        >
+      </a>
+    </div>
+
+    <!-- Mobile Slide 3: Segunda nueva -->
+    <div class="onv-hero-slide onv-hero-slide--mobile" data-index="2">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 3">
+        <img
+          src="{{ mobile_image_3_url }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Restauración de Uñas' | escape }}"
+          class="onv-hero-fullbleed__img"
+          width="1792"
+          height="2400"
+          loading="lazy"
+        >
+      </a>
+    </div>
+
+    <!-- Mobile Dots (3 indicadores) -->
+    <div class="onv-hero-dots onv-hero-dots--mobile" aria-label="Diapositivas del hero en celular">
+      <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a imagen móvil 1"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a imagen móvil 2"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Ir a imagen móvil 3"></button>
+    </div>
+  </div>
+
 </section>
 
 {% style %}
@@ -111,17 +171,76 @@
     background-color: #1B3A2F;
   }
 
-  /* ── Slider: proporción exacta 3456x1216 para que la imagen se vea 100% completa sin recortes ── */
-  .onv-hero-slider {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3456 / 1216;
-    height: auto;
-    overflow: hidden;
-    line-height: 0;
+  /* ── DESKTOP (>= 750px) ── */
+  @media (min-width: 750px) {
+    .onv-hero-slider--mobile {
+      display: none !important;
+    }
+
+    .onv-hero-slider--desktop {
+      display: block;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3456 / 1216;
+      height: auto;
+      overflow: hidden;
+      line-height: 0;
+    }
   }
 
-  /* ── Todos los slides: position:absolute sobre el mismo espacio ── */
+  /* ── MOBILE (< 750px) ── */
+  @media (max-width: 749px) {
+    .onv-hero-slider--desktop {
+      display: none !important;
+    }
+
+    .onv-hero-slider--mobile {
+      display: block;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1792 / 2400;
+      height: auto;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .onv-hero-dots--mobile {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+      background: rgba(27, 58, 47, 0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .onv-hero-dots--mobile .onv-hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .onv-hero-dots--mobile .onv-hero-dot.is-active {
+      width: 18px;
+      border-radius: 4px;
+      background: #ffffff;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  /* ── Slides comunes (Crossfade) ── */
   .onv-hero-slide {
     position: absolute;
     inset: 0;
@@ -153,15 +272,6 @@
     cursor: pointer;
   }
 
-  .onv-hero-fullbleed__picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-  }
-
   .onv-hero-fullbleed__img {
     width: 100%;
     height: 100%;
@@ -175,8 +285,8 @@
     box-shadow: none;
   }
 
-  /* ── Dots ── */
-  .onv-hero-dots {
+  /* ── Dots Desktop ── */
+  .onv-hero-dots--desktop {
     position: absolute;
     bottom: 18px;
     left: 50%;
@@ -193,7 +303,7 @@
     border: 1px solid rgba(255, 255, 255, 0.25);
   }
 
-  .onv-hero-dot {
+  .onv-hero-dots--desktop .onv-hero-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -204,120 +314,139 @@
     transition: all 0.3s ease;
   }
 
-  .onv-hero-dot.is-active {
+  .onv-hero-dots--desktop .onv-hero-dot.is-active {
     width: 24px;
     border-radius: 6px;
     background: #ffffff;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
   }
-
-  /* ── Mobile: solo slide 1, sin carrusel ── */
-  @media (max-width: 749px) {
-    .onv-hero-slider {
-      aspect-ratio: auto;
-      /* Mobile: altura proporcional a la imagen de celular */
-      height: clamp(240px, 75vw, 420px);
-    }
-
-    .onv-hero-fullbleed__img {
-      object-position: center top;
-    }
-
-    /* Ocultar slides 2 y 3 en mobile */
-    .onv-hero-slide--desktop-only {
-      display: none !important;
-    }
-
-    /* Ocultar dots en mobile */
-    .onv-hero-dots--desktop-only {
-      display: none !important;
-    }
-  }
 {% endstyle %}
 
 <script>
   (function() {
-    function initHeroCarousel() {
+    function initHeroCarousels() {
       var section = document.getElementById('onv-hero-{{ section.id }}');
       if (!section) return;
 
-      var slides = section.querySelectorAll('.onv-hero-slide');
-      var dots   = section.querySelectorAll('.onv-hero-dot');
-
-      // Necesitamos al menos 2 slides para el carrusel
-      if (slides.length < 2) return;
-
-      // Evitar doble inicialización si ya existe
-      if (section.__heroTimer) {
-        clearInterval(section.__heroTimer);
-      }
-
-      var currentIndex = 0;
       var intervalMs = parseInt(section.dataset.autoplayInterval, 10) || 4000;
 
-      function goToSlide(index) {
-        slides[currentIndex].classList.remove('is-active');
-        if (dots[currentIndex]) dots[currentIndex].classList.remove('is-active');
+      function setupCarousel(sliderEl, slideSelector, dotSelector) {
+        if (!sliderEl) return null;
 
-        currentIndex = ((index % slides.length) + slides.length) % slides.length;
+        var slides = sliderEl.querySelectorAll(slideSelector);
+        var dots   = sliderEl.querySelectorAll(dotSelector);
+        if (slides.length < 2) return null;
 
-        slides[currentIndex].classList.add('is-active');
-        if (dots[currentIndex]) dots[currentIndex].classList.add('is-active');
-      }
+        var currentIndex = 0;
+        var timer = null;
 
-      function nextSlide() { goToSlide(currentIndex + 1); }
+        function goToSlide(index) {
+          slides[currentIndex].classList.remove('is-active');
+          if (dots[currentIndex]) dots[currentIndex].classList.remove('is-active');
 
-      function startTimer() {
-        if (window.matchMedia('(max-width: 749px)').matches) return;
-        clearInterval(section.__heroTimer);
-        section.__heroTimer = setInterval(nextSlide, intervalMs);
-      }
+          currentIndex = ((index % slides.length) + slides.length) % slides.length;
 
-      function stopTimer() {
-        clearInterval(section.__heroTimer);
-      }
-
-      // Eventos en dots
-      dots.forEach(function(dot) {
-        dot.addEventListener('click', function(e) {
-          e.preventDefault();
-          var idx = parseInt(dot.dataset.slideTo, 10);
-          if (!isNaN(idx)) { goToSlide(idx); startTimer(); }
-        });
-      });
-
-      // Pausar en hover, reanudar al salir
-      section.addEventListener('mouseenter', stopTimer);
-      section.addEventListener('mouseleave', startTimer);
-
-      // Manejo de cambio de pantalla responsive
-      var mql = window.matchMedia('(max-width: 749px)');
-      function handleMediaChange(e) {
-        if (e.matches) {
-          stopTimer();
-          goToSlide(0);
-        } else {
-          startTimer();
+          slides[currentIndex].classList.add('is-active');
+          if (dots[currentIndex]) dots[currentIndex].classList.add('is-active');
         }
-      }
-      if (mql.addEventListener) {
-        mql.addEventListener('change', handleMediaChange);
-      } else if (mql.addListener) {
-        mql.addListener(handleMediaChange);
+
+        function nextSlide() { goToSlide(currentIndex + 1); }
+        function prevSlide() { goToSlide(currentIndex - 1); }
+
+        function startTimer() {
+          stopTimer();
+          timer = setInterval(nextSlide, intervalMs);
+        }
+
+        function stopTimer() {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        // Clic en dots
+        dots.forEach(function(dot) {
+          dot.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var idx = parseInt(dot.dataset.slideTo, 10);
+            if (!isNaN(idx)) {
+              goToSlide(idx);
+              startTimer();
+            }
+          });
+        });
+
+        // Pausar en hover (desktop)
+        sliderEl.addEventListener('mouseenter', stopTimer);
+        sliderEl.addEventListener('mouseleave', startTimer);
+
+        // Gesto Touch Swipe (mobile)
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var swipeThreshold = 40;
+
+        sliderEl.addEventListener('touchstart', function(e) {
+          if (e.touches && e.touches[0]) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            stopTimer();
+          }
+        }, { passive: true });
+
+        sliderEl.addEventListener('touchend', function(e) {
+          if (e.changedTouches && e.changedTouches[0]) {
+            var diffX = e.changedTouches[0].clientX - touchStartX;
+            var diffY = e.changedTouches[0].clientY - touchStartY;
+
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+              if (diffX < 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            }
+          }
+          startTimer();
+        }, { passive: true });
+
+        // Iniciar loop automático
+        startTimer();
+
+        return {
+          start: startTimer,
+          stop: stopTimer,
+          goTo: goToSlide
+        };
       }
 
-      // Iniciar autoplay en desktop
-      if (!mql.matches) {
-        startTimer();
-      }
+      // Detener instancias anteriores si se re-renderiza la sección
+      if (section.__heroDesktopInstance) section.__heroDesktopInstance.stop();
+      if (section.__heroMobileInstance) section.__heroMobileInstance.stop();
+
+      var desktopSlider = section.querySelector('.onv-hero-slider--desktop');
+      var mobileSlider = section.querySelector('.onv-hero-slider--mobile');
+
+      section.__heroDesktopInstance = setupCarousel(
+        desktopSlider,
+        '.onv-hero-slide--desktop',
+        '.onv-hero-dots--desktop .onv-hero-dot'
+      );
+
+      section.__heroMobileInstance = setupCarousel(
+        mobileSlider,
+        '.onv-hero-slide--mobile',
+        '.onv-hero-dots--mobile .onv-hero-dot'
+      );
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initHeroCarousel);
+      document.addEventListener('DOMContentLoaded', initHeroCarousels);
     } else {
-      initHeroCarousel();
+      initHeroCarousels();
     }
-    document.addEventListener('shopify:section:load', initHeroCarousel);
+    document.addEventListener('shopify:section:load', initHeroCarousels);
   })();
 </script>
 
@@ -334,18 +463,28 @@
     },
     {
       "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Slide 1: Celular (Mobile)"
-    },
-    {
-      "type": "image_picker",
       "id": "image_2",
-      "label": "Slide 2: Imagen"
+      "label": "Slide 2: Imagen (Desktop)"
     },
     {
       "type": "image_picker",
       "id": "image_3",
-      "label": "Slide 3: Imagen"
+      "label": "Slide 3: Imagen (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Slide 1: Celular (Mobile) - Original"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_2",
+      "label": "Slide 2: Celular (Mobile) - Nueva 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_3",
+      "label": "Slide 3: Celular (Mobile) - Nueva 2"
     },
     {
       "type": "url",
