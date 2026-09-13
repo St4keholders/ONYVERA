@@ -1,7 +1,7 @@
 {%- comment -%}
   ONYVERA — Sección: Hero Full-Bleed (Desktop & Mobile)
   Desktop: Carrusel automático de 3 imágenes panorámicas (cada 4s).
-  Mobile: Carrusel automático en loop de 3 imágenes (la imagen original onv-hero-mobile.jpeg + las dos nuevas onv-cellnewhero.jpeg y onv-cellnewhero2.jpeg, cada 4s).
+  Mobile: Carrusel automático en loop de 2 imágenes (onv-cellnewhero.jpeg y onv-cellnewhero2.jpeg, cada 4s).
 {%- endcomment -%}
 
 {%- liquid
@@ -20,19 +20,14 @@
     assign hero3_url = section.settings.image_3 | image_url: width: 3800
   endif
 
-  assign mobile_image_1_url = 'onv-hero-mobile.jpeg' | asset_url
+  assign mobile_image_1_url = 'onv-cellnewhero.jpeg' | asset_url
   if section.settings.mobile_image != blank
-    assign mobile_image_1_url = section.settings.mobile_image | image_url: width: 2400
+    assign mobile_image_1_url = section.settings.mobile_image | image_url: width: 1792
   endif
 
-  assign mobile_image_2_url = 'onv-cellnewhero.jpeg' | asset_url
+  assign mobile_image_2_url = 'onv-cellnewhero2.jpeg' | asset_url
   if section.settings.mobile_image_2 != blank
     assign mobile_image_2_url = section.settings.mobile_image_2 | image_url: width: 1792
-  endif
-
-  assign mobile_image_3_url = 'onv-cellnewhero2.jpeg' | asset_url
-  if section.settings.mobile_image_3 != blank
-    assign mobile_image_3_url = section.settings.mobile_image_3 | image_url: width: 1792
   endif
 
   assign hero_link = section.settings.link
@@ -103,40 +98,26 @@
 
   <!-- ================= MOBILE SLIDER (< 750px) ================= -->
   <div class="onv-hero-slider onv-hero-slider--mobile" id="onv-hero-slider-mobile-{{ section.id }}">
-    <!-- Mobile Slide 1: Imagen original -->
+    <!-- Mobile Slide 1: Primera nueva -->
     <div class="onv-hero-slide onv-hero-slide--mobile is-active" data-index="0">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 1">
         <img
           src="{{ mobile_image_1_url }}"
-          alt="{{ section.settings.alt_text | default: 'ONYVERA Resultados Comprobados' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Máximo Poder Sérum' | escape }}"
           class="onv-hero-fullbleed__img"
-          width="2400"
-          height="1792"
+          width="1792"
+          height="2400"
           loading="eager"
           fetchpriority="high"
         >
       </a>
     </div>
 
-    <!-- Mobile Slide 2: Primera nueva -->
+    <!-- Mobile Slide 2: Segunda nueva -->
     <div class="onv-hero-slide onv-hero-slide--mobile" data-index="1">
       <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 2">
         <img
           src="{{ mobile_image_2_url }}"
-          alt="{{ section.settings.alt_text | default: 'ONYVERA Máximo Poder Sérum' | escape }}"
-          class="onv-hero-fullbleed__img"
-          width="1792"
-          height="2400"
-          loading="lazy"
-        >
-      </a>
-    </div>
-
-    <!-- Mobile Slide 3: Segunda nueva -->
-    <div class="onv-hero-slide onv-hero-slide--mobile" data-index="2">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 3">
-        <img
-          src="{{ mobile_image_3_url }}"
           alt="{{ section.settings.alt_text | default: 'ONYVERA Restauración de Uñas' | escape }}"
           class="onv-hero-fullbleed__img"
           width="1792"
@@ -146,11 +127,10 @@
       </a>
     </div>
 
-    <!-- Mobile Dots (3 indicadores) -->
+    <!-- Mobile Dots (2 indicadores) -->
     <div class="onv-hero-dots onv-hero-dots--mobile" aria-label="Diapositivas del hero en celular">
       <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a imagen móvil 1"></button>
       <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a imagen móvil 2"></button>
-      <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Ir a imagen móvil 3"></button>
     </div>
   </div>
 
@@ -474,17 +454,12 @@
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Slide 1: Celular (Mobile) - Original"
+      "label": "Slide 1: Celular (Mobile) - Imagen 1"
     },
     {
       "type": "image_picker",
       "id": "mobile_image_2",
-      "label": "Slide 2: Celular (Mobile) - Nueva 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image_3",
-      "label": "Slide 3: Celular (Mobile) - Nueva 2"
+      "label": "Slide 2: Celular (Mobile) - Imagen 2"
     },
     {
       "type": "url",
