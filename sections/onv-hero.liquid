@@ -5,17 +5,17 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign desktop_image_url = 'onv-heronew1.jpg' | asset_url
+  assign desktop_image_url = 'onv-heronew3.jpg' | asset_url | append: '&v=20260913_desktop'
   if section.settings.desktop_image != blank
     assign desktop_image_url = section.settings.desktop_image | image_url: width: 3800
   endif
 
-  assign hero2_url = 'onv-heronew2.jpg' | asset_url
+  assign hero2_url = 'onv-heronew2.jpg' | asset_url | append: '&v=20260913_desktop2'
   if section.settings.image_2 != blank
     assign hero2_url = section.settings.image_2 | image_url: width: 3800
   endif
 
-  assign hero3_url = 'onv-heronew3.jpg' | asset_url
+  assign hero3_url = 'onv-heronew1.jpg' | asset_url | append: '&v=20260913_desktop'
   if section.settings.image_3 != blank
     assign hero3_url = section.settings.image_3 | image_url: width: 3800
   endif
@@ -52,7 +52,7 @@
           src="{{ desktop_image_url }}"
           alt="{{ section.settings.alt_text | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
           class="onv-hero-fullbleed__img"
-          width="3456"
+          width="3488"
           height="1216"
           loading="eager"
           fetchpriority="high"
@@ -67,7 +67,7 @@
           src="{{ hero2_url }}"
           alt="{{ section.settings.alt_text | default: 'ONYVERA Cuidado Avanzado' | escape }}"
           class="onv-hero-fullbleed__img"
-          width="3456"
+          width="3488"
           height="1216"
           loading="lazy"
         >
@@ -81,7 +81,7 @@
           src="{{ hero3_url }}"
           alt="{{ section.settings.alt_text | default: 'ONYVERA Resultados Reales' | escape }}"
           class="onv-hero-fullbleed__img"
-          width="3456"
+          width="3488"
           height="1216"
           loading="lazy"
         >
@@ -161,7 +161,7 @@
       display: block;
       position: relative;
       width: 100%;
-      aspect-ratio: 3456 / 1216;
+      aspect-ratio: 3488 / 1216;
       height: auto;
       overflow: hidden;
       line-height: 0;
