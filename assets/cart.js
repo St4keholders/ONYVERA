@@ -36,9 +36,18 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
     super.connectedCallback();
 
     this.cartUpdateUnsubscriber = subscribe(PUB_SUB_EVENTS.cartUpdate, (event) => {
+      if (event.cartData) {
+        syncCartBusinessRules(event.cartData);
+      }
       if (event.source === 'cart-items') return;
-      return this.onCartUpdate();
+      const updatePromise = this.onCartUpdate();
+      if (updatePromise && typeof updatePromise.then === 'function') {
+        return updatePromise.then(() => syncCartBusinessRules(event.cartData));
+      }
+      syncCartBusinessRules(event.cartData);
     });
+
+    syncCartBusinessRules();
   }
 
   // Fetches the full cart shape (used to resolve the cart:lines-update event
@@ -229,6 +238,7 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
               section.selector
             );
           });
+          syncCartBusinessRules(parsedState);
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
           if (items.length === parsedState.items.length && updatedValue !== parseInt(quantityElement.value)) {
@@ -412,4 +422,125 @@ if (!customElements.get('cart-note')) {
       }
     }
   );
+}
+
+// ========================================================
+// ONYVERA — REGLAS COMERCIALES, PRECIOS Y MAYOREO EN CARRITO
+// ========================================================
+const ONV_WHATSAPP_PHONE = '1234567890';
+
+function calculateCartPrice(qty) {
+  if (qty <= 0) return 0;
+  if (qty === 1) return 25;
+  if (qty === 2) return 50;
+  if (qty === 3) return 60;
+  return 60 + (qty - 3) * 20;
+}
+
+function getCartWhatsAppUrl(qty) {
+  const message =
+    'Hola, quiero comprar ' +
+    qty +
+    ' unidades de ONYVERA. Me gustaría hablar con un asesor para consultar el precio al por mayor y realizar el pedido.';
+  return 'https://wa.me/' + ONV_WHATSAPP_PHONE + '?text=' + encodeURIComponent(message);
+}
+
+function syncCartBusinessRules(cartData) {
+  let totalUnits = 0;
+  if (cartData && typeof cartData.item_count === 'number') {
+    totalUnits = cartData.item_count;
+  } else {
+    const inputs = document.querySelectorAll('cart-items .quantity__input, cart-drawer-items .quantity__input');
+    inputs.forEach((input) => {
+      const val = parseInt(input.value, 10);
+      if (!isNaN(val) && val >= 0) totalUnits += val;
+    });
+  }
+
+  const isWholesale = totalUnits >= 10;
+  const totalPrice = calculateCartPrice(totalUnits);
+  const formattedPrice = '$' + totalPrice.toFixed(2);
+
+  // 1. Actualizar textos de total / subtotal
+  const totalElements = document.querySelectorAll('.totals__total-value, [data-cart-total-display]');
+  totalElements.forEach((el) => {
+    if (totalUnits === 0) {
+      el.textContent = '$0.00';
+    } else if (isWholesale) {
+      el.textContent = 'Consultar con asesor';
+    } else {
+      el.textContent = formattedPrice;
+    }
+  });
+
+  // 2. Actualizar precio en la fila del producto
+  const linePriceElements = document.querySelectorAll(
+    '.cart-item__totals .price--end, .cart-item__final-price, .cart-item__price-wrapper span.price'
+  );
+  linePriceElements.forEach((el) => {
+    if (isWholesale) {
+      el.textContent = 'Consultar con asesor';
+    } else if (totalUnits > 0) {
+      el.textContent = formattedPrice;
+    }
+  });
+
+  // 3. Bloques de Mayoreo y botones de WhatsApp
+  const wholesaleBlocks = document.querySelectorAll(
+    '#CartFooterWholesaleBlock, #CartDrawerWholesaleBlock, .cart-wholesale-block'
+  );
+  wholesaleBlocks.forEach((block) => {
+    if (isWholesale) {
+      block.classList.remove('is-hidden');
+      block.style.display = 'block';
+    } else {
+      block.classList.add('is-hidden');
+      block.style.display = 'none';
+    }
+  });
+
+  const whatsappButtons = document.querySelectorAll(
+    '#CartFooterWhatsAppBtn, #CartDrawerWhatsAppBtn, .cart-wholesale-whatsapp-btn'
+  );
+  whatsappButtons.forEach((btn) => {
+    btn.href = getCartWhatsAppUrl(totalUnits);
+  });
+
+  // 4. Bloquear / Deshabilitar Checkout Estándar
+  const checkoutButtons = document.querySelectorAll('#checkout, #CartDrawer-Checkout, .cart__checkout-button');
+  checkoutButtons.forEach((btn) => {
+    if (isWholesale) {
+      btn.disabled = true;
+      btn.classList.add('is-wholesale-disabled');
+    } else {
+      btn.disabled = totalUnits === 0;
+      btn.classList.remove('is-wholesale-disabled');
+    }
+  });
+
+  // 5. Ocultar botones de pago dinámico (PayPal, Apple Pay, etc.)
+  const dynamicCheckoutButtons = document.querySelectorAll(
+    '.cart__dynamic-checkout-buttons, .additional-checkout-buttons'
+  );
+  dynamicCheckoutButtons.forEach((container) => {
+    if (isWholesale) {
+      container.classList.add('is-wholesale-disabled');
+    } else {
+      container.classList.remove('is-wholesale-disabled');
+    }
+  });
+}
+
+window.syncCartBusinessRules = syncCartBusinessRules;
+
+document.addEventListener('input', (event) => {
+  if (event.target && event.target.matches('.quantity__input')) {
+    syncCartBusinessRules();
+  }
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => syncCartBusinessRules());
+} else {
+  syncCartBusinessRules();
 }

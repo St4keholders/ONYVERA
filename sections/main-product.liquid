@@ -1865,8 +1865,11 @@
             matchingRadio.checked = true;
             var parent = matchingRadio.closest('.pdp-bundle-card');
             if (parent) parent.classList.add('is-selected');
-            if (hiddenVariantInput) hiddenVariantInput.value = matchingRadio.value;
           }
+        }
+        var baseVariantId = '{{ product.variants[0].id | default: current_variant.id }}';
+        if (hiddenVariantInput) {
+          hiddenVariantInput.value = baseVariantId;
         }
 
         // A partir de 10 unidades: venta al por mayor (no hay precio automático, se habla con el asesor)

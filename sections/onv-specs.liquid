@@ -63,8 +63,9 @@
                 type="button"
                 class="onv-img-card__btn"
                 data-onv-add
-                data-variant-id="{{ target_product.variants[0].id | default: '' }}"
-                aria-label="Agregar al carrito"
+                data-variant-id="{{ target_product.variants[0].id | default: target_product.selected_or_first_available_variant.id }}"
+                data-quantity="1"
+                aria-label="Agregar 1 frasco al carrito"
               >
                 <span>AGREGAR</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
@@ -107,7 +108,8 @@
                 type="button"
                 class="onv-img-card__btn onv-img-card__btn--gold"
                 data-onv-add
-                data-variant-id="{{ target_product.variants[1].id | default: '' }}"
+                data-variant-id="{{ target_product.variants[0].id | default: target_product.selected_or_first_available_variant.id }}"
+                data-quantity="2"
                 aria-label="Agregar pack 2 frascos al carrito"
               >
                 <span>AGREGAR</span>
@@ -152,7 +154,8 @@
                 type="button"
                 class="onv-img-card__btn onv-img-card__btn--green"
                 data-onv-add
-                data-variant-id="{{ target_product.variants[2].id | default: '' }}"
+                data-variant-id="{{ target_product.variants[0].id | default: target_product.selected_or_first_available_variant.id }}"
+                data-quantity="3"
                 aria-label="Agregar pack 3 frascos al carrito"
               >
                 <span>AGREGAR</span>
@@ -170,11 +173,28 @@
 
 <script>
   (function() {
-    document.querySelectorAll('.onv-img-card__btn').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
+    function setupCardButtons() {
+      document.querySelectorAll('.onv-img-card__btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (window.onvCart && typeof window.onvCart.handleCardAddClick === 'function') {
+            window.onvCart.handleCardAddClick(btn);
+          } else {
+            window.addEventListener('onvCartReady', function() {
+              window.onvCart.handleCardAddClick(btn);
+            }, { once: true });
+          }
+        });
       });
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupCardButtons);
+    } else {
+      setupCardButtons();
+    }
   })();
 </script>
 

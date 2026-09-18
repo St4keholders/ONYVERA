@@ -220,3 +220,74 @@ cart-items {
     gap: 1rem;
   }
 }
+
+/* ========================================================
+   ESTADO Y CONTROLES DE VENTA AL POR MAYOR EN CARRITO
+   ======================================================== */
+.is-wholesale-disabled {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+.cart-wholesale-block {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.cart-wholesale-block.is-hidden {
+  display: none !important;
+}
+
+.cart-wholesale-block .pdp-wholesale-indicator {
+  margin-bottom: 1rem;
+}
+
+.cart-wholesale-block .pdp-wholesale-badge {
+  display: inline-block;
+  background-color: #EBF5F1;
+  color: #1B4D3E;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(47, 122, 107, 0.25);
+}
+
+.cart-wholesale-whatsapp-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 1.4rem 2rem;
+  background-color: #25D366 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: var(--buttons-radius, 8px);
+  font-family: var(--font-button-family, var(--font-body-family));
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-wholesale-whatsapp-btn:hover {
+  background-color: #1EBE5D !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+}
+
+.cart-wholesale-whatsapp-btn svg {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
