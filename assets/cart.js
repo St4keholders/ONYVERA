@@ -473,19 +473,7 @@ function syncCartBusinessRules(cartData) {
     }
   });
 
-  // 2. Actualizar precio en la fila del producto
-  const linePriceElements = document.querySelectorAll(
-    '.cart-item__totals .price--end, .cart-item__final-price, .cart-item__price-wrapper span.price'
-  );
-  linePriceElements.forEach((el) => {
-    if (isWholesale) {
-      el.textContent = 'Consultar con asesor';
-    } else if (totalUnits > 0) {
-      el.textContent = formattedPrice;
-    }
-  });
-
-  // 3. Bloques de Mayoreo y botones de WhatsApp
+  // 2. Bloques de Mayoreo y botones de WhatsApp
   const wholesaleBlocks = document.querySelectorAll(
     '#CartFooterWholesaleBlock, #CartDrawerWholesaleBlock, .cart-wholesale-block'
   );
@@ -506,7 +494,7 @@ function syncCartBusinessRules(cartData) {
     btn.href = getCartWhatsAppUrl(totalUnits);
   });
 
-  // 4. Bloquear / Deshabilitar Checkout Estándar
+  // 3. Bloquear / Deshabilitar Checkout Estándar
   const checkoutButtons = document.querySelectorAll('#checkout, #CartDrawer-Checkout, .cart__checkout-button');
   checkoutButtons.forEach((btn) => {
     if (isWholesale) {
@@ -518,7 +506,7 @@ function syncCartBusinessRules(cartData) {
     }
   });
 
-  // 5. Ocultar botones de pago dinámico (PayPal, Apple Pay, etc.)
+  // 4. Ocultar botones de pago dinámico (PayPal, Apple Pay, etc.)
   const dynamicCheckoutButtons = document.querySelectorAll(
     '.cart__dynamic-checkout-buttons, .additional-checkout-buttons'
   );
