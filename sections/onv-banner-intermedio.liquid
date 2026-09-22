@@ -27,11 +27,12 @@
       <source media="(min-width: 750px)" srcset="{{ desktop_img_url }}">
       <img
         src="{{ desktop_img_url }}"
-        alt="{{ section.settings.alt_text | default: 'ONYVERA Banner Promocional' | escape }}"
+        alt="{{ section.settings.alt_text | default: 'La rutina ONYVERA en cuatro pasos: limar, aplicar, dejar absorber y repetir' | escape }}"
         class="onv-banner-body__img"
         width="1024"
         height="254"
         loading="lazy"
+        decoding="async"
       >
     </picture>
   </a>
@@ -126,7 +127,7 @@
       "type": "text",
       "id": "alt_text",
       "label": "Texto alternativo",
-      "default": "ONYVERA Banner Promocional"
+      "default": "La rutina ONYVERA en cuatro pasos: limar, aplicar, dejar absorber y repetir"
     }
   ],
   "presets": [

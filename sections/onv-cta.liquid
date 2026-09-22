@@ -20,7 +20,7 @@
       {%- elsif target_prod != blank -%}
         {%- assign btn_url = target_prod.url -%}
       {%- else -%}
-        {%- assign btn_url = '/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml' -%}
+        {%- assign btn_url = '/products/serum-botanico-unas-onyvera' -%}
       {%- endif -%}
       <a href="{{ btn_url }}" class="onv-cta__button">
         {{ section.settings.texto_boton | default: "PIDE ONYVERA AHORA" | escape }}
@@ -61,15 +61,18 @@
           decoding="async"
         >
       {%- else -%}
-        <img
-          src="{{ 'onv-cta.png' | asset_url }}"
-          alt="{{ section.settings.alt_text | default: 'El frasco de sérum ONYVERA sostenido entre dos dedos.' | escape }}"
-          class="onv-cta__img"
-          width="1080"
-          height="1350"
-          loading="lazy"
-          decoding="async"
-        >
+        <picture>
+          <source srcset="{{ 'onv-cta.webp' | asset_url }}" type="image/webp">
+          <img
+            src="{{ 'onv-cta.png' | asset_url }}"
+            alt="{{ section.settings.alt_text | default: 'Frasco de sérum ONYVERA sostenido entre dos dedos' | escape }}"
+            class="onv-cta__img"
+            width="1080"
+            height="1350"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
       {%- endif -%}
     </div>
 

@@ -13,14 +13,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Playfair+Display:wght@600&display=swap">
 
-    <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-    </title>
+    {%- if request.page_type == 'index' -%}
+      <link rel="preload" as="image" href="{{ 'onv-cellnewhero.jpeg' | asset_url }}" media="(max-width: 749px)" fetchpriority="high">
+      <link rel="preload" as="image" href="{{ 'onv-heronew3.jpg' | asset_url | append: '&v=20260913_desktop' }}" media="(min-width: 750px)" fetchpriority="high">
+    {%- elsif request.page_type == 'product' -%}
+      <link rel="preload" as="image" href="{{ 'onv-producto1.jpeg' | asset_url }}" fetchpriority="high">
+    {%- endif -%}
+
+    <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}{% if current_page != 1 %} – Página {{ current_page }}{% endif %}</title>
 
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">

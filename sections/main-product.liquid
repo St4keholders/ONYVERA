@@ -77,6 +77,11 @@
       </script>
     {%- endif -%}
 
+    <!-- Schema JSON-LD Product (Estándar de Shopify sin reseñas de prueba) -->
+    <script type="application/ld+json">
+      {{ product | structured_data }}
+    </script>
+
     <!-- GRID PRINCIPAL (GALERÍA + BUY BOX) -->
     <div class="onv-pdp__grid">
 

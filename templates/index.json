@@ -22,8 +22,9 @@
     "onv_hero": {
       "type": "onv-hero",
       "settings": {
-        "alt_text": "ONYVERA Sérum Botánico para Uñas",
-        "link": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml"
+        "alt_text": "Aplicación del sérum ONYVERA con brocha de precisión sobre una uña del pie",
+        "link": "/products/serum-botanico-unas-onyvera",
+        "seo_heading": "Sérum botánico para uñas amarillas y quebradizas"
       }
     },
     "onv_iconos": {
@@ -45,7 +46,7 @@
     "onv_banner_body_1": {
       "type": "onv-banner-intermedio",
       "settings": {
-        "alt_text": "ONYVERA Banner Promocional"
+        "alt_text": "La rutina ONYVERA en cuatro pasos: limar, aplicar, dejar absorber y repetir"
       }
     },
     "onv_prueba_social": {
@@ -134,11 +135,12 @@
     "onv_ingredient_banner": {
       "type": "onv-ingredient-banner",
       "settings": {
-        "eyebrow": "BOTANICAL TRANSPARENCY",
-        "heading": "Five actives. Ten ingredients. Nothing hidden.",
+        "eyebrow": "TRANSPARENCIA BOTÁNICA",
+        "heading": "Cinco activos. Diez ingredientes. Nada oculto.",
         "text_position": "left",
         "desktop_ratio": "16:9",
-        "link": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml"
+        "link": "/products/serum-botanico-unas-onyvera",
+        "alt_text": "Árbol de té, aloe vera, glicerina y vitamina E junto al frasco de ONYVERA"
       }
     },
     "onv_ingredientes": {
@@ -208,8 +210,8 @@
       "settings": {
         "titulo": "Recupera tus uñas. Recupera tu confianza.",
         "texto_boton": "PIDE ONYVERA AHORA",
-        "enlace_boton": "/products/onyvera-advanced-nail-fungus-solution-precision-brush-16-ml",
-        "alt_text": "El frasco de sérum ONYVERA sostenido entre dos dedos.",
+        "enlace_boton": "/products/serum-botanico-unas-onyvera",
+        "alt_text": "Frasco de sérum ONYVERA sostenido entre dos dedos",
         "posicion_imagen": "derecha"
       }
     }
