@@ -113,11 +113,11 @@
                 href="{{ card_product.url }}"
                 class="full-unstyled-link"
                 style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 14px 0; background: #ffffff;"
-                aria-label="{{ card_product.title | default: 'Ver ONYVERA Sérum' | escape }}"
+                aria-label="{{ card_product.title | default: 'View ONYVERA Botanical Serum' | escape }}"
               >
                 <img
                   src="{{ 'onv-producto-frasco.png' | asset_url }}"
-                  alt="{{ card_product.title | default: 'ONYVERA Sérum' | escape }}"
+                  alt="{{ card_product.title | default: 'ONYVERA Botanical Serum' | escape }}"
                   class="motion-reduce"
                   loading="lazy"
                   style="max-height: 250px; max-width: 85%; width: auto; object-fit: contain; margin: 0 auto; display: block; filter: drop-shadow(0 8px 22px rgba(19, 46, 35, 0.12));"
@@ -200,7 +200,7 @@
                   onmouseover="this.style.boxShadow='none';this.style.border='none';this.style.outline='none';"
                   onmouseout="this.style.boxShadow='none';this.style.border='none';this.style.outline='none';"
                 >
-                  VER OPCIONES · COMPRAR
+                  CHOOSE BUNDLE · BUY NOW
                 </a>
               </div>
               {%- if card_product.quantity_price_breaks_configured? -%}

@@ -19,23 +19,23 @@
 
     <!-- Encabezado Principal -->
     <div class="onv-favorites-section__header">
-      <h2 class="onv-favorites-section__title">LOS FAVORITOS DE NUESTROS CLIENTES</h2>
+      <h2 class="onv-favorites-section__title">{{ section.settings.title | default: 'CUSTOMER FAVORITES & BUNDLES' }}</h2>
     </div>
 
     <!-- Carrusel / Grid de Tarjetas Full-Image -->
     <div class="onv-favorites-section__wrap">
       <div class="onv-favorites-section__grid">
 
-        <!-- Card 1: 1 Frasco -->
+        <!-- Card 1: 1 Bottle -->
         <a
           href="{{ target_product.url | default: '/products/serum-botanico-unas-onyvera' }}"
           class="onv-img-card"
-          aria-label="Ver 1 Frasco · 16 ml"
+          aria-label="View 1 Bottle · 16 ml"
         >
           <!-- La imagen completa es el cuerpo de la tarjeta -->
           <img
             src="{{ 'onv-newunit1.jpeg' | asset_url }}"
-            alt="ONYVERA Sérum Botánico 1 Frasco 16 ml"
+            alt="ONYVERA Botanical Serum 1 Bottle 16 ml"
             class="onv-img-card__bg"
             width="1792"
             height="2400"
@@ -46,15 +46,15 @@
           <!-- Cinta Superior en Glassmorphism -->
           <div class="onv-img-card__top">
             <span class="onv-img-card__glass-ribbon">
-              Para 1 a 2 uñas · Tratamiento puntual
+              1 to 2 nails · Targeted care
             </span>
           </div>
 
           <!-- Píldora Inferior en Glassmorphism -->
           <div class="onv-img-card__bottom">
             <div class="onv-img-card__info">
-              <h3 class="onv-img-card__name">1 FRASCO · 16 ML</h3>
-              <p class="onv-img-card__desc">Tratamiento inicial 2 a 3 semanas</p>
+              <h3 class="onv-img-card__name">1 BOTTLE · 16 ML</h3>
+              <p class="onv-img-card__desc">Starter routine · 2 to 3 weeks</p>
             </div>
             <div class="onv-img-card__action">
               <div class="onv-img-card__price-wrap">
@@ -66,24 +66,24 @@
                 data-onv-add
                 data-variant-id="{{ target_product.variants[0].id | default: target_product.selected_or_first_available_variant.id }}"
                 data-quantity="1"
-                aria-label="Agregar 1 frasco al carrito"
+                aria-label="Add 1 bottle to order"
               >
-                <span>AGREGAR</span>
+                <span>ADD</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
               </button>
             </div>
           </div>
         </a>
 
-        <!-- Card 2: 2 Frascos -->
+        <!-- Card 2: 2 Bottles -->
         <a
           href="{{ target_product.url | default: '/products/serum-botanico-unas-onyvera' }}"
           class="onv-img-card"
-          aria-label="Ver Pack 2 Frascos · 32 ml"
+          aria-label="View Pack 2 Bottles · 32 ml"
         >
           <img
             src="{{ 'onv-newunit2.jpeg' | asset_url }}"
-            alt="ONYVERA Sérum Botánico Pack 2 Frascos 32 ml"
+            alt="ONYVERA Botanical Serum Pack 2 Bottles 32 ml"
             class="onv-img-card__bg"
             width="1792"
             height="2400"
@@ -93,14 +93,14 @@
 
           <div class="onv-img-card__top">
             <span class="onv-img-card__glass-ribbon onv-img-card__glass-ribbon--gold">
-              Para varias uñas · Más popular
+              Multiple nails · MOST POPULAR · Free U.S. Shipping
             </span>
           </div>
 
           <div class="onv-img-card__bottom">
             <div class="onv-img-card__info">
-              <h3 class="onv-img-card__name">PACK 2 FRASCOS · 32 ML</h3>
-              <p class="onv-img-card__desc">Uso continuo para 4 a 6 semanas</p>
+              <h3 class="onv-img-card__name">PACK 2 BOTTLES · 32 ML</h3>
+              <p class="onv-img-card__desc">Continuous routine · 4 to 6 weeks</p>
             </div>
             <div class="onv-img-card__action">
               <div class="onv-img-card__price-wrap">
@@ -112,24 +112,24 @@
                 data-onv-add
                 data-variant-id="{{ target_product.variants[0].id | default: target_product.selected_or_first_available_variant.id }}"
                 data-quantity="2"
-                aria-label="Agregar pack 2 frascos al carrito"
+                aria-label="Add pack 2 bottles to order"
               >
-                <span>AGREGAR</span>
+                <span>ADD</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
               </button>
             </div>
           </div>
         </a>
 
-        <!-- Card 3: 3 Frascos -->
+        <!-- Card 3: 3 Bottles -->
         <a
           href="{{ target_product.url | default: '/products/serum-botanico-unas-onyvera' }}"
           class="onv-img-card"
-          aria-label="Ver Pack 3 Frascos · 48 ml"
+          aria-label="View Pack 3 Bottles · 48 ml"
         >
           <img
             src="{{ 'onv-newunit3.jpeg' | asset_url }}"
-            alt="ONYVERA Sérum Botánico Pack 3 Frascos 48 ml"
+            alt="ONYVERA Botanical Serum Pack 3 Bottles 48 ml"
             class="onv-img-card__bg"
             width="1792"
             height="2400"
@@ -139,14 +139,14 @@
 
           <div class="onv-img-card__top">
             <span class="onv-img-card__glass-ribbon onv-img-card__glass-ribbon--green">
-              Rutina intensiva 45 días · Máximo ahorro
+              Full 45-day routine · BEST VALUE · Save $15
             </span>
           </div>
 
           <div class="onv-img-card__bottom">
             <div class="onv-img-card__info">
-              <h3 class="onv-img-card__name">PACK 3 FRASCOS · 48 ML</h3>
-              <p class="onv-img-card__desc">Tratamiento intensivo completo</p>
+              <h3 class="onv-img-card__name">PACK 3 BOTTLES · 48 ML</h3>
+              <p class="onv-img-card__desc">Complete 45-day botanical routine</p>
             </div>
             <div class="onv-img-card__action">
               <div class="onv-img-card__price-wrap">
@@ -159,9 +159,9 @@
                 data-onv-add
                 data-variant-id="{{ target_product.variants[0].id | default: target_product.selected_or_first_available_variant.id }}"
                 data-quantity="3"
-                aria-label="Agregar pack 3 frascos al carrito"
+                aria-label="Add pack 3 bottles to order"
               >
-                <span>AGREGAR</span>
+                <span>ADD</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
               </button>
             </div>
@@ -549,25 +549,25 @@
 
 {% schema %}
 {
-  "name": "ONV Favoritos Clientes",
+  "name": "Customer Favorites & Bundles",
   "tag": "section",
   "class": "section-onv-favorites-section",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "Título",
-      "default": "Los favoritos de nuestros clientes"
+      "label": "Title",
+      "default": "CUSTOMER FAVORITES & BUNDLES"
     },
     {
       "type": "product",
       "id": "product",
-      "label": "Producto para vincular variantes y precios"
+      "label": "Product to link variants and prices"
     }
   ],
   "presets": [
     {
-      "name": "ONV Favoritos Clientes"
+      "name": "Customer Favorites & Bundles"
     }
   ]
 }

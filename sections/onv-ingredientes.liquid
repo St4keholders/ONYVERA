@@ -9,7 +9,7 @@
   class="onv-ingredients"
 >
   <div class="onv-ingredients__container">
-    <h2 class="visually-hidden">Ingredientes botánicos</h2>
+    <h2 class="visually-hidden">Botanical ingredients</h2>
 
     <!-- 5 Tarjetas Botánicas Centradas -->
     <div class="onv-ingredients__grid">
@@ -23,10 +23,10 @@
               <path d="M22 18C22 22 19 25 15 26" stroke="#A8833B" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <span class="onv-ingredients__num">01 · PURIFICANTE</span>
+          <span class="onv-ingredients__num">01 · PURIFYING</span>
         </div>
-        <h3 class="onv-ingredients__name">{{ section.settings.ing_1_name | default: 'Aceite de árbol de té (Melaleuca Alternifolia)' | escape }}</h3>
-        <p class="onv-ingredients__desc">{{ section.settings.ing_1_desc | default: 'Aceite botánico muy apreciado en el cuidado de uñas y piel por su acabado limpio y purificante.' | escape }}</p>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_1_name | default: 'Tea Tree Leaf Oil (Melaleuca Alternifolia)' | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_1_desc | default: 'Prized botanical oil in nail and cuticle care for its purifying, clean finish.' | escape }}</p>
       </article>
 
       <!-- Card 2 -->
@@ -39,10 +39,10 @@
               <path d="M18 14V22" stroke="#A8833B" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <span class="onv-ingredients__num">02 · CALMANTE</span>
+          <span class="onv-ingredients__num">02 · SOOTHING</span>
         </div>
-        <h3 class="onv-ingredients__name">{{ section.settings.ing_2_name | default: 'Aloe vera' | escape }}</h3>
-        <p class="onv-ingredients__desc">{{ section.settings.ing_2_desc | default: 'Acondiciona y calma la piel alrededor del lecho ungueal.' | escape }}</p>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_2_name | default: 'Aloe Vera Leaf Juice' | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_2_desc | default: 'Conditions and soothes the skin surrounding the delicate nail bed.' | escape }}</p>
       </article>
 
       <!-- Card 3 -->
@@ -55,10 +55,10 @@
               <circle cx="18" cy="20" r="2" fill="#A8833B"/>
             </svg>
           </div>
-          <span class="onv-ingredients__num">03 · HIDRATANTE</span>
+          <span class="onv-ingredients__num">03 · HYDRATING</span>
         </div>
-        <h3 class="onv-ingredients__name">{{ section.settings.ing_3_name | default: 'Glicerina' | escape }}</h3>
-        <p class="onv-ingredients__desc">{{ section.settings.ing_3_desc | default: 'Atrae y retiene la humedad en uñas secas y quebradizas.' | escape }}</p>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_3_name | default: 'Pure Glycerin' | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_3_desc | default: 'Attracts and seals in deep hydration for dry, brittle-looking nails.' | escape }}</p>
       </article>
 
       <!-- Card 4 -->
@@ -71,10 +71,10 @@
               <path d="M15 18L17 20L21 16" stroke="#A8833B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <span class="onv-ingredients__num">04 · NUTRICIÓN</span>
+          <span class="onv-ingredients__num">04 · NOURISHING</span>
         </div>
-        <h3 class="onv-ingredients__name">{{ section.settings.ing_4_name | default: 'Provitamina B5 (Pantenol)' | escape }}</h3>
-        <p class="onv-ingredients__desc">{{ section.settings.ing_4_desc | default: 'Aporta suavidad y flexibilidad a la uña.' | escape }}</p>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_4_name | default: 'Provitamin B5 (Panthenol)' | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_4_desc | default: 'Restores softness, suppleness, and flexibility to brittle nail surfaces.' | escape }}</p>
       </article>
 
       <!-- Card 5 -->
@@ -87,10 +87,10 @@
               <path d="M18 7V9M18 27V29M7 18H9M27 18H29" stroke="#A8833B" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
           </div>
-          <span class="onv-ingredients__num">05 · PROTECCIÓN ANTIOXIDANTE</span>
+          <span class="onv-ingredients__num">05 · ANTIOXIDANT PROTECTION</span>
         </div>
-        <h3 class="onv-ingredients__name">{{ section.settings.ing_5_name | default: 'Vitamina E (Acetato de tocoferilo)' | escape }}</h3>
-        <p class="onv-ingredients__desc">{{ section.settings.ing_5_desc | default: 'Protección antioxidante para uñas castigadas.' | escape }}</p>
+        <h3 class="onv-ingredients__name">{{ section.settings.ing_5_name | default: 'Vitamin E (Tocopheryl Acetate)' | escape }}</h3>
+        <p class="onv-ingredients__desc">{{ section.settings.ing_5_desc | default: 'Antioxidant nourishment to protect and condition weathered nails.' | escape }}</p>
       </article>
     </div>
 
@@ -329,92 +329,92 @@
 
 {% schema %}
 {
-  "name": "ONV Ingredientes",
+  "name": "Botanical Ingredients",
   "tag": "section",
   "class": "section-onv-ingredients",
   "settings": [
     {
       "type": "text",
       "id": "ing_1_name",
-      "label": "Ingrediente 1",
-      "default": "Aceite de árbol de té (Melaleuca Alternifolia)"
+      "label": "Ingredient 1 Name",
+      "default": "Tea Tree Leaf Oil (Melaleuca Alternifolia)"
     },
     {
       "type": "text",
       "id": "ing_1_desc",
-      "label": "Descripción 1",
-      "default": "Aceite botánico muy apreciado en el cuidado de uñas y piel por su acabado limpio y purificante."
+      "label": "Ingredient 1 Description",
+      "default": "Prized botanical oil in nail and skin care for its clean, purifying finish."
     },
     {
       "type": "text",
       "id": "ing_2_name",
-      "label": "Ingrediente 2",
-      "default": "Aloe vera"
+      "label": "Ingredient 2 Name",
+      "default": "Aloe Vera"
     },
     {
       "type": "text",
       "id": "ing_2_desc",
-      "label": "Descripción 2",
-      "default": "Acondiciona y calma la piel alrededor del lecho ungueal."
+      "label": "Ingredient 2 Description",
+      "default": "Conditions and deeply soothes the delicate skin around the nail bed."
     },
     {
       "type": "text",
       "id": "ing_3_name",
-      "label": "Ingrediente 3",
-      "default": "Glicerina"
+      "label": "Ingredient 3 Name",
+      "default": "Glycerin"
     },
     {
       "type": "text",
       "id": "ing_3_desc",
-      "label": "Descripción 3",
-      "default": "Atrae y retiene la humedad en uñas secas y quebradizas."
+      "label": "Ingredient 3 Description",
+      "default": "Attracts and seals in moisture for dry, brittle-looking nails."
     },
     {
       "type": "text",
       "id": "ing_4_name",
-      "label": "Ingrediente 4",
-      "default": "Provitamina B5 (Pantenol)"
+      "label": "Ingredient 4 Name",
+      "default": "Provitamin B5 (Panthenol)"
     },
     {
       "type": "text",
       "id": "ing_4_desc",
-      "label": "Descripción 4",
-      "default": "Aporta suavidad y flexibilidad a la uña."
+      "label": "Ingredient 4 Description",
+      "default": "Imparts visible smoothness and flexibility to keratin structures."
     },
     {
       "type": "text",
       "id": "ing_5_name",
-      "label": "Ingrediente 5",
-      "default": "Vitamina E (Acetato de tocoferilo)"
+      "label": "Ingredient 5 Name",
+      "default": "Vitamin E (Tocopheryl Acetate)"
     },
     {
       "type": "text",
       "id": "ing_5_desc",
-      "label": "Descripción 5",
-      "default": "Protección antioxidante para uñas castigadas."
+      "label": "Ingredient 5 Description",
+      "default": "Essential antioxidant protection for stressed, brittle nails."
     },
     {
       "type": "text",
       "id": "inci_title",
-      "label": "Título INCI",
-      "default": "Ver lista completa de ingredientes (Nomenclatura INCI)"
+      "label": "INCI Title",
+      "default": "View full ingredient list (INCI Nomenclature)"
     },
     {
       "type": "textarea",
       "id": "inci_text",
-      "label": "Lista INCI",
+      "label": "INCI List",
       "default": "Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid."
     },
     {
       "type": "text",
       "id": "inci_note",
-      "label": "Nota de pureza",
-      "default": "Fórmula libre de parabenos, sulfatos, ftalatos y fragancias artificiales."
+      "label": "Purity Note",
+      "default": "Formula free from parabens, sulfates, phthalates, and artificial fragrances."
     }
   ],
   "presets": [
     {
-      "name": "ONV Ingredientes"
+      "name": "Botanical Ingredients"
     }
   ]
 }

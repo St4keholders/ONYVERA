@@ -1,14 +1,14 @@
 {
-  "name": "Pie de página ONYVERA",
+  "name": "ONYVERA Footer",
   "type": "footer",
   "sections": {
     "footer": {
       "type": "footer",
       "settings": {
         "wordmark": "ONYVERA",
-        "tagline": "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas.",
+        "tagline": "Botanical formula with precision brush applicator for daily nail and cuticle care.",
         "opacidad_velo": 88,
-        "linea_corporativa": "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU."
+        "linea_corporativa": "ONYVERA — Vitaherb International LLC · Orlando, FL · USA"
       }
     }
   },

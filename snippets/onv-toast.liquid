@@ -16,7 +16,7 @@
       <img
         id="onv-toast-img"
         src="{{ 'onv-newunit1.jpeg' | asset_url }}"
-        alt="ONYVERA Sérum"
+        alt="ONYVERA Botanical Serum"
         width="48"
         height="72"
         loading="lazy"
@@ -24,15 +24,15 @@
       >
     </div>
     <div class="onv-toast__details">
-      <p class="onv-toast__status" id="onv-toast-status">Añadido a tu pedido</p>
-      <h3 class="onv-toast__title" id="onv-toast-title">ONYVERA Sérum (16 ml)</h3>
-      <p class="onv-toast__variant" id="onv-toast-variant">1 Frasco</p>
+      <p class="onv-toast__status" id="onv-toast-status">Added to your order</p>
+      <h3 class="onv-toast__title" id="onv-toast-title">ONYVERA Serum (16 ml)</h3>
+      <p class="onv-toast__variant" id="onv-toast-variant">2 Bottles</p>
     </div>
     <button
       type="button"
       class="onv-toast__close"
       id="onv-toast-close"
-      aria-label="Cerrar notificación"
+      aria-label="Close notification"
     >
       &times;
     </button>
@@ -48,34 +48,43 @@
   assign upsell_variant = store_product.variants[2] | default: store_product.selected_or_first_available_variant
 -%}
 
-  <!-- Oportunidad de venta (Upsell inteligente) -->
+  <!-- Free shipping status feedback -->
+  <div class="onv-toast__shipping" id="onv-toast-shipping">
+    <div class="onv-toast__shipping-bar">
+      <div class="onv-toast__shipping-fill" id="onv-toast-shipping-fill" style="width: 100%;"></div>
+    </div>
+    <p class="onv-toast__shipping-text" id="onv-toast-shipping-text">🎉 You’ve unlocked FREE U.S. Shipping!</p>
+  </div>
+
+  <!-- Intelligent Upsell to 3 Bottles -->
   <div class="onv-toast__upsell" id="onv-toast-upsell">
     <div class="onv-toast__upsell-info">
-      <span class="onv-toast__upsell-badge">OFERTA RECOMENDADA</span>
-      <p class="onv-toast__upsell-text">Pasa al Pack de 3 frascos y <strong>ahorra $15</strong></p>
+      <span class="onv-toast__upsell-badge">RECOMMENDED UPGRADE</span>
+      <p class="onv-toast__upsell-text">Upgrade to 3 bottles &amp; <strong>Save $15</strong> ($20/bottle)</p>
     </div>
     <button
       type="button"
       class="onv-toast__upsell-btn"
       id="onv-toast-upsell-btn"
       data-onv-add
+      data-qty="3"
       data-variant-id="{{ upsell_variant.id | default: '' }}"
     >
-      Añadir Pack de 3
+      Upgrade to 3 ($60)
     </button>
   </div>
 
-  <!-- Botones de acción principales -->
+  <!-- Main Action Buttons -->
   <div class="onv-toast__actions">
-    <a href="{{ routes.cart_url }}" class="onv-toast__btn onv-toast__btn--view">
-      Ver carrito
+    <a href="/checkout" class="onv-toast__btn onv-toast__btn--checkout">
+      CHECKOUT — SECURE PAYMENT
     </a>
     <button type="button" class="onv-toast__btn onv-toast__btn--continue" id="onv-toast-continue">
-      Seguir viendo
+      Continue Shopping
     </button>
   </div>
 
-  <!-- Barra de progreso visual del temporizador -->
+  <!-- Visual timer progress bar -->
   <div class="onv-toast__timer-bar" id="onv-toast-timer-bar"></div>
 </div>
 
@@ -253,6 +262,39 @@
     background-color: var(--onv-green-900);
   }
 
+  /* Free Shipping Status in Toast */
+  .onv-toast__shipping {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: #EAF4F0;
+    border-radius: 8px;
+  }
+
+  .onv-toast__shipping-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(19, 46, 35, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+  .onv-toast__shipping-fill {
+    height: 100%;
+    background: #2F7A6B;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  .onv-toast__shipping-text {
+    margin: 0;
+    font-family: var(--onv-body, 'Karla', sans-serif);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1B3A2F;
+    text-align: center;
+  }
+
   /* Acciones */
   .onv-toast__actions {
     display: flex;
@@ -262,9 +304,9 @@
 
   .onv-toast__btn {
     flex: 1;
-    padding: 10px 14px;
+    padding: 11px 14px;
     border-radius: 999px;
-    font-family: var(--onv-body);
+    font-family: var(--onv-body, 'Karla', sans-serif);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -272,26 +314,36 @@
     text-decoration: none;
     cursor: pointer;
     transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
-  .onv-toast__btn--view {
-    background: #132E23;
-    color: #ffffff;
+  .onv-toast__btn--checkout {
+    background: #1B3A2F;
+    color: #ffffff !important;
     border: none;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(27, 58, 47, 0.25);
   }
 
-  .onv-toast__btn--view:hover {
-    background: var(--onv-teal-600);
+  .onv-toast__btn--checkout:hover {
+    background: #2F7A6B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(47, 122, 107, 0.35);
   }
 
   .onv-toast__btn--continue {
     background: #ffffff;
-    color: var(--onv-green-900);
+    color: var(--onv-green-900, #1B3A2F);
     border: 1.5px solid rgba(19, 46, 35, 0.16);
   }
 
   .onv-toast__btn--continue:hover {
-    border-color: var(--onv-green-900);
+    border-color: var(--onv-green-900, #1B3A2F);
   }
 
   /* Timer bar */

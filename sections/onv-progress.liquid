@@ -10,8 +10,8 @@
 
     <!-- Encabezado de Sección -->
     <header class="prog__header">
-      <span class="prog__eyebrow">{{ section.settings.eyebrow | default: "PROCESO REAL · 45 DÍAS" | escape }}</span>
-      <h2 class="prog__title">{{ section.settings.title | default: "Una persona. Cuarenta y cinco días. Sin retoques." | escape }}</h2>
+      <span class="prog__eyebrow">{{ section.settings.eyebrow | default: "REAL PROGRESS · 45 DAYS" | escape }}</span>
+      <h2 class="prog__title">{{ section.settings.title | default: "One Person. Forty-Five Days. Real Routine." | escape }}</h2>
     </header>
 
     <!-- Riel / Carrusel de Pasos Ordenados -->
@@ -24,7 +24,7 @@
             {%- if section.settings.img_1 != blank -%}
               <img
                 src="{{ section.settings.img_1 | image_url: width: 1080 }}"
-                alt="{{ section.settings.alt_1 | default: 'Uña del pie en el día 1: engrosada, amarillenta, de borde áspero.' | escape }}"
+                alt="{{ section.settings.alt_1 | default: 'Toenail on day 1: thickened, brittle texture.' | escape }}"
                 class="prog__img"
                 width="1080"
                 height="1080"
@@ -36,7 +36,7 @@
                 <source srcset="{{ 'onv-dia-1.webp' | asset_url }}" type="image/webp">
                 <img
                   src="{{ 'onv-dia-1.png' | asset_url }}"
-                  alt="Uña del pie en el día 1: engrosada, amarillenta, de borde áspero."
+                  alt="Toenail on day 1: thickened, brittle texture."
                   class="prog__img"
                   width="1080"
                   height="1080"
@@ -50,8 +50,8 @@
             <span class="prog__dot prog__dot--1"></span>
           </div>
           <figcaption class="prog__caption">
-            <span class="prog__day prog__day--1">{{ section.settings.day_1 | default: 'DÍA 1' | escape }}</span>
-            <p class="prog__desc">{{ section.settings.desc_1 | default: 'Uña engrosada y amarillenta, con el borde áspero e irregular.' | escape }}</p>
+            <span class="prog__day prog__day--1">{{ section.settings.day_1 | default: 'DAY 1' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_1 | default: 'Thickened, dry-looking nail with uneven and fragile texture.' | escape }}</p>
           </figcaption>
         </figure>
       </li>
@@ -63,7 +63,7 @@
             {%- if section.settings.img_2 != blank -%}
               <img
                 src="{{ section.settings.img_2 | image_url: width: 1080 }}"
-                alt="{{ section.settings.alt_2 | default: 'Uña del pie en el día 15: la superficie se empareja y el tono cambia.' | escape }}"
+                alt="{{ section.settings.alt_2 | default: 'Toenail on day 15: smoother surface and conditioned cuticle.' | escape }}"
                 class="prog__img"
                 width="1080"
                 height="1080"
@@ -75,7 +75,7 @@
                 <source srcset="{{ 'onv-dia-15.webp' | asset_url }}" type="image/webp">
                 <img
                   src="{{ 'onv-dia-15.png' | asset_url }}"
-                  alt="Uña del pie en el día 15: la superficie se empareja y el tono cambia."
+                  alt="Toenail on day 15: smoother surface and conditioned cuticle."
                   class="prog__img"
                   width="1080"
                   height="1080"
@@ -89,8 +89,8 @@
             <span class="prog__dot prog__dot--2"></span>
           </div>
           <figcaption class="prog__caption">
-            <span class="prog__day prog__day--2">{{ section.settings.day_2 | default: 'DÍA 15' | escape }}</span>
-            <p class="prog__desc">{{ section.settings.desc_2 | default: 'La superficie empieza a emparejarse. El tono cambia mientras la uña crece.' | escape }}</p>
+            <span class="prog__day prog__day--2">{{ section.settings.day_2 | default: 'DAY 15' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_2 | default: 'Surface texture begins smoothing; tone softens as nail grows.' | escape }}</p>
           </figcaption>
         </figure>
       </li>
@@ -102,7 +102,7 @@
             {%- if section.settings.img_3 != blank -%}
               <img
                 src="{{ section.settings.img_3 | image_url: width: 1080 }}"
-                alt="{{ section.settings.alt_3 | default: 'Uña del pie en el día 30: crecimiento nuevo y limpio desde la base.' | escape }}"
+                alt="{{ section.settings.alt_3 | default: 'Toenail on day 30: clear, clean new growth.' | escape }}"
                 class="prog__img"
                 width="1080"
                 height="1080"
@@ -114,7 +114,7 @@
                 <source srcset="{{ 'onv-dia-30.webp' | asset_url }}" type="image/webp">
                 <img
                   src="{{ 'onv-dia-30.png' | asset_url }}"
-                  alt="Uña del pie en el día 30: crecimiento nuevo y limpio desde la base."
+                  alt="Toenail on day 30: clear, clean new growth."
                   class="prog__img"
                   width="1080"
                   height="1080"
@@ -128,8 +128,8 @@
             <span class="prog__dot prog__dot--3"></span>
           </div>
           <figcaption class="prog__caption">
-            <span class="prog__day prog__day--3">{{ section.settings.day_3 | default: 'DÍA 30' | escape }}</span>
-            <p class="prog__desc">{{ section.settings.desc_3 | default: 'Crecimiento nuevo y limpio desde la base. Solo queda una marca tenue.' | escape }}</p>
+            <span class="prog__day prog__day--3">{{ section.settings.day_3 | default: 'DAY 30' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_3 | default: 'Clean, conditioned new growth emerging steadily from the cuticle base.' | escape }}</p>
           </figcaption>
         </figure>
       </li>
@@ -141,7 +141,7 @@
             {%- if section.settings.img_4 != blank -%}
               <img
                 src="{{ section.settings.img_4 | image_url: width: 1080 }}"
-                alt="{{ section.settings.alt_4 | default: 'Uña del pie en el día 45: color uniforme y superficie lisa.' | escape }}"
+                alt="{{ section.settings.alt_4 | default: 'Toenail on day 45: hydrated, smooth and clear appearance.' | escape }}"
                 class="prog__img"
                 width="1080"
                 height="1080"
@@ -153,7 +153,7 @@
                 <source srcset="{{ 'onv-dia-45.webp' | asset_url }}" type="image/webp">
                 <img
                   src="{{ 'onv-dia-45.png' | asset_url }}"
-                  alt="Uña del pie en el día 45: color uniforme y superficie lisa."
+                  alt="Toenail on day 45: hydrated, smooth and clear appearance."
                   class="prog__img"
                   width="1080"
                   height="1080"
@@ -167,8 +167,8 @@
             <span class="prog__dot prog__dot--4"></span>
           </div>
           <figcaption class="prog__caption">
-            <span class="prog__day prog__day--4">{{ section.settings.day_4 | default: 'DÍA 45' | escape }}</span>
-            <p class="prog__desc">{{ section.settings.desc_4 | default: 'Color uniforme y superficie lisa en toda la uña.' | escape }}</p>
+            <span class="prog__day prog__day--4">{{ section.settings.day_4 | default: 'DAY 45' | escape }}</span>
+            <p class="prog__desc">{{ section.settings.desc_4 | default: 'Smooth surface and even, natural color across the entire nail.' | escape }}</p>
           </figcaption>
         </figure>
       </li>
@@ -544,127 +544,127 @@
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Antetítulo",
-      "default": "PROCESO REAL · 45 DÍAS"
+      "label": "Eyebrow",
+      "default": "REAL PROGRESS · 45 DAYS"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "Título",
-      "default": "Una persona. Cuarenta y cinco días. Sin retoques."
+      "label": "Title",
+      "default": "One person. Forty-five days. Unretouched."
     },
     {
       "type": "header",
-      "content": "Paso 1"
+      "content": "Step 1"
     },
     {
       "type": "image_picker",
       "id": "img_1",
-      "label": "Imagen Día 1"
+      "label": "Day 1 Image"
     },
     {
       "type": "text",
       "id": "day_1",
-      "label": "Etiqueta Día 1",
-      "default": "DÍA 1"
+      "label": "Day 1 Label",
+      "default": "DAY 1"
     },
     {
       "type": "textarea",
       "id": "desc_1",
-      "label": "Descripción Día 1",
-      "default": "Uña engrosada y amarillenta, con el borde áspero e irregular."
+      "label": "Day 1 Description",
+      "default": "Thickened, brittle-looking toenail with uneven, discolored edges."
     },
     {
       "type": "text",
       "id": "alt_1",
-      "label": "Alt text Día 1",
-      "default": "Uña del pie en el día 1: engrosada, amarillenta, de borde áspero."
+      "label": "Day 1 Alt Text",
+      "default": "Toenail on day 1: dry, discolored, and brittle-looking edge."
     },
     {
       "type": "header",
-      "content": "Paso 2"
+      "content": "Step 2"
     },
     {
       "type": "image_picker",
       "id": "img_2",
-      "label": "Imagen Día 15"
+      "label": "Day 15 Image"
     },
     {
       "type": "text",
       "id": "day_2",
-      "label": "Etiqueta Día 15",
-      "default": "DÍA 15"
+      "label": "Day 15 Label",
+      "default": "DAY 15"
     },
     {
       "type": "textarea",
       "id": "desc_2",
-      "label": "Descripción Día 15",
-      "default": "La superficie empieza a emparejarse. El tono cambia mientras la uña crece."
+      "label": "Day 15 Description",
+      "default": "Surface begins smoothing out. Noticeable conditioning as the nail grows."
     },
     {
       "type": "text",
       "id": "alt_2",
-      "label": "Alt text Día 15",
-      "default": "Uña del pie en el día 15: la superficie se empareja y el tono cambia."
+      "label": "Day 15 Alt Text",
+      "default": "Toenail on day 15: surface begins smoothing out."
     },
     {
       "type": "header",
-      "content": "Paso 3"
+      "content": "Step 3"
     },
     {
       "type": "image_picker",
       "id": "img_3",
-      "label": "Imagen Día 30"
+      "label": "Day 30 Image"
     },
     {
       "type": "text",
       "id": "day_3",
-      "label": "Etiqueta Día 30",
-      "default": "DÍA 30"
+      "label": "Day 30 Label",
+      "default": "DAY 30"
     },
     {
       "type": "textarea",
       "id": "desc_3",
-      "label": "Descripción Día 30",
-      "default": "Crecimiento nuevo y limpio desde la base. Solo queda una marca tenue."
+      "label": "Day 30 Description",
+      "default": "Clean, smooth new growth emerging steadily from the cuticle base."
     },
     {
       "type": "text",
       "id": "alt_3",
-      "label": "Alt text Día 30",
-      "default": "Uña del pie en el día 30: crecimiento nuevo y limpio desde la base."
+      "label": "Day 30 Alt Text",
+      "default": "Toenail on day 30: clean, smooth new growth from cuticle base."
     },
     {
       "type": "header",
-      "content": "Paso 4"
+      "content": "Step 4"
     },
     {
       "type": "image_picker",
       "id": "img_4",
-      "label": "Imagen Día 45"
+      "label": "Day 45 Image"
     },
     {
       "type": "text",
       "id": "day_4",
-      "label": "Etiqueta Día 45",
-      "default": "DÍA 45"
+      "label": "Day 45 Label",
+      "default": "DAY 45"
     },
     {
       "type": "textarea",
       "id": "desc_4",
-      "label": "Descripción Día 45",
-      "default": "Color uniforme y superficie lisa en toda la uña."
+      "label": "Day 45 Description",
+      "default": "Even color and smooth, conditioned surface across the entire nail."
     },
     {
       "type": "text",
       "id": "alt_4",
-      "label": "Alt text Día 45",
-      "default": "Uña del pie en el día 45: color uniforme y superficie lisa."
+      "label": "Day 45 Alt Text",
+      "default": "Toenail on day 45: clear, even tone and smooth conditioned nail."
     }
   ],
   "presets": [
     {
-      "name": "Línea de tiempo progreso"
+      "name": "Real Progress Timeline"
     }
   ]
 }

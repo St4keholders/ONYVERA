@@ -15,6 +15,41 @@
   .drawer {
     visibility: hidden;
   }
+  .cart-drawer__free-shipping {
+    padding: 12px 20px;
+    background: #F4F7F5;
+    border-bottom: 1px solid rgba(19, 46, 35, 0.08);
+  }
+  .cart-drawer__free-shipping-track {
+    height: 6px;
+    background: #E0E7E3;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .cart-drawer__free-shipping-fill {
+    height: 100%;
+    background: #2C6E56;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+  .cart-drawer__free-shipping-text {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    color: #1B3A2F;
+    text-align: center;
+  }
+  .cart-drawer__trust-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #4A5A52;
+  }
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
@@ -74,6 +109,32 @@
           </span>
         </button>
       </div>
+
+      {%- if cart != empty -%}
+        {%- liquid
+          assign free_shipping_threshold_cents = 5000
+          assign current_cart_cents = cart.total_price
+          if total_cart_qty > 0 and official_total_cents > 0
+            assign current_cart_cents = official_total_cents
+          endif
+          assign shipping_diff_cents = free_shipping_threshold_cents | minus: current_cart_cents
+        -%}
+        <div class="cart-drawer__free-shipping" id="CartDrawerFreeShipping">
+          <div class="cart-drawer__free-shipping-track">
+            <div
+              class="cart-drawer__free-shipping-fill"
+              style="width: {% if current_cart_cents >= free_shipping_threshold_cents %}100%{% else %}{{ current_cart_cents | times: 100 | divided_by: free_shipping_threshold_cents }}%{% endif %};"
+            ></div>
+          </div>
+          <p class="cart-drawer__free-shipping-text">
+            {%- if current_cart_cents >= free_shipping_threshold_cents -%}
+              🎉 <strong>FREE U.S. Shipping unlocked!</strong>
+            {%- else -%}
+              Add <strong>{{ shipping_diff_cents | money }}</strong> more to unlock <strong>FREE U.S. Shipping</strong>
+            {%- endif -%}
+          </p>
+        </div>
+      {%- endif -%}
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"
@@ -554,7 +615,7 @@
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
             <p class="totals__total-value" data-cart-total-display>
               {%- if is_wholesale -%}
-                Consultar con asesor
+                Contact wholesale advisor
               {%- elsif total_cart_qty > 0 -%}
                 {{ official_total_cents | money_with_currency }}
               {%- else -%}
@@ -611,21 +672,21 @@
           class="cart-wholesale-block{% unless is_wholesale %} is-hidden{% endunless %}"
         >
           <div class="pdp-wholesale-indicator">
-            <span class="pdp-wholesale-badge">10+ unidades — producto al por mayor</span>
+            <span class="pdp-wholesale-badge">10+ units — Wholesale inquiry</span>
           </div>
-          {%- assign whatsapp_drawer_msg = 'Hola, quiero comprar ' | append: total_cart_qty | append: ' unidades de ONYVERA. Me gustaría hablar con un asesor para consultar el precio al por mayor y realizar el pedido.' | url_encode -%}
+          {%- assign whatsapp_drawer_msg = 'Hello, I want to order ' | append: total_cart_qty | append: ' units of ONYVERA. I would like to speak with an advisor regarding wholesale pricing and ordering.' | url_encode -%}
           <a
             id="CartDrawerWhatsAppBtn"
             href="https://wa.me/1234567890?text={{ whatsapp_drawer_msg }}"
             target="_blank"
             rel="noopener"
             class="pdp-btn pdp-btn--whatsapp cart-wholesale-whatsapp-btn"
-            aria-label="Hablar con un asesor por WhatsApp para pedido al por mayor"
+            aria-label="Contact wholesale advisor via WhatsApp"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.12-.22-.19-.47-.32"/>
             </svg>
-            <span>Hablar con un asesor por WhatsApp</span>
+            <span>Contact wholesale advisor via WhatsApp</span>
           </a>
         </div>
 
@@ -640,8 +701,12 @@
               disabled
             {% endif %}
           >
-            {{ 'sections.cart.checkout' | t }}
+            CHECKOUT — SECURE PAYMENT
           </button>
+          <div class="cart-drawer__trust-badges">
+            <span>🔒 256-Bit SSL Encrypted</span>
+            <span>📦 Fast U.S. Shipping (FL)</span>
+          </div>
         </div>
       </div>
     </div>

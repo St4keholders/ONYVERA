@@ -21,13 +21,13 @@
 -%}
 
 <section id="onv-banner-intermedio-{{ section.id }}" class="onv-banner-body">
-  <a href="{{ banner_link }}" class="onv-banner-body__link" aria-label="Ver ofertas ONYVERA">
+  <a href="{{ banner_link }}" class="onv-banner-body__link" aria-label="View ONYVERA bundles">
     <picture class="onv-banner-body__picture">
       <source media="(max-width: 749px)" srcset="{{ mobile_img_url }}">
       <source media="(min-width: 750px)" srcset="{{ desktop_img_url }}">
       <img
         src="{{ desktop_img_url }}"
-        alt="{{ section.settings.alt_text | default: 'La rutina ONYVERA en cuatro pasos: limar, aplicar, dejar absorber y repetir' | escape }}"
+        alt="{{ section.settings.alt_text | default: 'The ONYVERA routine in four steps: clean, apply, absorb, repeat' | escape }}"
         class="onv-banner-body__img"
         width="1024"
         height="254"

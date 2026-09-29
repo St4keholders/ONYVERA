@@ -13,7 +13,7 @@
       "type": "onv-cinta",
       "settings": {
         "show_cinta": true,
-        "text": "ENVÍO GRATIS EN EE. UU. EN PEDIDOS DESDE $50",
+        "text": "FREE U.S. SHIPPING ON ORDERS OVER $50",
         "speed": 45,
         "bg_color": "#1B3A2F",
         "text_color": "#F6F2E9"
@@ -22,100 +22,99 @@
     "onv_hero": {
       "type": "onv-hero",
       "settings": {
-        "alt_text": "Aplicación del sérum ONYVERA con brocha de precisión sobre una uña del pie",
+        "alt_text": "ONYVERA botanical serum precision brush application on nail",
         "link": "/products/serum-botanico-unas-onyvera",
-        "seo_heading": "Sérum botánico para uñas amarillas y quebradizas"
+        "seo_heading": "Botanical Serum for Dry, Brittle-Looking Nails"
       }
     },
     "onv_iconos": {
       "type": "onv-iconos",
       "settings": {
-        "icon_1_text": "Fórmula botánica concentrada",
-        "icon_2_text": "Sin parabenos ni sulfatos",
-        "icon_3_text": "Vegano y libre de crueldad",
-        "icon_4_text": "Suave, no escuece",
-        "icon_5_text": "Se envía desde EE. UU."
+        "icon_1_text": "Concentrated Botanical Formula",
+        "icon_2_text": "Paraben & Sulfate-Free",
+        "icon_3_text": "Vegan & Cruelty-Free",
+        "icon_4_text": "Gentle & Non-Stinging",
+        "icon_5_text": "Fast U.S. Shipping (From FL)"
       }
     },
     "onv_specs": {
       "type": "onv-specs",
       "settings": {
-        "title": "Los favoritos de nuestros clientes"
+        "title": "Customer Favorites & Bundles"
       }
     },
     "onv_banner_body_1": {
       "type": "onv-banner-intermedio",
       "settings": {
-        "alt_text": "La rutina ONYVERA en cuatro pasos: limar, aplicar, dejar absorber y repetir"
+        "alt_text": "The ONYVERA routine in four steps: clean, apply, absorb, repeat"
       }
     },
     "onv_prueba_social": {
       "type": "onv-prueba-social",
       "settings": {
-        "eyebrow": "RESULTADOS DE NUESTRA RUTINA"
+        "eyebrow": "REAL ROUTINE RESULTS"
       }
     },
     "onv_reviews": {
-      "type": "onv-reviews",
       "blocks": {
         "resena_1": {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "A los 45 días la diferencia es evidente. El amarillo de la punta desapareció y lo que creció después salió limpio.",
+            "cita": "After 45 days the difference is night and day. The yellow discoloration at the tip faded and clean new growth took over.",
             "nombre": "Marcos R.",
             "ubicacion": "Tampa, FL",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         "resena_2": {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "Había probado otros tres productos antes. La brocha fue lo que me convenció: no se riega, no se desperdicia y llega debajo del borde.",
+            "cita": "I had tried three other products before. The precision brush is what convinced me: no mess, no waste, and gets right under the nail edge.",
             "nombre": "Diana G.",
             "ubicacion": "Columbus, OH",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         "resena_3": {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "Pasaron como tres semanas antes de notar algo, así que hay que tener paciencia. Para la sexta semana la uña se veía normal.",
+            "cita": "It took about three weeks before noticing visible improvements. By week six my nails looked smooth and conditioned.",
             "nombre": "Carlos T.",
             "ubicacion": "Phoenix, AZ",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         "resena_4": {
           "type": "resena",
           "settings": {
             "estrellas": 4,
-            "cita": "No arde y no tiene olor, que es lo que importa cuando lo aplicas todos los días durante mes y medio.",
+            "cita": "Gentle, non-stinging and with no harsh chemical smell. Very easy to apply twice daily.",
             "nombre": "Paola N.",
             "ubicacion": "Newark, NJ",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         "resena_5": {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "Usé sandalias en la boda de mi hija. Primera vez en cuatro años que no lo pensé dos veces.",
+            "cita": "Wore sandals to my daughter's wedding without a second thought for the first time in four years.",
             "nombre": "Roberto M.",
             "ubicacion": "Savannah, GA",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         "resena_6": {
           "type": "resena",
           "settings": {
             "estrellas": 4,
-            "cita": "Primero se emparejó la textura, después el color. Lento pero constante durante los 45 días.",
-            "nombre": "Ángela V.",
+            "cita": "First the rough texture smoothed out, then the healthy natural color returned. Consistent botanical care works.",
+            "nombre": "Angela V.",
             "ubicacion": "Boise, ID",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         }
       },
@@ -135,70 +134,69 @@
     "onv_ingredient_banner": {
       "type": "onv-ingredient-banner",
       "settings": {
-        "eyebrow": "TRANSPARENCIA BOTÁNICA",
-        "heading": "Cinco activos. Diez ingredientes. Nada oculto.",
+        "eyebrow": "BOTANICAL TRANSPARENCY",
+        "heading": "Five Actives. Ten Ingredients. Nothing Hidden.",
         "text_position": "left",
         "desktop_ratio": "16:9",
         "link": "/products/serum-botanico-unas-onyvera",
-        "alt_text": "Árbol de té, aloe vera, glicerina y vitamina E junto al frasco de ONYVERA"
+        "alt_text": "Tea tree oil, aloe vera, glycerin, and vitamin E beside ONYVERA bottle"
       }
     },
     "onv_ingredientes": {
       "type": "onv-ingredientes",
       "settings": {
-        "ing_1_name": "Aceite de árbol de té (Melaleuca Alternifolia)",
-        "ing_1_desc": "Aceite botánico muy apreciado en el cuidado de uñas y piel por su acabado limpio y purificante.",
-        "ing_2_name": "Aloe vera",
-        "ing_2_desc": "Acondiciona y calma la piel alrededor del lecho ungueal.",
-        "ing_3_name": "Glicerina",
-        "ing_3_desc": "Atrae y retiene la humedad en uñas secas y quebradizas.",
-        "ing_4_name": "Provitamina B5 (Pantenol)",
-        "ing_4_desc": "Aporta suavidad y flexibilidad a la uña.",
-        "ing_5_name": "Vitamina E (Acetato de tocoferilo)",
-        "ing_5_desc": "Protección antioxidante para uñas castigadas.",
-        "inci_title": "Ver lista completa de ingredientes (Nomenclatura INCI)",
+        "ing_1_name": "Tea Tree Leaf Oil (Melaleuca Alternifolia)",
+        "ing_1_desc": "Prized botanical oil in nail and cuticle care for its purifying, clean finish.",
+        "ing_2_name": "Aloe Vera Leaf Juice",
+        "ing_2_desc": "Conditions and soothes the skin surrounding the delicate nail bed.",
+        "ing_3_name": "Pure Glycerin",
+        "ing_3_desc": "Attracts and seals in deep hydration for dry, brittle-looking nails.",
+        "ing_4_name": "Provitamin B5 (Panthenol)",
+        "ing_4_desc": "Restores softness, suppleness, and flexibility to brittle nail surfaces.",
+        "ing_5_name": "Vitamin E (Tocopheryl Acetate)",
+        "ing_5_desc": "Antioxidant nourishment to protect and condition weathered nails.",
+        "inci_title": "View Full Ingredients List (INCI Nomenclature)",
         "inci_text": "Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.",
-        "inci_note": "Fórmula libre de parabenos, sulfatos, ftalatos y fragancias artificiales."
+        "inci_note": "Formula 100% free of parabens, sulfates, phthalates, and synthetic fragrances."
       }
     },
     "onv_progress": {
       "type": "onv-progress",
       "settings": {
-        "eyebrow": "PROCESO REAL · 45 DÍAS",
-        "title": "Una persona. Cuarenta y cinco días. Sin retoques.",
-        "day_1": "DÍA 1",
-        "desc_1": "Uña engrosada y amarillenta, con el borde áspero e irregular.",
-        "alt_1": "Uña del pie en el día 1: engrosada, amarillenta, de borde áspero.",
-        "day_2": "DÍA 15",
-        "desc_2": "La superficie empieza a emparejarse. El tono cambia mientras la uña crece.",
-        "alt_2": "Uña del pie en el día 15: la superficie se empareja y el tono cambia.",
-        "day_3": "DÍA 30",
-        "desc_3": "Crecimiento nuevo y limpio desde la base. Solo queda una marca tenue.",
-        "alt_3": "Uña del pie en el día 30: crecimiento nuevo y limpio desde la base.",
-        "day_4": "DÍA 45",
-        "desc_4": "Color uniforme y superficie lisa en toda la uña.",
-        "alt_4": "Uña del pie en el día 45: color uniforme y superficie lisa."
+        "eyebrow": "REAL PROGRESS · 45 DAYS",
+        "title": "One Person. Forty-Five Days. Real Routine.",
+        "day_1": "DAY 1",
+        "desc_1": "Thickened, dry-looking nail with uneven and fragile texture.",
+        "alt_1": "Toenail on day 1: thickened, brittle texture.",
+        "day_2": "DAY 15",
+        "desc_2": "Surface texture begins smoothing; tone softens as nail grows.",
+        "alt_2": "Toenail on day 15: smoother surface and conditioned cuticle.",
+        "day_3": "DAY 30",
+        "desc_3": "Clean, conditioned new growth emerging steadily from the cuticle base.",
+        "alt_3": "Toenail on day 30: clear, clean new growth.",
+        "day_4": "DAY 45",
+        "desc_4": "Smooth surface and even, natural color across the entire nail.",
+        "alt_4": "Toenail on day 45: hydrated, smooth and clear appearance."
       }
     },
     "onv_cta": {
-      "type": "onv-cta",
       "blocks": {
         "beneficio_1": {
           "type": "beneficio",
           "settings": {
-            "texto": "Envío gratis en EE. UU. en pedidos desde $50"
+            "texto": "FREE U.S. Shipping on orders $50+"
           }
         },
         "beneficio_2": {
           "type": "beneficio",
           "settings": {
-            "texto": "Se envía desde Orlando, Florida"
+            "texto": "Fast dispatch from Orlando, Florida (3–5 business days)"
           }
         },
         "beneficio_3": {
           "type": "beneficio",
           "settings": {
-            "texto": "Vegano, libre de crueldad, sin parabenos ni sulfatos"
+            "texto": "Vegan, cruelty-free, no parabens or sulfates"
           }
         }
       },
@@ -208,10 +206,10 @@
         "beneficio_3"
       ],
       "settings": {
-        "titulo": "Recupera tus uñas. Recupera tu confianza.",
-        "texto_boton": "PIDE ONYVERA AHORA",
+        "titulo": "Nourish your nails. Restore your confidence.",
+        "texto_boton": "CHOOSE YOUR BUNDLE",
         "enlace_boton": "/products/serum-botanico-unas-onyvera",
-        "alt_text": "Frasco de sérum ONYVERA sostenido entre dos dedos",
+        "alt_text": "ONYVERA serum bottle held between fingers",
         "posicion_imagen": "derecha"
       }
     }

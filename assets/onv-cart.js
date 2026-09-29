@@ -28,232 +28,11 @@ class OnvCartManager {
     this.initEvents();
   }
 
-  initConfirmModal() {
-    if (document.getElementById('onv-confirm-modal')) return;
-
-    if (!document.getElementById('onv-confirm-modal-style')) {
-      const style = document.createElement('style');
-      style.id = 'onv-confirm-modal-style';
-      style.textContent = `
-        .onv-confirm-modal {
-          position: fixed;
-          inset: 0;
-          z-index: 100000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-          box-sizing: border-box;
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
-        }
-        .onv-confirm-modal.is-active {
-          opacity: 1;
-          visibility: visible;
-        }
-        .onv-confirm-modal__backdrop {
-          position: absolute;
-          inset: 0;
-          background: rgba(19, 46, 35, 0.52);
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
-        }
-        .onv-confirm-modal__dialog {
-          position: relative;
-          z-index: 2;
-          background: #ffffff;
-          border-radius: 20px;
-          padding: 28px 22px 22px;
-          max-width: 380px;
-          width: 100%;
-          box-sizing: border-box;
-          box-shadow: 0 20px 50px rgba(19, 46, 35, 0.22);
-          border: 1px solid rgba(19, 46, 35, 0.08);
-          text-align: center;
-          transform: scale(0.93) translateY(8px);
-          transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .onv-confirm-modal.is-active .onv-confirm-modal__dialog {
-          transform: scale(1) translateY(0);
-        }
-        .onv-confirm-modal__icon {
-          width: 50px;
-          height: 50px;
-          margin: 0 auto 14px;
-          border-radius: 50%;
-          background: rgba(44, 110, 86, 0.1);
-          color: #2C6E56;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .onv-confirm-modal__title {
-          font-family: var(--font-ui, 'Karla', sans-serif) !important;
-          font-size: 17.5px !important;
-          font-weight: 700 !important;
-          color: var(--ink, #1B3A2F) !important;
-          line-height: 1.35 !important;
-          margin: 0 0 8px !important;
-        }
-        .onv-confirm-modal__subtitle {
-          font-family: var(--font-ui, 'Karla', sans-serif) !important;
-          font-size: 13.5px !important;
-          color: var(--ink-soft, #4A5A52) !important;
-          line-height: 1.4 !important;
-          margin: 0 0 20px !important;
-        }
-        .onv-confirm-modal__actions {
-          display: flex;
-          gap: 10px;
-          justify-content: center;
-        }
-        .onv-confirm-modal__btn {
-          flex: 1;
-          padding: 12px 16px;
-          border-radius: 999px;
-          font-family: var(--font-ui, 'Karla', sans-serif);
-          font-size: 13.5px;
-          font-weight: 700;
-          letter-spacing: 0.02em;
-          cursor: pointer;
-          border: none;
-          outline: none;
-          box-shadow: none;
-          transition: background 0.18s ease, transform 0.15s ease;
-        }
-        .onv-confirm-modal__btn--cancel {
-          background: #F0F3F1;
-          color: #4A5A52;
-        }
-        .onv-confirm-modal__btn--cancel:hover {
-          background: #E4EAE6;
-          color: #1B3A2F;
-        }
-        .onv-confirm-modal__btn--confirm {
-          background: #132E23;
-          color: #ffffff;
-        }
-        .onv-confirm-modal__btn--confirm:hover {
-          background: #2C6E56;
-        }
-        .onv-confirm-modal__btn:active {
-          transform: scale(0.97);
-        }
-      `;
-      document.head.appendChild(style);
-    }
-
-    const modalEl = document.createElement('div');
-    modalEl.id = 'onv-confirm-modal';
-    modalEl.className = 'onv-confirm-modal';
-    modalEl.setAttribute('role', 'dialog');
-    modalEl.setAttribute('aria-modal', 'true');
-    modalEl.setAttribute('aria-labelledby', 'onv-confirm-title');
-    modalEl.hidden = true;
-    modalEl.innerHTML = `
-      <div class="onv-confirm-modal__backdrop" id="onv-confirm-backdrop"></div>
-      <div class="onv-confirm-modal__dialog">
-        <div class="onv-confirm-modal__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-          </svg>
-        </div>
-        <h3 class="onv-confirm-modal__title" id="onv-confirm-title">¿Seguro que quieres agregar 2 unidades al carrito?</h3>
-        <p class="onv-confirm-modal__subtitle" id="onv-confirm-subtitle">Se agregarán 2 frascos de ONYVERA a tu pedido.</p>
-        <div class="onv-confirm-modal__actions">
-          <button type="button" class="onv-confirm-modal__btn onv-confirm-modal__btn--cancel" id="onv-confirm-cancel">Cancelar</button>
-          <button type="button" class="onv-confirm-modal__btn onv-confirm-modal__btn--confirm" id="onv-confirm-submit">Confirmar</button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(modalEl);
-  }
-
-  promptConfirmModal(quantity, onConfirm, onCancel = null) {
-    this.initConfirmModal();
-    const modal = document.getElementById('onv-confirm-modal');
-    const title = document.getElementById('onv-confirm-title');
-    const subtitle = document.getElementById('onv-confirm-subtitle');
-    const btnCancel = document.getElementById('onv-confirm-cancel');
-    const btnConfirm = document.getElementById('onv-confirm-submit');
-    const backdrop = document.getElementById('onv-confirm-backdrop');
-
-    const cleanQty = Math.max(1, parseInt(quantity, 10) || 1);
-    const unitWord = cleanQty === 1 ? 'unidad' : 'unidades';
-    const frascoWord = cleanQty === 1 ? 'frasco' : 'frascos';
-
-    if (title) {
-      title.textContent = `¿Seguro que quieres agregar ${cleanQty} ${unitWord} al carrito?`;
-    }
-    if (subtitle) {
-      subtitle.textContent = cleanQty === 1
-        ? 'Se agregará 1 frasco de ONYVERA a tu pedido.'
-        : `Se agregarán ${cleanQty} ${frascoWord} de ONYVERA a tu pedido.`;
-    }
-
-    const closeModal = () => {
-      modal.classList.remove('is-active');
-      setTimeout(() => {
-        modal.hidden = true;
-      }, 220);
-      document.removeEventListener('keydown', handleKey);
-    };
-
-    const handleKey = (e) => {
-      if (e.key === 'Escape') {
-        closeModal();
-        if (typeof onCancel === 'function') onCancel();
-      }
-    };
-
-    btnCancel.onclick = (e) => {
-      e.preventDefault();
-      closeModal();
-      if (typeof onCancel === 'function') onCancel();
-    };
-
-    backdrop.onclick = (e) => {
-      e.preventDefault();
-      closeModal();
-      if (typeof onCancel === 'function') onCancel();
-    };
-
-    btnConfirm.onclick = (e) => {
-      e.preventDefault();
-      closeModal();
-      if (typeof onConfirm === 'function') onConfirm();
-    };
-
-    document.addEventListener('keydown', handleKey);
-
-    modal.hidden = false;
-    void modal.offsetWidth;
-    modal.classList.add('is-active');
-    btnConfirm.focus();
-  }
-
   handleCardAddClick(btn) {
     if (!btn) return;
     const variantId = btn.dataset.variantId;
     const quantity = parseInt(btn.dataset.quantity || btn.dataset.qty || 1, 10);
-
-    // Cuando la cantidad corresponde a 2 o 3 frascos (o más de 1), solicitar confirmación previa
-    if (quantity === 2 || quantity === 3) {
-      this.promptConfirmModal(
-        quantity,
-        () => {
-          this.addToCart(variantId, quantity, btn);
-        },
-        () => {
-          // Si cancela, no se añade nada y se permanece exactamente en la misma posición
-        }
-      );
-    } else {
-      this.addToCart(variantId, quantity, btn);
-    }
+    this.addToCart(variantId, quantity, btn);
   }
 
   initEvents() {
@@ -309,7 +88,7 @@ class OnvCartManager {
     }
 
     if (!variantId) {
-      this.showToastError('Por favor selecciona una variante disponible.');
+      this.showToastError('Please select an available option.');
       return;
     }
 
@@ -339,10 +118,10 @@ class OnvCartManager {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.description || data.message || 'No se pudo añadir el producto al pedido.');
+        throw new Error(data.description || data.message || 'Could not add product to order.');
       }
 
-      // Éxito: sincronizar estado del carrito
+      // Sincronizar estado del carrito
       const fullCart = await this.updateCartCount();
       if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
         publish(PUB_SUB_EVENTS.cartUpdate, { source: 'onv-cart', cartData: fullCart || data });
@@ -350,7 +129,7 @@ class OnvCartManager {
 
       // Extraer datos del producto añadido
       const addedItem = data.items ? data.items[0] : data;
-      this.showToastSuccess(addedItem);
+      this.showToastSuccess(addedItem, fullCart);
 
     } catch (error) {
       this.showToastError(error.message);
@@ -384,32 +163,54 @@ class OnvCartManager {
       });
       return cart;
     } catch (e) {
-      console.warn('Error actualizando contador del carrito:', e);
+      console.warn('Error updating cart count:', e);
       return null;
     }
   }
 
-  showToastSuccess(item) {
+  showToastSuccess(item, fullCart = null) {
     if (!this.toastEl) return;
 
     this.toastError.hidden = true;
     this.toastError.textContent = '';
     const qty = item.quantity || 1;
-    this.toastStatus.textContent = qty > 1 ? `${qty} unidades añadidas a tu pedido` : 'Añadido a tu pedido';
-    this.toastTitle.textContent = item.product_title || item.title || 'ONYVERA Sérum';
+    this.toastStatus.textContent = qty > 1 ? `${qty} bottles added to your order` : 'Added to your order';
+    this.toastTitle.textContent = item.product_title || item.title || 'ONYVERA Botanical Serum';
     var rawTitle = item.variant_title || '';
-    this.toastVariant.textContent = rawTitle.replace(/Bottles/gi, 'Frascos').replace(/Bottle/gi, 'Frasco') || '16 ml';
+    this.toastVariant.textContent = rawTitle || `${qty} ${qty > 1 ? 'Bottles' : 'Bottle'} (16 ml each)`;
 
     if (item.image && this.toastImg) {
       this.toastImg.src = item.image;
     }
 
-    // Configurar variante de upsell si aplica
-    if (this.toastUpsell && this.toastUpsellBtn) {
-      this.toastUpsell.style.display = 'flex';
-      // Asignar ID si es conocido
-      if (item.variant_id) {
-        // Enlazar lógica de upsell
+    // Dynamic Free Shipping Progress Bar
+    const shippingEl = document.getElementById('onv-toast-shipping');
+    const shippingFill = document.getElementById('onv-toast-shipping-fill');
+    const shippingText = document.getElementById('onv-toast-shipping-text');
+    if (shippingEl && shippingFill && shippingText) {
+      const totalCents = fullCart && typeof fullCart.total_price === 'number'
+        ? fullCart.total_price
+        : (qty >= 3 ? 6000 : (qty === 2 ? 5000 : 2500));
+      const thresholdCents = 5000;
+
+      if (totalCents >= thresholdCents) {
+        shippingFill.style.width = '100%';
+        shippingText.innerHTML = '🎉 You’ve unlocked <strong>FREE U.S. Shipping!</strong>';
+      } else {
+        const diffDollars = ((thresholdCents - totalCents) / 100).toFixed(2);
+        const percent = Math.min(100, Math.max(15, Math.round((totalCents / thresholdCents) * 100)));
+        shippingFill.style.width = `${percent}%`;
+        shippingText.innerHTML = `Add <strong>$${diffDollars}</strong> more for <strong>FREE U.S. Shipping</strong>`;
+      }
+    }
+
+    // Upsell logic: show upgrade offer if total items < 3
+    if (this.toastUpsell) {
+      const totalUnits = fullCart ? fullCart.item_count : qty;
+      if (totalUnits < 3) {
+        this.toastUpsell.style.display = 'flex';
+      } else {
+        this.toastUpsell.style.display = 'none';
       }
     }
 
@@ -419,8 +220,8 @@ class OnvCartManager {
   showToastError(message) {
     if (!this.toastEl) return;
 
-    this.toastStatus.textContent = 'Aviso';
-    this.toastTitle.textContent = 'No se pudo completar';
+    this.toastStatus.textContent = 'Notice';
+    this.toastTitle.textContent = 'Could not complete order';
     this.toastVariant.textContent = '';
     this.toastError.hidden = false;
     this.toastError.textContent = message;

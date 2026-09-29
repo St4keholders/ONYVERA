@@ -6,16 +6,16 @@
 
 {%- if section.settings.usar_resenas_prueba or request.design_mode -%}
   <section id="onv-reviews" class="onv-reviews-section">
-    <h2 class="visually-hidden">Reseñas de clientes</h2>
+    <h2 class="visually-hidden">Customer reviews</h2>
 
     {%- if request.design_mode -%}
       <div class="onv-reviews-warning" role="alert">
         <span class="onv-reviews-warning__icon" aria-hidden="true">⚠</span>
-        <span class="onv-reviews-warning__text">RESEÑAS DE PRUEBA — no son clientes reales. Reemplazar antes de publicar.</span>
+        <span class="onv-reviews-warning__text">SAMPLE REVIEWS — Replace with verified customer reviews before publishing.</span>
       </div>
     {%- endif -%}
 
-    <div class="rev-marquee" role="region" aria-label="Reseñas de clientes">
+    <div class="rev-marquee" role="region" aria-label="Customer reviews">
       <ul class="rev-marquee__track" style="--rev-speed: {{ section.settings.velocidad | default: 75 }}s;">
 
         {%- comment -%} COPIA 1: Bloques reales {%- endcomment -%}
@@ -37,7 +37,7 @@
                   {%- endif -%}
                 {%- endfor -%}
               </div>
-              <span class="visually-hidden">Calificado {{ rating }} de 5 estrellas</span>
+              <span class="visually-hidden">Rated {{ rating }} out of 5 stars</span>
 
               <!-- 2. Cita limpia sin bordes laterales -->
               <div class="rev-card__quote">
@@ -409,26 +409,26 @@
         {
           "type": "textarea",
           "id": "cita",
-          "label": "Cita / Testimonio",
-          "default": "A los 45 días la diferencia es evidente. El amarillo de la punta desapareció y lo que creció después salió limpio."
+          "label": "Review Quote",
+          "default": "After 45 days the difference is night and day. The yellow discoloration at the tip faded and clean new growth took over."
         },
         {
           "type": "text",
           "id": "nombre",
-          "label": "Nombre",
+          "label": "Name",
           "default": "Marcos R."
         },
         {
           "type": "text",
           "id": "ubicacion",
-          "label": "Ubicación",
+          "label": "Location",
           "default": "Tampa, FL"
         },
         {
           "type": "text",
           "id": "duracion",
-          "label": "Duración de uso",
-          "default": "45 días de uso"
+          "label": "Routine duration",
+          "default": "45 days routine"
         }
       ]
     }
@@ -436,66 +436,66 @@
   "max_blocks": 12,
   "presets": [
     {
-      "name": "Reseñas (cinta)",
+      "name": "Customer Reviews Ticker",
       "blocks": [
         {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "A los 45 días la diferencia es evidente. El amarillo de la punta desapareció y lo que creció después salió limpio.",
+            "cita": "After 45 days the difference is night and day. The yellow discoloration at the tip faded and clean new growth took over.",
             "nombre": "Marcos R.",
             "ubicacion": "Tampa, FL",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "Había probado otros tres productos antes. La brocha fue lo que me convenció: no se riega, no se desperdicia y llega debajo del borde.",
+            "cita": "I had tried three other products before. The precision brush is what convinced me: no mess, no waste, and gets right under the nail edge.",
             "nombre": "Diana G.",
             "ubicacion": "Columbus, OH",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "Pasaron como tres semanas antes de notar algo, así que hay que tener paciencia. Para la sexta semana la uña se veía normal.",
+            "cita": "It took about three weeks before noticing visible improvements. By week six my nails looked smooth and conditioned.",
             "nombre": "Carlos T.",
             "ubicacion": "Phoenix, AZ",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         {
           "type": "resena",
           "settings": {
             "estrellas": 4,
-            "cita": "No arde y no tiene olor, que es lo que importa cuando lo aplicas todos los días durante mes y medio.",
+            "cita": "Gentle, non-stinging and with no harsh chemical smell. Very easy to apply twice daily.",
             "nombre": "Paola N.",
             "ubicacion": "Newark, NJ",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         {
           "type": "resena",
           "settings": {
             "estrellas": 5,
-            "cita": "Usé sandalias en la boda de mi hija. Primera vez en cuatro años que no lo pensé dos veces.",
+            "cita": "Wore sandals to my daughter's wedding without a second thought for the first time in four years.",
             "nombre": "Roberto M.",
             "ubicacion": "Savannah, GA",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         },
         {
           "type": "resena",
           "settings": {
             "estrellas": 4,
-            "cita": "Primero se emparejó la textura, después el color. Lento pero constante durante los 45 días.",
-            "nombre": "Ángela V.",
+            "cita": "First the rough texture smoothed out, then the healthy natural color returned. Consistent botanical care works.",
+            "nombre": "Angela V.",
             "ubicacion": "Boise, ID",
-            "duracion": "45 días de uso"
+            "duracion": "45 days routine"
           }
         }
       ]

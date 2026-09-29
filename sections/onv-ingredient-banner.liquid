@@ -32,12 +32,12 @@
 -%}
 
 <section id="onv-ingredient-banner-{{ section.id }}" class="onv-ing-banner">
-  <a href="{{ banner_link }}" class="onv-ing-banner__container onv-ing-banner__container--{{ text_pos }}" aria-label="Ver producto ONYVERA">
+  <a href="{{ banner_link }}" class="onv-ing-banner__container onv-ing-banner__container--{{ text_pos }}" aria-label="View ONYVERA botanical nail serum">
     
     <picture class="onv-ing-banner__picture">
       <img
         src="{{ banner_img_url }}"
-        alt="{{ section.settings.alt_text | default: 'Árbol de té, aloe vera, glicerina y vitamina E junto al frasco de ONYVERA' | escape }}"
+        alt="{{ section.settings.alt_text | default: 'Tea tree oil, aloe vera, glycerin, and vitamin E beside ONYVERA bottle' | escape }}"
         class="onv-ing-banner__img"
         width="2752"
         height="1536"
@@ -213,20 +213,20 @@
     {
       "type": "text",
       "id": "alt_text",
-      "label": "Texto alternativo de la imagen",
-      "default": "Árbol de té, aloe vera, glicerina y vitamina E junto al frasco de ONYVERA"
+      "label": "Image alt text",
+      "default": "Tea tree oil, aloe vera, glycerin, and vitamin E beside ONYVERA bottle"
     },
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Subtítulo (Eyebrow)",
-      "default": "TRANSPARENCIA BOTÁNICA"
+      "label": "Eyebrow",
+      "default": "BOTANICAL TRANSPARENCY"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Título",
-      "default": "Cinco activos. Diez ingredientes. Nada oculto."
+      "label": "Heading",
+      "default": "Five Actives. Ten Ingredients. Nothing Hidden."
     },
     {
       "type": "select",

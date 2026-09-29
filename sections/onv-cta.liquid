@@ -11,7 +11,7 @@
     <!-- PANEL DE TEXTO (COPY) -->
     <div class="onv-cta__panel onv-cta__panel--copy">
       <h2 class="onv-cta__title">
-        {{ section.settings.titulo | default: "Recupera tus uñas. Recupera tu confianza." | escape }}
+        {{ section.settings.titulo | default: "Nourish your nails. Restore your confidence." | escape }}
       </h2>
 
       {%- assign target_prod = collections.all.products.first -%}
@@ -23,7 +23,7 @@
         {%- assign btn_url = '/products/serum-botanico-unas-onyvera' -%}
       {%- endif -%}
       <a href="{{ btn_url }}" class="onv-cta__button">
-        {{ section.settings.texto_boton | default: "PIDE ONYVERA AHORA" | escape }}
+        {{ section.settings.texto_boton | default: "CHOOSE YOUR BUNDLE" | escape }}
       </a>
 
       <!-- Lista de Confianza -->
@@ -36,13 +36,13 @@
           {%- endfor -%}
         {%- else -%}
           <li class="onv-cta__trust-item">
-            <span class="onv-cta__trust-text">Envío gratis en EE. UU. en pedidos desde $50</span>
+            <span class="onv-cta__trust-text">FREE U.S. Shipping on orders $50+</span>
           </li>
           <li class="onv-cta__trust-item">
-            <span class="onv-cta__trust-text">Se envía desde Orlando, Florida</span>
+            <span class="onv-cta__trust-text">Fast dispatch from Orlando, Florida (3–5 business days)</span>
           </li>
           <li class="onv-cta__trust-item">
-            <span class="onv-cta__trust-text">Vegano, libre de crueldad, sin parabenos ni sulfatos</span>
+            <span class="onv-cta__trust-text">Vegan, cruelty-free, no parabens or sulfates</span>
           </li>
         {%- endif -%}
       </ul>
@@ -53,7 +53,7 @@
       {%- if section.settings.imagen != blank -%}
         <img
           src="{{ section.settings.imagen | image_url: width: 1080 }}"
-          alt="{{ section.settings.alt_text | default: 'El frasco de sérum ONYVERA sostenido entre dos dedos.' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA serum bottle held between fingers' | escape }}"
           class="onv-cta__img"
           width="1080"
           height="1350"
@@ -65,7 +65,7 @@
           <source srcset="{{ 'onv-cta.webp' | asset_url }}" type="image/webp">
           <img
             src="{{ 'onv-cta.png' | asset_url }}"
-            alt="{{ section.settings.alt_text | default: 'Frasco de sérum ONYVERA sostenido entre dos dedos' | escape }}"
+            alt="{{ section.settings.alt_text | default: 'ONYVERA serum bottle held between fingers' | escape }}"
             class="onv-cta__img"
             width="1080"
             height="1350"
@@ -269,43 +269,43 @@
     {
       "type": "text",
       "id": "titulo",
-      "label": "Título",
-      "default": "Recupera tus uñas. Recupera tu confianza."
+      "label": "Title",
+      "default": "Restore your nails. Regain your confidence."
     },
     {
       "type": "text",
       "id": "texto_boton",
-      "label": "Texto del botón",
-      "default": "PIDE ONYVERA AHORA"
+      "label": "Button text",
+      "default": "CHOOSE YOUR BUNDLE"
     },
     {
       "type": "url",
       "id": "enlace_boton",
-      "label": "Enlace del botón"
+      "label": "Button link"
     },
     {
       "type": "image_picker",
       "id": "imagen",
-      "label": "Imagen de producto"
+      "label": "Product image"
     },
     {
       "type": "text",
       "id": "alt_text",
-      "label": "Texto alternativo (alt)",
-      "default": "El frasco de sérum ONYVERA sostenido entre dos dedos."
+      "label": "Alt text",
+      "default": "ONYVERA serum bottle held between fingers."
     },
     {
       "type": "select",
       "id": "posicion_imagen",
-      "label": "Posición de la imagen en desktop",
+      "label": "Desktop image position",
       "options": [
         {
           "value": "derecha",
-          "label": "Derecha"
+          "label": "Right"
         },
         {
           "value": "izquierda",
-          "label": "Izquierda"
+          "label": "Left"
         }
       ],
       "default": "derecha"
@@ -314,13 +314,13 @@
   "blocks": [
     {
       "type": "beneficio",
-      "name": "Beneficio de confianza",
+      "name": "Trust benefit",
       "settings": [
         {
           "type": "text",
           "id": "texto",
-          "label": "Texto del beneficio",
-          "default": "Envío gratis en EE. UU. en pedidos desde $50"
+          "label": "Benefit text",
+          "default": "Free U.S. shipping on orders $50+"
         }
       ]
     }
@@ -328,24 +328,24 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "CTA final",
+      "name": "Final CTA",
       "blocks": [
         {
           "type": "beneficio",
           "settings": {
-            "texto": "Envío gratis en EE. UU. en pedidos desde $50"
+            "texto": "Free U.S. shipping on orders $50+"
           }
         },
         {
           "type": "beneficio",
           "settings": {
-            "texto": "Se envía desde Orlando, Florida"
+            "texto": "Dispatched from Orlando, Florida"
           }
         },
         {
           "type": "beneficio",
           "settings": {
-            "texto": "Vegano, libre de crueldad, sin parabenos ni sulfatos"
+            "texto": "Vegan, cruelty-free, paraben-free & sulfate-free"
           }
         }
       ]

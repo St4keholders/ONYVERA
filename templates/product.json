@@ -7,91 +7,91 @@
           "type": "chip",
           "settings": {
             "icono": "hoja",
-            "texto": "5 ACTIVOS BOTÁNICOS"
+            "texto": "5 BOTANICAL ACTIVES"
           }
         },
         "chip_2": {
           "type": "chip",
           "settings": {
             "icono": "calendario",
-            "texto": "2 A 3 SEMANAS DE USO"
+            "texto": "2 TO 3 WEEKS PER BOTTLE"
           }
         },
         "chip_3": {
           "type": "chip",
           "settings": {
             "icono": "brocha",
-            "texto": "BROCHA DE PRECISIÓN"
+            "texto": "PRECISION BRUSH APPLICATOR"
           }
         },
         "chip_4": {
           "type": "chip",
           "settings": {
             "icono": "escudo",
-            "texto": "SIN PARABENOS NI SULFATOS"
+            "texto": "PARABEN & SULFATE-FREE"
           }
         },
         "chip_5": {
           "type": "chip",
           "settings": {
             "icono": "conejo",
-            "texto": "VEGANO Y LIBRE DE CRUELDAD"
+            "texto": "VEGAN & CRUELTY-FREE"
           }
         },
         "confianza_1": {
           "type": "fila_confianza",
           "settings": {
             "icono": "camion",
-            "texto": "Envío gratis en EE. UU. en pedidos desde $50"
+            "texto": "FREE U.S. Shipping on orders $50+"
           }
         },
         "confianza_2": {
           "type": "fila_confianza",
           "settings": {
             "icono": "pin",
-            "texto": "Se envía desde Orlando, Florida · 3 a 5 días hábiles"
+            "texto": "Dispatched from Orlando, Florida · 3 to 5 business days"
           }
         },
         "confianza_3": {
           "type": "fila_confianza",
           "settings": {
             "icono": "reloj",
-            "texto": "12 meses de duración tras la apertura (PAO 12M)"
+            "texto": "12-month period after opening (PAO 12M)"
           }
         },
         "acordeon_1": {
           "type": "acordeon",
           "settings": {
-            "titulo": "Descripción",
-            "contenido": "<p>ONYVERA es un sérum cosmético botánico de máxima concentración diseñado para el embellecimiento y recuperación de uñas castigadas, engrosadas o decoloradas. Su fórmula hidrata profundamente el lecho ungueal y suaviza las cutículas.</p>"
+            "titulo": "Description",
+            "contenido": "<p>ONYVERA is a concentrated botanical serum formulated to hydrate, condition, and enhance the appearance of dry, brittle-looking, or weathered nails. Its precision formula deeply moisturizes the nail surface and softens cuticles for cleaner, healthier-looking nails.</p>"
           }
         },
         "acordeon_2": {
           "type": "acordeon",
           "settings": {
-            "titulo": "Ingredientes (lista INCI)",
-            "contenido": "<p><strong>Ingredientes:</strong> Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.</p><p>Fórmula 100% libre de parabenos, sulfatos, ftalatos y fragancias sintéticas.</p>"
+            "titulo": "Ingredients (INCI List)",
+            "contenido": "<p><strong>Ingredients:</strong> Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.</p><p>Formula 100% free of parabens, sulfates, phthalates, and synthetic fragrances.</p>"
           }
         },
         "acordeon_3": {
           "type": "acordeon",
           "settings": {
-            "titulo": "Modo de uso",
-            "contenido": "<p>1. Limpie y lime suavemente la superficie de la uña afectada.<br>2. Aplique una capa fina de sérum con la brocha de precisión sobre la uña y el contorno de la cutícula.<br>3. Deje absorber durante 2 a 3 minutos. Aplicar 2 veces al día para obtener los mejores resultados.</p>"
+            "titulo": "How to Use (3 Simple Steps)",
+            "contenido": "<p><strong>1. CLEAN:</strong> Start with clean, dry nails.<br><strong>2. APPLY:</strong> Brush a small amount of serum over the nail and surrounding cuticle.<br><strong>3. LET IT ABSORB:</strong> Allow 2 to 3 minutes for the serum to fully absorb. Apply twice daily as part of your morning and evening routine.</p>"
           }
         },
         "acordeon_4": {
           "type": "acordeon",
           "settings": {
-            "titulo": "Envío y devoluciones",
-            "contenido": "<p>Todos los pedidos se procesan y envían directamente desde nuestro centro logístico en Orlando, Florida. Tiempo estimado de entrega: 3 a 5 días hábiles dentro de EE. UU.</p>"
+            "titulo": "Shipping & Guarantee",
+            "contenido": "<p>All orders are processed and shipped directly from our logistics center in Orlando, Florida. Estimated delivery time: 3 to 5 business days within the U.S. Free U.S. shipping on orders $50 or more. Dedicated customer support for every order.</p>"
           }
         },
         "acordeon_5": {
           "type": "acordeon",
           "settings": {
-            "titulo": "Preguntas frecuentes",
-            "contenido": "<p><strong>¿Cuánto tiempo dura cada frasco?</strong><br>Un frasco de 16 ml rinde entre 2 y 3 semanas de aplicación continua en 1 a 2 uñas.<br><br><strong>¿Es apto para uñas de manos y pies?</strong><br>Sí, su fórmula botánica es segura y eficaz tanto para uñas de manos como de pies.</p>"
+            "titulo": "Frequently Asked Questions",
+            "contenido": "<p><strong>How long does each bottle last?</strong><br>One 16 ml bottle provides approximately 2 to 3 weeks of daily routine use on target nails.<br><br><strong>Can it be used on both fingernails and toenails?</strong><br>Yes, our botanical formula is gentle, safe, and effective for both fingernails and toenails.</p>"
           }
         }
       },

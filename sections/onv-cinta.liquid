@@ -4,7 +4,7 @@
 {%- endcomment -%}
 
 {%- if section.settings.show_cinta -%}
-  <aside id="onv-cinta-{{ section.id }}" class="onv-cinta" role="region" aria-label="{{ 'sections.announcements.announcement' | t | default: 'Anuncio' }}">
+  <aside id="onv-cinta-{{ section.id }}" class="onv-cinta" role="region" aria-label="{{ 'sections.announcements.announcement' | t | default: 'Announcement' }}">
     <div class="onv-cinta__track-wrapper">
       <div class="onv-cinta__track" style="--onv-cinta-speed: {{ section.settings.speed | default: 45 }}s;">
         <div class="onv-cinta__item">
@@ -101,7 +101,7 @@
       "type": "text",
       "id": "text",
       "label": "Texto del anuncio",
-      "default": "ENVÍO GRATIS EN EE. UU. EN PEDIDOS DESDE $50"
+      "default": "FREE U.S. SHIPPING ON ORDERS $50+"
     },
     {
       "type": "range",

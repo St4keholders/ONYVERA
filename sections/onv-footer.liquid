@@ -49,11 +49,11 @@
 
       <!-- Marca y Tagline -->
       <div class="site-footer__brand-block">
-        <a href="/" class="site-footer__brand" aria-label="ONYVERA Inicio">
+        <a href="/" class="site-footer__brand" aria-label="ONYVERA Home">
           {{ section.settings.wordmark | default: "ONYVERA" }}
         </a>
         <p class="site-footer__tagline">
-          {{ section.settings.tagline | default: "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas." | escape }}
+          {{ section.settings.tagline | default: "Botanical formula with precision brush applicator for daily nail and cuticle care." | escape }}
         </p>
       </div>
 
@@ -62,42 +62,42 @@
         
         <!-- Columna A: Navegación -->
         <div class="site-footer__nav-col">
-          <h3 class="site-footer__col-heading">NAVEGACIÓN</h3>
+          <h3 class="site-footer__col-heading">NAVIGATION</h3>
           <ul class="site-footer__link-list">
-            <li><a href="/" class="site-footer__link">Inicio</a></li>
-            <li><a href="/#onv-routine" class="site-footer__link">Cómo Aplicar</a></li>
-            <li><a href="/#onv-progress" class="site-footer__link">Rutina 4 Semanas</a></li>
-            <li><a href="/#onv-specs" class="site-footer__link">Ingredientes</a></li>
-            <li><a href="/#onv-bundles" class="site-footer__link">Formatos & Precios</a></li>
+            <li><a href="/" class="site-footer__link">Home</a></li>
+            <li><a href="/#onv-routine" class="site-footer__link">How to Apply</a></li>
+            <li><a href="/#onv-progress" class="site-footer__link">Routine & Results</a></li>
+            <li><a href="/#onv-specs" class="site-footer__link">Ingredients</a></li>
+            <li><a href="/#onv-bundles" class="site-footer__link">Bundles & Offers</a></li>
           </ul>
         </div>
 
         <!-- Columna B: Información Legal -->
         <div class="site-footer__nav-col">
-          <h3 class="site-footer__col-heading">INFORMACIÓN LEGAL</h3>
+          <h3 class="site-footer__col-heading">LEGAL INFORMATION</h3>
           <ul class="site-footer__link-list">
             {%- if shop.privacy_policy != blank -%}
-              <li><a href="{{ shop.privacy_policy.url }}" class="site-footer__link">Privacidad</a></li>
+              <li><a href="{{ shop.privacy_policy.url }}" class="site-footer__link">Privacy Policy</a></li>
             {%- else -%}
-              <li><a href="/policies/privacy-policy" class="site-footer__link">Privacidad</a></li>
+              <li><a href="/policies/privacy-policy" class="site-footer__link">Privacy Policy</a></li>
             {%- endif -%}
 
             {%- if shop.terms_of_service != blank -%}
-              <li><a href="{{ shop.terms_of_service.url }}" class="site-footer__link">Términos de Servicio</a></li>
+              <li><a href="{{ shop.terms_of_service.url }}" class="site-footer__link">Terms of Service</a></li>
             {%- else -%}
-              <li><a href="/policies/terms-of-service" class="site-footer__link">Términos de Servicio</a></li>
+              <li><a href="/policies/terms-of-service" class="site-footer__link">Terms of Service</a></li>
             {%- endif -%}
 
             {%- if shop.shipping_policy != blank -%}
-              <li><a href="{{ shop.shipping_policy.url }}" class="site-footer__link">Envíos</a></li>
+              <li><a href="{{ shop.shipping_policy.url }}" class="site-footer__link">Shipping Policy</a></li>
             {%- else -%}
-              <li><a href="/policies/shipping-policy" class="site-footer__link">Envíos</a></li>
+              <li><a href="/policies/shipping-policy" class="site-footer__link">Shipping Policy</a></li>
             {%- endif -%}
 
             {%- if shop.refund_policy != blank -%}
-              <li><a href="{{ shop.refund_policy.url }}" class="site-footer__link">Reembolsos</a></li>
+              <li><a href="{{ shop.refund_policy.url }}" class="site-footer__link">Refund Policy</a></li>
             {%- else -%}
-              <li><a href="/policies/refund-policy" class="site-footer__link">Reembolsos</a></li>
+              <li><a href="/policies/refund-policy" class="site-footer__link">Refund Policy</a></li>
             {%- endif -%}
           </ul>
         </div>
@@ -112,16 +112,16 @@
     <!-- BLOQUE INFERIOR (Corporativo, Descargo sin marco, Copyright) -->
     <div class="site-footer__bottom">
       <p class="site-footer__corp">
-        {{ section.settings.linea_corporativa | default: "ONYVERA — Vitaherb International LLC · Orlando, FL · EE. UU." | escape }}
+        {{ section.settings.linea_corporativa | default: "ONYVERA — Vitaherb International LLC · Orlando, FL · USA" | escape }}
       </p>
 
       <!-- Descargo Regulatorio sin marco/caja -->
       <p class="site-footer__disclaimer-text">
-        *Este producto es un cosmético botánico para el cuidado y embellecimiento de uñas y cutículas. No está destinado a diagnosticar, tratar, curar ni prevenir ninguna enfermedad.
+        *This product is a botanical cosmetic designed for the daily care and conditioning of nails and cuticles. It is not intended to diagnose, treat, cure, or prevent any disease.
       </p>
 
       <p class="site-footer__copy">
-        © {{ 'now' | date: '%Y' }} ONYVERA. Todos los derechos reservados.
+        © {{ 'now' | date: '%Y' }} ONYVERA. All rights reserved.
       </p>
     </div>
 
@@ -408,7 +408,7 @@
       "type": "textarea",
       "id": "tagline",
       "label": "Tagline",
-      "default": "Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas."
+      "default": "Botanical formula with precision brush applicator for daily nail and cuticle care."
     },
     {
       "type": "image_picker",

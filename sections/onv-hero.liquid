@@ -42,16 +42,16 @@
 -%}
 
 <section id="onv-hero-{{ section.id }}" class="onv-hero-fullbleed" data-autoplay-interval="4000">
-  <h1 class="visually-hidden">{{ section.settings.seo_heading | default: "Sérum botánico para uñas amarillas y quebradizas" | escape }}</h1>
+  <h1 class="visually-hidden">{{ section.settings.seo_heading | default: "Botanical Serum for Dry, Brittle-Looking Nails" | escape }}</h1>
 
   <!-- ================= DESKTOP SLIDER (>= 750px) ================= -->
   <div class="onv-hero-slider onv-hero-slider--desktop" id="onv-hero-slider-desktop-{{ section.id }}">
     <!-- Desktop Slide 1 -->
     <div class="onv-hero-slide onv-hero-slide--desktop is-active" data-index="0">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 1">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="View ONYVERA - Slide 1">
         <img
           src="{{ desktop_image_url }}"
-          alt="{{ section.settings.alt_text | default: 'Aplicación del sérum ONYVERA con brocha de precisión sobre una uña del pie' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA botanical serum precision brush application on nail' | escape }}"
           class="onv-hero-fullbleed__img"
           width="3488"
           height="1216"
@@ -63,10 +63,10 @@
 
     <!-- Desktop Slide 2 -->
     <div class="onv-hero-slide onv-hero-slide--desktop" data-index="1">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 2">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="View ONYVERA - Slide 2">
         <img
           src="{{ hero2_url }}"
-          alt="{{ section.settings.alt_text | default: 'ONYVERA Cuidado Avanzado' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Advanced Botanical Care' | escape }}"
           class="onv-hero-fullbleed__img"
           width="3488"
           height="1216"
@@ -77,10 +77,10 @@
 
     <!-- Desktop Slide 3 -->
     <div class="onv-hero-slide onv-hero-slide--desktop" data-index="2">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Slide 3">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="View ONYVERA - Slide 3">
         <img
           src="{{ hero3_url }}"
-          alt="{{ section.settings.alt_text | default: 'ONYVERA Resultados Reales' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Real Routine Results' | escape }}"
           class="onv-hero-fullbleed__img"
           width="3488"
           height="1216"
@@ -90,10 +90,10 @@
     </div>
 
     <!-- Desktop Dots -->
-    <div class="onv-hero-dots onv-hero-dots--desktop" aria-label="Diapositivas del hero en computador">
-      <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a diapositiva 1"></button>
-      <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a diapositiva 2"></button>
-      <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Ir a diapositiva 3"></button>
+    <div class="onv-hero-dots onv-hero-dots--desktop" aria-label="Hero desktop slides">
+      <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Go to slide 1"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Go to slide 2"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="2" aria-label="Go to slide 3"></button>
     </div>
   </div>
 
@@ -101,10 +101,10 @@
   <div class="onv-hero-slider onv-hero-slider--mobile" id="onv-hero-slider-mobile-{{ section.id }}">
     <!-- Mobile Slide 1: Primera nueva -->
     <div class="onv-hero-slide onv-hero-slide--mobile is-active" data-index="0">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 1">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="View ONYVERA - Mobile 1">
         <img
           src="{{ mobile_image_1_url }}"
-          alt="{{ section.settings.alt_text | default: 'Aplicación del sérum ONYVERA con brocha de precisión sobre una uña del pie' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA botanical serum precision brush application on nail' | escape }}"
           class="onv-hero-fullbleed__img"
           width="1792"
           height="2400"
@@ -116,10 +116,10 @@
 
     <!-- Mobile Slide 2: Segunda nueva -->
     <div class="onv-hero-slide onv-hero-slide--mobile" data-index="1">
-      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="Ver producto ONYVERA - Móvil 2">
+      <a href="{{ hero_link }}" class="onv-hero-fullbleed__link" aria-label="View ONYVERA - Mobile 2">
         <img
           src="{{ mobile_image_2_url }}"
-          alt="{{ section.settings.alt_text | default: 'ONYVERA Restauración de Uñas' | escape }}"
+          alt="{{ section.settings.alt_text | default: 'ONYVERA Botanical Nail Conditioning' | escape }}"
           class="onv-hero-fullbleed__img"
           width="1792"
           height="2400"
@@ -129,9 +129,9 @@
     </div>
 
     <!-- Mobile Dots (2 indicadores) -->
-    <div class="onv-hero-dots onv-hero-dots--mobile" aria-label="Diapositivas del hero en celular">
-      <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Ir a imagen móvil 1"></button>
-      <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Ir a imagen móvil 2"></button>
+    <div class="onv-hero-dots onv-hero-dots--mobile" aria-label="Hero mobile slides">
+      <button type="button" class="onv-hero-dot is-active" data-slide-to="0" aria-label="Go to mobile slide 1"></button>
+      <button type="button" class="onv-hero-dot" data-slide-to="1" aria-label="Go to mobile slide 2"></button>
     </div>
   </div>
 
@@ -470,14 +470,14 @@
     {
       "type": "text",
       "id": "seo_heading",
-      "label": "Encabezado H1 (SEO y accesibilidad)",
-      "default": "Sérum botánico para uñas amarillas y quebradizas"
+      "label": "H1 Heading (SEO & Accessibility)",
+      "default": "Botanical Care for Dry, Brittle-Looking Nails"
     },
     {
       "type": "text",
       "id": "alt_text",
-      "label": "Texto alternativo (Accesibilidad)",
-      "default": "Aplicación del sérum ONYVERA con brocha de precisión sobre una uña del pie"
+      "label": "Alt Text (Accessibility)",
+      "default": "ONYVERA botanical nail serum applied with precision brush applicator"
     }
   ],
   "presets": [

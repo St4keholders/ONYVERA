@@ -28,17 +28,17 @@
 
     <!-- 2. BREADCRUMB -->
     {%- if section.settings.mostrar_breadcrumb -%}
-      <nav class="onv-pdp__breadcrumb" aria-label="Ruta de navegación">
+      <nav class="onv-pdp__breadcrumb" aria-label="Breadcrumb navigation">
         <ol class="onv-pdp__breadcrumb-list">
           <li class="onv-pdp__breadcrumb-item">
-            <a href="/" class="onv-pdp__breadcrumb-link">Inicio</a>
+            <a href="/" class="onv-pdp__breadcrumb-link">Home</a>
           </li>
           <li class="onv-pdp__breadcrumb-sep" aria-hidden="true">›</li>
           <li class="onv-pdp__breadcrumb-item">
             {%- if collection -%}
               <a href="{{ collection.url }}" class="onv-pdp__breadcrumb-link">{{ collection.title | escape }}</a>
             {%- else -%}
-              <a href="/collections/all" class="onv-pdp__breadcrumb-link">Catálogo</a>
+              <a href="/collections/all" class="onv-pdp__breadcrumb-link">Shop</a>
             {%- endif -%}
           </li>
           <li class="onv-pdp__breadcrumb-sep" aria-hidden="true">›</li>
@@ -57,13 +57,13 @@
             {
               "@type": "ListItem",
               "position": 1,
-              "name": "Inicio",
+              "name": "Home",
               "item": "{{ shop.url }}"
             },
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "Catálogo",
+              "name": "Shop",
               "item": "{{ shop.url }}/collections/all"
             },
             {
@@ -143,7 +143,7 @@
             <img
               id="PdpMainImage-{{ section.id }}"
               src="{{ gallery_images.first | asset_url }}"
-              alt="{{ product.title | default: 'ONYVERA Sérum Botánico para Uñas' | escape }}"
+              alt="{{ product.title | default: 'ONYVERA Botanical Nail Care Serum' | escape }}"
               class="pdp-main__img"
               width="1080"
               height="1080"
@@ -183,34 +183,45 @@
         <!-- 4.3 Estrellas + Conteo de Reseñas (Con Gate obligatorio) -->
         {%- if section.settings.usar_resenas_prueba or product.metafields.reviews.rating.value != blank -%}
           <div class="pdp-reviews-row">
-            <div class="pdp-stars" aria-label="Calificación de 4.8 sobre 5 estrellas">
+            <div class="pdp-stars" aria-label="Rated 4.8 out of 5 stars">
               <svg class="pdp-star pdp-star--filled" viewBox="0 0 24 24" fill="#C6A264" width="15" height="15" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="pdp-star pdp-star--filled" viewBox="0 0 24 24" fill="#C6A264" width="15" height="15" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="pdp-star pdp-star--filled" viewBox="0 0 24 24" fill="#C6A264" width="15" height="15" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="pdp-star pdp-star--filled" viewBox="0 0 24 24" fill="#C6A264" width="15" height="15" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="pdp-star pdp-star--filled" viewBox="0 0 24 24" fill="#C6A264" width="15" height="15" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
-            <a href="#onv-reviews" class="pdp-reviews-count">4.8 · 23 reseñas</a>
+            <a href="#onv-reviews" class="pdp-reviews-count">4.8 · 23 verified customer reviews</a>
           </div>
         {%- endif -%}
 
-        <!-- 4.4 Precio y Descuento Dinámicos -->
+        <!-- Above the fold cosmetic hook -->
+        <div class="pdp-cosmetic-hook">
+          <h2 class="pdp-cosmetic-heading">Daily Botanical Care for Dry, Brittle-Looking Nails</h2>
+          <p class="pdp-cosmetic-subhead">Tea Tree Oil, Aloe Vera &amp; Vitamin E in a precision brush serum designed to hydrate, nourish, and condition nails and cuticles.</p>
+        </div>
+
+        <!-- 4.4 Dynamic Price & Free Shipping Teaser -->
         <div class="pdp-price-wrap" id="PdpPriceWrap-{{ section.id }}">
           <div class="pdp-price-row">
-            <span class="pdp-price" id="PdpCurrentPrice-{{ section.id }}">$25.00</span>
+            <span class="pdp-price" id="PdpCurrentPrice-{{ section.id }}">$50.00</span>
             <s class="pdp-price-compare" id="PdpComparePrice-{{ section.id }}" style="display: none;"></s>
             <span class="pdp-discount-badge" id="PdpDiscountBadge-{{ section.id }}" style="display: none;"></span>
           </div>
-          <span class="pdp-tax-note">Impuestos incluidos. Envío calculado en el checkout.</span>
+          <div class="pdp-shipping-teaser has-unlocked" id="PdpShippingTeaser">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span id="PdpShippingTeaserText">🎉 <strong>FREE U.S. SHIPPING UNLOCKED!</strong></span>
+          </div>
+          <span class="pdp-tax-note">Taxes included. Fast dispatch from Orlando, FL.</span>
         </div>
 
         <!-- Formulario Principal de Producto -->
         {%- form 'product', product, id: 'PdpProductForm', class: 'pdp-form' -%}
-          <input type="hidden" name="id" id="PdpSelectedVariantId" value="{{ current_variant.id }}">
+          <input type="hidden" name="id" id="PdpSelectedVariantId" value="{{ product.variants[0].id | default: current_variant.id }}">
+          <input type="hidden" name="return_to" id="PdpReturnTo" value="/checkout">
 
           <!-- 4.5 Chips de Especificación -->
           <div class="pdp-chips-block">
-            <span class="pdp-block-label">En cada frasco de 16 ml:</span>
+            <span class="pdp-block-label">In each 16 ml bottle:</span>
             <div class="pdp-chips-wrap">
               {%- for block in section.blocks -%}
                 {%- if block.type == 'chip' -%}
@@ -235,136 +246,189 @@
           </div>
 
           <!-- 4.6 Selector de Paquete (Radio Cards) -->
-          {%- if product.variants.size > 1 -%}
-            <div class="pdp-bundle-block">
-              <span class="pdp-block-label">Paquete</span>
-              <div class="pdp-bundle-grid">
-                {%- for variant in product.variants -%}
-                  {%- liquid
-                    assign is_selected = false
-                    if forloop.first
-                      assign is_selected = true
-                    endif
-
-                    assign duration_label = "2 a 3 semanas"
-                    assign bundle_target_qty = 1
-                    assign bundle_display_price = "$25.00"
-                    if forloop.index == 2
-                      assign duration_label = "4 a 6 semanas"
-                      assign bundle_target_qty = 2
-                      assign bundle_display_price = "$50.00"
-                    elsif forloop.index == 3
-                      assign duration_label = "Tratamiento intensivo"
-                      assign bundle_target_qty = 3
-                      assign bundle_display_price = "$60.00"
-                    endif
-                  -%}
-
-                  <div class="pdp-bundle-card{% if is_selected %} is-selected{% endif %}{% unless variant.available %} is-disabled{% endunless %}">
-                    {%- if forloop.index == 2 -%}
-                      <span class="pdp-bundle-badge">MÁS POPULAR</span>
-                    {%- endif -%}
-
-                    <input
-                      type="radio"
-                      id="Variant-{{ variant.id }}"
-                      name="bundle_radio"
-                      value="{{ variant.id }}"
-                      class="pdp-bundle__input"
-                      data-qty="{{ bundle_target_qty }}"
-                      data-price="{{ bundle_display_price }}"
-                      data-available="{{ variant.available }}"
-                      {% if is_selected %}checked{% endif %}
-                      {% unless variant.available %}disabled{% endunless %}
-                    >
-                    <label for="Variant-{{ variant.id }}" class="pdp-bundle__label">
-                      {%- assign bundle_name_clean = variant.title | replace: 'Bottles', 'Frascos' | replace: 'Bottle', 'Frasco' | escape -%}
-                      <span class="pdp-bundle__name">{{ bundle_name_clean }}</span>
-                      <span class="pdp-bundle__duration">{{ duration_label }}</span>
-                      <span class="pdp-bundle__price">
-                        {%- if variant.available -%}
-                          {{ bundle_display_price }}
-                        {%- else -%}
-                          Agotado
-                        {%- endif -%}
-                      </span>
-                    </label>
+          <div class="pdp-bundle-block">
+            <div class="pdp-bundle-header">
+              <span class="pdp-block-label">Select Bundle</span>
+              <span class="pdp-bundle-header-note">Packs 2 &amp; 3 include Free U.S. Shipping</span>
+            </div>
+            <div class="pdp-bundle-grid">
+              <!-- Pack 1 -->
+              <div class="pdp-bundle-card pdp-bundle-card--pack1" data-pack="1">
+                <input
+                  type="radio"
+                  id="Variant-Pack1"
+                  name="bundle_radio"
+                  value="{{ product.variants[0].id | default: current_variant.id }}"
+                  class="pdp-bundle__input"
+                  data-qty="1"
+                  data-price="$25.00"
+                  data-available="true"
+                >
+                <label for="Variant-Pack1" class="pdp-bundle__label">
+                  <div class="pdp-bundle__top">
+                    <span class="pdp-bundle__name">1 Bottle</span>
+                    <span class="pdp-bundle__price">$25</span>
                   </div>
-                {%- endfor -%}
+                  <span class="pdp-bundle__duration">2–3 Weeks Routine</span>
+                  <span class="pdp-bundle__shipping-note">Shipping calculated at checkout</span>
+                </label>
+              </div>
+
+              <!-- Pack 2 (MOST POPULAR - DEFAULT SELECTED) -->
+              <div class="pdp-bundle-card pdp-bundle-card--pack2 is-selected pdp-bundle-card--popular" data-pack="2">
+                <span class="pdp-bundle-badge pdp-bundle-badge--popular">MOST POPULAR</span>
+                <input
+                  type="radio"
+                  id="Variant-Pack2"
+                  name="bundle_radio"
+                  value="{{ product.variants[0].id | default: current_variant.id }}"
+                  class="pdp-bundle__input"
+                  data-qty="2"
+                  data-price="$50.00"
+                  data-available="true"
+                  checked
+                >
+                <label for="Variant-Pack2" class="pdp-bundle__label">
+                  <div class="pdp-bundle__top">
+                    <span class="pdp-bundle__name">2 Bottles</span>
+                    <span class="pdp-bundle__price">$50</span>
+                  </div>
+                  <span class="pdp-bundle__duration">4–6 Weeks Routine</span>
+                  <span class="pdp-bundle__perk">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    FREE U.S. SHIPPING
+                  </span>
+                </label>
+              </div>
+
+              <!-- Pack 3 (BEST VALUE) -->
+              <div class="pdp-bundle-card pdp-bundle-card--pack3 pdp-bundle-card--value" data-pack="3">
+                <span class="pdp-bundle-badge pdp-bundle-badge--value">BEST VALUE</span>
+                <input
+                  type="radio"
+                  id="Variant-Pack3"
+                  name="bundle_radio"
+                  value="{{ product.variants[0].id | default: current_variant.id }}"
+                  class="pdp-bundle__input"
+                  data-qty="3"
+                  data-price="$60.00"
+                  data-available="true"
+                >
+                <label for="Variant-Pack3" class="pdp-bundle__label">
+                  <div class="pdp-bundle__top">
+                    <span class="pdp-bundle__name">3 Bottles</span>
+                    <div class="pdp-bundle__prices">
+                      <s class="pdp-bundle__compare">$75</s>
+                      <span class="pdp-bundle__price">$60</span>
+                    </div>
+                  </div>
+                  <span class="pdp-bundle__duration">$20 per bottle</span>
+                  <span class="pdp-bundle__savings">SAVE $15 + FREE SHIPPING</span>
+                </label>
               </div>
             </div>
-          {%- endif -%}
+          </div>
 
-          <!-- 4.7 Cantidad + Indicador de Compra al por Mayor -->
+          <!-- 4.7 Quantity Stepper -->
           <div class="pdp-qty-block">
-            <span class="pdp-block-label">Cantidad</span>
+            <span class="pdp-block-label">Quantity</span>
             <div class="pdp-qty-row">
               <div class="pdp-qty-stepper">
-                <button type="button" class="pdp-qty-btn" id="PdpQtyMinus" aria-label="Disminuir cantidad">−</button>
+                <button type="button" class="pdp-qty-btn" id="PdpQtyMinus" aria-label="Decrease quantity">−</button>
                 <input
                   type="number"
                   name="quantity"
                   id="PdpQuantityInput"
-                  value="1"
+                  value="2"
                   min="1"
                   inputmode="numeric"
                   class="pdp-qty-input"
-                  aria-label="Cantidad de unidades"
+                  aria-label="Item quantity"
                 >
-                <button type="button" class="pdp-qty-btn" id="PdpQtyPlus" aria-label="Aumentar cantidad">+</button>
+                <button type="button" class="pdp-qty-btn" id="PdpQtyPlus" aria-label="Increase quantity">+</button>
               </div>
 
-              <!-- Indicador de Compra al por Mayor (Siempre Visible) -->
+              <!-- Indicador de Compra al por Mayor -->
               <div class="pdp-wholesale-indicator" id="PdpWholesaleIndicator">
-                <span class="pdp-wholesale-badge">10 unidades — producto al por mayor</span>
+                <span class="pdp-wholesale-badge">10+ units — wholesale pricing inquiry</span>
               </div>
 
               {%- if cart_item_count > 0 -%}
-                <span class="pdp-cart-count-note">({{ cart_item_count }} en el carrito)</span>
+                <span class="pdp-cart-count-note">({{ cart_item_count }} in cart)</span>
               {%- endif -%}
             </div>
           </div>
 
-          <!-- 4.8 Botones de Acción (Checkout y Redirección a WhatsApp) -->
+          <!-- 4.8 Direct Checkout Actions -->
           <div class="pdp-actions" id="PdpActionsContainer">
-            <!-- Botón normal Agregar al Carrito -->
             <button
               type="submit"
               name="add"
               id="PdpAddToCartBtn"
-              class="pdp-btn pdp-btn--primary"
+              class="pdp-btn pdp-btn--primary pdp-btn--checkout"
               {% unless current_variant.available %}disabled{% endunless %}
             >
               <span id="PdpAddToCartText">
                 {%- if current_variant.available -%}
-                  Agregar al carrito
+                  CHECKOUT — SECURE PAYMENT
                 {%- else -%}
-                  Agotado
+                  Sold Out
                 {%- endif -%}
               </span>
+              <svg class="pdp-btn__arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
 
-            <!-- Checkout Dinámico -->
+            <!-- Checkout Dinámico (Shop Pay, Apple Pay, PayPal) -->
             {%- if current_variant.available -%}
               <div class="pdp-dynamic-checkout" id="PdpDynamicCheckoutWrap">
                 {{ form | payment_button }}
               </div>
             {%- endif -%}
 
-            <!-- Botón de Contacto por WhatsApp (Visible a partir de 10 unidades) -->
+            <!-- Botón de Contacto por WhatsApp para Mayoreo -->
             <a
               href="#"
               id="PdpWhatsAppBtn"
               class="pdp-btn pdp-btn--whatsapp is-hidden"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Hablar con un asesor por WhatsApp para pedido al por mayor"
+              aria-label="Inquire about wholesale order on WhatsApp"
             >
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
-              <span>Hablar con un asesor por WhatsApp</span>
+              <span>Inquire Wholesale on WhatsApp</span>
             </a>
+          </div>
+
+          <!-- 4.9 Compact Trust Badges (Point 4 CRO) -->
+          <div class="pdp-trust-bar">
+            <div class="pdp-trust-item">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#2F7A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Secure Checkout</span>
+            </div>
+            <div class="pdp-trust-item">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#2F7A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>Fast U.S. Shipping (FL)</span>
+            </div>
+            <div class="pdp-trust-item">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#2F7A6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Easy Order Support</span>
+            </div>
+          </div>
+
+          <!-- Payment Security Row -->
+          <div class="pdp-payment-icons">
+            <span class="pdp-payment-icons__label">Guaranteed safe &amp; secure checkout:</span>
+            <div class="pdp-payment-icons__list">
+              <span class="pdp-pay-pill">Shop Pay</span>
+              <span class="pdp-pay-pill">Apple Pay</span>
+              <span class="pdp-pay-pill">Google Pay</span>
+              <span class="pdp-pay-pill">PayPal</span>
+              <span class="pdp-pay-pill">Visa</span>
+              <span class="pdp-pay-pill">Mastercard</span>
+              <span class="pdp-pay-pill">Amex</span>
+            </div>
           </div>
 
         {%- endform -%}
@@ -457,13 +521,13 @@
   </div>
 
   <!-- LIGHTBOX MODAL DE ZOOM -->
-  <div id="PdpLightboxModal" class="pdp-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Vista ampliada del producto">
+  <div id="PdpLightboxModal" class="pdp-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Enlarged product image view">
     <div class="pdp-lightbox__backdrop" id="PdpLightboxBackdrop"></div>
     <div class="pdp-lightbox__content">
-      <button type="button" class="pdp-lightbox__close" id="PdpLightboxClose" aria-label="Cerrar modal">
+      <button type="button" class="pdp-lightbox__close" id="PdpLightboxClose" aria-label="Close modal">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <img id="PdpLightboxImg" src="" alt="{{ product.title | escape }}" class="pdp-lightbox__img">
+      <img id="PdpLightboxImg" src="" alt="{{ product.title | escape }}" class="pdp-lightbox__img" width="1200" height="1200" loading="lazy">
     </div>
   </div>
 </section>
@@ -899,6 +963,58 @@
     margin-top: 4px;
   }
 
+  /* Above the Fold Cosmetic Hook */
+  .pdp-cosmetic-hook {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    background-color: #F8F6F0;
+    border-left: 3px solid #2F7A6B;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .pdp-cosmetic-heading {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #1B3A2F !important;
+    margin: 0 0 4px 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  .pdp-cosmetic-subhead {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 13.5px !important;
+    color: #4A5A52 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+  }
+
+  /* Free Shipping Dynamic Teaser */
+  .pdp-shipping-teaser {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 13px !important;
+    color: #2F7A6B !important;
+    background: #EAF4F0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-top: 8px;
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .pdp-shipping-teaser.has-unlocked {
+    background: #D8EDE4;
+    color: #1B3A2F !important;
+    font-weight: 600;
+  }
+
+  .pdp-shipping-teaser svg {
+    flex-shrink: 0;
+  }
+
   /* Etiquetas de Bloque */
   .pdp-block-label {
     display: block;
@@ -944,18 +1060,35 @@
 
   /* 4.6 Selector de Paquete (Radio Cards) */
   .pdp-bundle-block {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+  }
+
+  .pdp-bundle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pdp-bundle-header-note {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 12.5px !important;
+    color: #2F7A6B !important;
+    font-weight: 600;
   }
 
   .pdp-bundle-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 580px) {
     .pdp-bundle-grid {
       grid-template-columns: 1fr;
+      gap: 10px;
     }
   }
 
@@ -963,20 +1096,65 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    border: 1px solid #E6E0D2;
+    border-radius: 12px;
+    border: 1.5px solid #E6E0D2;
     background-color: #FFFFFF;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  }
+
+  .pdp-bundle-card:hover {
+    border-color: #2F7A6B;
   }
 
   .pdp-bundle-card.is-selected {
-    border: 2px solid #1B3A2F !important;
-    background-color: #F6F2E9 !important;
+    border: 2.5px solid #1B3A2F !important;
+    background-color: #F8F6F0 !important;
+    box-shadow: 0 4px 14px rgba(27, 58, 47, 0.1) !important;
   }
 
-  .pdp-bundle-card.is-disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
+  .pdp-bundle-card--popular {
+    border-color: #C6A264;
+  }
+
+  .pdp-bundle-card--popular.is-selected {
+    border: 2.5px solid #1B3A2F !important;
+  }
+
+  .pdp-bundle-badge--popular {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #C6A264;
+    color: #1B3A2F !important;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 800 !important;
+    font-size: 10.5px !important;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    z-index: 2;
+    letter-spacing: 0.06em;
+    box-shadow: 0 2px 6px rgba(198, 162, 100, 0.4);
+  }
+
+  .pdp-bundle-badge--value {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1B3A2F;
+    color: #F6F2E9 !important;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 800 !important;
+    font-size: 10.5px !important;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    z-index: 2;
+    letter-spacing: 0.06em;
+    box-shadow: 0 2px 6px rgba(27, 58, 47, 0.35);
   }
 
   .pdp-bundle__input {
@@ -992,55 +1170,180 @@
   }
 
   .pdp-bundle__label {
-    padding: 14px 12px;
+    padding: 16px 12px 14px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
     width: 100%;
     box-sizing: border-box;
     text-align: left;
   }
 
+  .pdp-bundle__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
   .pdp-bundle__name {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 700 !important;
-    font-size: 15px !important;
+    font-size: 15.5px !important;
     color: #1B3A2F !important;
     line-height: 1.2 !important;
   }
 
-  .pdp-bundle__duration {
+  .pdp-bundle__prices {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+
+  .pdp-bundle__compare {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 400 !important;
     font-size: 13px !important;
-    color: #4A5A52 !important;
-    line-height: 1.2 !important;
+    color: #93A896 !important;
+    text-decoration: line-through;
   }
 
   .pdp-bundle__price {
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
-    font-weight: 700 !important;
-    font-size: 16px !important;
+    font-weight: 800 !important;
+    font-size: 16.5px !important;
     color: #1B3A2F !important;
-    margin-top: 4px;
   }
 
-  .pdp-bundle-badge {
-    position: absolute;
-    top: -9px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #C6A264;
-    color: #1B3A2F !important;
+  .pdp-bundle__duration {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 500 !important;
+    font-size: 12.5px !important;
+    color: #4A5A52 !important;
+  }
+
+  .pdp-bundle__perk {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-family: var(--font-ui, 'Karla', sans-serif) !important;
     font-weight: 700 !important;
     font-size: 11px !important;
-    padding: 4px 10px;
+    color: #2F7A6B !important;
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .pdp-bundle__savings {
+    display: inline-block;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 800 !important;
+    font-size: 11px !important;
+    color: #1B3A2F !important;
+    background-color: #EAF4F0;
+    padding: 2px 6px;
     border-radius: 4px;
-    white-space: nowrap;
-    z-index: 2;
-    letter-spacing: 0.05em;
+    margin-top: 4px;
+    width: fit-content;
+    letter-spacing: 0.02em;
+  }
+
+  .pdp-bundle__shipping-note {
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-weight: 400 !important;
+    font-size: 11.5px !important;
+    color: #77857E !important;
+    margin-top: 4px;
+  }
+
+  .pdp-bundle-card.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  /* Direct Checkout Button & Trust Badges */
+  .pdp-btn--checkout {
+    background-color: #1B3A2F !important;
+    color: #FFFFFF !important;
+    font-size: 15.5px !important;
+    letter-spacing: 0.04em !important;
+    box-shadow: 0 4px 16px rgba(27, 58, 47, 0.25) !important;
+  }
+
+  .pdp-btn--checkout:hover {
+    background-color: #2F7A6B !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(47, 122, 107, 0.35) !important;
+  }
+
+  .pdp-btn__arrow {
+    margin-left: 6px;
+    transition: transform 0.15s ease;
+  }
+
+  .pdp-btn--checkout:hover .pdp-btn__arrow {
+    transform: translateX(3px);
+  }
+
+  .pdp-trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 8px;
+    margin: 4px 0 16px 0;
+    padding: 10px 8px;
+    background-color: #F8F6F0;
+    border-radius: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pdp-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: #1B3A2F !important;
+  }
+
+  .pdp-trust-item svg {
+    flex-shrink: 0;
+  }
+
+  .pdp-payment-icons {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .pdp-payment-icons__label {
+    display: block;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 11.5px !important;
+    color: #77857E !important;
+    margin-bottom: 6px;
+  }
+
+  .pdp-payment-icons__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pdp-pay-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #E6E0D2;
+    border-radius: 4px;
+    font-family: var(--font-ui, 'Karla', sans-serif) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #4A5A52 !important;
+    line-height: 1.2;
   }
 
   /* 4.7 Cantidad */
@@ -1816,14 +2119,15 @@
       }
 
       // ==========================================
-      // 2. LÓGICA DE PRECIOS, MAYOREO Y WHATSAPP
+      // 2. PRICING, BUNDLE & SHIPPING LOGIC
       // ==========================================
-      // TODO: reemplazar con número real de WhatsApp
-      var WHATSAPP_PHONE_NUMBER = '1234567890'; // Reemplazar con el número de teléfono con código de país (ej. 13050000000)
+      var WHATSAPP_PHONE_NUMBER = '1234567890'; // Replace with store country code + phone
 
       var currentPriceEl = document.getElementById('PdpCurrentPrice-{{ section.id }}');
       var comparePriceEl = document.getElementById('PdpComparePrice-{{ section.id }}');
       var discountBadgeEl = document.getElementById('PdpDiscountBadge-{{ section.id }}');
+      var shippingTeaser = document.getElementById('PdpShippingTeaser');
+      var shippingTeaserText = document.getElementById('PdpShippingTeaserText');
       var qtyInput = document.getElementById('PdpQuantityInput');
       var qtyMinus = document.getElementById('PdpQtyMinus');
       var qtyPlus = document.getElementById('PdpQtyPlus');
@@ -1833,11 +2137,11 @@
       var bundleRadios = document.querySelectorAll('input[name="bundle_radio"]');
       var hiddenVariantInput = document.getElementById('PdpSelectedVariantId');
 
-      // Cálculo de precio según la tabla oficial:
-      // 1 unidad = $25
-      // 2 unidades = $50
-      // 3 unidades = $60
-      // A partir de 3 unidades: +$20 por cada unidad adicional
+      // Official tiered bundle pricing:
+      // 1 unit = $25
+      // 2 units = $50 (Free shipping unlocked)
+      // 3 units = $60 (Save $15)
+      // 4+ units = 60 + (qty - 3) * 20
       function calculatePrice(qty) {
         if (qty <= 0) return 0;
         if (qty === 1) return 25;
@@ -1847,7 +2151,7 @@
       }
 
       function getWhatsAppUrl(qty) {
-        var message = 'Hola, quiero comprar ' + qty + ' unidades de ONYVERA. Me gustaría hablar con un asesor para consultar el precio al por mayor y realizar el pedido.';
+        var message = 'Hello, I would like to order ' + qty + ' units of ONYVERA. I would like to speak with an advisor about wholesale pricing.';
         return 'https://wa.me/' + WHATSAPP_PHONE_NUMBER + '?text=' + encodeURIComponent(message);
       }
 
@@ -1858,29 +2162,35 @@
           qtyInput.value = cleanQty;
         }
 
-        // Sincronizar radio cards de paquetes
+        // Sincronizar radio cards de paquetes (Pack 1, 2, 3)
         if (bundleRadios.length > 0) {
           document.querySelectorAll('.pdp-bundle-card').forEach(function(card) {
             card.classList.remove('is-selected');
           });
-          var matchingRadio = Array.from(bundleRadios).find(function(r) {
-            return parseInt(r.getAttribute('data-qty'), 10) === cleanQty;
-          });
-          if (matchingRadio) {
-            matchingRadio.checked = true;
-            var parent = matchingRadio.closest('.pdp-bundle-card');
+          var targetRadio = null;
+          if (cleanQty === 1) {
+            targetRadio = document.querySelector('input[name="bundle_radio"][data-qty="1"]');
+          } else if (cleanQty === 2) {
+            targetRadio = document.querySelector('input[name="bundle_radio"][data-qty="2"]');
+          } else {
+            targetRadio = document.querySelector('input[name="bundle_radio"][data-qty="3"]');
+          }
+
+          if (targetRadio) {
+            targetRadio.checked = true;
+            var parent = targetRadio.closest('.pdp-bundle-card');
             if (parent) parent.classList.add('is-selected');
           }
         }
+
         var baseVariantId = '{{ product.variants[0].id | default: current_variant.id }}';
         if (hiddenVariantInput) {
           hiddenVariantInput.value = baseVariantId;
         }
 
-        // A partir de 10 unidades: venta al por mayor (no hay precio automático, se habla con el asesor)
+        // Wholesale mode at 10+ units
         var isWholesale = cleanQty >= 10;
         if (isWholesale) {
-          // Deshabilitar botones de pago normales
           if (addBtn) {
             addBtn.disabled = true;
             addBtn.classList.add('is-wholesale-disabled');
@@ -1888,50 +2198,58 @@
           if (dynamicCheckout) {
             dynamicCheckout.classList.add('is-wholesale-disabled');
           }
-          // Mostrar botón de WhatsApp para hablar con el asesor
           if (whatsappBtn) {
             whatsappBtn.href = getWhatsAppUrl(cleanQty);
             whatsappBtn.classList.remove('is-hidden');
           }
-          // Estado de precio a consultar con asesor
           if (currentPriceEl) {
-            currentPriceEl.textContent = 'Consultar con asesor';
+            currentPriceEl.textContent = 'Wholesale pricing';
           }
-          if (comparePriceEl) {
-            comparePriceEl.style.display = 'none';
-          }
-          if (discountBadgeEl) {
-            discountBadgeEl.style.display = 'none';
+          if (comparePriceEl) comparePriceEl.style.display = 'none';
+          if (discountBadgeEl) discountBadgeEl.style.display = 'none';
+          if (shippingTeaser) {
+            shippingTeaser.classList.add('has-unlocked');
+            if (shippingTeaserText) shippingTeaserText.innerHTML = '🎉 <strong>FREE U.S. SHIPPING INCLUDED</strong>';
           }
         } else {
-          // Menos de 10 unidades: precio calculado normal
           var total = calculatePrice(cleanQty);
 
-          // Actualizar precio mostrado en la pantalla
           if (currentPriceEl) {
             currentPriceEl.textContent = '$' + total + '.00';
           }
 
-          // Precio de comparación referencial ($25 por unidad estándar)
-          if (cleanQty >= 3 && comparePriceEl && discountBadgeEl) {
+          // Shipping Teaser & Savings Dynamic Feedback
+          if (cleanQty === 1) {
+            if (comparePriceEl) comparePriceEl.style.display = 'none';
+            if (discountBadgeEl) discountBadgeEl.style.display = 'none';
+            if (shippingTeaser) {
+              shippingTeaser.classList.remove('has-unlocked');
+              if (shippingTeaserText) shippingTeaserText.innerHTML = 'Buy 2 or more → <strong>FREE U.S. SHIPPING</strong> (You’re $25 away)';
+            }
+          } else if (cleanQty === 2) {
+            if (comparePriceEl) comparePriceEl.style.display = 'none';
+            if (discountBadgeEl) discountBadgeEl.style.display = 'none';
+            if (shippingTeaser) {
+              shippingTeaser.classList.add('has-unlocked');
+              if (shippingTeaserText) shippingTeaserText.innerHTML = '🎉 <strong>FREE U.S. SHIPPING UNLOCKED!</strong>';
+            }
+          } else {
+            // 3+ units
             var standardPrice = cleanQty * 25;
-            if (standardPrice > total) {
+            if (standardPrice > total && comparePriceEl && discountBadgeEl) {
               var diff = standardPrice - total;
               var pct = Math.round((diff / standardPrice) * 100);
               comparePriceEl.textContent = '$' + standardPrice + '.00';
               comparePriceEl.style.display = '';
-              discountBadgeEl.textContent = 'Ahorras $' + diff + ' (-' + pct + '%)';
+              discountBadgeEl.textContent = 'Save $' + diff + ' (' + pct + '% OFF)';
               discountBadgeEl.style.display = '';
-            } else {
-              comparePriceEl.style.display = 'none';
-              discountBadgeEl.style.display = 'none';
             }
-          } else if (comparePriceEl && discountBadgeEl) {
-            comparePriceEl.style.display = 'none';
-            discountBadgeEl.style.display = 'none';
+            if (shippingTeaser) {
+              shippingTeaser.classList.add('has-unlocked');
+              if (shippingTeaserText) shippingTeaserText.innerHTML = '🎉 <strong>FREE U.S. SHIPPING + BULK SAVINGS UNLOCKED!</strong>';
+            }
           }
 
-          // Reactivar botones de pago normales
           if (addBtn) {
             addBtn.disabled = false;
             addBtn.classList.remove('is-wholesale-disabled');
@@ -1939,18 +2257,17 @@
           if (dynamicCheckout) {
             dynamicCheckout.classList.remove('is-wholesale-disabled');
           }
-          // Ocultar botón de WhatsApp
           if (whatsappBtn) {
             whatsappBtn.classList.add('is-hidden');
           }
         }
       }
 
-      // Controles Stepper de Cantidad
+      // Quantity stepper controls
       if (qtyMinus && qtyInput) {
         qtyMinus.addEventListener('click', function(e) {
           e.preventDefault();
-          var currentVal = parseInt(qtyInput.value, 10) || 1;
+          var currentVal = parseInt(qtyInput.value, 10) || 2;
           if (currentVal > 1) {
             updatePdpState(currentVal - 1);
           }
@@ -1960,14 +2277,14 @@
       if (qtyPlus && qtyInput) {
         qtyPlus.addEventListener('click', function(e) {
           e.preventDefault();
-          var currentVal = parseInt(qtyInput.value, 10) || 1;
+          var currentVal = parseInt(qtyInput.value, 10) || 2;
           updatePdpState(currentVal + 1);
         });
       }
 
       if (qtyInput) {
         qtyInput.addEventListener('change', function() {
-          var val = parseInt(this.value, 10) || 1;
+          var val = parseInt(this.value, 10) || 2;
           updatePdpState(val);
         });
         qtyInput.addEventListener('input', function() {
@@ -1978,16 +2295,16 @@
         });
       }
 
-      // Evento al cambiar selección de paquete por Radio Card
+      // Bundle radio selection change
       bundleRadios.forEach(function(radio) {
         radio.addEventListener('change', function() {
-          var targetQty = parseInt(this.getAttribute('data-qty'), 10) || 1;
+          var targetQty = parseInt(this.getAttribute('data-qty'), 10) || 2;
           updatePdpState(targetQty);
         });
       });
 
-      // Inicializar con la cantidad actual
-      var initialQty = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
+      // Default initial state: 2 Bottles (Pack 2)
+      var initialQty = qtyInput ? (parseInt(qtyInput.value, 10) || 2) : 2;
       updatePdpState(initialQty);
     }
 
@@ -2084,99 +2401,99 @@
         {
           "type": "text",
           "id": "texto",
-          "label": "Texto de confianza",
-          "default": "Envío gratis en EE. UU. en pedidos desde $50"
+          "label": "Trust text",
+          "default": "FREE U.S. Shipping on orders $50+"
         }
       ]
     },
     {
       "type": "acordeon",
-      "name": "Acordeón informativo",
+      "name": "Accordion block",
       "settings": [
         {
           "type": "text",
           "id": "titulo",
-          "label": "Título del acordeón",
-          "default": "Descripción"
+          "label": "Accordion title",
+          "default": "Description"
         },
         {
           "type": "richtext",
           "id": "contenido",
-          "label": "Contenido del acordeón",
-          "default": "<p>Fórmula botánica con brocha de precisión para el cuidado diario de uñas y cutículas.</p>"
+          "label": "Accordion content",
+          "default": "<p>Botanical formula with precision brush applicator for daily nail and cuticle care.</p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Plantilla de Producto PDP",
+      "name": "PDP Product Template",
       "blocks": [
         {
           "type": "chip",
-          "settings": { "icono": "hoja", "texto": "5 ACTIVOS BOTÁNICOS" }
+          "settings": { "icono": "hoja", "texto": "5 BOTANICAL ACTIVES" }
         },
         {
           "type": "chip",
-          "settings": { "icono": "calendario", "texto": "2 A 3 SEMANAS DE USO" }
+          "settings": { "icono": "calendario", "texto": "2 TO 3 WEEKS PER BOTTLE" }
         },
         {
           "type": "chip",
-          "settings": { "icono": "brocha", "texto": "BROCHA DE PRECISIÓN" }
+          "settings": { "icono": "brocha", "texto": "PRECISION BRUSH APPLICATOR" }
         },
         {
           "type": "chip",
-          "settings": { "icono": "escudo", "texto": "SIN PARABENOS NI SULFATOS" }
+          "settings": { "icono": "escudo", "texto": "PARABEN & SULFATE-FREE" }
         },
         {
           "type": "chip",
-          "settings": { "icono": "conejo", "texto": "VEGANO Y LIBRE DE CRUELDAD" }
+          "settings": { "icono": "conejo", "texto": "VEGAN & CRUELTY-FREE" }
         },
         {
           "type": "fila_confianza",
-          "settings": { "icono": "camion", "texto": "Envío gratis en EE. UU. en pedidos desde $50" }
+          "settings": { "icono": "camion", "texto": "FREE U.S. Shipping on orders $50+" }
         },
         {
           "type": "fila_confianza",
-          "settings": { "icono": "pin", "texto": "Se envía desde Orlando, Florida · 3 a 5 días hábiles" }
+          "settings": { "icono": "pin", "texto": "Dispatched from Orlando, Florida · 3 to 5 business days" }
         },
         {
           "type": "fila_confianza",
-          "settings": { "icono": "reloj", "texto": "12 meses de duración tras la apertura (PAO 12M)" }
+          "settings": { "icono": "reloj", "texto": "12-month period after opening (PAO 12M)" }
         },
         {
           "type": "acordeon",
           "settings": {
-            "titulo": "Descripción",
-            "contenido": "<p>ONYVERA es un sérum cosmético botánico de máxima concentración diseñado para el embellecimiento y recuperación de uñas castigadas, engrosadas o decoloradas. Su fórmula hidrata profundamente el lecho ungueal y suaviza las cutículas.</p>"
+            "titulo": "Description",
+            "contenido": "<p>ONYVERA is a concentrated botanical serum formulated to hydrate, condition, and enhance the appearance of dry, brittle-looking, or weathered nails. Its precision formula deeply moisturizes the nail surface and softens cuticles for cleaner, healthier-looking nails.</p>"
           }
         },
         {
           "type": "acordeon",
           "settings": {
-            "titulo": "Ingredientes (lista INCI)",
-            "contenido": "<p><strong>Ingredientes:</strong> Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.</p><p>Fórmula 100% libre de parabenos, sulfatos, ftalatos y fragancias sintéticas.</p>"
+            "titulo": "Ingredients (INCI List)",
+            "contenido": "<p><strong>Ingredients:</strong> Water (Aqua), Glycerin, Aloe Barbadensis Leaf Juice, Panthenol, Tocopheryl Acetate, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Caprylyl Glycol, Phenoxyethanol, Xanthan Gum, Citric Acid.</p><p>Formula 100% free of parabens, sulfates, phthalates, and synthetic fragrances.</p>"
           }
         },
         {
           "type": "acordeon",
           "settings": {
-            "titulo": "Modo de uso",
-            "contenido": "<p>1. Limpie y lime suavemente la superficie de la uña afectada.<br>2. Aplique una capa fina de sérum con la brocha de precisión sobre la uña y el contorno de la cutícula.<br>3. Deje absorber durante 2 a 3 minutos. Aplicar 2 veces al día para obtener los mejores resultados.</p>"
+            "titulo": "How to Use (3 Simple Steps)",
+            "contenido": "<p><strong>1. CLEAN:</strong> Start with clean, dry nails.<br><strong>2. APPLY:</strong> Brush a small amount of serum over the nail and surrounding cuticle.<br><strong>3. LET IT ABSORB:</strong> Allow 2 to 3 minutes for the serum to fully absorb. Apply twice daily as part of your morning and evening routine.</p>"
           }
         },
         {
           "type": "acordeon",
           "settings": {
-            "titulo": "Envío y devoluciones",
-            "contenido": "<p>Todos los pedidos se procesan y envían directamente desde nuestro centro logístico en Orlando, Florida. Tiempo estimado de entrega: 3 a 5 días hábiles dentro de EE. UU.</p>"
+            "titulo": "Shipping & Guarantee",
+            "contenido": "<p>All orders are processed and shipped directly from our logistics center in Orlando, Florida. Estimated delivery time: 3 to 5 business days within the U.S. Free U.S. shipping on orders $50 or more. Dedicated customer support for every order.</p>"
           }
         },
         {
           "type": "acordeon",
           "settings": {
-            "titulo": "Preguntas frecuentes",
-            "contenido": "<p><strong>¿Cuánto tiempo dura cada frasco?</strong><br>Un frasco de 16 ml rinde entre 2 y 3 semanas de aplicación continua en 1 a 2 uñas.<br><br><strong>¿Es apto para uñas de manos y pies?</strong><br>Sí, su fórmula botánica es segura y eficaz tanto para uñas de manos como de pies.</p>"
+            "titulo": "Frequently Asked Questions",
+            "contenido": "<p><strong>How long does each bottle last?</strong><br>One 16 ml bottle provides approximately 2 to 3 weeks of daily routine use on target nails.<br><br><strong>Can it be used on both fingernails and toenails?</strong><br>Yes, our botanical formula is gentle, safe, and effective for both fingernails and toenails.</p>"
           }
         }
       ]

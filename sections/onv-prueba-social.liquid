@@ -18,16 +18,16 @@
 
     <!-- Encabezado de la Sección -->
     <div class="onv-shoppable-ugc__header">
-      <h2 class="onv-shoppable-ugc__title">RESULTADOS DE NUESTRA RUTINA</h2>
+      <h2 class="onv-shoppable-ugc__title">{{ section.settings.eyebrow | default: 'REAL ROUTINE RESULTS' }}</h2>
     </div>
 
     <!-- Escenario del Carrusel con Altura Fija y Sin Layout Shifts -->
     <div class="onv-shoppable-stage" id="onv-shoppable-stage">
       <!-- Botones de Navegación -->
-      <button type="button" class="onv-shoppable-nav onv-shoppable-nav--prev" id="onv-shoppable-prev" aria-label="Anterior resultado">
+      <button type="button" class="onv-shoppable-nav onv-shoppable-nav--prev" id="onv-shoppable-prev" aria-label="Previous result">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
-      <button type="button" class="onv-shoppable-nav onv-shoppable-nav--next" id="onv-shoppable-next" aria-label="Siguiente resultado">
+      <button type="button" class="onv-shoppable-nav onv-shoppable-nav--next" id="onv-shoppable-next" aria-label="Next result">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
 
@@ -36,7 +36,7 @@
         <!-- Set 1 (Cards 1 to 9) -->
         <div class="onv-shoppable-card is-far" data-item="1">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Resultado 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-1.png' | asset_url }}" alt="Routine Result 1" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -45,12 +45,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit1.jpeg' | asset_url }}" alt="ONYVERA 1 Frasco" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit1.jpeg' | asset_url }}" alt="ONYVERA 1 Bottle" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">1 Frasco · 16 ml</span>
+              <span class="onv-shoppable-card__name">1 Bottle · 16 ml</span>
               <span class="onv-shoppable-card__price">$25.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="1" aria-label="Comprar 1 frasco">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="1" aria-label="Add 1 bottle to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -58,7 +58,7 @@
 
         <div class="onv-shoppable-card is-far" data-item="2">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Resultado 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-2.png' | asset_url }}" alt="Routine Result 2" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -67,12 +67,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit2.jpeg' | asset_url }}" alt="ONYVERA 2 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit2.jpeg' | asset_url }}" alt="ONYVERA 2 Bottles" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 2 Frascos (Ahorro)</span>
+              <span class="onv-shoppable-card__name">Pack 2 Bottles (Free Shipping)</span>
               <span class="onv-shoppable-card__price">$50.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="2" aria-label="Comprar 2 frascos">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="2" aria-label="Add 2 bottles to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -80,7 +80,7 @@
 
         <div class="onv-shoppable-card is-far" data-item="3">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-3.png' | asset_url }}" alt="Resultado 3" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-3.png' | asset_url }}" alt="Routine Result 3" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -89,12 +89,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit3.jpeg' | asset_url }}" alt="ONYVERA 3 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit3.jpeg' | asset_url }}" alt="ONYVERA 3 Bottles" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 3 Frascos (Recomendado)</span>
+              <span class="onv-shoppable-card__name">Pack 3 Bottles (Save $15)</span>
               <span class="onv-shoppable-card__price">$60.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="3" aria-label="Comprar 3 frascos">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="3" aria-label="Add 3 bottles to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -102,7 +102,7 @@
 
         <div class="onv-shoppable-card is-adjacent" data-item="4">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-4.jpeg' | asset_url }}" alt="Resultado 4" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-4.jpeg' | asset_url }}" alt="Routine Result 4" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -111,12 +111,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit1.jpeg' | asset_url }}" alt="ONYVERA 1 Frasco" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit1.jpeg' | asset_url }}" alt="ONYVERA 1 Bottle" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">1 Frasco · 16 ml</span>
+              <span class="onv-shoppable-card__name">1 Bottle · 16 ml</span>
               <span class="onv-shoppable-card__price">$25.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="1" aria-label="Comprar 1 frasco">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="1" aria-label="Add 1 bottle to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -124,7 +124,7 @@
 
         <div class="onv-shoppable-card is-active" data-item="5">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-5.jpeg' | asset_url }}" alt="Resultado 5" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-5.jpeg' | asset_url }}" alt="Routine Result 5" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -133,12 +133,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit2.jpeg' | asset_url }}" alt="ONYVERA 2 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit2.jpeg' | asset_url }}" alt="ONYVERA 2 Bottles" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 2 Frascos (Ahorro)</span>
+              <span class="onv-shoppable-card__name">Pack 2 Bottles (Free Shipping)</span>
               <span class="onv-shoppable-card__price">$50.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="2" aria-label="Comprar 2 frascos">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="2" aria-label="Add 2 bottles to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -146,7 +146,7 @@
 
         <div class="onv-shoppable-card is-adjacent" data-item="6">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-6.jpeg' | asset_url }}" alt="Resultado 6" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-6.jpeg' | asset_url }}" alt="Routine Result 6" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -155,12 +155,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit3.jpeg' | asset_url }}" alt="ONYVERA 3 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit3.jpeg' | asset_url }}" alt="ONYVERA 3 Bottles" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 3 Frascos (Recomendado)</span>
+              <span class="onv-shoppable-card__name">Pack 3 Bottles (Save $15)</span>
               <span class="onv-shoppable-card__price">$60.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="3" aria-label="Comprar 3 frascos">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="3" aria-label="Add 3 bottles to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -168,7 +168,7 @@
 
         <div class="onv-shoppable-card is-far" data-item="7">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-7.jpeg' | asset_url }}" alt="Resultado 7" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-7.jpeg' | asset_url }}" alt="Routine Result 7" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -177,12 +177,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit1.jpeg' | asset_url }}" alt="ONYVERA 1 Frasco" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit1.jpeg' | asset_url }}" alt="ONYVERA 1 Bottle" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">1 Frasco · 16 ml</span>
+              <span class="onv-shoppable-card__name">1 Bottle · 16 ml</span>
               <span class="onv-shoppable-card__price">$25.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="1" aria-label="Comprar 1 frasco">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="1" aria-label="Add 1 bottle to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -190,7 +190,7 @@
 
         <div class="onv-shoppable-card is-far" data-item="8">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-8.jpeg' | asset_url }}" alt="Resultado 8" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-8.jpeg' | asset_url }}" alt="Routine Result 8" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -199,12 +199,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit2.jpeg' | asset_url }}" alt="ONYVERA 2 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit2.jpeg' | asset_url }}" alt="ONYVERA 2 Bottles" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 2 Frascos (Ahorro)</span>
+              <span class="onv-shoppable-card__name">Pack 2 Bottles (Free Shipping)</span>
               <span class="onv-shoppable-card__price">$50.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="2" aria-label="Comprar 2 frascos">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="2" aria-label="Add 2 bottles to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -212,7 +212,7 @@
 
         <div class="onv-shoppable-card is-far" data-item="9">
           <div class="onv-shoppable-card__media">
-            <img src="{{ 'onv-antes-y-despues-9.jpeg' | asset_url }}" alt="Resultado 9" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
+            <img src="{{ 'onv-antes-y-despues-9.jpeg' | asset_url }}" alt="Routine Result 9" class="onv-shoppable-card__img" width="280" height="400" loading="lazy">
             <div class="onv-shoppable-card__overlay-icons">
               <span class="onv-shoppable-card__quote">“</span>
               <span class="onv-shoppable-card__sound" aria-hidden="true">
@@ -221,12 +221,12 @@
             </div>
           </div>
           <div class="onv-shoppable-card__product-pill">
-            <img src="{{ 'onv-newunit3.jpeg' | asset_url }}" alt="ONYVERA 3 Frascos" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
+            <img src="{{ 'onv-newunit3.jpeg' | asset_url }}" alt="ONYVERA 3 Bottles" class="onv-shoppable-card__thumb" width="34" height="46" loading="lazy">
             <div class="onv-shoppable-card__info">
-              <span class="onv-shoppable-card__name">Pack 3 Frascos (Recomendado)</span>
+              <span class="onv-shoppable-card__name">Pack 3 Bottles (Save $15)</span>
               <span class="onv-shoppable-card__price">$60.00</span>
             </div>
-            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="3" aria-label="Comprar 3 frascos">
+            <button type="button" class="onv-shoppable-card__btn" data-onv-add data-variant-id="{{ target_product.variants[0].id | default: '' }}" data-quantity="3" aria-label="Add 3 bottles to order">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
             </button>
           </div>
@@ -715,8 +715,8 @@
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Antetítulo",
-      "default": "RESULTADOS DE NUESTRA RUTINA"
+      "label": "Eyebrow",
+      "default": "REAL ROUTINE RESULTS"
     },
     {
       "type": "product",
