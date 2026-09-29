@@ -95,7 +95,7 @@
 
           <!-- Riel Vertical de Miniaturas (Estilo Mercado Libre) -->
           <div class="pdp-thumbs-wrapper">
-            <ul class="pdp-thumbs" id="PdpThumbsList" aria-label="Miniaturas del producto">
+            <ul class="pdp-thumbs" id="PdpThumbsList" aria-label="Product thumbnails">
               {%- for img_file in gallery_images -%}
                 {%- assign img_src = img_file | asset_url -%}
                 <li class="pdp-thumbs__item{% if forloop.index > 6 %} pdp-thumbs__item--extra is-hidden-desktop{% endif %}" data-index="{{ forloop.index0 }}">
@@ -104,12 +104,12 @@
                     class="pdp-thumbs__btn{% if forloop.first %} is-active{% endif %}"
                     data-index="{{ forloop.index0 }}"
                     data-full-src="{{ img_src }}"
-                    data-alt="ONYVERA Sérum Botánico - Vista {{ forloop.index }}"
-                    aria-label="Ver imagen {{ forloop.index }} de {{ gallery_images.size }}"
+                    data-alt="ONYVERA Botanical Serum - View {{ forloop.index }}"
+                    aria-label="View image {{ forloop.index }} of {{ gallery_images.size }}"
                   >
                     <img
                       src="{{ img_src }}"
-                      alt="ONYVERA Sérum Botánico - Vista {{ forloop.index }}"
+                      alt="ONYVERA Botanical Serum - View {{ forloop.index }}"
                       class="pdp-thumbs__img"
                       width="76"
                       height="76"
@@ -121,8 +121,8 @@
             </ul>
 
             {%- if gallery_images.size > 6 -%}
-              <button type="button" class="pdp-thumbs__more-btn" id="PdpMoreImagesBtn" aria-label="Ver más imágenes">
-                <span id="PdpMoreBtnText">Más imágenes</span>
+              <button type="button" class="pdp-thumbs__more-btn" id="PdpMoreImagesBtn" aria-label="View more images">
+                <span id="PdpMoreBtnText">More images</span>
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
             {%- endif -%}
@@ -131,12 +131,12 @@
           <!-- Imagen Principal Grande con Flechas de Navegación -->
           <div class="pdp-main" id="PdpMainContainer">
             <!-- Flecha Anterior -->
-            <button type="button" class="pdp-main__nav pdp-main__nav--prev" id="PdpNavPrev" aria-label="Imagen anterior">
+            <button type="button" class="pdp-main__nav pdp-main__nav--prev" id="PdpNavPrev" aria-label="Previous image">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
 
             <!-- Flecha Siguiente -->
-            <button type="button" class="pdp-main__nav pdp-main__nav--next" id="PdpNavNext" aria-label="Siguiente imagen">
+            <button type="button" class="pdp-main__nav pdp-main__nav--next" id="PdpNavNext" aria-label="Next image">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
 
@@ -157,7 +157,7 @@
               type="button"
               class="pdp-main__zoom-btn"
               id="PdpZoomBtn-{{ section.id }}"
-              aria-label="Ampliar imagen"
+              aria-label="Zoom image"
             >
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1B3A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="15 3 21 3 21 9"></polyline>

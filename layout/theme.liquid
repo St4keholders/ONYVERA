@@ -22,7 +22,7 @@
       <link rel="preload" as="image" href="{{ 'onv-producto1.jpeg' | asset_url }}" fetchpriority="high">
     {%- endif -%}
 
-    <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}{% if current_page != 1 %} – Página {{ current_page }}{% endif %}</title>
+    <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}</title>
 
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">

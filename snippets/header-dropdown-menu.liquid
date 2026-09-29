@@ -8,6 +8,25 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- liquid
+        assign link_text = link.title
+        assign link_lower = link.title | downcase | strip
+        if link_lower == 'inicio'
+          assign link_text = 'Home'
+        elsif link_lower == 'catálogo' or link_lower == 'catalogo'
+          assign link_text = 'Catalog'
+        elsif link_lower == 'contacto'
+          assign link_text = 'Contact'
+        elsif link_lower == 'nosotros' or link_lower == 'sobre nosotros'
+          assign link_text = 'About Us'
+        elsif link_lower == 'preguntas frecuentes' or link_lower == 'faq' or link_lower == 'faqs'
+          assign link_text = 'FAQs'
+        elsif link_lower == 'tienda' or link_lower == 'productos'
+          assign link_text = 'Shop'
+        elsif link_lower == 'cómo usar' or link_lower == 'como usar'
+          assign link_text = 'How to Use'
+        endif
+      -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
@@ -21,7 +40,7 @@
                     class="header__active-menu-item"
                   {% endif %}
                 >
-                  {{- link.title | escape -}}
+                  {{- link_text | escape -}}
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
@@ -32,6 +51,25 @@
                 tabindex="-1"
               >
                 {%- for childlink in link.links -%}
+                  {%- liquid
+                    assign child_text = childlink.title
+                    assign child_lower = childlink.title | downcase | strip
+                    if child_lower == 'inicio'
+                      assign child_text = 'Home'
+                    elsif child_lower == 'catálogo' or child_lower == 'catalogo'
+                      assign child_text = 'Catalog'
+                    elsif child_lower == 'contacto'
+                      assign child_text = 'Contact'
+                    elsif child_lower == 'nosotros' or child_lower == 'sobre nosotros'
+                      assign child_text = 'About Us'
+                    elsif child_lower == 'preguntas frecuentes' or child_lower == 'faq' or child_lower == 'faqs'
+                      assign child_text = 'FAQs'
+                    elsif child_lower == 'tienda' or child_lower == 'productos'
+                      assign child_text = 'Shop'
+                    elsif child_lower == 'cómo usar' or child_lower == 'como usar'
+                      assign child_text = 'How to Use'
+                    endif
+                  -%}
                   <li>
                     {%- if childlink.links == blank -%}
                       <a
@@ -42,7 +80,7 @@
                           aria-current="page"
                         {% endif %}
                       >
-                        {{ childlink.title | escape }}
+                        {{ child_text | escape }}
                       </a>
                     {%- else -%}
                       <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
@@ -50,7 +88,7 @@
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                           class="header__menu-item link link--text list-menu__item focus-inset caption-large"
                         >
-                          <span>{{ childlink.title | escape }}</span>
+                          <span>{{ child_text | escape }}</span>
                           {{- 'icon-caret.svg' | inline_asset_content -}}
                         </summary>
                         <ul
@@ -58,6 +96,25 @@
                           class="header__submenu list-menu motion-reduce"
                         >
                           {%- for grandchildlink in childlink.links -%}
+                            {%- liquid
+                              assign grand_text = grandchildlink.title
+                              assign grand_lower = grandchildlink.title | downcase | strip
+                              if grand_lower == 'inicio'
+                                assign grand_text = 'Home'
+                              elsif grand_lower == 'catálogo' or grand_lower == 'catalogo'
+                                assign grand_text = 'Catalog'
+                              elsif grand_lower == 'contacto'
+                                assign grand_text = 'Contact'
+                              elsif grand_lower == 'nosotros' or grand_lower == 'sobre nosotros'
+                                assign grand_text = 'About Us'
+                              elsif grand_lower == 'preguntas frecuentes' or grand_lower == 'faq' or grand_lower == 'faqs'
+                                assign grand_text = 'FAQs'
+                              elsif grand_lower == 'tienda' or grand_lower == 'productos'
+                                assign grand_text = 'Shop'
+                              elsif grand_lower == 'cómo usar' or grand_lower == 'como usar'
+                                assign grand_text = 'How to Use'
+                              endif
+                            -%}
                             <li>
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
@@ -67,7 +124,7 @@
                                   aria-current="page"
                                 {% endif %}
                               >
-                                {{ grandchildlink.title | escape }}
+                                {{ grand_text | escape }}
                               </a>
                             </li>
                           {%- endfor -%}
@@ -93,7 +150,7 @@
                 class="header__active-menu-item"
               {% endif %}
             >
-              {{- link.title | escape -}}
+              {{- link_text | escape -}}
             </span>
           </a>
         {%- endif -%}
