@@ -1,0 +1,11 @@
+*.zip
+*.docx
+*.md
+.git*
+.github/*
+node_modules/*
+scratch/*
+package*.json
+.prettierrc.json
+.theme-check.yml
+qr-code.png

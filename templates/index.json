@@ -56,6 +56,7 @@
       }
     },
     "onv_reviews": {
+      "type": "onv-reviews",
       "blocks": {
         "resena_1": {
           "type": "resena",
@@ -180,6 +181,7 @@
       }
     },
     "onv_cta": {
+      "type": "onv-cta",
       "blocks": {
         "beneficio_1": {
           "type": "beneficio",

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="js" lang="{{ request.locale.iso_code }}">
+<html class="js" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,11 +22,15 @@
       <link rel="preload" as="image" href="{{ 'onv-producto1.jpeg' | asset_url }}" fetchpriority="high">
     {%- endif -%}
 
-    <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}</title>
-
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- if template == 'index' or template.name == 'index' -%}
+      <title>Botanical Nail Serum | Clean, Stronger & Clearer Nails | ONYVERA</title>
+      <meta name="description" content="Botanical serum formulated with tea tree oil, aloe vera, and vitamin E. Targeted precision brush for fingernails and toenails. Free U.S. shipping over $50.">
+    {%- else -%}
+      <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}</title>
+      {% if page_description %}
+        <meta name="description" content="{{ page_description | escape }}">
+      {% endif %}
+    {%- endif -%}
 
     {% render 'meta-tags' %}
 
